@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Text Indentation</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+<!--
+.hanging {
+	margin:0;padding:0;
+	text-indent:-30px;
+	margin-left:30px;
+	background:url(../assets/grid_15x15.png) repeat white;
+}
+.hangingInside {
+	margin:0;padding:0;
+	text-indent:-30px;
+	padding-left:45px;
+	background:url(../assets/grid_15x15.png) repeat white;
+}
+.indent {
+	/*margin:0;padding:0;*/
+	text-indent:30px;
+	background:url(../assets/grid_15x15.png) repeat white;
+}
+-->
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Text Indentation</h1>
+<h2>Hanging Indendation</h2>
+<p>The CSS <code>text-indent</code> property specifies the indentation of the first line of text in a block (relative to where it would normally appear).</p>
+<p>Whereas margins and padding affect the whole block, text-indent only applies to the first rendered line of text in the element.</p>
+<p class="hanging">This block of text has the left <strong>margin</strong> set at 30px and the text-indent set to &minus;30px. You can see that any background image or color applies to the &quot;standard&quot; block of text and a hanging indent will spill outside that zone.</p>
+<p class="hanging" style="text-indent:-0.5em">&ldquo;This method could work well for hanging punctuation.&rdquo; You&rsquo;ll notice, that the double-quotes are hanging over the left margin.</p>
+<p>&nbsp;</p>
+<p class="hangingInside">This block of text has the left <strong>padding</strong> set at 45px and the text-indent set to &minus;30px. Now the background image or color applies to all the text. The is probably the more typical use case.</p>
+<h2>Normal Indentation</h2>
+<p class="indent">This is a much easier way to indent because there won't be any math involved regardless of what your paragraph margins or padding are. Just slap in <code>text-indent:2em;</code> and you are good to go. Actually, in this case the padding-left is 15px and the text-indent is 30px.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

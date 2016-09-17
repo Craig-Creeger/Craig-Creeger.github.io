@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Javascript Objects</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Javascript Objects</h1>
+<h2>How to Create Class Properties and Methods</h2>
+<p>This is best explained via an example.</p>
+<pre class="prettyprint linenums">&lt;script&gt;
+This is no longer current - View the source code of this page and inspect the console.
+
+&lt;/script&gt;</pre>
+<p>When running the above script, it returns:</p>
+<pre class="prettyprint linenums">No longer current - View the source code of this page and inspect the console.</pre>
+<h2>True Privacy in Javascript</h2>
+<p><a href="http://philipwalton.com/articles/implementing-private-and-protected-members-in-javascript/" rel="external">http://philipwalton.com/articles/implementing-private-and-protected-members-in-javascript/</a></p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script>
+//Class (function constructor)
+function Beer(brew, og) {
+	//Private Instance variables
+	var hiddenAttribute = 'Hello World.';
+	
+	//Public Instance properties (variables)
+	this.brew = brew;
+	this.og = og; //original gravity
+	this.quantity = 1; //Inital value upon constructing an instance.
+	
+	//Workaround - By convention 'that' is assigned to 'this' so that private methods can gain access to instance properties
+	var that = this;
+	//Private Methods - Can not be called by public instance methods
+	function getMessage() {
+		return hiddenAttribute + ' You can have ' + that.quantity + ' beer(s).';
+	}
+	
+	//Priviledge Methods (assigned using 'this' notation).
+	/* A privileged method is able to access the private variables and methods, and is itself accessible 
+	   to the public methods and the outside. It is possible to delete or replace a privileged method, but 
+	   it is not possible to alter it, or to force it to give up its secrets. */
+	this.showMessage = function() {
+		return getMessage();
+	}
+}
+
+//Public Instance variables - Notice that this is an alternate method for setting public instance variables.
+Beer.prototype.SRM = '12'; //color of beer
+
+//Instance methods
+Beer.prototype.toString = function() {
+	return 'You are holding a ' + this.brew + ' that had an O.G. of ' + this.og + ' and the color is ' + this.SRM + ' SRM’s.';
+}
+Beer.prototype.getAnother = function() {
+	//notice that instance methods have access to instance variables via the "this" keyword.
+	this.quantity++;
+}
+Beer.prototype.isHappy = function() {
+	if (this.quantity >= Beer.HAPPINESS) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+//Static properties(variables)
+Beer.HAPPINESS = 3;
+
+//Static methods
+Beer.convert2plato = function(og) {
+	return (259-259/og).toFixed(2);
+}
+
+//Examples:
+console.log('Happiness occurs after ' + Beer.HAPPINESS + ' beers.');
+console.log('An O.G. of 1.056 is equal to ' + Beer.convert2plato(1.056) + ' plato.');
+var sam = new Beer('Sam Adams', 1.045);
+console.log(String(sam));
+sam.getAnother(); //Now have 2
+console.log('Got enough beer to be happy = ' + sam.isHappy());
+sam.getAnother(); //Now have 3
+console.log('Got enough beer to be happy = ' + sam.isHappy());
+
+var lambic = new Beer('Hanssen', 1.069);
+lambic.SRM = 10;
+console.log(String(lambic));
+console.log(sam.showMessage());
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

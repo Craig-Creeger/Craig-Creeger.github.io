@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Responsive Images</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+#kermit {
+  	background: url(../cssInfo/kermit.jpg) no-repeat center center;
+  	background-size: cover;
+  	height: 0;
+  	padding-bottom: 150%; /* 16:9  is 56.25% */
+}
+.width30percent {
+	width:30%;
+}
+.pushLeft {
+	float:left;
+	margin-right:2em;
+	margin-bottom:1em;
+}
+.pushRight {
+	float:right;
+	margin-left:2em;
+	margin-bottom:1em;
+}
+img.framed {
+	border:10px solid #999;
+}
+.responsive480 { /* place on a div containing a 480px wide (or narrower) photo  */
+	width:45.5%; /* this number will depend on how wide your page is */
+}
+.responsive480 img {
+	max-width:100%;
+	box-sizing:border-box; /* needed when framing the image */
+}
+.responsive480.pushRight {
+	text-align:right;
+}
+td img {
+	width:100%;     /* Needed for IE and Firefox when inside a <td> */
+}
+img {
+	max-width:100%; /* offically only applies to block elements... */
+	display:block;  /* so we make it a block */
+}
+/* MISC */
+.aspectRatioWrap {
+   /* You will also need to explicity set the padding-top percentage on the element you assign this class to. */
+   position: relative;
+   height: 0;
+   width: 100%;
+}
+.aspectRatioWrap >:first-child {
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Responsive Images</h1>
+<h2>Definition</h2>
+<p>A responsive image is one that will get no larger than its original size, but can shrink to a percent of its container. Make your browser window wider and narrower to see what happens.</p>
+<p class="callout">Related to this is ensuring <strong>small images are delivered to tiny screens</strong> and <strong>large images are delivered to desktop monitors</strong>. Read the <a href="http://alistapart.com/article/responsive-images-in-practice" target="external">Responsive Images in Practice</a> article for how to do that.</p>
+<h2>How to Get It - Quick Method</h2>
+<div style="float:right; width:30%; margin-left:1em; text-align:right;"><img src="../cssInfo/kermit.jpg" alt="kermit"></div>
+<p>The CSS is:</p>
+<pre>
+img {
+	max-width:100%; /* offically only applies to block elements... */
+	display:block;  /* so we make it a block */
+}</pre>
+<p>and the HTML is:</p>
+<p class="code">&lt;div style=&quot;width:30%&quot;&gt;</p>
+<p class="code">&nbsp;&nbsp;&lt;img src=&quot;kermit.jpg&quot;&gt;</p>
+<p class="code">&lt;/div&gt;</p>
+<p>You’ll notice that we need a container for the image. For large images that take up nearly the whole width of the viewport, then <code>&lt;body&gt;</code> could be your container, but for smaller images, like in this example, you will need an artificial container that specifies the dimension.</p>
+<h3>Important</h3>
+<p>Do <strong>not</strong> include a width and height attributes on the image tag. e.g. <span class="code" style="color:darkred;">&lt;img src=&quot;kermit.jpg&quot; width=&quot;345&quot; height=&quot;517&quot;&gt;</span></p>
+<h2>Fixing Problems</h2>
+<div style="float:right; width:30%; margin-left:1em; text-align:right;"><img src="../cssInfo/kermit.jpg" alt="kermit" style="display:inline-block; vertical-align:bottom;"></div>
+<h3>Right Align the Image</h3>
+<p>In the above example, you’ll notice that Kermit starts sliding to the left when the browser window is wide. This is because the image doesn’t go any wider than 345 pixels, but the &lt;div&gt; can go wider, and the image is left-aligned.</p>
+<p>Setting <code>text-align:right</code> on the &lt;div&gt; won’t work because the &lt;img&gt; is defined as a block (and therefore takes up 100% of the width). A quick fix is to remove the <code>display:block;</code> which effectively turns the image back into an inline element. Your code is then:</p>
+<pre>&lt;div style=&quot;width:30%; text-align:right;&quot;&gt;
+	&lt;img style=&quot;max-width:100%; vertical-align:bottom;&quot; src=&quot;kermit.jpg&quot;&gt;
+&lt;/div&gt;</pre>
+<p>This introduces a new problem that may, or may not be an issue depending on your page design. A small 3 pixel (or so) gap will appear underneath the image. That can be removed with <code>vertical-align:bottom</code> on the <code>&lt;img&gt;</code> tag.</p>
+<h3>Responsive Images Inside a Table</h3>
+<p>IE and Firefox won’t recognize the max-width:100% on the image when the image is placed inside a <code>&lt;td&gt;</code> tag, or an element with <code>display:table-cell</code>.</p>
+<p>&nbsp;</p>
+<table style="clear:both; border-collapse:collapse;">
+	<tr>
+		<td style="width:30%; border:thin solid grey;"><img src="../cssInfo/kermit.jpg" alt="kermit"></td>
+		<td style="vertical-align:top; border:thin solid grey;"><p>This can be fixed by also setting <code>width:100%</code> on the <code>img</code> selector.</p>
+		<p>This responsive image has been fixed using:</p>
+		<p class="code">td img {
+	width:100%;     /* Needed for IE and Firefox when inside a &lt;td&gt; */
+} </p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<h2>How to Get It - Advanced Features</h2>
+<div class="width30percent" style="max-width:345px; float:right; clear:right; margin-left:2em; color:white;"><div id="kermit"><p>Notice that text can go over the top of this one.</p></div></div>
+<p class="code">&lt;div class=&quot;width30percent&quot; style=&quot;max-width:345px; float:right; clear:right; margin-left:2em; color:white;&quot;&gt;</p>
+<p class="code">	&lt;div id=&quot;kermit&quot;&gt;<br>
+&lt;p&gt;Notice that text can go over the top of this one.&lt;/p&gt;<br>
+</p>
+<p class="code">&lt;/div&gt;</p>
+<p class="code">&lt;/div&gt;</p>
+<p class="code"><br>
+</p>
+<p class="code">#kermit {<br>
+	background: url(../cssInfo/kermit.jpg) no-repeat center center;<br> 
+	background-size: cover;<br> 
+	height: 0;<br> 
+padding-bottom: 150%; /* 16:9  is 56.25% */</p>
+<p class="code"> }</p>
+<p class="code"> .width30percent {<br> 
+	width:30%;</p>
+<p class="code"> }</p>
+<h2>Real-life Example</h2>
+<p>I often want to either frame an image with a border (or some other styling), and then usually either float it left or right. The following CSS is typical of my coding style.</p>
+<pre class="prettyprint linenums">.pushLeft {
+	float:left;
+	margin-right:2em;
+	margin-bottom:1em;
+}
+.pushRight {
+	float:right;
+	margin-left:2em;
+	margin-bottom:1em;
+}
+img.framed {
+	border:10px solid #999;
+}
+.responsive480 { /* place on a div containing a 480px wide (or narrower) photo  */
+	width:45.5%; /* this number will depend on how wide your page is */
+}
+.responsive480 img {
+	max-width:100%;
+	box-sizing:border-box; /* needed when framing the image */
+}
+.responsive480.pushRight {
+	text-align:right;
+}</pre>
+<div class="pushRight responsive480"><img src="../media/FLVPlayerSkins/ClearSkin3.jpg" class="framed"></div>
+<h3>The HTML needed for this paragraph and photo is shown below.</h3>
+<p>You will notice that I chose to put a border around the image (<code>&lt;img class=&quot;framed&quot;&gt;</code>). As described above, there should be no image dimension attributes on the <code>&lt;img&gt;</code> tag.</p>
+<p>I also chose to float the image right. This was done by wrapping the image tag with a div and then giving that div a couple of classes. (<code>&lt;div class=&quot;pushRight responsive480&quot;&gt;</code>).</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod mollis molestie. Phasellus congue rutrum nisi, in consequat risus adipiscing id. In hac habitasse platea dictumst. Nulla ac quam ligula. Proin euismod mi ut felis viverra tristique. Ut ut auctor diam. Aliquam commodo varius mi, at accumsan mi varius at</p>
+<pre class="prettyprint linenums">&lt;div class=&quot;pushRight responsive480&quot;&gt;&lt;img src=&quot;../media/FLVPlayerSkins/ClearSkin3.jpg&quot; class=&quot;framed&quot;&gt;&lt;/div&gt;<br>&lt;h3&gt;The HTML needed for this paragraph and photo is shown below.&lt;/h3&gt;<br>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod mollis molestie. Phasellus congue rutrum nisi, in consequat risus adipiscing id. In hac habitasse platea dictumst. Nulla ac quam ligula. Proin euismod mi ut felis viverra tristique. Ut ut auctor diam. Aliquam commodo varius mi, at accumsan mi varius at&lt;/p&gt;</pre>
+<h2 id="aspectRatioWrap">Maintaining Aspect Ratio for Videos or SVG elements</h2>
+<p>The above techniques work well for images, but some elements don't respond quite so well (such as videos and some SVG graphics). The problem is they will not maintain a proper aspect ratio, but you can force it using this technique.</p>
+<pre>/*&#32;MISC&#32;*/<br>.aspectRatioWrap&#32;{<br>&#32;&#32;&#32;/*&#32;You&#32;will&#32;also&#32;need&#32;to&#32;explicity&#32;set&#32;the&#32;padding-top&#32;percentage&#32;on&#32;the&#32;element&#32;you&#32;assign&#32;this&#32;class&#32;to.&#32;*/<br>&#32;&#32;&#32;position:&#32;relative;<br>&#32;&#32;&#32;height:&#32;0;<br>&#32;&#32;&#32;width:&#32;100%;<br>}<br>.aspectRatioWrap&#32;&gt;:first-child&#32;{<br>&#32;&#32;&#32;position:&#32;absolute;<br>&#32;&#32;&#32;top:&#32;0;<br>&#32;&#32;&#32;left:&#32;0;<br>}<br>
+</pre>
+<div class="aspectRatioWrap" style="padding-top:56.25%;">
+	<video src="../media/BbbTrailer.h.264.mp4" controls style="width:100%;">
+	</video>
+</div>
+<p>On the wrapping &lt;div&gt;, explicity give it a padding-top percentage, which is calculated by dividing the height by the width. For example, the above video is 480px by 270px. So, 270/480 = 0.5625, which means the HTML should be:</p>
+<pre>&lt;div <strong>class=&quot;aspectRatioWrap&quot; style=&quot;padding-top:56.25%;&quot;</strong>&gt;
+	&lt;video src=&quot;../media/BbbTrailer.h.264.mp4&quot; controls style=&quot;width:100%;&quot;&gt;
+	&lt;/video&gt;
+&lt;/div&gt;</pre>
+<h2>Sizing Images for Retina Displays</h2>
+<p>The image below is 1024px wide with High jpeg compression. It looks better for standard pixel density screens and is smaller, but it is fuzzier on a Retina display. So, which image to use? It is kinda of a toss-up, but I'm leaning towards the smaller image.</p>
+<p><img src="../layout/ali-1024-high.jpg" style="max-width:100%;"></p>
+<p>The image below is 2048px wide with Medium jpeg compression. It looks great on a Retina display, but is a tad larger (file size) than the image above.</p>
+<p><img src="../layout/ali-2048-medium.jpg" style="max-width:100%;"></p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

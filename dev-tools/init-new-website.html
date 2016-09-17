@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Setting Up a New Website</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css"></style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Setting Up a New Website</h1>
+<h2>SASS, ES6, and Git Websites</h2>
+<h3>Yeoman can do this</h3>
+<p><a href="http://yeoman.io/" target="external">http://yeoman.io/</a></p>
+<h3>Maybe, I don't know...</h3>
+<p>The way you choose to start a new site is highly opinionated and variable depending on your needs. This is one way to get started with a website that uses a SASS pre-processor and ES6 style Javascript.</p>
+<ol>
+	<li>Install your build tools: Node, <a href="npm.html">npm</a>, <a href="bower.html">Bower</a>, <a href="../sass/index.html">Sass</a>, and <a href="grunt.html">Grunt</a></li>
+	<li>Create the root directory of your new site. Ex: <code>mkdir ~/Sites/newSite</code></li>
+	<li>Create Bower’s <code>bower.json</code> file with: <code>bower init</code> using all of the defaults except private package.</li>
+	<li>Install these components.
+		<ol>
+			<li><code> bower install --save normalize.css</code></li>
+			<li><code>bower install --save html5shiv</code></li>
+			<li><code>bower install --save Respond</code></li>
+			<li><code>bower install https://github.com/h5bp/html5-boilerplate.git</code><br>
+				Note: We are not saving <em>h5bp</em> because we are going to pull the main.css file out and modify it. </li>
+		</ol>
+	</li>
+	<li>Create npm’s <code>package.json</code> file with <code>npm init</code></li>
+	<li>Install your npm packages:
+		<ol>
+			<li>See the <a href="grunt.html">Grunt page</a> for some packages to add.</li>
+		</ol>
+	</li>
+	<li>Configure Grunt.
+		<ol>
+			<li>Create a Gruntfile.js file and edit it.
+				<details>
+					<summary>Sample Gruntfile.js</summary>
+					<pre>hello
+					</pre>
+				</details>
+			</li>
+		</ol>
+	</li>
+	<li>Create your<code> .gitignore</code> file.
+		<ol>
+			<li>I have a global ignore file located at <code>~/.gitignore_global</code>
+				<details>
+					<summary>Sample .gitignore_global file</summary>
+					<pre># Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+
+# Dreamweaver and Web Source Files #
+####################################
+dwsync.xml
+_notes/
+*.psd
+*.fla
+*.ai
+*.mp4
+*.m4v
+
+# PHPStorm #
+############
+.idea
+
+# Adobe Bridege #
+#################
+.BridgeLabelsAndRatings
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db</pre>
+				</details>
+			</li>
+			<li>You will probably want to ignore all code that comes from npm or bower using something similar to:<br>
+				<code>bower_components/<br>
+				node_modules/<br>
+				dist/</code></li>
+		</ol>
+	</li>
+	<li>Start with some generic CSS using my opinionated defaults.
+		<ol>
+			<li>Copy and rename <code>bower_components/html5-boilerplate/dist/css/main.css</code> to <code>app/scss/partials/_helpers.css</code>.</li>
+			<li>Edit that file by removing everything except Helper Classes and down.</li>
+		</ol>
+	</li>
+</ol>
+<h3>Another option, maybe, I don't know...</h3>
+<p><a href="http://reactkungfu.com/2015/07/the-hitchhikers-guide-to-modern-javascript-tooling/" target="external">http://reactkungfu.com/2015/07/the-hitchhikers-guide-to-modern-javascript-tooling/</a></p>
+<p>This says you should be using Webpack and then slap Gulp on top if you need that too. Sheesh. When will the merry-go-round stop?</p>
+<h3>npm Build Option</h3>
+<p>I think this might now be my prefered method.</p>
+<ol>
+	<li>Create a directory and vhost</li>
+	<li>Do an <code>npm init</code></li>
+	<li>Install these packages to your site (<code>npm install --save-dev <em>packageName</em></code>):
+		<ol>
+			<li>babel</li>
+			<li>node-sass</li>
+			<li>jquery (use <code>--save</code>) if you need jQuery</li>
+		</ol>
+	</li>
+	<li>Install these packages globally (<code>npm install -g <em>packageName</em></code>):<br>
+		You can use <code>npm -g list --depth=0</code> to find out if they are already installed.
+		<ol>
+			<li>browser-sync</li>
+			<li>autoprefixer</li>
+			<li>postcss-cli</li>
+		</ol>
+	</li>
+	<li>Create your directory structure:
+		<ol style="list-style:none;">
+			<li>components
+				<ol style="list-style:none;">
+					<li>es6</li>
+					<li>sass
+						<ol style="list-style:none;">
+							<li>partials</li>
+						</ol>
+					</li>
+					<li>tmpcss</li>
+				</ol>
+			</li>
+			<li>dist
+				<ol style="list-style:none;">
+					<li>css</li>
+					<li>js</li>
+				</ol>
+			</li>
+			<li>node_modules</li>
+		</ol>
+	</li>
+	<li>Add a .gitignore file
+		<pre>
+node_modules/
+bower_components/
+</pre>
+	</li>
+</ol>
+<div class="callout">
+	<h3>Automatically Adding CSS Vendor Prefixes</h3>
+	<p>I tried Autoprefixer, but ran into some problems. Below are the pieces to Autoprefixer.</p>
+	<p><strong><em>postcss</em></strong></p>
+	<p>This tool will transform CSS and it is very fast. It does the same job as SASS, but it uses its own syntax I think. You will not need this, but it may be worth exploring whether or not this is a better way to go (over SASS).</p>
+	<p><strong><em>postcss-cli</em></strong></p>
+	<p>I would like to have a method to “watch” for file changes. You will need the <a href="https://github.com/code42day/postcss-cli" target="external">postcss-cli</a> to do that. It will also accept:</p>
+	<ul>
+		<li>Output directory</li>
+		<li>Input files (you can use wildcards such as <code>/css/*.css</code>)</li>
+		<li>The type of transformation you want (i.e. Autoprefixer)</li>
+		<li>Location to a config file. This config file can specify the Autoprefixer options; see below.</li>
+		<li>Whether you want to Watch or not.</li>
+	</ul>
+	<p><strong><em>autoprefixer</em></strong></p>
+	<p>This is the routine that performs CSS vendor prefixes transformations. It will accept the options:</p>
+	<ul>
+		<li>browsers: 'last 2 version' (for example</li>
+		<li>cascade: true (default to make pretty)</li>
+		<li>add: true (defaults to adding prefixes)</li>
+		<li>remove: true (defaults to removing prefixes)</li>
+	</ul>
+	<p>If I didn’t need the watch functionality provided by <em>postcss-cli</em>, then I could simply use just <em>autoprefixer</em>.</p>
+	<p><strong><em>autoprefixer-core</em></strong></p>
+	<p>The main logic for Autoprefixer is in this package. It contains a function called <code>process(css, options)</code> which is called, I think, from autoprefixer.</p>
+	<p class="center"><strong>Finally, this is where I got stuck.</strong></p>
+	<p><a href="https://github.com/postcss/autoprefixer-core#css-processing" target="external">The options</a> going into the <code>process()</code> function are:</p>
+	<ul>
+		<li>from: file path of source CSS</li>
+		<li>to: file path of destination</li>
+		<li>safe: enables safe mode (default is false)</li>
+		<li>map {<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;inline:false,<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;prev: original source map<br>
+			}</li>
+	</ul>
+	<p>I would really like to get the CSS maps updated, but I can’t figure out how to pass the map option in. The maps options are little more complicated as <a href="https://github.com/postcss/postcss#source-map" target="external">described in the documentation</a>.</p>
+	<p class="center"><strong>Update: I got unstuck.</strong></p>
+	<p>The Autoprefixer will handle maps by default IF they are inlined (embedded in the CSS via a comment), so I changed by SASS build step to inline the maps instead of creating a separate map file. Now all is good.</p>
+</div>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Automated Javascript Testing</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Automated Javascript Testing</h1>
+<h2>Mocha</h2>
+<p>This is a testing framework. In other words, it is responsible for coordinating, defining, and running the tests. There are two main functions: <code>describe()</code> and <code>it()</code>.</p>
+<h3>Example</h3>
+<pre class="prettyprint linenums">describe('Suite of tests for the isEven() function.', function() {
+	it('Return value should always be a boolean.', function() {
+		<em>//The assertion and an actual call to isEven() goes here</em>
+	});
+	it('Should be TRUE for positive even numbers.', function() {
+		<em>//The assertion and an actual call to isEven() goes here</em>
+	});
+});</pre>
+<h2>Chai</h2>
+<p>Mocha’s default assertion library is Node’s Assert. For more functionality, Chai is a very popular option. The main function is <code>expect()</code>. Expanding on the previous code block above, it looks like this:</p>
+<pre class="prettyprint linenums"><strong>function isEven(nbr) {
+	return !(nbr % 2);
+}</strong>
+
+describe('Suite of tests for the isEven() function.', function() {
+	it('Return value should always be a boolean.', function() {
+		<strong>expect(isEven(13)).to.be.a('boolean');</strong>
+	});
+	it('Should be TRUE for positive even numbers.', function() {
+		<strong>expect(isEven(44)).to.be.true;</strong>
+	});
+});</pre>
+<p>Actually, Chai supports three different interfaces. The chain-capable Behavior-Driven Development (BDD) styles provide an expressive language implemented via <code>should()</code> or <code>expect()</code>. The Test-Driven Development (TDD) style provides a more classical style and uses the <code>assert()</code> function.</p>
+<p>In the above example, the properties <code>to</code> and <code>be</code> are called “language chains”. They do nothing besides clarify the intent of the test. There are several other language chain words you can use such as:</p>
+<ul style="column-count:6; column-width: 7em; list-style:none;">
+	<li>to</li>
+	<li>be</li>
+	<li>been</li>
+	<li>is</li>
+	<li>that</li>
+	<li>which</li>
+	<li>and</li>
+	<li>has</li>
+	<li>have</li>
+	<li>with</li>
+	<li>at</li>
+	<li>of</li>
+	<li>same</li>
+</ul>
+<p>There are a <a href="http://chaijs.com/api/bdd/" target="external">bunch of comparisons</a> available to you. In the above example I used <code>a()</code> and <code>true</code>. Other common comparisons are:</p>
+<p>.not, .null, .exist, .empty, .equal()</p>
+<h2>Sinon</h2>
+<p>When testing simple, self-contained functions Sinon would not be required, but here in the real-world your application no doubt depends on external API’s, browser API’s, DOM, Ajax, etc. I think that most of the time you use this for edge code (interfaces with other systems); we will see after I use it more.</p>
+<p>Sinon come with it’s own assertion library, so for these tests you use Sinon instead of Chai; however there is a <a href="https://github.com/domenic/sinon-chai" target="external">sinon-chai</a> plugin available.</p>
+<p>You can create three different levels of inspection, each building on the previous level. At the base, there are Spies.</p>
+<p><strong>Spies</strong> simply watch a method working. Let’s say you are spying on <code>console.log()</code>, you can then assert (ask) things like:</p>
+<ul>
+	<li>Was it called?</li>
+	<li>How many times was it called?</li>
+	<li>Was it called before/after a different spy?</li>
+	<li>What arguments where passed to the spy?</li>
+	<li>Was it called with the New operator?</li>
+	<li>Did it throw() an exception?</li>
+	<li>What did it return?</li>
+</ul>
+<p><strong>Stubs</strong> can do everything that Spies do, plus they have pre-programmed behavior. Stubs can be anonymous functions or wrap an existing function. If wrapping a function, then that <em>real function will not be called</em>. You use a stub when you want to force the function to return a specific value or force code down a certain path. Another good use is when you don’t want the real function to be called (perhaps it is an AJAX call to an  external server).</p>
+<p><strong>Mocks</strong> are like Stubs that have pre-programmed expectations. In other words, they enfore implementation details — you are stating expectations upfront as opposed to asserting after the fact. Honestly, I’m a little confused about what a Mock does that Stubs can not.</p>
+<!-- InstanceEndEditable -->
+<footer>
+	<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 29, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

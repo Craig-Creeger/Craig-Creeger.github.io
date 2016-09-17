@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>PxProSlideShow jQuery Plugin</title>
+<!-- InstanceEndEditable -->
+<link href="../../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+/* You probably ought not change these two rules */
+.pxproSlider { position:relative; overflow:hidden; }
+.pxproItem { position:absolute; left:0; top:0; z-index:1; }
+
+/* User editable */
+.pxproSlider {
+	width:1010px;
+	height:570px;
+	background-color:white;
+}
+
+/***************************************************/
+#slideshow1 {
+	/* User Editable - things like size and position */
+	width:1010px;
+	height:570px;
+	background-color:white;
+}
+#slideshow1 .pxproCover { /* Optional: use only if you want, say a framed or corner overlay. */
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:10;
+}
+#slideshow1 .pxproItem { /* Normally you would not need this, but the framed over I am using creates a 15px border around the content. */
+	left:15px;
+	top:15px;
+}
+/***************************************************/
+#slideshow2 {
+	/* User Editable - things like size and position */
+	width:250px;
+	height:167px;
+	background-color:white;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../../index.html" style="float:left"><img src="../../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>PxProSlideShow jQuery Plugin</h1>
+<p class="callout">I have not tried this one yet, but the <a href="http://kenwheeler.github.io/slick/" rel="external">Slick Carousel</a> is worth looking into.</p>
+<h2>Features</h2>
+<ul>
+	<li>You control duration between animations and length of animation.</li>
+	<li>Possible to put a gap between the items.</li>
+	<li>Can have a cover or frame over the content (the example below demonstrates this).</li>
+	<li>Slide anything you want—photos, text, videos, etc.</li>
+	<li>Super easy to add to a page&mdash;take a look at this page&rsquo;s source code.</li>
+</ul>
+<h3>Limitations</h3>
+<ul>
+	<li>Doesn&rsquo;t automatically size to the content.<br>
+i.e. It is a fixed width and height, and it is not responsive.</li>
+	<li>No captions outside of the content area</li>
+	<li>No navigation buttons or progress indicators</li>
+	<li>Requires a modified setInterval function.</li>
+	<li>Requires jQuery (this is a jQuery plugin after all)</li>
+</ul>
+<p><em>If you are looking for something with navigation buttons and indicators, check out my <a href="../PxContentSlider/instructions.html">Pixel Pro Content Slider</a>.</em></p>
+<div id="slideshow1" class="pxproSlider">
+	<img src="img/frame.png" width="1010" height="570" alt="" class="pxproCover">
+	<img class="pxproItem" src="img/montreal1.jpg" width="810" height="608">
+	<img class="pxproItem" src="img/montreal2.jpg" width="810" height="608">
+	<img class="pxproItem" src="img/montreal3.jpg" width="810" height="608">
+	<img class="pxproItem" src="img/montreal4.jpg" width="810" height="608">
+	<img class="pxproItem" src="img/montreal4.jpg" width="810" height="608">
+</div>
+<h2>How to Use</h2>
+<ol><li>
+<p>Place your content on the page. It should be wrapped in a &lt;div&gt; with the class &quot;pxproSlider&quot;. For example:</p>
+<pre class="prettyprint linenums">&lt;div id=&quot;slideshow1&quot; class=&quot;pxproSlider&quot;&gt;
+	&lt;img class=&quot;pxproItem&quot; src=&quot;img/montreal1.jpg&quot; width=&quot;810&quot; height=&quot;608&quot;&gt;
+	&lt;img class=&quot;pxproItem&quot; src=&quot;img/montreal2.jpg&quot; width=&quot;810&quot; height=&quot;608&quot;&gt;
+	&lt;img class=&quot;pxproItem&quot; src=&quot;img/montreal3.jpg&quot; width=&quot;810&quot; height=&quot;608&quot;&gt;
+	&lt;img class=&quot;pxproItem&quot; src=&quot;img/montreal4.jpg&quot; width=&quot;810&quot; height=&quot;608&quot;&gt;
+	&lt;img class=&quot;pxproItem&quot; src=&quot;img/montreal4.jpg&quot; width=&quot;810&quot; height=&quot;608&quot;&gt;
+&lt;/div&gt;</pre></li><li>
+<p>Assign the class "pxproItem" to each of the items (usually pictures).</p></li>
+<li><p>Add some CSS to style and position the content slider.</p>
+<pre class="prettyprint linenums">&lt;style type=&quot;text/css&quot;&gt;
+/* You probably ought not change these two rules */
+.pxproSlider { position:relative; overflow:hidden; }
+.pxproItem { position:absolute; left:0; top:0; z-index:1; }
+
+/* User editable */
+.pxproSlider {
+	width:1010px;
+	height:570px;
+	background-color:white;
+}
+&lt;/style&gt;</pre>
+</li>
+<li><p>Add the jQuery library to your page.</p></li>
+<li><p>Add the <a href="jquery.PxProSlideShow.js">PxProSlideShow plugin</a> to your page.</p></li>
+<li>
+<p>Activate (call) the slideshow. For example:</p>
+<p class="code">$('#slideshow1').PxProSlideShow({width:810});</p>
+</li>
+<li><p>Optionally, you make want to tweak some of the defaults.</p>
+<ul>
+	<li> <code>duration</code> - defaults to 4000<br>
+		This is the delay between animations (expressed in milliseconds). The delay  
+		starts when the previous animation finishes, so this is the amount of time  
+		the slider content is static on the page.</li>
+	<li> <code>animationDuration</code> - defaults to 2000<br>
+		This is how long it will take to animate to the next content (expressed in 
+		milliseconds)</li>
+	<li> <code>width</code><br>
+		Enter the width, in pixels, of your content items. This is used for the 
+	&quot;slide&quot; animation.</li>
+	<li> <code>animation</code> - defaults to <code>slide</code><br>
+		Content can either cross-fade in place, or slide horizontally. Enter either 
+		'slide' or 'cross-fade'.</li>
+	<li> <code>leftOffset</code> - defaults to zero<br>
+		Only needed if you are using a cover image that happens to have an opaque area on the left.</li>
+</ul><p>For example, the slideshow at the top of this page is using:</p><p class="code">$('#slideshow1').PxProSlideShow({duration:6000, width:810, leftOffset:15});</p>
+</li>
+</ol>
+<div id="slideshow2" class="pxproSlider">
+	<div class="pxproItem active">
+		<h1 style="margin-bottom:0; font-size:1em;">Any Type of Content</h1>
+		<p>It is possible to place anything in these sliders; headers, paragraphs, videos, hyperlinks, etc.</p>
+	</div>
+	<img class="pxproItem" src="img/montreal5.jpg" width="250" height="167">
+	<img class="pxproItem" src="img/montreal4.jpg" width="250" height="167">
+	<img class="pxproItem" src="img/montreal3.jpg" width="250" height="167">
+	<img class="pxproItem" src="img/montreal2.jpg" width="250" height="167">
+	<img class="pxproItem" src="img/montreal1.jpg" width="250" height="167">
+</div>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<!--<script type="text/javascript" src="../../js/common.js"></script>--> 
+<script type="text/javascript" src="jquery.PxProSlideShow.js"></script> 
+<script>
+/* Options are:
+	duration - defaults to 4000
+		This is the delay between animations (expressed in milliseconds). The delay 
+		starts when the previous animation finishes, so this is the amount of time 
+		the slider content is static on the page.
+	animationDuration - defaults to 2000
+		This is how long it will take to animate to the next content (expressed in
+		milliseconds)
+	width
+		Enter the width, in pixels, of your content items. This is used for the
+		"slide" animation.
+	animation - defaults to 'slide'
+		Content can either cross-fade in place, or slide horizontally. Enter either
+		'slide' or 'cross-fade'.
+	leftOffset - defaults to zero
+		Only needed if you are using a cover image that happens to have an opaque area on the left.
+*/
+$('#slideshow1').PxProSlideShow({duration:6000, width:810, leftOffset:15});
+$('#slideshow2').PxProSlideShow({duration:1700, animation: 'cross-fade'});
+</script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

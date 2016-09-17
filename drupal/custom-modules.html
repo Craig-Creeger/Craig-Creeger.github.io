@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Drupal Modules</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Writing Drupal Modules</h1>
+<h2>Set-up and Common Code</h2>
+<h3>*.info file</h3>
+<h3>*.module file</h3>
+<h3>Help Pages</h3>
+<h4>Standard/Basic</h4>
+<p>You can create your own custom help page by putting this inside <code><em>yourModule</em>.module</code></p>
+<pre class="prettyprint linenums">/**
+ * Implements hook_help().
+ */
+function yodesa_help($path, $arg) {
+	switch ($path) {
+		case 'admin/help#yodesa': {
+			$helpMsg = 'Help for this module is displayed using the ' . l("Advanced Help", "https://www.drupal.org/project/advanced_help") . ' module. If you have Advanced Help installed, then you can read the &lt;a href="/admin/advanced_help/yodesa"&gt;help document&lt;/a&gt;.';
+			return $helpMsg;
+			break;
+		}
+	}
+}</pre>
+<h4>Advanced Help</h4>
+<p><code>advanced_help</code> is a Contributed Module that can display help files using the same theme as your site. It also is much more useful when you have a lot of documentation because you can set-up a hierarchy of pages and write the documentation is regular HTML. After installing Advanced Help, be sure to set the permissions so you can view the help files.</p>
+<h5>Quick and Dirty Option</h5>
+<p>Just shove a README.txt or README.md file in the root of your module.</p>
+<h5>Full Capabilities Option</h5>
+<p>To create an Advanced Help page:</p>
+<ol>
+	<li>Create a folder in your module called “help”.</li>
+	<li>Create a file in there called <em>moduleName</em>.help.ini. Its content would be similar to:<br>
+<pre>[installation]
+title = Installation and Configuration
+weight = 1
+
+[features]
+title = Purpose and Features of this Module
+weight = 2</pre>
+</li>
+	<li>For each help page (Step 2’s example above has two help pages) listed in square brackets create a corresponding file. In this example, you need to create:
+		<ol>
+			<li>installation.html</li>
+			<li>features.html</li>
+		</ol>
+	</li>
+	<li>Build out your help files. These should be HTML snippets, not a fully formed page. In other words, do not use the <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, or <code>&lt;body&gt;</code> tags.</li>
+</ol>
+<h3>Permissions</h3>
+<p>This hook can supply permissions that the module defines, so that they can be selected on the user permissions page and used to grant or restrict access to actions the module performs.</p>
+<pre class="prettyprint linenums">/**
+ * Implements hook_permission()
+ */
+function yodesa_permission() {
+	return array(
+		'use-yodesa' => array(
+			'title' => t('Can use yodesa form'),
+			'description' => t('Is allowed to fill-out the Yodesa form and receive feedback.')
+		)
+	);
+}</pre>
+<h2 id="whereToPlace">Where to Put Your Main Logic</h2>
+<p>For me, the trickiest part of learning Drupal is where to put your code so it is 1) called, and 2) called at the right time. That is what the hook system is for.</p>
+<h3>Called on every html page</h3>
+<p class="code">function <em>myModule</em>_preprocess_html() {</p>
+<h3>Called on every page that uses template <code>page.tpl.php</code> (regardless of current theme)</h3>
+<p>If you want a piece of code to run, regardless of the current theme, then it must be inside a module. Most (all?) themes use a template file called page.tpl.php so you can create a function in your module’s <em><code>myModule</code></em><code>.module</code> file named:</p>
+<p><code>function <em>myModule</em>_preprocess_page() {</code></p>
+<h3>Called on every page that uses template <code>page.tpl.php</code> (specific theme)</h3>
+<p>Similar to above, but place this function definition in your theme’s <code>template.php</code> file:</p>
+<p><code>function <em>myTheme</em>_preprocess_page() {</code></p>
+<p>Note: I have not actually tested this.</p>
+<h2>API</h2>
+<p>In the function names below where you see the italicized word hook, that will need to be replaced with your module or theme’s name (generally). If there are dashes in the name, then convert those to underscores. For example, if your module name is “<code>guido-rocks</code>” and you are implementing <em><code>hook</code></em><code>_menu()</code>, then you should define it as <code>guido_rocks_menu()</code>.</p>
+<h3>Common Hooks</h3>
+<dl class="functions">
+<dt>hook_node_info()</dt>
+<dd>Creates a new Content type</dd>
+<dt>hook_form()</dt>
+<dd>Used to show a form for node creation/editing</dd>
+<dt>hook_help()</dt>
+<dd>Display online help for a custom module</dd>
+<dt>hook_permission()</dt>
+<dd>Add new permission checkboxes to the admin/people/permissions page</dd>
+<dt>&nbsp;</dt>
+</dl>
+<h3><em>hook</em>_menu()</h3>
+<p>Implementing the <em><code>hook</code></em><code>_menu()</code> is the primary way (in Drupal 7; this changed in Drupal 8) to:</p>
+<ul>
+	<li> associate functionality with a URL (callback mapping, think of this as a router)</li>
+	<li>secure the menu with permissions</li>
+	<li>customize the menu.</li>
+</ul>
+<p>You need to return an array of <em>menu items</em> where each menu item is an associative array. Each menu item is also an array. The example below shows only a small subset of the available properties. See the API documentation for <a href="https://api.drupal.org/api/drupal/modules!system!system.api.php/function/hook_menu/7" rel="external">the complete list</a>.</p>
+<pre class="prettyprint linenums">/**
+ * Implements hook_menu().
+ */
+function yodesa_menu() {
+	$items = array();
+	$items['youth-dev-self-assess'] = array(         //The key is the URL (first part of callback mapping)
+		'page callback' => 'yodesa',                 //function to call (second part of callback mapping)
+
+		'access callback' =&gt; 'custom_verification'   //security: leave blank to use user_access()
+		'access arguments' => array('use-yodesa'),   //security: an array of arguments for 'access callback'
+
+		'title' => 'Yodesa',                         //customize menu (required)
+		'description' => 'Launch the Yodesa form'
+		'type' => MENU_SUGGESTED_ITEM,
+		'menu_name' =&gt; 'My menu name'                //optional. Leave blank to include this in the Navigation menu.
+	);
+
+	return $items;
+}</pre>
+<h3><em>hook</em>_theme()</h3>
+<p>This function will tell Drupal about the association between a Render Array (set of data) and theme implementation (how to generated the final HTML).</p>
+<h3>Common Drupal Functions</h3>
+<p><code>url()</code> Makes a safe URL</p>
+<p><code>base_path()</code> Returns the base location of the Drupal install. It will always include the trailing slash. In most cases, this function will always return just a “/” because most installs have Drupal installed to a top level directory of the webroot. Note: Do not combine with path_to_theme() because that function apparently already takes into account the base.</p>
+<p><code>path_to_theme()</code> Returns the directory of the current theme. Example:</p>
+<p><code>&lt;img src=&quot;&lt;?php echo url(path_to_theme() . '/img/myPic.jpg'); ?&gt; alt=&quot;&quot;&gt;</code></p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

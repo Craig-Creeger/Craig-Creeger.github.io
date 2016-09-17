@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Echo Test</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Echo Test</h1>
+<h2>Sample Form</h2>
+<form action="http://webdesign.pixelpro.biz/php/echo.php" method="post" name="myForm"><p>
+	<label for="fullName">Full Name</label>
+	<input name="fullName" type="text" id="fullName" value="Craig Creeger">
+</p>
+<p>
+	<label>
+		<input name="petCat" type="checkbox" id="pets_0" value="meow" checked>
+		Cat</label>
+	<br>
+	<label>
+		<input name="petRoster" type="checkbox" id="pets_1" value="crow" checked>
+		Roster</label>
+	<br>
+	<label>
+		<input name="petDog" type="checkbox" id="pets_2" value="bark">
+		Dog</label>
+	<br>
+</p>
+<p>
+	<label>
+		<input name="gender" type="radio" id="gender_0" value="prince" checked>
+		Male</label>
+	<br>
+	<label>
+		<input type="radio" name="gender" value="princess" id="gender_1">
+		Female</label>
+	<br>
+</p>
+<p><em>Hidden</em><input name="hidden" type="hidden" value="Valley"></p>
+<p>
+	<input type="submit" name="send" id="send" value="Submit">
+	<input type="reset" name="Reset" id="button" value="Reset">
+</p>
+</form><!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

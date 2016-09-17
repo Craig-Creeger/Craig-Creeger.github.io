@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Pixel Pro Content Slider</title>
+<!-- InstanceEndEditable -->
+<link href="../../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<link href="PxContentSlider/css/PxContentSlider.css" type="text/css" rel="stylesheet">
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../../index.html" style="float:left"><img src="../../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Pixel Pro Content Slider</h1>
+<p class="callout">I have not tried this one yet, but the <a href="http://kenwheeler.github.io/slick/" rel="external">Slick Carousel</a> is worth looking into.</p>
+<h2>A Simple Content Slider</h2>
+<p>I was not able to find a content slider simple enough and stable enough for my needs, so I wrote my own. Take a look at the source code; everything is there.</p>
+<table cellspacing="0">
+	<tr>
+		<td style="vertical-align:middle"><button class="PxSliderPrev"></button></td>
+		<td style="border-top:#6C6 3px solid; border-bottom:#6C6 3px solid;">
+			<!-- All the "slides" must appear inside this class. -->
+			<div class="PxSliderWrapper"> 
+				<!-- Each slide must have the class="PxSliderContent" -->
+				<img src="PxContentSlider/css/img/Kermit.jpg" width="160" height="160" class="PxSliderContent">
+				<div class="PxSliderContent">
+					<h3>This is a header</h3>
+					<p>and some paragraph text.</p>
+				</div>
+				<img src="PxContentSlider/css/img/Grover.jpg" width="160" height="160" class="PxSliderContent">
+				<img src="PxContentSlider/css/img/Piggy.jpg" width="160" height="160" class="PxSliderContent">
+			</div></td>
+		<td style="vertical-align:middle"><button class="PxSliderNext"></button></td>
+	</tr>
+	<tr>
+		<td colspan="3" class="PxSliderIndicators"></td>
+	</tr>
+</table>
+<h3>Features</h3>
+<ul>
+	<li>You control slide animation properties like duration and easing</li>
+	<li>You use your own graphics for previous and next buttons, or if you even want to see them</li>
+	<li>Use your own graphics for slide indicator buttons (such as dots or tabs)</li>
+	<li>The slide indicators are actual navigation buttons (i.e. you can jump to a specific slide)</li>
+	<li>Slide anything you want—photos, text, videos, etc.</li>
+</ul>
+<h3>Limitations</h3>
+<ul>
+	<li>Doesn't automatically size to the content, i.e. it is a fixed width and height</li>
+	<li>No captions outside of the content area</li>
+</ul>
+<p>I would like to be able to merge this with the <a href="../PxProSlideShow/PxProSlideShow.html">automatically (timed) slider</a> at some point.</p>
+<h2>How to Add to Your Page</h2>
+<ol>
+	<li>
+		<p>Create a structure on your webpage that will hold the navigation buttons, the images, and the indicator buttons. I use a table, but you can lay it out using CSS instead.</p>
+		<pre>&lt;table&gt;
+&lt;tr&gt;
+	&lt;td&gt;&lt;button class=&quot;PxSliderPrev&quot;&gt;&lt;/button&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;div class=&quot;PxSliderWrapper&quot;&gt;
+		&lt;div class=&quot;PxSliderContent&quot;&gt;&lt;img src=&quot;image1.jpg&quot;&gt;&lt;/div&gt;
+		&lt;div class=&quot;PxSliderContent&quot;&gt;&lt;img src=&quot;image2.jpg&quot;&gt;&lt;/div&gt;
+		&lt;div class=&quot;PxSliderContent&quot;&gt;&lt;img src=&quot;image3.jpg&quot;&gt;&lt;/div&gt;
+		&lt;div class=&quot;PxSliderContent&quot;&gt;&lt;img src=&quot;image4.jpg&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/td&gt;
+	&lt;td&gt;&lt;button class=&quot;PxSliderNext&quot;&gt;&lt;/button&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td colspan=&quot;3&quot; class=&quot;PxSliderIndicators&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+		<p><em>Note: I simplified the above table so that you can see the critical elements that make it work. In practice, you would very likely want to add some additional classes or style tags to format the table nicely.</em></p>
+		<p>Make sure that the four classes are defined somewhere on your page:</p>
+		<ol>
+			<li>PxSliderPrev: Place on an element that will handle backwards navigation</li>
+			<li>PxSliderNext: Place on an element that will handle forwards navigation</li>
+			<li>PxSliderWrapper: Place on a element that will contain all the content items.</li>
+			<li>PxSliderContent: Place on each element that will be sliding (usually images).</li>
+		</ol>
+	</li>
+	<li>
+		<p>Link this <a href="PxContentSlider/css/PxContentSlider.css">external CSS file</a>. Example:</p>
+		<p class="code">&lt;link href=&quot;css/PxContentSlider.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot;&gt;</p>
+	</li>
+	<li>
+		<p>Link this <a href="PxContentSlider/PxContentSlider.js">external Javascript file</a>. Example:</p>
+		<p class="code">&lt;script type=&quot;text/javascript&quot; src=&quot;PxContentSlider.js&quot;&gt;&lt;/script&gt;</p>
+	</li>
+	<li><p>Add jQuery to your page.</p></li>
+	<li><p>Optional: Customize the graphics, layout, and color.</p>
+		<ol>
+			<li>PxContentSliderGfx.png is the left and right navigation buttons.</li>
+			<li>PxContentSliderIndicator.png is the slider indicators that appear below the slideshow.</li>
+			<li>Layout is determined entirely by you.</li>
+			<li>Look at lines 55 and 56 of PxContentSlider.js if you want numbers to appear in the indicator.</li>
+			<li>The size of the content area is on lines 3 and 4 of PxContentSlider.css.</li>
+		</ol>
+	</li>
+</ol>
+<div class="callout">
+	<p>To download a complete working example that is stripped down to the essentials, <a href="http://webdesign.pixelpro.biz/plugins/PxContentSlider/PxContentSlider.zip">click here</a>.</p>
+</div>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript" src="PxContentSlider/jQuery-2.0.3.js"></script> 
+<script type="text/javascript" src="PxContentSlider/PxContentSlider.js"></script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

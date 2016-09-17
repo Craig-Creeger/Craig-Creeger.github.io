@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Craig Testing a Slideshow</title>
+<link href="example4/colorbox.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+span {
+	padding-left:3em;
+}
+</style>
+</head>
+
+<body>
+<h2><span>All</span><span>Web</span><span>Promotion</span><span>Publication</span><span>Illustration</span></h2>
+<p>
+	<button id="btnStartWebs">Webs Slideshow</button>
+	<button id="btnStartIllustrations">Illustrations Slideshow</button>
+</p>
+<div style="display:none"> <a class="web" href="web1.html" title="ThisTextWillAppearOnTheSlideshow"></a> <a class="web" href="web2.html" title="ThisTextWillAppearOnTheSlideshow"></a> <a class="web" href="web3.html" title="ThisTextWillAppearOnTheSlideshow"></a> <a class="illustration" href="web3.html" title="ThisTextWillAppearOnTheSlideshow"></a> <a class="illustration" href="ill1.html" title="ThisTextWillAppearOnTheSlideshow"></a> </div>
+<a href="web1.html" class="singleColorbox"><img src="content/ohoopee1_icon.jpg" width="193" height="193"></a>
+<a href="web2.html" class="singleColorbox"><img src="content/ohoopee2_icon.jpg" width="193" height="193"></a>
+<a href="web3.html" class="singleColorbox"><img src="content/ohoopee3_icon.jpg" width="193" height="193"></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="jquery.colorbox-min.js"></script> 
+<script type="text/javascript">
+/***** Individual colorboxes ******/
+$('.singleColorbox').colorbox({
+	width:'80%',
+	height:'90%'
+});
+/***** Web content *******/
+var $web = $("a.web").colorbox({
+	rel:'web',
+	slideshow:true,
+	slideshowSpeed:3000,
+	slideshowAuto:false,
+	width:'80%',
+	height:'90%'
+});
+$("#btnStartWebs").click(function(e){
+    e.preventDefault();
+    $web.eq(0).click();
+});
+/***** Illustration content *******/
+var $illustration = $("a.illustration").colorbox({
+	rel:'illustration',
+	slideshow:true,
+	slideshowSpeed:3000,
+	slideshowAuto:false,
+	width:'80%',
+	height:'90%'
+});
+$("#btnStartIllustrations").click(function(e){
+    e.preventDefault();
+    $illustration.eq(0).click();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Pixelburst Video</title>
+<script src="scripts/modernizr.js" type="text/javascript"></script>
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#videoWrapper.resizeable {
+	width:100%;
+	height:0;
+	padding-bottom:56.25%; /* for 16:9 aspect ratio; height/width=your percentage */
+	position:relative;
+}
+#myVideo.resizeable {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+</style>
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/PxIcon36x36.png" border="0"></a>
+<h1>Pixelburst Video</h1>
+<h2>Update</h2>
+<p>Do not use this video player. <a href="../media/mediaelement/demo/mediaelementPxPro.html">Mediaelement</a> is a much better player; use it instead if you are looking for a cross-browser option.</p>
+<h2>Demo</h2>
+<p>With any luck, you can see the Sintel trailer directly below this line.</p>
+<div id="videoGoesHere"></div>
+<div id="videoSkinHere"></div>
+<p>
+	<input type="checkbox" name="videoSettings_forceFlash" id="videoSettings_forceFlash">
+	<label for="forceFlash">Force use of Flash player</label>
+	<br>
+	<input type="checkbox" name="videoSettings_loop" id="videoSettings_loop">
+	<label for="loop">Loop</label>
+	<br>
+	<input type="checkbox" name="videoSettings_autoplay" id="videoSettings_autoplay">
+	<label for="autoPlay">Autoplay</label>
+	<br>
+	<input type="checkbox" name="videoSettings_resizeable" id="videoSettings_resizeable">
+	<label for="resizer">Automatic resize <a style="font-size:x-small" href="http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/" rel="external">http://<wbr>
+		www.alistapart.com/<wbr>
+		articles/<wbr>
+		creating-<wbr>
+		intrinsic-<wbr>
+		ratios-<wbr>
+		for-<wbr>
+		video/</a></label>
+	<br>
+	<input type="checkbox" name="videoSettings_stdControls" id="videoSettings_stdControls">
+	<label for="std">Standard Controls</label>
+</p>
+<p>
+	<input type="checkbox" name="videoSettings_immediate" id="videoSettings_immediate" checked>
+	Immediate effect when above checkboxes change </p>
+<h2>Technology and Background</h2>
+<p>My goal was to create a video player that:</p>
+<ul>
+	<li>would work on the widest range of browsers possible.</li>
+	<li>is very easy to drop onto an existing web page. <span style="font-size:smaller; color:dimgray">(Admittedly, this goal has not  been met. Check out the source code for this page and &quot;example1.html&quot; for more guidance.)</span></li>
+	<li>can be skinned with HTML/CSS.</li>
+	<li>is event driven.</li>
+	<li>allows for the fewest possible video formats necessary.</li>
+	<li>supports progressive download.</li>
+	<li>doesn&rsquo;t require Adobe Flash (although the free Flash Player is needed).</li>
+</ul>
+<p>For browsers that don’t understand HTML5 video, the Flash video player will be used.</p>
+<h3>Limitations</h3>
+<p>JavaScript is required; honestly, this isn't really much of an issue.</p>
+<h2>How to Use</h2>
+<ol>
+	<li>Copy the <a href="PixelburstVideo.zip">Pixelburst Video files</a> to your website.</li>
+</ol>
+<div class="callout">
+	<h3>Pixelburst Video Files</h3>
+	<p>File Locations: The directory structure is pretty flexible, just make sure your:</p>
+	<ul>
+		<li><strong><em>HTML5</em></strong> video filenames are relative to your HTML page.</li>
+		<li><strong><em>Flash</em></strong> video filename is relative to <code>pbVideo.swf</code>. <span style="font-size:smaller">Suggestion: place <code>pbVideo.swf</code> in the same directory as your videos.</span></li>
+	</ul>
+	<p>The Pixelburst Video package contains the following  files:</p>
+	<h4>Required</h4>
+	<p>These files can be placed anywhere on your site, just make sure your page is linking to them.</p>
+	<ul>
+		<li>expressInstall.swf - For users with no HTML5 video or Flash</li>
+		<li>jQuery - Tested with versions 1.6 - 1.8</li>
+		<li>modernizr - Note: it only needs the check for Video</li>
+		<li>pbVideo.js - This is the code the creates the video player and custom skins</li>
+		<li>swfobject.js - Used to embed the Flash video on the page.</li>
+		<li>pbVideo.swf - The Pixelburst Flash-based video player</li>
+	</ul>
+	<h4>Optional</h4>
+	<ul>
+		<li>BbbTrailer.h.264.mp4 - sample video for testing; Webkit, IE</li>
+		<li>BbbTrailer.theora.ogv - sample video for testing; Firefox</li>
+		<li>example1.html - sample page that is a good starting point</li>
+		<li>SkinOverPlayStopSeekMuteVol.swf - Only needed if you are using standard controls (<code>stdControls = true</code>). The location of this file is relative to your HTML file; you need to enter the path in variable &quot;skinPath&quot;.</li>
+	</ul>
+</div>
+<ol start="2">
+	<li>Create two video files; an h.264/acc (mp4) and theora/ogg (ogv). Make sure the <a href="http://webdesign.pixelpro.biz/media/audioVideo.html#convertVideo">metadata is at the beginning of your h.264 video</a>, otherwise it won&rsquo;t load progressively.</li>
+	<li>Set the video options (look in the code for variables <code>var autoplay, stdControls, loop, resizeable, vidWidth, vidHeight</code>, and <code>skinPath</code>).</li>
+	<li>Create an element with a unique ID to hold your video. On this page it was called &quot;videoGoesHere&quot;.</li>
+	<li>If you are creating your own custom transport controls, now is the time to do that. For an example, take a look at how it was done for this page.</li>
+</ol>
+</body>
+<script src="scripts/jquery.js" type="text/javascript"></script>
+<script src="scripts/swfobject.js" type="text/javascript"></script>
+<script type="text/javascript">
+function getCheck(which) {
+	if ($("#" + which + ":checked").length>0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+var checkName = 'videoSettings_';
+$('input[type="checkbox"][name^="'+checkName+'"]').change(function() {
+    if (window.localStorage) { //we use localStorage
+        $('input[type="checkbox"][name^="'+checkName+'"]').each(function() {
+            window.localStorage.setItem(this.id,Boolean(this.checked).toString());
+        });
+		//if immediate checkbox is active, then reload the page
+		if (getCheck("videoSettings_immediate")) {
+			location.reload(true);
+		}
+    }
+});
+$(document).ready(function() {
+    $('input[type="checkbox"][name^="'+checkName+'"]').each(function() {
+        var thisChecked = window.localStorage[this.id];
+        if (thisChecked===undefined||thisChecked==='false') {
+            this.checked = false;
+        } else {
+            this.checked = true;
+        }
+    });
+});
+</script> 
+<script src="scripts/pbVideo.js" type="text/javascript"></script> 
+<script type="text/javascript">
+// For IE, make sure you have this in the head: <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+var vid;
+var skin;
+function createSkin(autoplay) {
+	var skinParams = {
+			buttons:[{ //Note: purpose also becomes the ID attribute. Buttons will appear in this order.
+				purpose:"play",
+				text:{
+					enabled:true,
+					value:"Play"
+				}
+			},{
+				purpose:"pause",
+				text:{
+					enabled:true,
+					value:"Pause"
+				}
+			},{
+				purpose:"rewind",
+				text:{
+					enabled:true,
+					value:"Rewind"
+				}
+			},{
+				purpose:"mute",
+				text:{
+					enabled:true,
+					value:"Mute"
+				}
+			},{
+				purpose:"audible",
+				text:{
+					enabled:true,
+					value:"Unmute"
+				}
+			}]
+		};
+	skin = new Pixelburst.Skin(skinParams, document.getElementById("videoSkinHere"));
+	skin.togglePlay((autoplay)?"playing":"paused");
+	// Controller section
+	skin.addListener("requestPlay", function() {
+		vid.pxPlay();
+	});
+	skin.addListener("requestPause", function() {
+		vid.pxPause();
+	});
+	skin.addListener("requestMute", function() {
+		vid.pxMuted(true);
+	});
+	skin.addListener("requestAudible", function() {
+		vid.pxMuted(false);
+	});
+	skin.addListener("requestRewind", function() {
+		vid.pxRewind();
+		skin.togglePlay("playing");
+	});
+}
+
+$(document).ready(function() {
+	var autoplay = getCheck("videoSettings_autoplay");
+	var loop = getCheck("videoSettings_loop");
+	var stdControls = getCheck("videoSettings_stdControls");
+	var resizeable = getCheck("videoSettings_resizeable");
+	/* Big Buck Bunny size
+	var vidWidth = 480;
+	var vidHeight = 270; */
+	/* Sintel size */
+	var vidWidth = 854;
+	var vidHeight = 480;
+	var skinPath = 'scripts/'; //This is only used by the Flash player and it is the skin's path relative to the HTML file.
+	//if (Modernizr.video != '') { //Use this line if you delete the getCheck function; i.e. for production purposes.
+	if ((Modernizr.video != '') && !getCheck("videoSettings_forceFlash")) { //Can play HTML5 video
+		/*var videos = [
+			{name:"videos/BbbTrailer.h.264.mp4", type:"video/mp4"},
+			{name:"videos/BbbTrailer.theora.ogv", type:"video/ogg"}
+		];*/
+		var videos = [
+			{name:"videos/SintelTrailer.mp4", type:"video/mp4"},
+			{name:"videos/SintelTrailer.ogv", type:"video/ogg"}
+		];
+		//Update the getElementById parameter to your ID's name  ||  HERE   ||
+		vid = new Pixelburst.Html5Video(document.getElementById("videoGoesHere"),videos,autoplay,loop,stdControls,resizeable);
+		if (!stdControls) {
+			createSkin(autoplay);
+		}
+	} else { //Fallback to Flash video
+		/* *********************************************************************************
+		   * The videoName variable's path is relative to the pbVideo.swf file !!!         *
+		   * If you are getting a blank Flash video area, and the last event STATE_CHANGE  *
+		   * is "loading", then mostly likely the path is wrong on the next line.          *
+		   *********************************************************************************/
+		var flashvars = {videoName:"../videos/SintelTrailer.mp4", 
+			autoplay:autoplay.toString(),loop:loop.toString(),stdControls:stdControls.toString(),skinPath:skinPath.toString()};
+		var params = {wMode:"transparent",allowScriptAccess:"always",allowFullScreen:true};
+		var attributes = {id:"myVideo",name:"myVideo",style:"outline:none"};
+		//Update the ID name                       ||  HERE   ||
+		swfobject.embedSWF("scripts/pbVideo.swf", "videoGoesHere", vidWidth, vidHeight, "9.0.0", "scripts/expressInstall.swf", flashvars, params, attributes, function() {
+			//swfobject is an async operation so I can't call Pixelburst.FlashVideo until it is part of the DOM.
+			vid = new Pixelburst.FlashVideo(document.getElementById("myVideo"), resizeable);
+			if (!stdControls) {
+				createSkin(autoplay);
+
+				vid.addListener("playing", function() {
+					//console.log("got the playing event - time to show pause button");
+					skin.togglePlay("playing");
+				});
+				vid.addListener("ended", function() {
+					//console.log("got the ended event - time to show play button");
+					skin.togglePlay("paused");
+				});
+			}
+			if (resizeable) {
+				$("#myVideo").addClass("resizeable");
+			}
+			vid.addListener("error", function() {
+				alert("An error occured in the video player.");
+			});
+		});
+	}
+});
+</script>
+</html>

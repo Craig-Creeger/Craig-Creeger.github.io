@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Box Model</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.kermit {
+	background-color:#ADCC54; /* green */
+	background-image:url(kermit.jpg);
+	background-repeat:no-repeat;
+	background-position: left top; /* from padding */
+	padding:20px;
+	border-style:dotted;
+	border-width:30px;
+	border-color:#BF3926; /* orange */
+	width:305px; /* CONTENT width */
+	height:477px; /* CONTENT height */
+	margin-left:25px;
+	margin-bottom:20px;
+	float:right;
+	cursor:pointer;
+}
+.kermit p {
+	color:white;
+	font-weight:bold;
+	padding:0;
+	margin:0;
+	text-shadow:0 0 4px black;
+}
+.noBorder {
+	border:none;
+	width:305px;
+	height:477px;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Box Model</h1>
+<p><a href="http://reference.sitepoint.com/css/boxmodel" rel="external">Sitepoint</a> has a good description of the Box Model.</p>
+<h2>Width and Height</h2>
+<p>You must understand how the overall width and height of a box is calculated if you need to specify exact dimensions of a box. By default, the width and height is applied to the &ldquo;content&rdquo; area of the box not including the padding, border, or margin. This behavior can be overridden with the CSS property <code>box-sizing</code>, which takes the values <code>content-box</code> | <code>padding-box</code> | <code>border-box</code> | <code>inherit</code>. <em>Note: As of Fall 2013, Firefox still needs to be prefixed. <code>-moz-box-sizing</code></em></p>
+<p>The formula to remember is:</p>
+<p><strong>border + padding + content = total</strong></p>
+<p>Let’s say we are solving for the <code>width</code> property. In the above formula, border includes <code>border-left</code> and <code>border-right</code>.</p>
+<p>Likewise, padding represents <code>padding-left</code> and <code>padding-right</code>. Content represents <code>width</code>. Total is the actual amount of space taken on the screen.</p>
+<figure class="kermit">
+  <p>Kermit the Frog</p>
+  <p>&nbsp;</p>
+  <p>Click this image to see a diagram of the regions.</p>
+</figure>
+<h3>Example with Border</h3>
+<p>In this image, the width and height of Kermit is 345 x 517. Note: the thin white line is part of the jpeg image. He was placed on the page with:</p>
+<p class="code">&lt;figure class=&quot;kermit&quot;&gt;<wbr>&lt;p&gt;Kermit the Frog&lt;/p&gt;<wbr>&lt;/figure&gt;</p>
+<p>The image’s &lt;div&gt; was styled as follows:</p>
+<pre class="prettyprint linenums">.kermit {
+   background-color:#ADCC54; <span class="comment">/* green */</span>
+   background-image:url(kermit.jpg);
+   background-repeat:no-repeat;
+   background-position: left top; <span class="comment">/* from padding */</span>
+   padding:20px; 
+   border-style:dotted;
+   border-width:30px;
+   border-color:#BF3926; <span class="comment">/* orange */</span>
+   width:305px; <span class="comment">/* CONTENT width */</span>
+   height:477px; <span class="comment">/* CONTENT height */</span>
+   }</pre>
+<p>An interesting thing to point out is the <code>background-color</code> is applied underneath the border. Because our border has &ldquo;holes&rdquo; in it, we can see the green colored background.</p>
+<div class="halfWidthBox" style="float:none; width:auto">
+  <p><strong>border + padding + content = total</strong></p>
+  <p>This one is a bit tricky. We are solving for <em>content</em> width. The first thing is know is a background-image is placed in relation to the padding area (versus underneath the border area or content area). So, the total width of our figure is the left border (30px) + image width (345px) + right border (30px) = 405px.</p>
+  <p>Now that we have the total width, the formula is:</p>
+  <p>border + padding + content = total<br>
+    (30*2) + (20*2) + content = 405px<br>
+    content = 405 - 60 - 40<br>
+    content = 305px width</p>
+  <p>Solving for the height is the same process.</p>
+</div>
+<h3 style="clear:both; margin-top:2em;">Example without a Border</h3>
+<figure class="kermit noBorder">
+  <p>Kermit the Frog</p>
+</figure>
+<p>Probably a more common scenario is a box with no border and you need to space the text away from the edge.</p>
+<p>Now the CSS is:</p>
+<pre class="prettyprint linenums">.kermit {
+   background-image:url(kermit.jpg);
+   background-repeat:no-repeat;
+   
+   padding:20px;
+   
+   width:305px; <span class="comment">/* CONTENT width */</span>
+   height:477px; <span class="comment">/* CONTENT height */</span>
+   }</pre>
+<div class="halfWidthBox" style="float:none; width:40%">
+  <p>border + padding + content = total</p>
+  <p>(20*2) + 0 + content = 345<br>
+    40 + content = 345<br>
+    345 - 40 = content<br>
+    305px = content width</p>
+  <p>It’s facinating to note that the width and height values are exactly the same as in the previous example.</p>
+</div>
+<h3 style="clear:both; margin-top:2em;">IE7 and older</h3>
+<p>IE browsers are notorious for not following web standards and one of the biggest violations, from a web developer’s perspective is IE7’s box model. It considers width and height to <em>include</em> the padding and border and it can not be changed with the <code>box-sizing</code> property because it doesn’t support it. There are several work-arounds for this problem, but hopefully you will never have to code to IE7. In the past, I’ve used the  <code>&lt;div&gt;</code> inside another <code>&lt;div&gt;</code> hack.</p>
+<h4>Div inside Div Hack</h4>
+<p> The outer &lt;div&gt;’s width and height should match the size of the background graphic (if using one), the background-repeat is set to no-repeat, and padding is set to zero.</p>
+<p> The inner &lt;div&gt; will specify margin properties to space it away from the edge of the outer div.</p>
+<p>If I ever had to code for IE7 again, I would probably use a box-sizing polyfill instead. Another famous hack is the Tantek. For IE8, use DocType Switching.</p>
+<h2>The Easy Way Out</h2>
+<pre class="prettyprint linenums">/* apply a natural box layout model to all elements */
+ * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }</pre>
+<p>Using the above CSS will totally change everything you just read. Instead of CSS properties width and height being the <em>content</em> area, it makes width and height include the border, padding, and content; which is the way we normally think it ought to work.</p>
+<p>This will work for all browsers including IE8 and newer. This information came from <a href="http://paulirish.com/2012/box-sizing-border-box-ftw/" rel="external">Paul Irish</a>.</p><!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".kermit").click(function() {
+		document.location = "boxModelDiagram.html";
+	});
+});
+</script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Reading and Writing to MySQL</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<script src="../SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css">
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Reading and Writing to MySQL</h1>
+<h2>Documentation</h2>
+<p><a href="http://dev.mysql.com/doc/refman/5.6/en/sql-syntax.html" rel="external">MySQL</a></p>
+<p><a href="http://www.php.net/manual/en/" rel="external">PHP</a></p>
+<h3>Tutorials</h3>
+<p><a href="http://phpmaster.com/avoid-the-original-mysql-extension-1/" rel="external">http://phpmaster.com/avoid-the-original-mysql-extension-1/</a></p>
+<p><a href="http://phpmaster.com/migrate-from-the-mysql-extension-to-pdo/" rel="external">http://phpmaster.com/migrate-from-the-mysql-extension-to-pdo/</a></p>
+<p><a href="http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/" rel="external">http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/</a></p>
+<p><a href="http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers" rel="external">http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers</a></p>
+<p><a href="http://www.dreamincode.net/forums/topic/214733-introduction-to-pdo/" rel="external">http://www.dreamincode.net/forums/topic/214733-introduction-to-pdo/</a></p>
+<h2>PDO</h2>
+<p>It's quite amazing how long it has taken the web to catch-up to best practices adopted by client/server computing from 20 years ago&mdash;PDO is a perfect example. PDO is a data access interface that works with several databases, and it should be your first choice when creating a new PHP site.</p>
+<h3>Making a Database Connection</h3>
+<pre class="prettyprint linenums">define ('ENVIRONMENT', 'PxPro Dev'); //PxPro Server || PxPro Dev || Production
+ 	
+//Tweak these lines for your database server
+$dbPort = '3306';
+if (ENVIRONMENT === 'PxPro Server') {
+	$dbHost = 'mysql:host=localhost';
+	$dbDb = 'YourDatabaseName';
+	$dbUserId = 'UserName';
+	$dbPassword = 'YourPassword';
+} else if (ENVIRONMENT === 'PxPro Dev') {
+	$dbHost = 'mysql:host=localhost';
+	$dbDb = 'YourDatabaseName';
+	$dbUserId = 'UserName';
+	$dbPassword = 'YourPassword';
+} else if (ENVIRONMENT === 'Production') {
+	$dbHost = 'mysql:host=subdomain.domain.com';
+	$dbDb = 'YourDatabaseName';
+	$dbUserId = 'UserName';
+	$dbPassword = 'YourPassword';
+}
+ 
+//Probably ought not touch these.
+$dbDSN = &quot;$dbHost;port=$dbPort;dbname=$dbDb&quot;;
+$db; //this will be a global variable
+ 
+if (ENVIRONMENT === 'PxPro Server') {
+	define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+} else if (ENVIRONMENT === 'PxPro Dev') {
+	define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/~Craig/DART/');
+} else if (ENVIRONMENT === 'Production') {
+	define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+}
+define('APP_ROOT', dirname(dirname(__FILE__)) . '/'); //double-pumping to go up one level since this file is in a sub-directory.
+define('INCLUDE_ROOT', APP_ROOT . &quot;includes/&quot;);
+
+function makeDbConnection() {
+	global $dbDSN;
+	global $dbUserId;
+	global $dbPassword;
+	global $db;
+	
+	try {
+		$db = new PDO($dbDSN, $dbUserId, $dbPassword, array(
+    		PDO::ATTR_PERSISTENT =&gt; true,
+			PDO::MYSQL_ATTR_INIT_COMMAND =&gt; &quot;SET NAMES 'UTF8'&quot;
+		));
+		$db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$db-&gt;exec(&quot;SET CHARACTER SET utf8&quot;);
+	} catch(PDOException $e) {
+		debug(&quot;unable to make connection: &quot;.$e-&gt;getMessage());
+		$delayedError .= print($e-&gt;getMessage());
+	}
+}</pre>
+<h3>PDO Data Access Using a Variable </h3>
+<p>This works for both reads (Select) and writes (Insert/Update/Delete).</p>
+<pre>global $db;
+try {
+	$stmt = <strong>$db-&gt;prepare</strong>(&quot;Select * From departments Where deptId = ?;&quot;);
+	<strong>$stmt-&gt;execute</strong>(array($this-&gt;deptId));
+	if ($row = $stmt-&gt;fetchObject()) {
+		$this-&gt;deptId = $row-&gt;deptId;
+		$this-&gt;department = $row-&gt;department;
+	}
+	$stmt-&gt;closeCursor();
+	return $this-&gt;deptId;
+} catch(PDOException $e) {
+	debug('Dept / load() / ' . $e-&gt;getMessage());
+	return false;
+}</pre>
+<h3>PDO Read Using Static Statement</h3>
+<p>This works for reading from the database.</p>
+<pre>try {
+	$stmt = <strong>$db-&gt;query</strong>(&quot;Select count(*) as aNumber from pages;&quot;);
+	if ($row = $stmt-&gt;fetchObject()) {
+		$aNumber = $row-&gt;aNumber;
+	}
+} catch(PDOException $e) {
+	echo &quot;&lt;!-- Unable to query table pages: &quot; . $e-&gt;getMessage() . ' --&gt;' . PHP_EOL;
+}</pre>
+<p>This works for writes (Insert/Update/Delete).</p>
+<pre>try {
+	$stmt = <strong>$db-&gt;exec</strong>(&quot;Insert pages (pageName, pageType) values ('myPage', 'STD');&quot;);
+	$newPageId = <strong>$db-&gt;lastInsertId()</strong>;
+} catch(PDOException $e) {
+	echo &quot;&lt;!-- Unable to query table pages: &quot; . $e-&gt;getMessage() . ' --&gt;' . PHP_EOL;
+}</pre>
+<h2>Formatting Values for Data Access</h2>
+<div id="CollapsiblePanel1" class="CollapsiblePanel">
+	<div class="CollapsiblePanelTab" tabindex="0">Dreamweaver method; not recommended. Click to show...</div>
+	<div class="CollapsiblePanelContent">
+		<p>When reading data from MySQL or writing data to it, you must convert it to a string and make it safe. This can be done with function GetSQLValueString() that was originally created by Adobe as part of Dreamweaver.</p>
+		<pre class="prettyprint linenums">if (!function_exists("GetSQLValueString")) {
+	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") {
+		if (PHP_VERSION < 6) {
+			$theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+		}
+		$link = mysql_connect('localhost', 'UserId', 'Password'); //YOU MUST SET YOUR CONNECTION INFORMATION HERE OR USE A PRIOR CONNECTION
+		$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue, $link) : mysql_escape_string($theValue);
+		switch ($theType) {
+			case "text":
+				$theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+				break; 
+			case "long":
+			case "int":
+				$theValue = ($theValue != "") ? intval($theValue) : "NULL";
+				break;
+			case "double":
+				$theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+				break;
+			case "date":
+				$theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+				break;
+			case "defined":
+				$theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+				break;
+		}
+		return $theValue;
+	}
+}
+$updateSQL = sprintf("Delete From videoTracking WHERE clientId=%s and email=%s and courseId=%s",
+	GetSQLValueString($_GET['clientId'], "int"),
+	GetSQLValueString($_GET['email'], "text"),
+	GetSQLValueString($_GET['courseId'], "int")
+);
+$rst = @$db-&gt;query($sqlLogin); //@ is an error suppression operator.
+if($db-&gt;errno) { 
+	echo &quot;alert('Unable to run query $sql because $db-&gt;errno $db-&gt;error');&quot;;
+}
+while ($row = $rst-&gt;fetch_object()) {
+	//so something with $row-&gt;$columnName
+}
+$db-&gt;close();
+		</pre>
+		<p>Honestly, I really don't like this method. There has got to be better way...</p>
+	</div>
+</div>
+<h2>Literals</h2>
+<p>Literals need to be delimited by:</p>
+<p>Strings: single quotes (it is possible to use double quotes if ANSI_QUOTES is turned off). </p>
+<p>Numbers: Just type the number. Valid characters are 0-9 + &minus; e . (period).</p>
+<p>Dates: Date and time values can be represented in several formats, such as quoted strings or as numbers, depending on the exact type of the value and other factors. For example, in contexts where MySQL expects a date, it interprets any of <code>'2015-07-21'</code>, <code>'20150721'</code>, and <code>20150721</code> as a date. The time format is <code>'YYYY-MM-DD HH:MM:SS'</code>.</p>
+<p>You should not use a column alias (presumable table aliases are OK) in the Where clause in MySQL.</p>
+<h2>Basic MySQL DML Syntax</h2>
+<pre class="prettyprint linenums"><strong>Select</strong> column1, column2
+From tableName
+Where column3 = 'a string value';
+
+<strong>Select</strong> a.col1 As first, a.col2, b.col1
+From table1 As a Left Join table2 As b
+  On a.pk = b.fk
+Where a.dateCol &gt;= '2012-03-29'
+Order by a.col2 Desc;
+
+<strong>Insert</strong> tableName (col1, col2, col3)
+Values (123, 'abc', '2012-03-28'); <strong>
+
+Insert</strong> tableName (col1, col2, col3)
+Select colA, colB, colC
+From myTable; 
+
+<strong>Update</strong> tableName
+Set col1=123, col2='abc', col3='2012-03-28');
+
+<strong>Delete</strong> from tableName
+Where col1&lt;900;</pre>
+<h2>Basic MySQL DDL Syntax</h2>
+<pre class="prettyprint linenums">Create table myTableName (
+	col1 int not null AUTO_INCREMENT,
+	col2 char(3),
+	col3 varchar(255),
+	col4 datetime,
+Constraint myTableNamePK Primary Key (col1)
+);</pre>
+<h2>Common Data Types</h2>
+<table cellspacing="0">
+	<tr>
+		<th scope="col">data type</th>
+		<th scope="col">storage</th>
+		<th scope="col">comments</th>
+	</tr>
+	<tr>
+		<td>TINYINT</td>
+		<td>1 byte</td>
+		<td>The signed range is -128 to 127. The unsigned range is 0 to 255.</td>
+	</tr>
+	<tr>
+		<td>SMALLINT</td>
+		<td>2 bytes</td>
+		<td>The signed range is -32768 to 32767. The unsigned range is 0 to 65535.</td>
+	</tr>
+	<tr>
+		<td>INT</td>
+		<td>4 bytes</td>
+		<td>The signed range is -2147483648 to 2147483647. The unsigned range is 0 to 4294967295.</td>
+	</tr>
+	<tr>
+		<td>DECIMAL(p,s)</td>
+		<td>varies</td>
+		<td>Exact fixed point number. p = precision or total number of digits, s = scale or number of decimal places.</td>
+	</tr>
+	<tr>
+		<td>DOUBLE</td>
+		<td>varies</td>
+		<td>Floating point number.</td>
+	</tr>
+	<tr>
+		<td>DATE</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>DATETIME</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>CHAR(p)</td>
+		<td> p bytes</td>
+		<td>p can be 0 to 255, see the doco for the weird use of char(0)</td>
+	</tr>
+	<tr>
+		<td>VARCHAR(p)</td>
+		<td>p bytes</td>
+		<td>The range of p is 0 to 65,535. </td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script type="text/javascript">
+var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel1", {contentIsOpen:false});
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

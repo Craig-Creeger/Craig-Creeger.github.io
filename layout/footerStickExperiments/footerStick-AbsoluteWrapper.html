@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FooterStick - Absolute wrapper</title>
+<style type="text/css">
+/* The items required for the FooterStick are above the blank line in the list of property/value pairs. */
+html {
+	height:100%;
+	
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:100%;
+	line-height:1.4;
+	background-color:#7A0019;
+}
+body {
+	height:100%;
+
+	width:80%;
+	margin:0 auto;
+	background-color:#FC3;
+}
+#footerStickWrapper {
+	min-height:100%;
+	overflow:auto;
+	position:relative;
+	padding-bottom:60px;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+footer {
+	height:60px;
+	width:100%;
+	position:absolute;
+	bottom:0px;
+
+	background-color:white;
+	text-align:center;
+}
+</style>
+</head>
+
+<body>
+<div id="footerStickWrapper">
+	<h1>FooterStick - Absolute wrapper</h1>
+	<p>This version works in Safari and Firefox (not tested under IE).</p>
+	<p>The footer is Absolutely positioned at the bottom of a &lt;div id=&quot;wrapper&quot;&gt;.</p>
+	<footer>This is the footer</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes">
+<title>Pure CSS Accordions</title>
+<style type="text/css">
+ul.accordion {
+	margin: 0;
+	padding: 0;
+	/* optional styling for the entire accordion structure */
+	border: thin solid black;
+}
+ul.accordion > li {
+	list-style-type: none;
+	background-image: none;
+	margin: 0;
+	padding: 0;
+}
+ul.accordion > li > label {
+	display: block;
+	cursor: pointer;
+	/* optional styling for collapsed accordion headers */
+	padding: .5em 2em;
+	border: thin solid black;
+	background-color: gainsboro;
+	font-size: larger;
+}
+ul.accordion > li > input[type='radio']:checked ~ label {
+	/* optional styling - This is the "active" panel header */
+	background-color: #c6dbde;
+}
+ul.accordion > li > label:hover {
+	/* optional styling for Mouseover */
+	background-color: powderBlue !important;
+}
+ul.accordion > li > div {
+	overflow: hidden;
+	height: 0;
+	height: auto\9; /* fallback hack for IE8 is to always show the content */
+	transition: height 1s ease;
+	/* optional styling of the accordion panel */
+	padding: 0 2em;
+}
+ul.accordion > li > div:after {
+	/* This optional selector will add some padding at the bottom of each panel. */
+	content:" ";
+	display:block;
+	height:1em;
+}
+ul.accordion > li > input[type='radio']:checked ~ div, ul.accordion > li > div.expanded {
+	transition: height 1s ease;
+	height: 100px; /* default height if a "height" class doesn't override it */
+}
+ul.accordion > li > input[type='radio']:checked ~ div.heightMedium, ul.accordion > li > div.expanded.heightMedium {
+	height: 200px;
+}
+ul.accordion > li > input[type='radio']:checked ~ div.heightTall, ul.accordion > li > div.expanded.heightTall {
+	height: 500px;
+}
+ul.accordion > li > div.measure {
+	/* div.measure is used by Javascript to dynamically calculate the height of each content pane (div) */
+	position: absolute;
+	visibility: hidden;
+	height: auto !important;
+}
+/* Helpers */
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+/***********************************************
+ * The following styles are only for this demo
+ * page; they are not needed for the Accordions.
+ ***********************************************/
+/* Layout tables */
+.layoutTable {
+	margin: 0;
+	border: none;
+}
+.layoutTable td {
+	padding: 0;
+	vertical-align: top;
+}
+h1, h2, h3, label {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: normal;
+}
+</style>
+<script>
+var sheet;
+
+function makeAccordionPanelsMeasurable() {
+	//Temporarily remove all the accordion contents from the normal flow
+	//and measure their height.
+	var accordionDivs = document.querySelectorAll('ul.accordion li > div');
+	for (var i = 0; i < accordionDivs.length; i++) {
+		accordionDivs[i].classList.add('measure');
+	}
+}
+document.addEventListener('DOMContentLoaded', makeAccordionPanelsMeasurable);
+
+window.addEventListener("resize", resizeThrottler, false);
+
+var resizeTimeout;
+function resizeThrottler() {
+// ignore resize events as long as an actualResizeHandler execution is in the queue
+if ( !resizeTimeout ) {
+  resizeTimeout = setTimeout(function() {
+	resizeTimeout = null;
+	actualResizeHandler();
+ 
+   // The actualResizeHandler will execute at a rate of 15fps
+   }, 66);
+}
+}
+
+function actualResizeHandler() {
+	makeAccordionPanelsMeasurable();
+	measureAccordionPanelHeights();
+}
+
+function measureAccordionPanelHeights() {
+	//Hopefully all sizes have been calculated by this point.
+	var height;
+	var i, j;
+	var accordionDivs = document.querySelectorAll('ul.accordion li > div.measure');
+	if (sheet) {
+		//remove all selectors from the stylesheet (so that we can create new ones)
+		while (sheet.firstChild) {
+			sheet.removeChild(sheet.firstChild);
+		}
+	} else {
+		sheet = (function() {
+			// Create the <style> tag
+			var style = document.createElement("style");
+		
+			// Add a media (and/or media query) here if you'd like!
+			// style.setAttribute("media", "screen")
+			// style.setAttribute("media", "only screen and (max-width : 1024px)")
+		
+			// WebKit hack :(
+			style.appendChild(document.createTextNode(""));
+		
+			// Add the <style> element to the page
+			document.head.appendChild(style);
+		
+			return style.sheet;
+		})();
+	}
+	
+	function addCSSRule(sheet, selector, rules, index) {
+		if("insertRule" in sheet) {
+			sheet.insertRule(selector + "{" + rules + "}", index);
+		}
+		else if("addRule" in sheet) {
+			sheet.addRule(selector, rules, index);
+		}
+	}
+	
+	function getInteger (sz) {
+		//returns the first number found in the input string. Example: getNumber("80px") == 80
+		var matchedArray = String(sz).match(/\d+/);
+		if (matchedArray) {
+			return Math.ceil(matchedArray[0]); //round up to nearest integer
+		}
+	}
+
+	for (i = 0; i < accordionDivs.length; i++) {
+		height = window.getComputedStyle(accordionDivs[i], null).getPropertyValue('height'); //Returns a decimal number with the units, too. e.g. 84.3px
+		height = getInteger(height);
+		//loop through all items in the classList and remove any that begin with "height" or "measure"
+		classes = String(accordionDivs[i].classList).split(' ');
+		for (j in classes) {
+			if (classes[j].substr(0,6) == 'height' || classes[j] == 'measure') {
+				accordionDivs[i].classList.remove(classes[j]);
+			}
+		}
+		accordionDivs[i].classList.add('height' + height);
+		addCSSRule(document.styleSheets[0], "ul.accordion > li > input[type='radio']:checked ~ div.height" + height + ", ul.accordion > li > div.expanded.height" + height, "height:" + height + 'px;', 0);
+	}
+}
+
+window.addEventListener('load', measureAccordionPanelHeights);
+
+function expandPanel(panelIndex) {
+	var panels = document.querySelectorAll('ul.accordion > li > div');
+	panels[panelIndex].classList.add('expanded');
+}
+</script>
+</head>
+
+<body>
+<h1>Pure CSS Accordion Panel</h1>
+<p> This is a demonstration of a vertical accordion panel using pure CSS, plus  automatical sizing the content panes if Javascript is available.</p>
+<p style="padding-left:2em;"><em>Hey man, I thought this was suppose to be <strong>pure</strong> CSS, what gives?</em></p>
+<p>Look, it is the best of both worlds. You want <strong>just</strong> CSS? Fine. Remove all the Javascript code - the accordion will still work great. The only limitation is the height of all the panels will have to be manually determined.</p>
+<ul class="accordion">
+	<li>
+		<input type="radio" name="radio" id="radio1" class="visuallyhidden" checked>
+		<label for="radio1">Introduction</label>
+		<div class="heightTall">
+			<table class="layoutTable" style="margin-bottom:1em;">
+				<tr>
+					<td><h1>Features:</h1>
+						<ul>
+							<li>Standards-compliant HTML markup</li>
+							<li>Animated sliding action</li>
+							<li>Can set which item is open when page loads</li>
+							<li>Each content box can have a different height</li>
+							<li>Each accordion header can have a different color</li>
+							<li>Responsive design (only when browser window is NOT resized by user, OR Javascript is turned on)</li>
+							<li>Equally functional on touch-based devices and mouse-driven computers</li>
+							<li>Possible to force a one, or more, panels to be expanded.</li>
+							<li>Can link into another panel and have it automatically expand. For example, the <a href="#rescue" onClick="expandPanel(2);">Javascript to the Rescue</a> panel below. (sorta, the panel expands now, but I still need to get the link to scroll to that section on the page.)</li>
+						</ul></td>
+					<td style="width:2em;">&nbsp;</td>
+					<td><h1>Limitations:</h1>
+						<ul>
+							<li>Vertical sliding action only</li>
+							<li>Works only for modern browsers (I think; not much testing has been done.)</li>
+						</ul></td>
+				</tr>
+			</table>
+			<h2>Browser Compatibility</h2>
+			<p>For IE8, the Accordion panels do not work, but the fallback is to simply always show the content. In other words, all the panels will be expanded if using IE8. I have not done much testing, but it does work with these:</p>
+			<ul>
+				<li>Chrome 37</li>
+				<li>Firefox 32</li>
+				<li>Safari 7.1 (OS X)</li>
+				<li>Safari (iOS 8)</li>
+				<li>IE 10, IE 11</li>
+			</ul>
+		</div>
+	</li>
+	<li>
+		<input type="radio" name="radio" id="radio2" class="visuallyhidden">
+		<label for="radio2">The Pure CSS part</label>
+		<div>
+			<p>Something has to trigger the various CSS styles. Since I wanted touch devices to work, the <code>:hover</code> pseudo-selector was out. I stole the concept of using a radio button group to trigger the sliding action. The magic that makes this possible is the <code>:checked</code> pseduo-selector.</p>
+			<pre>ul.accordion &gt; li &gt; div {
+	overflow: hidden;
+	height: 0;
+}
+
+input[type='radio']:checked ~ div {
+    height: 100px;
+}</pre>
+			<p>When the page is first loaded, the content panes, which are always wrapped in a <code>&lt;div&gt;</code> , have their height set to zero. When their corresponding radio button is checked, then the <code>&lt;div&gt;</code> is given some height.</p>
+			<p>If you want to force a particular panel to always be expanded (opened) then apply the CSS class “expanded” to the panel’s <code>&lt;div&gt;</code>. You you want to dynamically apply that class via Javascript, call function expandPanel(). For example:</p>
+			<p><code>&lt;a href=&quot;#thirdPanel&quot; onclick=&quot;expandPanel(2);&quot;&gt;Show Third Panel&lt;/a&gt;</code></p>
+		</div>
+	</li>
+	<li>
+		<input type="radio" name="radio" id="radio3" value="0" class="visuallyhidden" >
+		<label for="radio3">Progressive enhancement when Javascript is turned on</label>
+		<div>
+			<p>The CSS transitions only work when they can vary numeric values. The accordions open by adjusting the height value from 0 to  200px (for example) and from 200px to 0 when closing the panel. This is great when all the panels have the same height, but if they vary you will have to explicitly define the “opened” height for each panel. In the best case, that is tedious; in the worst case (it may be loaded via AJAX and you have no idea what the content will be) it is impossible.</p>
+			<p>You could set the “opened” height to auto (<code>height: auto;</code>), but then the CSS transitions will no longer work. Remember, they need to transition between two numbers and 0 to &quot;auto&quot; is not valid.</p>
+			<h2 id="rescue">Javascript to the Rescue</h2>
+			<p>After the page is loaded, all the accordion panels are hidden from view and then measured to see how tall they are.
+			</p>
+			<p>The code will loop through all the panels, calculate their height, and then create a CSS class called “<code>heightXX</code>” where XX represents the number of pixels talls that panel is.</p>
+			<p>If the browser window is resized, then that same measurement process is performed again because the panels will very likely be a different height.</p>
+		</div>
+	</li>
+	<li>
+		<input type="radio" name="radio" id="radio4" value="0" class="visuallyhidden" >
+		<label for="radio4">HTML Structure</label>
+		<div>
+			<p>The CSS selectors make some assumptions about how the HTML is written. For these accordion panels to work, you must use this style of markup.</p>
+			<pre>&lt;ul class=&quot;accordion&quot;&gt;
+    &lt;li&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio&quot; id=&quot;radio1&quot; class=&quot;visuallyhidden&quot; checked&gt;
+        &lt;label for=&quot;radio1&quot;&gt;Introduction&lt;/label&gt;
+        &lt;div&gt;
+            &lt;p&gt;Content goes here.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio&quot; id=&quot;radio2&quot; class=&quot;visuallyhidden&quot;&gt;
+        &lt;label for=&quot;radio2&quot;&gt;The Pure CSS part&lt;/label&gt;
+        &lt;div&gt;
+            &lt;p&gt;Content goes here.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio&quot; id=&quot;radio3&quot; value=&quot;0&quot; class=&quot;visuallyhidden&quot; &gt;
+        &lt;label for=&quot;radio3&quot;&gt;Progressive enhancement when Javascript is turned on&lt;/label&gt;
+        &lt;div&gt;
+            &lt;p&gt;Content goes here.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;radio&quot; id=&quot;radio4&quot; value=&quot;0&quot; class=&quot;visuallyhidden&quot; &gt;
+        &lt;label for=&quot;radio4&quot;&gt;HTML Structure&lt;/label&gt;
+        &lt;div&gt;
+            &lt;p&gt;Content goes here.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+		</pre>
+		</div>
+	</li>
+</ul>
+<p><a href="https://github.com/Craig-Creeger/pure-ccs-accordions">Source code</a> can be found on Github.</p>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Launching a New Page</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Launching a New Page</h1>
+<h2>Hyperlinking</h2>
+<h3>Simple</h3>
+<pre class="prettyprint linenums">&lt;a href=&quot;newPage.html&quot;&gt;New Page&lt;/a&gt;</pre>
+<h3>URL with Query String</h3>
+<pre class="prettyprint linenums">
+&lt;!-- %20 = space, %24 = $, etc. See <a href="#codes">below</a> for complete list. --&gt;
+&lt;a href=&quot;newPage.html?param1=my%20string&amp;param2=%245.25&quot;&gt;New Page&lt;/a&gt;</pre>
+<h2>JavaScript</h2>
+<h3>Simple</h3>
+<pre class="prettyprint linenums">window.location.href = &quot;myPage.html&quot;</pre>
+<h3>URL with Query String</h3>
+<pre class="prettyprint linenums">
+var qryStr = &quot;?param=&quot; + encodeURIComponent(myVar);
+qryStr += &quot;&amp;param2=&quot; + encodeURIComponent(&quot;$5.25&quot;);
+window.location.href = &quot;myPage.html&quot; + qryStr;</pre>
+<h2>PHP</h2>
+<h3>Simple</h3>
+<pre class="prettyprint linenums">
+//Warning: This line will fail if you send (echo) anything prior to the
+//         header statement. Also, the full URL must be used. (http://)
+header(&quot;Location: http://www.mySite.com&quot;);</pre>
+<h3>URL with Query String</h3>
+<pre class="prettyprint linenums">  if (isset($_SERVER['QUERY_STRING'])) {<br>    $updateGoTo .= (strpos($updateGoTo, '?')) ? &quot;&amp;&quot; : &quot;?&quot;;<br>    $updateGoTo .= $_SERVER['QUERY_STRING'];<br>  }<br>  header(sprintf(&quot;Location: %s&quot;, $updateGoTo));</pre>
+<h2>URL Encoding</h2>
+<p>When linking to another page, PDF, image, etc., some characters are reserved and cannot be used in the name. The most common is a space. For example, you want to show a picture using an image tag such as <code>&lt;img src=&quot;images/Fuzzy&nbsp;Kitten.jpg&quot;&gt;</code></p>
+<p>Because there is a space in the filename, it should be <code>&lt;img src=&quot;images/Fuzzy%20Kitten.jpg&quot;&gt;</code></p>
+<p>This information is from the excellent description by Brian Wilson at <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm" rel="external">http://www.blooberry.com/indexdot/html/topics/urlencoding.htm</a></p>
+<table cellpadding=3 width="90%">
+	<tr><td colspan=3><hr size=1></td></tr>
+<tr><td align=left colspan=3><big><b class="mainheading">RFC 1738: Uniform Resource Locators (URL) specification</b></big>
+     <hr width="30%" align=left size=1>
+     The specification for URLs (RFC 1738,
+     Dec. '94) poses a problem, in that it limits the use of allowed characters
+     in URLs to only a limited subset of the US-ASCII character set:
+        <blockquote class="quotation">&quot;...Only alphanumerics [0-9a-zA-Z],
+        the special characters "$-_.+!*'()," <b>[not including the quotes -
+        ed]</b>, and reserved characters used for their reserved purposes may
+        be used unencoded within a URL.&quot;</blockquote>
+
+     HTML, on the other hand, allows the entire range of the     ISO-8859-1 (ISO-Latin) character set
+     to be used in documents - and HTML4 expands the allowable range to include
+     all of the Unicode character
+     set as well. In the case of non-ISO-8859-1 characters (characters above
+     FF hex/255 decimal in the Unicode set), they just can not be used in URLs,
+     because there is no safe way to specify character set information in the
+     URL content yet.
+     <br><br>
+
+     URLs should be encoded everywhere in an HTML document that a URL is
+     referenced to import an object.<br><br>
+
+<a name="whatwhy"></a>
+  <big><b class="mainheading">What characters need to be encoded and why?</b></big>
+     <hr width="30%" align=left size=1>
+     <table>
+     <tr><td colspan=3><b class="subheading">ASCII Control characters</b></td></tr>
+     <tr><td rowspan=2>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+         <td valign=top><b class="l3heading">Why:</b></td>
+         <td>These characters are not printable.</td></tr>
+     <tr><td valign=top><b class="l3heading">Characters:</b></td>
+         <td>Includes the ISO-8859-1
+         (ISO-Latin) character ranges 00-1F hex (0-31 decimal) and 7F
+         (127 decimal.)</td></tr>
+     </table>
+
+     <table>
+     <tr><td colspan=3><b class="subheading">Non-ASCII characters</b></td></tr>
+     <tr><td rowspan=2>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+         <td valign=top><b class="l3heading">Why:</b></td>
+         <td>These are by definition not legal in URLs since they are not in
+             the ASCII set.</td></tr>
+     <tr><td valign=top><b class="l3heading">Characters:</b></td>
+         <td>Includes the entire "top half" of the ISO-Latin set 80-FF hex
+             (128-255 decimal.)</td></tr>
+     </table>
+
+     <table>
+     <tr><td colspan=3><b class="subheading"><a name="codes"></a>"Reserved characters"</b></td></tr>
+     <tr><td rowspan=2>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+         <td valign=top><b class="l3heading">Why:</b></td>
+         <td>URLs use some characters for special use in defining their syntax.
+             When these characters are not used in their special role inside a
+             URL, they need to be encoded.</td></tr>
+     <tr><td valign=top><b class="l3heading">Characters:</b></td>
+         <td>
+         <table border=1 cellpadding=3 cellspacing=0>
+         <tr><th>Character</th><th>Code<br>Points<br>(Hex)</th>
+             <th>Code<br>Points<br>(Dec)</th></tr>
+         <tr><td nowrap valign=top>&nbsp;Dollar ("$")<br>
+             &nbsp;Ampersand ("&amp")<br>
+             &nbsp;Plus ("+")<br>
+             &nbsp;Comma (",")<br>
+             &nbsp;Forward slash/Virgule ("/")<br>
+             &nbsp;Colon (":")<br>
+             &nbsp;Semi-colon (";")<br>
+             &nbsp;Equals ("=")<br>
+             &nbsp;Question mark ("?")<br>
+             &nbsp;'At' symbol ("@")<br></td>
+             <td align=center valign=top>24<br>26<br>2B<br>2C<br>2F<br>3A<br>3B<br>3D<br>3F<br>40</td>
+             <td align=center valign=top>36<br>38<br>43<br>44<br>47<br>58<br>59<br>61<br>63<br>64</td></tr>
+         </table>
+         </td></tr>
+
+     </table>
+
+     <table>
+     <tr><td colspan=3><b class="subheading">"Unsafe characters"</b></td></tr>
+     <tr><td rowspan=2>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+         <td valign=top><b class="l3heading">Why:</b></td>
+         <td>Some characters present the <em>possibility</em> of being 
+             misunderstood within URLs for various reasons. These characters
+             should also always be encoded.</td></tr>
+     <tr><td valign=top><b class="l3heading">Characters:</b></td>
+         <td>
+         <table border=1 cellpadding=3 cellspacing=0>
+         <tr><th>Character</th><th>Code<br>Points<br>(Hex)</th>
+             <th>Code<br>Points<br>(Dec)</th><th>Why encode?</th></tr>
+         <tr><td>Space</td><td align=center>20</td><td align=center>32</td>
+             <td valign=top>Significant sequences of spaces may be lost in some
+                 uses (especially multiple spaces)</td></tr>
+         <tr><td nowrap>Quotation marks<br>'Less Than' symbol ("&lt;")<br>
+                 'Greater Than' symbol ("&gt;")</td>
+                 <td align=center>22<br>3C<br>3E</td><td align=center>34<br>60<br>62</td>
+             <td valign=top>These characters are often used to delimit URLs
+                 in plain text.</td></tr>
+         <tr><td nowrap>'Pound' character ("#")</td>
+                 <td align=center>23</td><td align=center>35</td>
+             <td valign=top>This is used in URLs to indicate where a fragment
+                 identifier (bookmarks/anchors in HTML) begins.</td></tr>
+         <tr><td nowrap>Percent character ("%")</td>
+                 <td align=center>25</td><td align=center>37</td>
+             <td valign=top>This is used to URL encode/escape other characters,
+                 so it should itself also be encoded.</td></tr>
+         <tr><td nowrap><b>Misc. characters:</b><br>
+                 &nbsp;&nbsp;&nbsp;Left Curly Brace ("{")<br>
+                 &nbsp;&nbsp;&nbsp;Right Curly Brace ("}")<br>
+                 &nbsp;&nbsp;&nbsp;Vertical Bar/Pipe ("|")<br>
+                 &nbsp;&nbsp;&nbsp;Backslash ("\")<br>
+                 &nbsp;&nbsp;&nbsp;Caret ("^")<br>
+                 &nbsp;&nbsp;&nbsp;Tilde ("~")<br>
+                 &nbsp;&nbsp;&nbsp;Left Square Bracket ("[")<br>
+                 &nbsp;&nbsp;&nbsp;Right Square Bracket ("]")<br>
+                 &nbsp;&nbsp;&nbsp;Grave Accent ("`")</td>
+                 <td align=center><br>7B<br>7D<br>7C<br>5C<br>5E<br>7E<br>5B<br>5D<br>60</td>
+                 <td align=center><br>123<br>125<br>124<br>92<br>94<br>126<br>91<br>93<br>96</td>
+             <td valign=top>Some systems can possibly modify these characters.</td></tr>
+         </table>
+         </td></tr>
+     </table>
+<br><br>
+
+
+
+<a name="how"></a>
+  <big><b class="mainheading">How are characters URL encoded?</b></big>
+     <hr width="30%" align=left size=1>
+     <span class="text">URL encoding of a character consists of a "%" symbol,
+     followed by the two-digit hexadecimal representation (case-insensitive)
+     of the ISO-Latin code point for the
+     character.</span>
+
+     <dl>
+     <dt><b class="subheading">Example</b>
+     <dd><div class="example">
+         <ul>
+             <li>Space = decimal code point 32 in the                 ISO-Latin set.
+             <li>32 decimal = 20 in hexadecimal
+             <li>The URL encoded representation will be "%20"
+         </ul></div>
+     </dl>
+
+<br>
+<a name="rollown"></a>
+<big><b class="mainheading">URL encoding converter</b></big>
+<hr width="30%" align=left size=1>
+<span class="text">The box below allows you to convert content
+between its unencoded and encoded forms. The initial input
+state is considered to be "unencoded" (hit 'Convert' at the
+beginning to start in the encoded state.) Further, to allow actual
+URLs to be encoded, this little converter does not encode
+URL syntax characters (the <b>";", "/", "?", ":", "@", "=", "#"</b>
+and <b>"&amp;"</b> characters)...if you also need to encode these
+characters for any reason, see the "Reserved characters" table
+above for the appropriate encoded values.<br><br>
+<b class="smalltext"><b class="alert">NOTE:</b><br>
+This converter uses the String.charCodeAt and String.fromCharCode
+functions, which are only available in Javascript version 1.2 or
+better, so it doesn't work in Opera 3.x and below, Netscape 3 and below, and
+IE 3 and below. Browser detection <em>can</em> be tiresome, so this
+will just fail in those browsers...you have been warned. 8-}</b>
+</span><br>
+<br>
+<a name="peculiar"></a>
+<big><b class="mainheading">Browser Peculiarities</b></big>
+<hr width="30%" align=left size=1>
+<ul>
+    <li>Internet Explorer is notoriously relaxed in its requirements for
+        encoding spaces in URLs. This tends to contribute to author
+        sloppiness in authoring URLs. Keep in mind that Netscape and
+        Opera are much more strict on this point, and spaces <em>MUST</em>
+        be encoded if the URL is to be considered to be correct.
+</ul>
+
+<tr><td colspan=3><hr size=1></td></tr>
+</table>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

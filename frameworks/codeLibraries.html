@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>JavaScript Libraries and Frameworks</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>JavaScript Libraries and Frameworks</h1>
+<h2>jQuery</h2>
+<p><a href="http://jquery.com/" rel="external">jQuery</a> is no doubt the most popular Javascript library available right now, and for good reason. It is easy-to-learn and make you much more productive. There are a ton of resources to help you learn it; I&rsquo;ll just say that you should be using it.</p>
+<h2>Modernizr</h2>
+<p>This awesome library gets its own section because how useful it is while IE8 is still in the picture. Modernizr will automatically add some CSS classes to the root <code>html</code> element. For example if you want to test Web Sockets support, it will add a <code>websockets</code> class to the <code>html</code> element if the browser supports that feature, otherwise it will add the <code>no-websockets</code> class. It will do the same with JavaScript by adding a global variable <code>Modernizr.websocket</code> with a boolean value.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://modernizr.com/" rel="external">Get Modernizr</a></p>
+<p>This article is a great overview, but a bit dated already. <a href="http://www.adobe.com/devnet/dreamweaver/articles/using-modernizr.html" rel="external">http://<wbr>www.adobe.com/<wbr>devnet/<wbr>dreamweaver/<wbr>articles/<wbr>using-modernizr.html</a></p>
+<p>This one is newer: <a href="http://www.adobe.com/devnet/html5/articles/up-and-running-with-modernizr.html" rel="external">http://www.adobe.com/devnet/html5/articles/up-and-running-with-modernizr.html</a></p>
+<h3>Using Modernizr</h3>
+<h4>Add the library to Your Page</h4>
+<ol>
+	<li>Give your HTML tag a class of no-js.</li>
+	<li>Add the Modernizr script in the head section.</li>
+</ol>
+<pre class="prettyprint linenums">&lt;!DOCTYPE html&gt;
+&lt;!--
+ 	The &quot;no-js&quot; class is here as a fallback.
+ 	If Modernizr is not running, you'll know
+ 	something is wrong and you will be able to act
+ 	accordingly. In contrast, if everything goes well,
+ 	Modernizr will remove that special class.
+ 	--&gt;
+&lt;html class=&quot;no-js&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;My Awesome video&lt;/title&gt;
+&lt;script src=&quot;modernizr.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ ...
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+<h4>Using with CSS</h4>
+<p>Since the HTML element now has classes applied to it, your selectors need to be prefixed with what you are testing for. For example, if you want to make your HTML5 video visible if the browser can play HTML5 video, then you would do this.</p>
+<pre class="prettyprint linenums">.video #myVideo {
+	display: block;
+}
+.no-video #myVideo {
+	display: none;
+}</pre>
+<h4>Using with JavaScript</h4>
+<pre class="prettyprint linenums">if (Modernizr.video) {
+	//the current browser can play HTML5 video
+}</pre>
+<h3>YepNope</h3>
+<p>This can be bundled into Modernizr. It allows you to dynamically load JavaScript files depending certain conditions. These conditions are typically whether or not an HTML5 feature is supported in your browser, but it can also be for any <a href="http://javascriptplayground.com/blog/2012/06/conditional-loading-yepnope-js-tutorial?utm_source=javascriptweekly&utm_medium=email" rel="external">boolean condition as described by this article</a>.</p>
+<p>Typical usage looks like this:</p>
+<pre class="prettyprint linenums">Modernizr.load({
+	test: Modernizr.indexeddb,
+	nope: &quot;indexeddb-polyfill.js&quot;
+});</pre>
+<h3 id="testingMQ">Testing Media Queries</h3>
+<p> Modernizr has a function that can process a Media Query selector: <code>Modernizr.mq()</code> This method inspects the string you pass it, and it’ll return a boolean.</p>
+<pre class="prettyprint linenums">if (Modernizr.mq('screen and (min-width: 769px)')) {
+ 	// Falls here when the screen is larger than portrait iPad
+}</pre>
+<p>Probably more useful, however, is to test for native Media Query support. If it is not supported, then you can load in the <a href="http://code.google.com/p/css3-mediaqueries-js/" rel="external">css3-mediaqueries.js</a> polyfill. To do this, you will need to check the <em>css-mediaqueries</em> option in the <strong>Non-core Detects</strong> section. The you can do:</p>
+<pre class="prettyprint linenums">Modernizr.load({
+	test: Modernizr.mediaqueries,
+	nope: &quot;css3-mediaqueries.js&quot;
+});</pre>
+<h3>Alternatives</h3>
+<p>Keep in mind, you don’t always need to do a Modernizr test if your &ldquo;logic&rdquo; is in the CSS.</p>
+<pre class="prettyprint linenums">.semiTransparentBkgd {
+	background-color:#F00; /* red */
+	background-color:rgba(255,0,0,.7); /* red with 70% opacity */
+}</pre>
+<p>Because <code>rgba()</code> was used last, it will be used by browsers that understand it, and ignored by other browsers.</p>
+<h2>JavaScript Libraries</h2>
+<p>These are pre-written functions for making your life easier.</p>
+<h3>MooTools</h3>
+<p>This is the other &quot;big&quot; library (besides jQuery). <a href="http://mootools.net/" rel="external">MooTools</a> is a compact, modular, Object-Oriented JavaScript framework designed for the intermediate to advanced JavaScript developer.</p>
+<h3 id="lowdash">Underscore.js and Low-dash.js</h3>
+<p><a href="http://lodash.com/" rel="external">Low-Dash</a> is a low-level utility library delivering consistency, customization, performance, and extra features. It is a fork of Underscore. I definitely need to take a look at it sometime. <a href="http://kitcambridge.be/blog/say-hello-to-lo-dash/">Read this</a> about Low-Dash.</p>
+<h3>oCanvas</h3>
+<p><a href="http://ocanvas.org/" rel="external">oCanvas</a> is a neat way to work with the Canvas element. Try this with drag and drop sometime.</p>
+<h3>Sugar</h3>
+<p><a href="http://sugarjs.com/" rel="external">Sugar</a> is a Javascript library that extends native objects with helpful methods. It is designed to be intuitive, unobtrusive, and let you do more with less code.</p>
+<h3>CreateJS</h3>
+<p><a href="http://createjs.com/" rel="external">CreateJS</a> is a suite of Javascript libraries &amp; tools for building rich, interactive experiences with HTML5. Other modules do Canvas, Tweening, Sound, and Preloading.</p>
+<h3>RequireJS and <abbr title="Asynchronous Module Definition">AMD</abbr></h3>
+<p>The following paragraph is from the article <a href="http://www.adobe.com/devnet/html5/articles/javascript-architecture-requirejs-dependency-management.edu.html" rel="external">Dependency Management with RequireJS</a>.</p>
+<h4>Introducing modules, <abbr title="Asynchronous Module Definition">AMD</abbr>, and RequireJS</h4>
+<p>Let's get nostalgic for a moment. A few years back, using JavaScript on the server was just starting to get hot. Server-side libraries and JavaScript engines were being deployed but they didn't have a good, standard API for working with one another and defining dependencies. Getting one library to work with another required finagling and it was obvious that if JavaScript was going to scale it would need some common APIs. In January 2009, Kevin Dangoor wrote a blog post titled What Server Side JavaScript Needs outlining just that—what server-side JavaScript needed. As a means to fulfill these needs, he created a Google group named ServerJS where like-minded folk could collaborate. Soon enough, the group realized that many of its goals weren't necessarily limited to the server and renamed the group to CommonJS.</p>
+<p>One of the standards that CommonJS worked toward was the module. A module is a self-contained piece of code (how's that for vague?) that defines that it is a module itself and, optionally, which other modules it depends on in order to function. Module B might call for module G and module M, and module G might call for modules D and W. By having a module standard, dependency management becomes easier. Rather than keeping some sort of implicit master list that must be kept in order, each module just defines its own dependencies. That mapping can be used to determine required resources and the order in which they must be loaded.</p>
+<h4><abbr title="Asynchronous Module Definition">AMD</abbr></h4>
+<p> The module concept was great for server-side development as it addressed how to load modules based on dependency definitions, but the browser-side JavaScript developers got a bit jealous. Why should such a useful mechanism be confined to the server? Sure, browsers would need to load modules asynchronously rather than synchronously, but that didn't mean the concept of modules and dependency definitions couldn't apply. The Asynchronous Module Definition, or <abbr title="Asynchronous Module Definition">AMD</abbr>, was born for this purpose. It takes the module and dependency definition API from the server side and applies it to the asynchronous paradigm of the browser.</p>
+<h4>RequireJS</h4>
+<p> So what does RequireJS have to do with this? Well, even though you can define your modules and their dependencies with <abbr title="Asynchronous Module Definition">AMD</abbr>, you need something smart that can take this dependency map, load the modules, and execute the modules in order. That's the role RequireJS plays. Both RequireJS and <abbr title="Asynchronous Module Definition">AMD</abbr> are open source, popular, and well-curated by James Burke.</p>
+<h2>JavaScript Frameworks</h2>
+<p>A framework is a structure, or paradigm, for building your site. These are only needed for larger or complex sites. Many bake-in the idea of Model-View-Controller and have a good way for interacting with the server.</p>
+<h3>Backbone</h3>
+<p>This library has a lot of momentum and many sites are built using it. I am doing some <a href="backbone.html">experimenting with it</a> right now.</p>
+<h3>Ember</h3>
+<p><a href="http://emberjs.com/" rel="external">Ember</a> is a JavaScript framework for creating ambitious web applications that eliminates boilerplate and provides a standard application architecture.</p>
+<h3>Handlebars ;-{</h3>
+<p><a href="handlebars.html">Handlebars</a> is a separate and independent library, but it is used extensively by Ember. If all you are looking for is an easy way to place variable content in a web page, then this is a great way to go. It is easy to understand and quite flexible. For example, let's say you have a JSON structure like this:</p>
+<p class="code">myBooks = {titles:[&quot;JavaScript Cookbook&quot;, &quot;HTML5&quot;, &quot;Search Engine Optimization&quot;, &quot;ActionScript 3.0&quot;]};</p>
+<p>You can place those titles in an unordered list using:</p>
+<p class="code">&lt;script type=&quot;text/x-handlebars&quot;&gt;</p>
+<p class="code">&nbsp;&nbsp;&lt;ul&gt;</p>
+<p class="code">&nbsp;&nbsp;{{#each titles}} &lt;li&gt;{{this}}&lt;/li&gt; {{/each}}</p>
+<p class="code">&nbsp;&nbsp;&lt;/ul&gt;</p>
+<p class="code">&lt;/script&gt;</p>
+<h3>Spine</h3>
+<p>Considered, by some, to be better than Backbone.</p>
+<h3>Angular</h3>
+<p>Good for ActionScript programmers. The article, <a href="http://net.tutsplus.com/tutorials/javascript-ajax/5-awesome-angularjs-features/">5 Awesome AngularJS Features,</a> makes a pretty compelling case the use of Angular.</p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

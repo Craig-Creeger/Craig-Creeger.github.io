@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>StandardJS</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css"></style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>StandardJS</h1>
+<h2>Javascript Coding Standards</h2>
+<p>So that code is easier to read and understand, developers will naturally develop their own style of formatting coding. This is fine when you are the sole developer on a project, but becomes an issue where there are multiple developers. <a href="http://standardjs.com/rules.html" target="external">StandardJS</a> to the rescue.</p>
+<h3>Installation</h3>
+<p class="code">npm install -g standard</p>
+<p>To check your project, do:</p>
+<p class="code">$ standard</p>
+<p>To set some global variables, you can specify that with the CLI, or via a key/value pair in package.json. e.g.</p>
+<pre>{
+ 	&quot;name&quot;: &quot;sc-customer-timeline&quot;,
+ 	&quot;version&quot;: &quot;1.0.0&quot;,
+ 	&quot;description&quot;: &quot;Customer Hub Timeline component&quot;,
+ 	&quot;main&quot;: &quot;index.js&quot;,
+ 	&quot;author&quot;: &quot;Craig&quot;,
+ 	&quot;license&quot;: &quot;ISC&quot;,
+ 	<strong>&quot;standard&quot;: {
+ 		&quot;globals&quot;: [&quot;describe&quot;, &quot;it&quot;]
+ 	}</strong>
+ }</pre>
+<p>Alternatively, you can specify your globals in an <code>.eslintrc</code> config file.</p>
+<p>You can also ignore files by placing them in a &quot;ignore&quot; key and then pass an array of paths or files. Refer to <a href="https://github.com/feross/standard#how-do-i-ignore-files" target="external">https://github.com/feross/standard#how-do-i-ignore-files</a></p>
+<h4>Per File Overrides</h4>
+<p> Instead of defining globals in package.json, you could do it in each file. The first line of the file will be a comment taking the form:</p>
+<pre> 	/* global $ */</pre>
+<pre> 	/* eslint-env mocha */</pre>
+<p> Refer to the ESLint doco for more options.</p>
+<h3>Automatic Formatting</h3>
+<p> You will need to install standard-format</p>
+<p class="code">$ npm install -g standard-format</p>
+<p>Then to do a dry-run of the automatic formatting just issue</p>
+<p class="code"> $ standard-format</p>
+<p>To do it for real add the <strong>-w</strong> flag. i.e. <span class="code">$ standard-format -w</span></p>
+<p> To automatically do it on save (in Sublime Text), you will need to install a few Sublime packages. See the next section.</p>
+<h3>Linting and Automatic Formatting in Sublime Text</h3>
+<p> First make sure you have `Package Control`, a nearly mandatory install for all users of Sublime Text, and then use it to install:</p>
+<ul>
+	<li>SublimeLinter</li>
+	<li> SublimeLinter-contrib-standard</li>
+</ul>
+<p>Those two package will then get you real-time linting.</p>
+<p>Next, if you want automatic formatting on save, install (again, via Package Control) StandardFormat.</p>
+<h3>Overriding Standard</h3>
+<p>Standard is built on top of ESlint, so you could install that and then just import the <a href="https://www.npmjs.com/package/eslint-config-standard" target="external">StandardJS Config file</a> and then tweak it.</p>
+<!-- InstanceEndEditable -->
+<footer>
+	<hr>
+	<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a> </p>
+	<p style="text-align:right; font-size:smaller;">Last updated on 
+		<!-- #BeginDate format:Am1 -->June 23, 2016<!-- #EndDate --></p>
+	<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+	<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script> 
+<script type="text/javascript" src="../js/prettify/prettify.js"></script> 
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable --> 
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd -->
+</html>

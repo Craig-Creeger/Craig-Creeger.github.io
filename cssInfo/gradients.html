@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Gradients</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+article {
+	background:url(../graphics/img/patternMesh.gif) repeat;
+	padding:0;
+}
+.box {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -o-box;
+	display: box;
+}
+.flex1 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-o-box-flex: 1;
+	box-flex: 1;
+}
+.flex2 {
+	-webkit-box-flex: 2;
+	-moz-box-flex: 2;
+	-o-box-flex: 2;
+	box-flex: 2;
+}
+.base {
+	padding:2em 1em;
+	margin:.6em;
+}
+.complicated {
+	color:white;
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VmYzVjYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2QyNGI1YSIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KICAgIDxzdG9wIG9mZnNldD0iNTElIiBzdG9wLWNvbG9yPSIjYmEyNzM3IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2YxOGU5OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(210,75,90,0.5) 50%, rgba(186,39,55,1) 51%, rgba(241,142,153,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(239,197,202,1)), color-stop(50%, rgba(210,75,90,0.5)), color-stop(51%, rgba(186,39,55,1)), color-stop(100%, rgba(241,142,153,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(210,75,90,0.5) 50%, rgba(186,39,55,1) 51%, rgba(241,142,153,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(210,75,90,0.5) 50%, rgba(186,39,55,1) 51%, rgba(241,142,153,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(210,75,90,0.5) 50%, rgba(186,39,55,1) 51%, rgba(241,142,153,1) 100%); /* IE10+ */
+	background: linear-gradient(top, rgba(239,197,202,1) 0%, rgba(210,75,90,0.5) 50%, rgba(186,39,55,1) 51%, rgba(241,142,153,1) 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efc5ca', endColorstr='#f18e99', GradientType=0 ); /* IE6-8 */
+}
+.simple {
+	background: rgb(255,255,255); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMGExZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,161,255,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(0,161,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,161,255,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,161,255,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,161,255,1) 100%); /* IE10+ */
+	background: linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,161,255,1) 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00a1ff', GradientType=0 ); /* IE6-8 */
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Gradients</h1>
+<h2>Definition</h2>
+<p>A (color) gradient is a transition from one color to another. There can be multiple color stops and varying shades of opacity along the way.</p>
+<h2>Graphic Gradients</h2>
+<p>You can create gradients easily in Photoshop, Illustrator, and Flash.</p>
+<h2>On-line CSS Generators</h2>
+<p>For the web, I would always try to create the gradient in CSS first and use a Graphic Gradient only as a last resort. Why?</p>
+<ol>
+	<li>Pages will load quicker using CSS gradients because there is no JPEG to download.</li>
+	<li>The gradient can dynamically change its size. Make this page very narrow to see the following gradients get taller. <span style="font-size:smaller; color:DimGray;">Yes, it is possible to stretch a JPEG dynamically, but not necessarily as smoothly when done in pure CSS.</span></li>
+</ol>
+<p>Use the <a href="http://www.colorzilla.com/gradient-editor/" rel="external">Ultimate CSS Gradient Generator</a> to write your CSS code.</p>
+<h3>Examples of CSS Gradients</h3>
+<article class="box">
+	<section class="simple base flex1">
+		<p>This is a simple gradient.</p>
+		<p>Not much to say about this one. It is just a white to blue transition.</p>
+	</section>
+	<section class="complicated base flex1">
+		<p>This is an example of a more complicated gradient. Notice there is alpha transparency in the top half of the gradient. Sweet.</p>
+	</section>
+</article>
+<h2>Background Gradient</h2>
+<p>If you want to use a gradient on a page background, it's not quite as simple as applying it to your <code>html</code> selector in CSS because the gradient will only extend to the bottom of your content or viewport, whichever is shorter, and then start repeating. </p>
+<h3>Gradient Matching Height of the Content (<code>&lt;body&gt;</code>)</h3>
+<p>The solution is to force the HTML be be at least as large as the viewport with the min-height property as in:</p>
+<pre>html {
+ min-height:100%;
+ background: #290200;
+ background: -moz-linear-gradient(top,  #77130b 0%, #290200 100%);
+ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#77130b), color-stop(100%,#290200));
+ background: -webkit-linear-gradient(top,  #77130b 0%,#290200 100%);
+ background: -o-linear-gradient(top,  #77130b 0%,#290200 100%);
+ background: -ms-linear-gradient(top,  #77130b 0%,#290200 100%);
+ background: linear-gradient(to bottom,  #77130b 0%,#290200 100%);
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77130b', endColorstr='#290200',GradientType=0 );
+}</pre>
+<p>If you content will always be longer than the viewport, then you could place the gradient on the <code>#container</code> or some other content container.</p>
+<h3>Gradient Fixed to Height of Browser Window (<code>&lt;html&gt;</code>)</h3>
+<p>In this case, the gradient will not scroll with (tall) content. (Except on the iPad, where it will behave like the previous example.)</p>
+<pre class="prettyprint linenums">html {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:100%;
+	line-height:1.4;
+	
+	height:100%; /* force the background to match height of window */
+	background-attachment:fixed;
+
+	/* White to Gold gradient */
+	background-image: #ffffff;
+	background-image: -moz-linear-gradient(top,  #ffffff 0%, #ffcc33 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ffcc33));
+	background-image: -webkit-linear-gradient(top,  #ffffff 0%,#ffcc33 100%);
+	background-image: -o-linear-gradient(top,  #ffffff 0%,#ffcc33 100%);
+	background-image: -ms-linear-gradient(top,  #ffffff 0%,#ffcc33 100%);
+	background-image: linear-gradient(to bottom,  #ffffff 0%,#ffcc33 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffcc33',GradientType=0 );
+}</pre>
+<p>Notice two things: The <code>height</code> has been set to 100% and the <code>background-attachment</code> is fixed. Furthermore, make sure you are using the explicit <code>background-image</code> property instead of the shortcut <code>background</code> property.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+ 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

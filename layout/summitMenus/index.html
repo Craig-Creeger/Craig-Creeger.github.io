@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Summit-style Drop-down Menus</title>
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0 2em;
+}
+header {
+	height: 120px;
+	background-color: #069;
+	color: white;
+	overflow: hidden;
+	position:relative;
+	padding:0 2em;
+}
+nav {
+	position:absolute;
+	bottom:0;
+}
+nav span {
+	font-size: larger;
+	margin-right: 2em;
+	font-weight: bold;
+	background-color: rgba(255, 255, 255, 0.5);
+	color: black;
+	padding: 5px 1em;
+}
+#menuProducts {
+	position: absolute;
+	left: 141px;
+	top: 120px;
+	width: 400px;
+	height: 320px;
+	z-index: 2;
+	background-color: white;
+	background-color: rgba(255,255,255,0.9);
+	box-shadow: 0 5px 10px black;
+	display:none;
+	padding: 0 1em;
+}
+</style>
+</head>
+
+<body id="mom">
+<header>
+	<h1> Summit-style Drop-down Menus</h1>
+	<nav><span id="navHome">Home</span> <span id="navProducts">Products</span> <span id="navServices">Services</span> <span id="navLocation">Location</span></nav>
+</header>
+<p>This page demonstrates how the drop-down menus at <a href="http://www.summitbrewing.com">Summit Brewery</a> might work. To view it in action on this page, either click or mouse over the Products tab.</p>
+<p>View the source code to see how I created this page.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus tortor at tristique sodales. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc et velit sollicitudin, tincidunt nisl et, dignissim magna. Duis adipiscing, odio a volutpat tincidunt, dolor odio egestas sapien, in aliquet lectus nunc aliquam orci. Donec vel dictum purus. Aliquam ultricies orci in risus venenatis dapibus. Mauris viverra orci et consequat consectetur. Quisque bibendum, ligula dignissim cursus semper, massa libero rutrum arcu, vel volutpat tellus urna at elit. In imperdiet ornare est, sed pulvinar velit euismod et. Etiam vitae lacinia lectus. Proin convallis a nulla ut feugiat. <span id="sprytrigger1" class="dottedUnderline">Aenean</span> tristique placerat mollis. Curabitur aliquam facilisis semper.</p>
+<p>Ut fringilla massa et convallis dapibus. Fusce at ultrices urna. Nullam tincidunt ante sed est euismod tincidunt. Suspendisse a mauris eget risus molestie rhoncus sed placerat diam. Nullam et facilisis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dapibus faucibus eros. Nam massa augue, iaculis sed ultricies vel, molestie nec lorem. Integer in mi non magna congue convallis. In hac habitasse platea dictumst. Ut nec mi id risus tristique laoreet. Mauris sollicitudin enim et magna aliquet pellentesque. Curabitur mattis urna felis, id bibendum ipsum cursus non.</p>
+<p>Ut posuere nibh et nunc lacinia bibendum. Praesent dictum risus mattis sem ullamcorper commodo. Suspendisse quis mollis nunc. Vestibulum elementum magna eu est porttitor tempor non a est. Nulla accumsan sem malesuada, fermentum elit tincidunt, volutpat tortor. Sed porttitor ante quis tempus accumsan. Curabitur blandit nisl porta tempor laoreet.</p>
+<div id="menuProducts">
+	<table style="width:100%;">
+		<tr>
+			<td><h1>Mens</h1>
+				<h3>Shoes</h3>
+				<p><a href="mensAthletic.html">Athletic</a></p>
+				<p><a href="#">Dress</a></p>
+				<h3>Jackets</h3>
+				<p><a href="#">Spring/Fall</a></p>
+				<p><a href="#">Winter</a></p></td>
+			<td style="border-left:thin solid gray; padding-left:1em;"><h1>Womens</h1>
+				<h3>Shoes</h3>
+				<p><a href="#">Athletic</a></p>
+				<p><a href="#">Dress</a></p>
+				<h3>Jackets</h3>
+				<p><a href="#">Spring/Fall</a></p>
+				<p><a href="#">Winter</a></p></td>
+			<td style="width:125px;"><img src="womensJackets.png" width="125" height="188"></td>
+		</tr>
+	</table>
+</div>
+<script src="../../js/jquery.js"></script> 
+<script type="text/javascript">
+$('#navProducts').on('mouseenter', function(e) {
+	$('#menuProducts').show(1200);
+});
+$('#menuProducts').on('mouseleave', function(e) {
+	$('#menuProducts').hide(700);
+});
+$('#navProducts').on('click', function(e) {
+	$('#menuProducts').toggle(700);
+});
+
+//This is just for this demo
+$('a').on('click', function(e) {
+	$('#menuProducts').hide();
+});
+</script>
+</body>
+</html>

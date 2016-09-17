@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Advanced Rollover Buttons</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+a:link {
+  color: white;
+  text-decoration: none;
+  font-weight:normal;
+}
+
+#button1 {
+  font: 18px/1.5 Helvetica, Arial, sans-serif;
+  background: #6292c2;
+  border: 2px solid #eee;
+  height: 28px;
+  width: 115px;
+  padding: 0 0 0 7px;
+  overflow: hidden;
+  display: block;
+  text-align:left;
+  
+  /*Transition*/
+  -webkit-transition: All 0.5s ease;
+  -moz-transition: All 0.5s ease;
+  -o-transition: All 0.5s ease;
+  -ms-transition: All 0.5s ease;
+  transition: All 0.5s ease;
+  
+  /*Rounded Corners*/
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+#button1:hover {
+  width: 215px;
+}
+
+#button2 {
+  background: #d11717;
+  color: white;
+  border: 2px solid #eee;
+  height: 38px;
+  width: 125px;
+  margin: 50px 0 0 50px;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  line-height: 38px;
+  
+  /*Transition*/
+  -webkit-transition: All 0.5s ease;
+  -moz-transition: All 0.5s ease;
+  -o-transition: All 0.5s ease;
+  -ms-transition: All 0.5s ease;
+  transition: All 0.5s ease;
+  
+  /*Rounded Corners*/
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  
+  /*Shadow*/
+  -webkit-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+}
+#button2:hover {
+	background-color: #FF5A5A; /* salmon */
+}
+
+#button4 {
+  background: #5c5c5c;
+  color: white;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.3);
+  font-size: 22px;
+  height: 58px;
+  width: 155px;
+  margin: 50px 0 0 50px;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  line-height: 58px;
+  
+  /*Rounded Corners*/
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+  /*Shadow*/
+  -webkit-box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.8);
+  
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+#button4:hover {
+  margin-top: 54px;
+  
+  /*Shadow*/
+  -webkit-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.8);
+  
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+.circles {
+	padding:0;
+	float: left;
+	height: 200px; width: 200px;
+	/*background-color: #eee;*/
+	margin: 0 50px 50px 0;
+ 
+	/*Make it a circle*/
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
+}
+#launchCourse {
+	background-image: url('images/lcTopLeft.png'), url('images/lcTopRight.png'), url('images/lcBottomRight.png'), url('images/lcBottomLeft.png'), url('images/rocketLaunch.jpg');
+	background-repeat: no-repeat;
+	background-position: 0 0, 103px 0, 103px 100px, 0 100px, 0px 0px; /* Hey man, I don't know why I needed to add the three extra pixels to make it work. Maybe it has something to do with inline/baseline issues... */
+	background-color:white;
+ 
+	/*Rotate*/
+	-webkit-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-o-transform:rotate(0deg);
+	-ms-transform:rotate(0deg);
+	transform:rotate(0deg);
+ 
+	/*Transition*/
+	-webkit-transition: background-position .6s ease-in-out, -webkit-transform .3s ease;
+	-moz-transition: background-position .6s ease-in-out, -moz-transform .3s ease;
+	-o-transition: background-position .6s ease-in-out, -o-transform .3s ease;
+	-ms-transition: background-position .6s ease-in-out, -ms-transform .3s ease;
+	transition: background-position .6s ease-in-out, transform .3s ease;
+
+	cursor:pointer;
+}
+#launchCourse:hover {
+	background-position: -100px -100px, 200px -100px, 200px 200px, -100px 200px, 0px 0px;
+	background-color:transparent;
+ 
+	/*Rotate*/
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	-o-transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Advanced Rollover Buttons</h1>
+<p>Are you new to rollover buttons? Understand <a href="sprites.html">Basic Sprite</a> buttons first.</p>
+<h2>Sliding Image Buttons</h2>
+<p>This is a professional looking technique for, say, navigating to major sections of a website.</p>
+<p><a href="http://css-tricks.com/snippets/css/slide-in-image-boxes/" rel="external">http://css-tricks.com/snippets/css/slide-in-image-boxes/</a></p>
+<h2>Sliding Door Buttons</h2>
+<p><a id="launchCourse" class="circles"></a></p>
+<p>This <a href="http://designshack.net/articles/css/create-five-awesome-hover-effects-using-css-multiple-backgrounds/" rel="external">article</a> explains how to make sliding door rollover buttons. Seriously cool. This Launch Course button is an example.</p>
+<p>As awesome as this is, it does NOT work under IE9 or older, which pretty much means you won’t be able to use this technique until around, say 2016, or so. <em>Damn it!</em></p>
+<h2>Standard and Rotating Buttons</h2>
+<p><a href="http://www.netmagazine.com/tutorials/create-progressively-enhanced-3d-css-rollovers" rel="external">CSS-based rollover buttons</a> article. Using the first technique, you could do a Sprite button that cross-fades over a second...</p>
+<p>&nbsp;</p>
+<h3>And some more examples</h3>
+<p><a href="javascript:void(0);" id="button1">Sign Up Now &nbsp;&ndash; It's Free!</a></p>
+<p>This one degrades nicely in IE. The magic that makes this button work:</p>
+<pre class="prettyprint linenums">#button1 {
+  height: 28px;
+  width: 115px;
+  overflow: hidden;
+  display: block;
+  
+  /*Transition*/
+  -webkit-transition: All 0.5s ease;
+  -moz-transition: All 0.5s ease;
+  -o-transition: All 0.5s ease;
+  -ms-transition: All 0.5s ease;
+  transition: All 0.5s ease;
+}
+#button1:hover {
+	width: 215px;
+}</pre>
+    
+    <p><a href="javascript:void(0);" id="button2" class="buttonText">Sign Up Now</a></p>
+    <p>The magic that makes this happen is:</p>
+	<pre class="prettyprint linenums">#button2 {
+  <strong>background: #d11717;</strong>
+  color: white;
+  border: 2px solid #eee;
+  <strong>height: 38px;</strong>
+  width: 125px;
+  margin: 50px 0 0 50px;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  <strong>line-height: 38px;</strong>
+  
+  /*Transition*/
+  -webkit-transition: All 0.5s ease;
+  -moz-transition: All 0.5s ease;
+  -o-transition: All 0.5s ease;
+  -ms-transition: All 0.5s ease;
+  transition: All 0.5s ease;
+  
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  <strong>background-image: linear-gradient</strong>(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+#button2:hover {
+	<strong>background-color: #FF5A5A;</strong> /* salmon */
+}</pre>
+<p><a href="javascript:void(0);" id="button4">Sign Up Now</a></p>
+    <p>You'll notice that this text moves during the hover state. That sucks.</p>
+    <p>The magic that makes this happen is:</p>
+	<pre class="prettyprint linenums">#button4 {
+  background: #5c5c5c;
+  color: white;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.3);
+  font-size: 22px;
+  height: 58px;
+  width: 155px;
+  <strong>margin: 50px</strong> 0 0 50px;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  line-height: 58px;
+  
+  /*Rounded Corners*/
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+  /*Shadow*/
+  -webkit-box-shadow: 0px <strong>8px</strong> 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px <strong>8px</strong> 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 8<strong>px</strong> 0px rgba(0, 0, 0, 0.8);
+  
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+#button4:hover {
+  <strong>margin-top: 54px;</strong>
+  
+  /*Shadow*/
+  -webkit-box-shadow: 0px <strong>4px</strong> 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px <strong>4px</strong> 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px <strong>4px</strong> 0px rgba(0, 0, 0, 0.8);
+  
+  /*Gradient*/
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+</pre>
+
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

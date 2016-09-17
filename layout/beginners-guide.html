@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>A Beginner&rsquo;s Guide to Web Page Layout</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+label {
+	float:left;
+	width:9em;
+}
+#main {
+	width:100%;
+	float:left;
+	margin-right:-200px;
+	background-color:lawnGreen;
+}
+aside {
+	width:200px;
+	float:left;
+	background-color:#FC0;
+}
+#mainUsable { /* This prevents the contents of #main and aside from overlapping each other */
+	margin-right:225px;
+	margin-left:2em;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>A Beginner&rsquo;s Guide to Web Page Layout</h1>
+<h2>First Thing's First</h2>
+<p>Read the websites listed in the <a href="../cssInfo/gettingStarted.html#learnCSS">Learning CSS</a> section.</p>
+<h2>HTML v. Body tag</h2>
+<ul>
+	<li>The <code>html</code> and <code>body</code> elements are distinct block-level entities, in a parent/child relationship. </li>
+	<li>The <code>html</code> element’s height and width are controlled by the browser window. </li>
+	<li>It is the <code>html</code> element which has (by default) <code>overflow:auto</code>, causing scrollbars to appear when needed. </li>
+	<li>The <code>body</code> element is (by default) <code>position:static</code>, which means that positioned children of it are positioned relative to the <code>html</code> element’s coordinate system. </li>
+	<li>In almost all modern browsers, the built-in offset from the edge of the page is applied through a margin on the <code>body</code> element, not padding on the <code>html</code> element.</li>
+</ul>
+<h2>Centering All Content on the Page</h2>
+<p>Centered content is one thing shared by nearly every webpage. For a demo, see my <a href="centerExample.html">Centered Layout Example</a>. The code necessary to do this is very simple: </p>
+<ol>
+	<li>Apply a width (either fixed or a percentage) to the <code>&lt;body&gt;</code> tag</li>
+	<li>Set the left and right margins set to &ldquo;auto&rdquo; on your <code>&lt;body&gt;</code> tag</li>
+</ol>
+<pre class="prettyprint linenums">&lt;body style=&quot;width:960px; margin:0 auto;&quot;&gt;
+	&lt;p&gt;Your header, content, and footer go between the body tags.&lt;/p&gt;
+&lt;/body&gt;</pre>
+<h2>Fake Tabs</h2>
+<p>Especially on forms, you will find that you need to align textboxes and their labels, for example:</p>
+<p>
+	<label for="txt1">Street Address</label>
+	<input name="txt1" type="text" id="txt1" value="1225 Elmwood Ave. S." size="25">
+	<br>
+	<label for="txt2">Zip</label>
+	<input name="txt2" type="text" id="txt2" value="55125" size="6">
+</p>
+<p>The trick is to float the labels and give them a fixed width.</p>
+<pre class="prettyprint linenums">&lt;style type=&quot;text/css&quot;&gt;
+ 	label { float:left; width:9em; }
+&lt;/style&gt;
+
+&lt;p&gt;
+	&lt;label for=&quot;txt1&quot;&gt;Street Address&lt;/label&gt;
+	&lt;input name=&quot;txt1&quot; type=&quot;text&quot; id=&quot;txt1&quot; value=&quot;1225 Elmwood Ave. S.&quot; size=&quot;25&quot;&gt;
+&lt;br&gt;
+	&lt;label for=&quot;txt2&quot;&gt;Zip&lt;/label&gt;
+	&lt;input name=&quot;txt2&quot; type=&quot;text&quot; id=&quot;txt2&quot; value=&quot;55125&quot; size=&quot;6&quot;&gt;
+&lt;/p&gt;</pre>
+<p>If you need to create 3 or more columns, you can still use the float trick, but it may be easier to use an HTML table instead.</p>
+<h2 id="images">Images</h2>
+<p>There are two ways to place an image on a webpage, the HTML <code>&lt;img&gt;</code> tag and the CSS <code>background-image</code> property. Which method you choose is <em>usually</em> answered by the question, &ldquo;Will text, or any other HTML element, appear on top of the image?&rdquo;. If you answer is &ldquo;yes&rdquo;, then use CSS. On the other other hand, if your image will not be obstructed with anything, then use the <code>&lt;img&gt;</code> tag.</p>
+<h2>Positioning Text</h2>
+<h3>Use Padding</h3>
+<p>If I&rsquo;m trying to adjust the location of a line of text, or any other HTML element, the first thing to try is the CSS <code>padding</code> property. OK, great, but <em>which</em> element should you apply the padding to? Let's look at a couple of examples.</p>
+<p>This pararagraph, and the previous one, have no special formatting applied to them other than the standard margin. Now let's say the next paragraph should be indented and spaced further away from it's adjacent paragraphs.</p>
+<p style="padding:3em;">This one is spaced differently.</p>
+<p>The previous paragraph had the style <code>padding:3em</code> applied to it as follows:</p>
+<pre class="prettyprint linenums">&lt;p style=&quot;padding:3em;&quot;&gt;This one is spaced differently.&lt;/p&gt;</pre>
+<p>Because only that one line needed to be different, I applied the padding to it. </p>
+<p>Now let's look at an example where multiple elements (HTML tags) need to spaced the same.</p>
+<div style="padding: 42px 50px 31px 164px; background:url(../img/speechBubble.png) no-repeat; width:286px; height:127px; margin:0 auto 1em; border:thin solid lawngreen;">
+	<p style="margin:0; padding:0;">Everything in here will be boxed in appropriately.</p>
+	<p style="margin:0; padding:0; margin-top:.5em;">Because of padding.</p>
+	<p style="margin:0; padding:0; margin-top:.5em;">Sweet, no?</p>
+</div>
+<pre class="prettyprint linenums">
+
+&lt;div style=&quot;padding: 42px 50px 31px 164px; background:url(../images/speechBubble.png) no-repeat; width:286px; height:127px;&quot;&gt;
+	&lt;p&gt;Everything in here will be boxed in appropriately.&lt;/p&gt;
+	&lt;p&gt;Because of padding.&lt;/p&gt;
+	&lt;p&gt;Sweet, no?&lt;/p&gt;
+&lt;/div&gt;</pre>
+<p>The important difference in this example is the content is <strong>inside a container</strong> (the <code>&lt;div&gt;</code> with the speech bubble graphic) and the <strong>padding is applied to the container</strong>.</p>
+<hr>
+<h3>The Exception to the Rule</h3>
+<p style="float:left; margin:0 3em 1em inherit; background-color:lemonChiffon; padding:1em; width:30%;">This is a left floated element and the text to the right has been pushed away with the CSS <code>margin</code> property.</p>
+<p style="padding-top:1em;">When dealing with floats, the margin property works better. Place the margin on the floated element to keep surrounding content away from it.</p>
+<p>The code used in this example is:</p>
+<pre style="clear:left;" class="prettyprint linenums">&lt;p style=&quot;float:left; margin-right:3em; margin-bottom:1em; width:30%;&quot;&gt;This is a left floated element and the text to the right has been pushed away with the CSS &lt;code&gt;margin&lt;/code&gt; property.&lt;/p&gt;
+&lt;p&gt;When dealing with floats, the margin property works better. Place the margin on the floated element to keep surrounding content away from it.&lt;/p&gt;</pre>
+<h2>Sidebar Layouts</h2>
+<div id="main">
+	<div id="mainUsable">
+		<p>This layout behaves similarly to a two column table (with the exception of the background colors or images).</p>
+		<p>The clever bit of CSS that makes this work is to float (this) main content area left, but then open up some space on the right for other content to sneak in by giving this float some negative right margin.</p>
+		<p>The content, like paragraphs, headers, and images will be tight up against the surrounding boxes, which typically is not what you want. Add this bit of CSS to space the content away (you will also need an additional <code>&lt;div&gt;</code>). Here is all the code:</p>
+		<pre style="white-space:pre-wrap;">#main {
+&nbsp;&nbsp;width:100%;
+&nbsp;&nbsp;float:left;
+&nbsp;&nbsp;margin-right:-200px;
+&nbsp;&nbsp;background-color:lawnGreen;
+}
+aside {
+&nbsp;&nbsp;width:200px;
+&nbsp;&nbsp;float:left;
+&nbsp;&nbsp;background-color:lemonchiffon
+}
+#mainUsable { /* This prevents the contents of #main and aside from overlapping each other */ 
+&nbsp;&nbsp;margin-right:225px; 
+&nbsp;&nbsp;margin-left:2em; 
+}
+&lt;div id=&quot;main&quot;&gt;
+&nbsp;&nbsp;&lt;div id=&quot;mainUsable&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Your main content goes here.&lt;/p&gt;
+&nbsp;&nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;aside&gt;Sidebar content goes here.&lt;/aside&gt;</pre>
+		<p>Holey crap, isn&rsquo;t this a lot of work when you could simply float the sidebar to the right. Sure, you could but then you&rsquo;d be left with two problems.</p>
+		<ol>
+			<li>The #main content will flow underneath the sidebar.</li>
+			<li>&lt;aside&gt; will appear before your content in the source code. (This only matters from an SEO standpoint, and even then&hellip; meh.)</li>
+		</ol>
+		<p class="callout">I tend to use a table with one row and two cells to build content like this example is demonstrating. Yes, I know tables are supposedly evil, but given the current state of web layout, I think it is a perfectly acceptable solution in most scenarios.</p>
+	</div>
+</div>
+<aside>
+	<p>The sidebar content will appear in this area.</p>
+	<p>The only problem with this technique is if you want the sidebar background color to extend to the bottom of the page or enclosing container.</p>
+	<p>The "faux" column hack would be to place a background image on #main so that it appears like this sidebar has a different color (but in reality you would make it transparent).</p>
+</aside>
+<p style="clear:both;">&nbsp;</p>
+<h2>The Typical Home Page</h2>
+<p>This great graphic comes from <a href="http://blog.kissmetrics.com/landing-page-blueprint/" rel="external">Kissmetrics</a>.</p>
+<p><a href="../assets/ultimate-web-design-guide-infographic.jpg"><img src="../assets/ultimate-web-design-guide-infographic.jpg" alt="" width="500" height="2824"></a></p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

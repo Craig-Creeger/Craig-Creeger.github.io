@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Build Tools</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Build Tools</h1>
+<h2>npm Scripts</h2>
+<p>Since you are already using npm, this is a great option because no additional tools to install and the configuration is easy. A couple of articles to get you started:</p>
+<ul>
+	<li><a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/" target="external">http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/</a></li>
+	<li><a href="http://www.sitepoint.com/guide-to-npm-as-a-build-tool/" target="external">http://www.sitepoint.com/guide-to-npm-as-a-build-tool/</a></li>
+</ul>
+<p>I have been using this method and really like it so far.</p>
+<p>For a more advanced example that uses Javascript programs (via Node) to build your site, check out “<a href="https://medium.com/swlh/you-might-not-need-gulp-js-89a0220487dd#.t8z97n20z" target="external">You Might Not Need Gulp.js</a>”.</p>
+<h2>Grunt</h2>
+<p class="callout">Now irrelevant. It’s slow and the configuration is ugly. Skip this one.</p>
+<h3>The First Big One</h3>
+<p>Many, many people are using <a href="http://gruntjs.com/" target="external">Grunt</a>. The install is easy and there are a bunch of plugins for it.</p>
+<h3>Cons</h3>
+<p>Writing the configuration section of Gruntfile.js is a pain and it gets slow if you are working on a large project.</p>
+<h3>My Experiments</h3>
+<p>I have just gotten <a href="grunt.html">started with Grunt</a>.</p>
+<h2>Broccoli</h2>
+<p>This is used by EmberJS. Suppose to be fast, but the document is terrible and not many examples outside of Ember.</p>
+<h2>Gulp</h2>
+<p>This may now be more powerful than Grunt, but Webpack could make it obsolete.</p>
+<h2>Webpack</h2>
+<p>Depending on your preferences, <a href="webpack.html">Webpack</a> could be the new shiny build tool.</p>
+<h2>Brunch</h2>
+<p>Want something newer and shinier? <a href="http://brunch.io/" target="external">Brunch</a> could be the answer. Give this one a try—the <a href="https://github.com/brunch/brunch-guide/blob/master/README.md" target="external">documentation</a> is very good.</p>
+<!-- InstanceEndEditable -->
+<footer>
+<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->November 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

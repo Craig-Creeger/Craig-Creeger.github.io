@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Repeating Elements in Photoshop</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Repeating Elements in Photoshop</h1>
+<h2>Tutorial</h2>
+<p>Often times, when mocking up a web page in Photoshop you will need to create a repeating pattern. It is quite easy to do, <em>IF</em> you know the secret handshake.</p>
+<p>Let&rsquo;s say you want to create a gridwork pattern, shown in Figure 1.</p>
+<p>First, create the base element. In this case it is a backwards-shaped L. Select the area you want to be repeated (using a selection tool such as the marquee or lasso tool). See Figure 2.</p>
+<figure style="float:left;"><img src="img/gridWork.gif" width="288" height="224">
+	<figcaption>Figure 1. Final result</figcaption>
+</figure>
+<figure style="float:left;"><img src="img/SelectArea.png" width="417" height="275">
+	<figcaption>Figure 2. Select area to repeat</figcaption>
+</figure>
+<figure style="float:right; margin-left:1em;clear:right;"><img src="img/ManyLayers.png" width="468" height="458">
+<figcaption>Figure 3. First row of elements</figcaption></figure>
+<p style="clear:left">Now it is time to learn the secret handshake. First, change to the Move tool (by default, the Move tool is activated when you hit a [v] on your keyboard. Next, hold down the [Option] key, [Command] key, and hit a [t]. You should now see transform handles on your selection. Drag this to the new location. In my case, I moved to 15 pixels to the right. You should now have two elements on your screen. Finally, duplicate the crap out of it by holding down [Shift][Option][Command] and repeatedly punching [t].</p>
+<p>You&rsquo;ll see that you now have bunch of layers in Photoshop. That bugs me. I like to select all those layers an merge them as one. To finish off the grid, repeat the previous steps, but copy in vertically (down 15px).</p>
+<h3>Subtle awesomeness</h3>
+<p>In the previous example, we were working with rasterized pixels, but this exact same technique works for vector paths too. Just make sure your vector mask is selected prior to hitting [Option][Command][t]. Sweet, eh? In fact, I prefer to work with vector whenever possible.</p>
+<h2>Summary</h2>
+<ol>
+	<li>Select an area to be the source.</li>
+	<li>Change to the Move tool.</li>
+	<li>Hit [Option][Command][t].</li>
+	<li>Drag to the correct location.</li>
+	<li>Hold down <span style="clear:left">[Shift][Option][Command] and repeatedly hit [t]</span>.</li>
+</ol>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

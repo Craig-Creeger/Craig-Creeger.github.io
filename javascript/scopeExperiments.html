@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Scope/Context Experiments</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css"></style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Scope/Context Experiments</h1>
+<h2>Purpose</h2>
+<p>I wrote this page to do some experimenting with namespacing and getting a handle on the <code>this</code> keyword.</p>
+<p>Open the developer tools in your browser and look at the console.</p>
+<div class="callout">
+	<h3 id="line1" style="line-height:3em;"></h3>
+	<h4 id="line2"></h4>
+</div>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript">
+var foo = "I am global";
+console.log('in global: ' + foo); //I am global
+
+(function(myArg) { 
+
+	console.log('in anon: ' + myArg); //I am passed arg
+	var foo = "I am anonymous";
+	console.log('in anon: ' + foo); //I am anonymous
+	
+	//******************************************************************
+	function privateFunction() {
+		console.log('I am the private function.');
+	}
+	privateFunction();
+	
+	if (typeof GuidoNamespace=='undefined') {
+		window.GuidoNamespace = {}; //This line creates the closure in the anonymous context
+	}
+	//******************************************************************
+	GuidoNamespace.staticFunction = function(goodTimeArg) {
+		console.log('in staticFunction: ' + goodTimeArg); //Beer
+		console.log('in staticFunction: ' + foo); //I am anonymous (because GuidoNamespace was created in the context of the anonymous function)
+	}
+	
+	function sillyGoose() { //make a private function
+		console.log('oh yeah, you just invoked the waterfoul clause.');
+	}
+	GuidoNamespace.crazyGoose = sillyGoose; //now make it public
+	
+	//******************************************************************
+	GuidoNamespace.instanceFunction = function(elem, initial) {
+		//When calling this function with the 'new' keyword, it makes this a 'constructor'
+		//'this' will refer to the newly created object.
+		this.elem = elem;
+		this.origColor = window.getComputedStyle(elem).getPropertyValue('color');
+		elem.guidoObject = this; //Create a new property on the DOM element and set to this object (basically, we are making it a smarter header.
+		elem.style.backgroundColor = "papayaWhip";
+		elem.innerHTML = initial;
+		console.log('foo is ' + foo); //I am anonymous
+		console.log('this.foo is ' + this.foo); //undefined
+		console.log('window.foo is ' + window.foo); //I am global
+		
+		//Setting event listeners in the constructor is not the most efficient if there are going to be a lot of instances. 
+		elem.onmouseover = function() {
+			this.style.color = 'white'; //this anonymous function was called by a DOM element, so 'this' refers to it (the <h3> tag)
+		}
+		elem.onmouseout = function() {
+			//this anonymous function was called by the DOM element, so 'this' refers to it (the <h3> tag)
+			this.guidoObject.switchBack();
+			//this.guidoObject.switchBack('green'); //Use this line if you want to force the text color to go Green on mouseout
+		}
+	}
+	GuidoNamespace.instanceFunction.prototype.changeBkgdColor = function(){
+		var newColor = 'rgb(' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ')';
+		//this.elem.style.backgroundColor = newColor; //doesn't work because 'this' IS the element, not an instanceFunction object
+		this.style.backgroundColor = newColor; //remember 'this' is set RIGHT BEFORE the function is executed. In this case, the calling context is ln1.elem (onclick)
+		console.log("the new color is " + newColor);
+	}
+	GuidoNamespace.instanceFunction.prototype.switchBack = function(colorOverride) {
+		//function was called by a function tied to a DOM element, so 'this' refers to the global window
+		if (colorOverride) {
+			this.elem.style.color = colorOverride;
+		} else {
+			this.elem.style.color = this.origColor; 
+		}
+	}
+	
+	//******************************************************************
+})('I am a passed arg');
+
+console.log('In global: ' + foo); //I am global
+GuidoNamespace.staticFunction('Beer');
+//privateFunction(); //fails because it is not found
+
+var ln1 = new GuidoNamespace.instanceFunction(document.getElementById('line1'),"Hey, I was dynamically added. Click Me."); //'this' is set to global
+var ln2 = new GuidoNamespace.instanceFunction(document.getElementById('line2'),"Sweet, me too.");//'this is set to global
+document.getElementById('line1').style.backgroundColor = "lemonChiffon";
+
+//Notice this I'm setting behavior in the global area, not in the object definition
+ln1.elem.onclick = ln1.changeBkgdColor;  //Not able to pass any variables because this must be a pointer (to a function).
+
+//sillyGoose(); //fails because sillyGoose can't be found
+GuidoNamespace.crazyGoose();
+</script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

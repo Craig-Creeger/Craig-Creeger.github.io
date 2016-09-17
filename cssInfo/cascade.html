@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CSS Cascade</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>CSS Cascade</h1>
+<h2>Inheritance</h2>
+<p>Things like color, cursor, font properties, letter-spacing, line-height, list-style, text-align, text-indent, and visibility are inherited from the parent element. For example, if the font-size for a &lt;p&gt; is 12px and there is an &lt;a&gt; link in that paragraph, then it also will appear as 12px. Things like border, padding,  margin, and a whole lot more, are <strong>not</strong> inherited.</p>
+<h2>Cascade</h2>
+<p>The following text is from the W3C specification. The first line must be read slowly because it is the key to understanding how the page is styled. As we write CSS, we are specifying a <em>Selector</em> and then <em>Property/Value</em> pairs. The browser, however, applies <em>Values</em> to an <strong>element</strong> identified in the <em>Selector</em>.</p>
+<div class="callout"><p>To find the value for an element/property combination, user agents must apply the following sorting order:</p>
+	<ol>
+		<li>Find all declarations that apply to the element and property in question, for the target media type. Declarations apply if the associated selector matches the element in question and the target medium matches the media list on all @media rules containing the declaration and on all links on the path through which the style sheet was reached.</li>
+		<li> Sort according to importance (normal or important) and origin (author, user, or user agent). In ascending order of precedence:
+			<ol>
+				<li> user agent declarations</li>
+				<li> user normal declarations</li>
+				<li> author normal declarations</li>
+				<li> author important declarations</li>
+				<li> user important declarations</li>
+			</ol>
+		</li>
+		<li> Sort rules with the same importance and origin by specificity of selector: more specific selectors will override more general ones. Pseudo-elements and pseudo-classes are counted as normal elements and classes, respectively.</li>
+		<li> Finally, sort by order specified: if two declarations have the same weight, origin and specificity, the latter specified wins. Declarations in imported style sheets are considered to be before any declarations in the style sheet itself.</li>
+	</ol>
+<p> Apart from the &quot;!important&quot; setting on individual declarations, this strategy gives author's style sheets higher weight than those of the reader. User agents must give the user the ability to turn off the influence of specific author style sheets, e.g., through a pull-down menu.</p>
+</div>
+<p>While the W3C description is certainly accurate, it takes a lot of brain power to digest and remember it all. A practical summary reads more like (in descending order of importance):</p>
+<ol>
+	<li><span class="code">!important</span> values trump everything.</li>
+	<li>style attribute rules (<code>&lt;element style=&quot;...&quot;&gt;</code>)</li>
+	<li>id (#) selectors</li>
+	<li>class (.) selectors</li>
+	<li>standard tag (element) selectors</li>
+	<li>If there is still a tie, then the rule that appears last (i.e. closest to the target element) wins.</li>
+</ol>
+<p>The above list is an over-simplification and it is not entirely correct. For more information, check out the <a href="http://www.w3.org/TR/CSS2/cascade.html#cascade" rel="external">specification</a>.</p>
+<h2>Specificity</h2>
+<p>Each CSS property is given a specificity (how powerful the value is) when the browser styles the web page. There are four &quot;levels&quot; of power when determining the final specificity. Think of it like magic levels.</p>
+<ol>
+	<li>Style attributes (e.g. &lt;p style=&quot;color:red&quot;&gt;) is Dumbledore.</li>
+	<li>Id selectors (e.g. #unique { color:red; } ) are experienced wizards.</li>
+	<li>Class selectors (e.g. .special { color:red; } ) are Howarts students.</li>
+	<li>Standard tag selectors (e.g. p { color:red; } ) are muggles.</li>
+</ol>
+<p>Let’s look at some examples:</p>
+<table cellspacing="0" class="dataTable">
+	<tr>
+		<td valign="top" style="width:60%">In this example there are three tag selectors (muggles), namely div, article, and p. There is one class selector (Hogwarts students), no id’s, and no style attributes. This is often expressed in the format [0,0,1,3].</td>
+		<td valign="top"><pre class="prettyprint linenums">div article p.bookTitle {
+    font-weight:normal;
+}</pre></td>
+	</tr>
+	<tr>
+		<td valign="top">The specificity in this case is one id (wizard).		[0,1,0,0]</td>
+		<td valign="top"><pre class="prettyprint linenums">#bookOne {
+    font-weight:bold;
+}</pre></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>Let’s say our HTML is:</p>
+<pre class="prettyprint linenums">&lt;div&gt;
+  &lt;article&gt;
+    &lt;p id=&quot;bookOne&quot; class=&quot;bookTitle&quot;&gt;Harry Potter and the Sorcerer's Apprentice&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</pre>
+<p>We have a conflict for font-weight properties. On one hand, because the paragraph is a decendent of an article and div, and it has the class bookTitle, it should have a font-weight of normal. On the other hand, the paragraph also has an id of bookOne that gets the bold value. In this case, one experienced wizard is stronger than any number of Hogwarts students and muggles combined.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

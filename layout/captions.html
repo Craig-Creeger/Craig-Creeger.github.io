@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Photo and Figure Captions</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+figure {
+	float:right;
+	background-color:white;
+	padding:10px;
+	width:250px;
+	margin-left:1.5em;
+}
+figcaption {
+	font-size:smaller;
+	margin-top:.5em;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Photo and Figure Captions</h1>
+<h2>&lt;figure&gt; and &lt;figcaption&gt;</h2>
+<figure><img src="../plugins/AnythingSlider/demos/images/251356.jpg" width="250" height="250" alt="Mediterranean Bagel">
+	<figcaption>A delicious Mediterranean bagel with cherry tomatoes and basil.</figcaption>
+</figure>
+<p>There are two rarely used HTML tags that work wonderfully for captioning an image, video, or chart. They are <code>figure</code> and <code>figcaption</code>.</p>
+<p><em>Hint: When you want to <a href="../html/tables.html">caption a table</a> of data, use the &lt;caption&gt; tag instead.</em></p>
+<p>The HTML structure for the bagel photo is:</p>
+<pre>&lt;figure&gt;
+	&lt;img src=&quot;photo.jpg&quot;&gt;
+	&lt;figcaption&gt;A delicious&hellip;&lt;/figcaption&gt;
+&lt;/figure</pre>
+<p>You&rsquo;ll notice that the <code>&lt;figcaption&gt;</code> is <strong>inside</strong> the <code>&lt;figure&gt;</code> tag. There can be only one figcaption per figure, and it should be either the first element or last element inside the figure tag.</p>
+<p>I will leave the CSS styling as an exercise for you to complete. In the example above, my CSS is:</p>
+<pre>figure {
+	float:right; 
+	background-color:white; 
+	padding:10px;
+	width:250px; 
+	margin-left:1.5em;
+}
+figcaption {
+	font-size:smaller;
+	margin-top:.5em;
+}</pre>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+ 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

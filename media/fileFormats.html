@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Video Formats</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<script src="../SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css">
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Video Formats</h1>
+<p>See article &ldquo;<a href="audioVideo.html">Adding HTML5 Media</a>&rdquo; for instructions on how to add video to your web page.</p>
+<h2>Containers</h2>
+<p><a href="http://en.wikipedia.org/wiki/Comparison_of_container_formats" rel="external">This table</a> is a good summary of which codecs each container supports.</p>
+<p>Some containers are exclusive to audio:</p>
+<ul>
+<li>AIFF (IFF file format, widely used on Mac OS platform)</li>
+<li>WAV (RIFF file format, widely used on Windows platform)</li>
+<li>XMF (Extensible Music Format)</li>
+</ul>
+<p>Other containers are exclusive to still images:</p>
+<ul>
+<li>FITS (Flexible Image Transport System) still images, raw data, and associated metadata.</li>
+<li>TIFF (Tagged Image File Format) still images and associated metadata.</li>
+</ul>
+<p>Other flexible containers can hold many types of audio and video, as well as other media. The most popular multi-media containers are:</p>
+<ul>
+	<li><a href="#mp4">MP4</a> (standard audio and video container for the MPEG-4 multimedia portfolio, based on the ISO base media file format defined in MPEG-4 Part 12 and JPEG 2000 Part 12) which in turn was based on the QuickTime file format.</li>
+	<li><a href="#ogg">Ogg</a> (standard container for Xiph.org audio fomat Vorbis and video format Theora)</li>
+	<li><a href="#webm">WebM</a> (Google-sponsored audio-video format designed to provide royalty-free, open video compression for use with HTML5 video)</li>
+	<li><a href="#flash">Flash Video</a> (FLV, F4V) (container for video and audio from Adobe Systems)</li>
+	<li>QuickTime File Format (standard QuickTime video container from Apple Inc.)</li>
+	<li>AVI (the standard Microsoft Windows container, also based on RIFF)</li>
+	<li>3GP (used by many mobile phones; based on the ISO base media file format)</li>
+<li>MJ2 - Motion JPEG 2000 file format, based on the ISO base media file format which is defined in MPEG-4 Part 12 and JPEG 2000 Part 12</li>
+<li>MPEG program stream (standard container for MPEG-1 and MPEG-2 elementary streams on reasonably reliable media such as disks; used also on DVD-Video discs)</li>
+<li>MPEG-2 transport stream (a.k.a. MPEG-TS) (standard container for digital broadcasting and for transportation over unreliable media; used also on Blu-ray Disc video; typically contains multiple video and audio streams, and an electronic program guide)</li>
+<li>RM (RealMedia; standard container for RealVideo and RealAudio)</li>
+</ul>
+<h3><a name="mp4"></a>MPEG-4 Part 14 (*.mp4)</h3>
+<p>MPEG-4 Part 14 or MP4 (formally ISO/IEC 14496-14:2003) is a multimedia container format standard specified as a part of MPEG-4. It is most commonly used to store digital video and digital audio streams, especially those defined by MPEG, but can also be used to store other data such as subtitles and still images. Like most modern container formats, MPEG-4 Part 14 allows streaming over the Internet. A separate hint track is used to include streaming information in the file. The only official filename extension for MPEG-4 Part 14 files is .mp4.</p>
+<p>While the only official filename extension defined by the standard is .mp4, various filename extensions are commonly used to indicate intended content:</p>
+<ul>
+	<li> MPEG-4 files with audio and video generally use the standard .mp4 extension.</li>
+	<li>Audio-only MPEG-4 files generally have a .m4a extension. This is especially true of non-protected content.
+		<ul>
+			<li>MPEG-4 files with audio streams encrypted by FairPlay Digital Rights Management as were sold through the iTunes Store use the .m4p extension. iTunes Plus tracks, that the iTunes Store currently sells, are unencrypted and use .m4a accordingly.</li>
+		</ul>
+	</li>
+	</ul>
+	<p>Almost any kind of data can be embedded in MPEG-4 Part 14 files through private streams. The registered codecs for MPEG-4 Part 12-based files are published on the website of MP4 Registration authority (mp4ra.org),[22] but most of them are not widely supported by MP4 players. The widely-supported codecs and additional data streams are:</p>
+	<ul>
+		<li>Video: <a href="#h264">MPEG-4 Part 10 (H.264)</a> and <a href="#mpeg4_2">MPEG-4 Part 2</a><br>
+		Other compression formats are less used: MPEG-2 and MPEG-1</li>
+		<li>Audio: Advanced Audio Coding<br>
+			Also MPEG-4 Part 3 audio objects, such as Audio Lossless Coding (ALS), Scalable Lossless Coding (SLS), MP3, MPEG-1 Audio Layer II (MP2), MPEG-1 Audio Layer I (MP1), CELP, HVXC (speech), TwinVQ, Text To Speech Interface (TTSI) and Structured Audio Orchestra Language (SAOL)<br>
+		Other compression formats are less used: Apple Lossless</li>
+		<li>Subtitles: MPEG-4 Timed Text (also known as 3GPP Timed Text).<br>
+			Nero Digital uses DVD Video subtitles in MP4 files</li>
+	</ul>
+	<h4>Apple's (*.m4v) Container</h4>
+	<p>M4V is a file container format used by Apple's iTunes application. The M4V file format is a video file format developed by Apple and is very close to MP4 format. The differences are the optional Apple's DRM copyright protection, and the treatment of AC3 (Dolby Digital) audio which is not standardized for the MP4 container.</p>
+	<p>Apple uses M4V files to encode TV episodes, movies, and music videos in the iTunes Store. The copyright of M4V files may be protected by using Apple's FairPlay DRM copyright protection. To play a protected M4V file, the computer needs to be authorized (using iTunes) with the account that was used to purchase the video. However, unprotected M4V files without AC3 audio may be recognized and played by other video players by changing the file extension from &quot;.m4v&quot; to &quot;.mp4&quot;.</p>
+<h3><a name="ogg"></a>OGG (*.ogv)</h3>
+		<p>The Ogg container format can multiplex a number of independent streams for audio, video, text (such as subtitles), and metadata.</p>
+		<p>In the Ogg multimedia framework, <a href="#theora">Theora</a> provides a lossy video layer. The audio layer is most commonly provided by the music-oriented <a href="#vorbis">Vorbis</a> format but other options include the human speech compression codec Speex, the lossless audio compression codec FLAC, and OggPCM.</p>
+		<p>Before 2007, the .ogg filename extension was used for all files whose content used the Ogg container format. Since 2007, the Xiph.Org Foundation recommends that .ogg only be used for Ogg Vorbis audio files. The Xiph.Org Foundation decided to create a new set of file extensions and media types to describe different types of content such as .oga for audio only files, .ogv for video with or without sound (including Theora), and .ogx for multiplexed Ogg.</p>
+		<h3><a name="flash"></a>Flash Video (*.flv, *.f4v)</h3>
+		<p>Flash Video is a container file format used to deliver video over the Internet using Adobe Flash Player versions 6–11. Flash Video content may also be embedded within SWF files. There are two different video file formats known as Flash Video: FLV and F4V. The audio and video data within FLV files are encoded in the same way as they are within SWF files. The latter F4V file format is based on the ISO base media file format and is supported starting with Flash Player 9 update 3.[1][2] Both formats are supported in Adobe Flash Player and currently developed by Adobe Systems. FLV was originally developed by Macromedia.</p>
+		<p>Flash Video FLV files usually contain material encoded with codecs following the <strong>Sorenson Spark</strong> or On2 <strong>VP6</strong> video compression formats. The most recent public releases of Flash Player (collaboration between Adobe Systems and MainConcept) also support <strong>H.264 video</strong> and <strong>HE-AAC</strong> audio. All of these compression formats are currently restricted by patents.		</p>
+		<table class="dataTable">
+			<tr>
+				<td><em><strong>Container</strong></em></td>
+				<td><em><strong>Video formats</strong></em></td>
+				<td><em><strong>Audio formats</strong></em></td>
+			</tr>
+			<tr>
+				<td>FLV</td>
+				<td>On2 VP6, Sorenson Spark, Screen video, Screen video 2</td>
+				<td>MP3, ADPCM, Nellymoser, Speex, AAC</td>
+			</tr>
+			<tr>
+				<td>F4V</td>
+				<td>H.264</td>
+				<td>MP3, AAC</td>
+			</tr>
+		</table>
+<h3><a name="webm"></a>WebM (*.webm)</h3>
+	<p>A WebM file consists of <a href="#vp8">VP8</a> video and <a href="#vorbis">Vorbis</a> audio streams, in a container based on a profile of Matroska. The project releases WebM related software under a BSD license and all users are granted a worldwide, non-exclusive, no-charge, royalty-free patent license.</p>
+	<p>&nbsp;</p>
+	<h2>Video Formats</h2>
+		<h3><a name="mpeg4_2"></a>MPEG-4 Part 2</h3>
+		<p>MPEG-4 Part 2, MPEG-4 Visual (formally ISO/IEC 14496-2) is a video compression technology developed by MPEG. It belongs to the MPEG-4 ISO/IEC standards. It is a discrete cosine transform compression standard, similar to previous standards such as MPEG-1 and MPEG-2. Several popular codecs including <strong>DivX</strong>, <strong>Xvid</strong> and <strong>Nero Digital</strong> implement this standard.</p>
+		<h3><a name="vp8"></a>VP8</h3>
+		<p>VP8 is an open video compression format created by On2 Technologies, which was bought by Google in 2010.</p>
+		<p>In May 2010, after the purchase, Google has provided an almost irrevocable patent promise on its patents for implementing the VP8 format, and released a specification of the format under the Creative Commons Attribution 3.0 license. Google also released in 2010 libvpx, the reference implementation of VP8, under a BSD license.</p>
+		<h3><a name="h264"></a>MPEG-4 Part 10/H.264/AVC</h3>
+		<p>H.264/MPEG-4 Part 10 or AVC (Advanced Video Coding) is a standard for video compression, and is currently one of the most commonly used formats for the recording, compression, and distribution of high definition video. H.264 is perhaps best known as being one of the codec standards for Blu-ray Discs; all Blu-ray Disc players must be able to decode H.264. It is also widely used by streaming internet sources, such as videos from Vimeo, YouTube, and the iTunes Store, web software such as the Adobe Flash Player and Microsoft Silverlight.</p>
+		<p>Use H.264 High Profile for the best quality, or Baseline profile if you want the same video to be playable on mobile devices.</p>
+		<div id="h264Profiles" class="CollapsiblePanel">
+			<div class="CollapsiblePanelTab" tabindex="0">Profile Details</div>
+			<div class="CollapsiblePanelContent">
+			<p>The standard defines 18 sets of capabilities, which are referred to as profiles, targeting specific classes of applications.</p>
+				<p>Profiles for non-scalable 2D video applications include the following:</p>
+				<h4> Constrained Baseline Profile (CBP)</h4>
+				<p> Primarily for low-cost applications, this profile is most typically used in videoconferencing and mobile applications. It corresponds to the subset of features that are in common between the Baseline, Main, and High Profiles described below.</p>
+				<h4> Baseline Profile (BP)</h4>
+				<p> Primarily for low-cost applications that require additional data loss robustness, this profile is used in some videoconferencing and mobile applications. This profile includes all features that are supported in the Constrained Baseline Profile, plus three additional features that can be used for loss robustness (or for other purposes such as low-delay multi-point video stream compositing). The importance of this profile has faded somewhat since the definition of the Constrained Baseline Profile in 2009. All Constrained Baseline Profile bitstreams are also considered to be Baseline Profile bitstreams, as these two profiles share the same profile identifier code value.</p>
+				<h4> Main Profile (MP)</h4>
+				<p> This profile is used for standard-definition digital TV broadcasts that use the MPEG-4 format as defined in the DVB standard. It is not, however, used for high-definition television broadcasts, as the importance of this profile faded when the High Profile was developed in 2004 for that application.</p>
+				<h4>High Profile (HiP)</h4>
+				<p>The primary profile for broadcast and disc storage applications, particularly for high-definition television applications (for example, this is the profile adopted by the Blu-ray Disc storage format and the DVB HDTV broadcast service).</p>
+				<h5>Same info from another source</h5>
+				<p>Profiles are a series of feature sets aimed at different applications. While there are many profiles within the H.264 standard, the most commonly used profiles today are Baseline, Main, and High. It helps to understand the issue of efficiency at the cost of performance when choosing a profile. Profiles with more capabilities tend to achieve better quality for a given bit rate while consuming more resources to implement.<br>
+					Since these profiles are simply different sets of capabilities rather than options of a single linear setting (not to be confused with a low/mid/high quality setting), these can't be compared to one another on a continuous scale. The following descriptions of each profile provide only a relative comparison, since the complexity of the factors that make them either more efficient (and hard to handle) or less efficient (while being easy to compute)— together with the way each of their capabilities get utilized in various different scenarios on a given piece of video—can vary unpredictably. Which one of the profiles you should be using greatly depends on the application, and there is no overall winner.<br>
+					<strong>Baseline:</strong> This profile is generally targeted at light applications such as video conferencing or playback on mobile devices with limited processing power. It provides the least efficient compression among the three choices, and at the lowest CPU overhead on decoding.<br>
+					<strong>Main:</strong> This profile has more capabilities than Baseline, which generally translates to better efficiency; yet it comes at the cost of a relatively higher CPU overhead (though less than the High profile). This profile is usually used in medium-quality web video applications.<br>
+					<strong>High:</strong> This is the most efficient profile among the three. It has the most capabilities that pack more quality into a given bit rate, yet it is also the hardest to process because of these added operations. Though originally intended only for high-definition applications such as Blu-ray, this profile is increasingly becoming popular for web video applications as well due to the increase in the processing power available to the average user.</p>
+			</div>
+		</div>
+		<p>&nbsp;</p>
+<h3><a name="theora"></a>Theora (*.ogv)</h3>
+		<p>Theora is a free lossy video compression format. It is developed by the Xiph.Org Foundation and distributed without licensing fees alongside their other free and open media projects, including the Vorbis audio format and the Ogg container.</p>
+		<p>Theora is derived from the proprietary VP3 codec, released into the public domain by On2 Technologies. It is broadly comparable in design and bitrate efficiency to MPEG-4 Part 2, early versions of Windows Media Video, and RealVideo while lacking some of the features present in some of these other codecs.</p>
+<h2>Audio Formats</h2>
+<h3><a name="vorbis"></a>Vorbis (*.oga)</h3>
+<p>Vorbis is a free software / open source project headed by the Xiph.Org Foundation (formerly Xiphophorus company). The project produces an audio format specification and software implementation (codec) for lossy audio compression. Vorbis is most commonly used in conjunction with the Ogg container format and it is therefore often referred to as Ogg Vorbis.</p>
+<h3>(*.m4a)</h3>
+<h3>(*.aac)</h3>
+<h1>Key Factors for Creating Video</h1>
+<h2>Frame Rate</h2>
+<p>The frame rate is how many still images are displayed in the video to give the illusion of moving images. The human eye can be fooled to perceive such motion to be convincing enough at around 24 frames per second (the typical film frame rate). PAL (common in Europe and some parts of Asia) uses 25fps, while NTSC standard (used in the US and Japan, for example) uses 29.97fps. As frame rates get lower, the motion seems jittery, especially if the subject changes location in the frame rapidly. However, early CD-ROM–based video clips used frame rates as low as 15 to 10fps to play back video, and some subject matter such as computer screen capture tutorials could be experienced reasonably well at frame rates as low as 5fps. In contrast, computer gaming–specific display devices boast large frame rates such as 120fps. Finally, there is a growing trend among video content creators to mimic a &quot;cinematic feel&quot; using 24fps.</p>
+<h2>Pixel Aspect Ratio</h2>
+<p>While the image aspect ratio refers to the relative width to height proportion of an image (such as 16:9), the pixel aspect ratio refers to the proportional scale of each pixel in it. Certain traditional TV formats use non-square pixels. For example, with HDV (unlike full HDTV) images actually consist of 1440 × 1080 pixels. This image is then disproportionately stretched to a 1920 × 1080 screen area when played back on a HD-capable television.</p>
+<p>When you specifically select the F4V format, there is no setting to define the pixel aspect ratio (unlike the case when defining generic H.264 settings). This is because Flash Player performs best when the video contains square pixels, or a pixel aspect ratio of 1. Videos with non-square pixels take additional scaling (stretching) steps at playback, and the quality/performance/bit-rate compromises are not worth such additional processing. Since the pixel aspect ratio is going to be set as 1 when you choose F4V, you should make the image size reflect that change if your original source had a non square pixel value. For example, 1440 × 1080 HDV should be 1920 × 1080, because 1080 × (16/9) = 1920; and a 720 × 576 PAL DV wide screen corresponds to 1024 × 576 in square pixels: 576 × (16/9) = 1024.</p>
+<h2>Video bitrate mode: VBR versus CBR</h2>
+<p>VBR, or Variable Bit Rate encoding, allows you to define a general average value or target stream rate in conjunction with a maximum value. The idea behind this is to use efficient compression to maintain high quality while allowing for occasional spikes of data due to difficult-to-compress segments of video. Generally, VBR is more efficient compared to CBR, or Constant Bit Rate encoding, when it comes to packing a file with the maximum quality for a given amount of data storage overall. However, allowing for these unpredictable spikes of data to maintain a constant rate of image quality could result in interrupted playback if the spikes become too frequent or the maximum limit is set too high. Therefore, VBR is commonly used for progressive downloads and file-based video on the web. However, with current broadband services capable of bursting data to much higher rates than what they can maintain at a constant level, VBR maybe a viable option for streaming as well in some cases.</p>
+<p>CBR is traditionally used in streaming media and other applications where a constant predictable stream of data is essential. This predictability comes at a price of not letting H.264 use its adaptive compression capabilities to deliver constant quality to its fullest potential. CBR, in a way, trades consistency in quality to gain predictability in smooth playback without interruptions or pauses.</p>
+<p>Though the general rule says that VBR is for progressive downloads and CBR is for streaming media, experimenting with both may yield contradictory results in a given case. Therefore, it is important to experiment with your specific content in your specific environment.</p>
+<h2>Number of passes</h2>
+<p>This setting determines whether the video is encoded in just one pass (compression run) or if the encoder revisits the video from beginning to end a second time to find ways to pack the data even more. This can be applied to either CBR or VBR. The number of passes is one of those factors that can result in better &quot;packing&quot; while not having any impact on how easy or hard it is to unpack the video. Generally, two passes take almost twice as much encoding time, but result in relatively better quality-to-bit-rate efficiency. However, in most cases the doubling in encoding time doesn't get you twice the quality. Therefore, choose two-pass if you want the best possible quality at all costs since this added investment is only on the encoding side and not at the expense of added processing power at playback (unlike some other parameters that impact both the encoding and decoding). However, if you believe the slight increase in bit-rate economy is not worth the added time spent on encoding, you may choose one-pass. Again, experiment to establish what works best for your particular case.</p>
+<h2>Set key frame distance</h2>
+<p>Key frames are full frames directly derived from the original source without the use of references to other frames within the video. The key frame distance, or how often these key frames appear in the video, can affect how closely the encoded video resembles the original uncompressed source. The frequency of the key frames can also affect how well the video is &quot;scrub-able&quot;. Selecting this option lets you adjust this setting manually. Generally, the optimal key frame distance depends on the amount of motion in the video and the frame rate. Usually, it is set to one to three seconds, translated into frames using the frame rate. (For example, for a 30fps video, one second is 30 frames.)</p>
+<h2>Estimating a Good Bit-Rate to Use</h2>
+<p>Start by considering the factors that lead to needing higher bit rates to achieve a given level of quality:<br>
+	• number of pixels in each frame<br>
+	• number of frames per second<br>
+	• amount of motion in the image (low/mid/high)<br>
+	Calculating the amount of pixels per frame is easy: simply multiply the width by the height. For example, a 640 × 360 video has 640 × 360 = 230,400 pixels.<br>
+	<br>
+The frame rate is immediately known. In this example, assume it's 30fps. This should be the minimum frame rate at which the video is still acceptable (For instance, a computer screen capture demonstration need not use 30fps if only the mouse is moving.)</p>
+<p>Consider the amount of motion (call it &quot;motion rank&quot;). As a general rule, try to simplify it into three ranks: Low, Medium, High. To define these ranks in real-world terms:</p>
+<p>• Low motion is a video that has minimal movement. For example, a person talking in front of a camera without moving much while the camera itself and the background is not moving at all.<br>
+	• Medium motion would be some degree of movement, but in a more predictable and orderly manner, which means some relatively slow camera and subject movements, but not many scene changes or cuts or sudden snap camera movements or zooms where the entire picture changes into something completely different instantaneously.<br>
+• High motion would be something like the most challenging action movie trailer, where not only the movements are fast and unpredictable but the scenes also change very rapidly.</p>
+<p>To make this highly subjective yet crucial factor into a quantifiable number, try giving a multiplication factor to each rank. Since these ranks are not in a linear manner, I chose to give the following corresponding numbers to the ranks: Low = 1, Medium = 2, High = 4. (In other words, a video with a reasonable amount of movement is twice as hard to compress compared to one that has very little to no movement. An extremely fast and unpredictable video would be four times as hard to compress while maintaining the same level of quality.)</p>
+<p>Given this relative multiplier based on these factors, I sought to develop a base number from which these multipliers can produce real-world bit-rate estimates. After numerous experiments, I noticed a certain pattern of what could be considered a &quot;constant&quot; or base value (for most commonly used video frame-size and frame-rate ranges). When rounded off, that value is 0.07 bps per pixel, per frame, per motion rank value.</p>
+<p>In other words, to estimate the optimal H.264 bit rate value that would give what is considered &quot;good quality&quot; results for a given video, you could multiply the target pixel count by the frame rate; then multiply the result by a factor of 1, 2 or 4, depending on its motion rank; and then multiply that result by 0.07 to get the bit rate in bps (divide that by 1,000 to get a kbps estimate or by 1,000,000 to get a Mbps estimate).<br>
+Practical example</p>
+<p>1280 × 720 @24fps, medium motion (rank 2):<br>
+	1280 × 720 × 24 × 2 × 0.07 = 3,096,576 bps = ~ 3000 kbps</p>
+<p>If the motion is high (rank 4), it's about 6000 kbps.</p>
+<p>On the other hand, if the same clip is still usable at 5fps, and the motion is low:</p>
+<p>1280 × 720 × 5 × 1 × 0.07 = 32,256 bps = ~ 320 kbps</p>
+<p>A reduction in frame size can dramatically reduce the bit-rate requirements:</p>
+<p>640 × 360 × 5 × 1 × 0.07 = 80,640 bps = ~ 80 kbps</p>
+<p>This example shows how these factors could account for dramatic bit-rate differences among videos of the same frame size, yet containing different frame rates and degrees of motion.</p>
+<p>In case of CBR, a value close to this estimate can be used. In case of VBR, a value that is about 75% of the estimate can be used as a target and a value about 150% of it can be used as the maximum rate. This VBR gap greatly depends on the nature of the content and the ability to absorb the bit rate spikes in the target playback environment.</p>
+<script type="text/javascript">
+var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("h264Profiles", {contentIsOpen:false});
+</script>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

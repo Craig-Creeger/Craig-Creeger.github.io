@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Floated Elements</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+*zoom: 1;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Floated Elements</h1>
+<h2>Float Basics</h2>
+<p>Smashing Magazine has a very good <a href="http://coding.smashingmagazine.com/2009/10/19/the-mystery-of-css-float-property/" rel="external">article on how floats work</a>.</p>
+<div style="background-color:lawngreen; width:250px; padding:0 1em 0 0; float:left; margin:0 0 1em 0;">
+	<p>This box has been floated and with margin:0;</p>
+	<p>The experiment is to find out what happens with surrounding text.</p>
+</div>
+<p><strong>This is a standard paragraph.</strong> Notice how this line of text is not on the same horizon as the first line of text in the green box. It's a common problem, solved by adding some top padding to this paragraph. e.g. <code>&lt;p style=&quot;padding-top:.8em&quot;&gt;</code></p>
+<br style="clear:both;">
+<div style="background-color:rgba(0,255,0,.7); width:350px; padding:0 1em 0 0; float:left; margin:0;">
+	<p>This box has been floated and with <code>margin:0;</code></p>
+	<p>The experiment is to find out what happens with surrounding text.</p>
+	<p>The bottom line: The easiest way to push things away from a floated item is to  add some margin to the  <em>floated</em> element. Other hacks are to add some left margin to the non-floated content that is &gt;= to the float&rsquo;s width (like the last example) or to place another floated container next to it.</p>
+</div>
+<p style="background-color:black; color:white;">Now that we&rsquo;ve fixed this line's alignment, it is time to turn our attention to spacing it away from the floated element.<code></code> I made the background of this paragraph black to show that it actually starts, not flush with the right side of the green box, but rather all the way on the left side of the page.</p>
+<p style="margin-left:50px;background-color:black;color:white;">This one has <code style="color:gainsboro;">margin-left:50px;</code></p>
+<p style="padding-left:50px;background-color:black;color:white;">This one has <code style="color:gainsboro;">padding-left:50px;</code></p>
+<p style="margin-left:365px;background-color:black;color:white;">This one has <code style="color:gainsboro;">margin-left:365px;</code></p>
+<br style="clear:both;">
+<div style="background-color:rgba(0,255,0,.5); width:350px; padding:0 1em 0 0; float:left; margin:1em 1em 0 0;">
+	<p>This box has been floated and it has <code>margin:1em 1em 0 0;</code></p>
+	<p>This experiment is to find out what happens with surrounding lists.</p>
+	<p>Pay attention to the location of the list marker (bullet).</p>
+</div>
+<p style="background-color:white; padding-top:1em">Standard text is now pushed away from the float, but content with negative margins or list markers can give you issues.</p>
+<ul class="test2">
+	<li>You can see that the bullet looks to be a bit close to the floated item. Typically you will see the bullets flush with, say the text directly above this list, or even inset some more.</li>
+	<li>From the previous experiments above, we can see that margin and padding are ignored for elements around a floated item, so what are we to do?</li>
+	<li>Take a look at the <a href="../typography/lists.html">Lists</a> page for the solution.</li>
+</ul>
+<h2>Clearfix</h2>
+<p>The clearfix hack is used to fix the problem shown below.</p>
+<div style="background-color:lemonchiffon; border: medium solid hotpink; padding-right:1em;">
+	<article style="background-color:lawngreen; width:40%; padding:0 1em; float:left; margin-right:2em; margin-bottom:1em;">
+		<p>This is a floated area inside of a  <strong><em>non-floated</em></strong> <code>div</code>. Life is good if this content is shorter than the other content (in the yellow area). However, when this floated content is taller,  this box sticks out below the containing <code>div</code>.</p>
+	</article>
+	<p>This paragraph is inside the containing, non-floated <code>div</code>. Notice how the floated box is sticking out below the containing <code>div</code>. Use the ClearFix hack to resolve this problem.</p>
+</div>
+<p style="clear:left">In the example above, the page structure is:</p>
+<pre class="prettyprint linenums">&lt;div style=&quot;background-color:lemonChiffon; border: medium solid hotpink&quot;&gt; &lt;!-- non-floated DIV --&gt;
+	&lt;article style=&quot;float:left; background-color:lawnGreen; width:250px;&quot;&gt;
+		&lt;p&gt;This is a floated area inside…&lt;/p&gt;
+	&lt;/article&gt;
+	&lt;p&gt;This paragraph is inside the containing, non-floated…&lt;/p&gt;
+&lt;/div&gt;</pre>
+<hr>
+<div class="callout"><p>To fix it, apply class "clearfix" to the containing <code>div</code>. The CSS for clearfix is:</p>
+<p class="code">.clearfix:before, .clearfix:after { content: &quot;&quot;; display: table; }</p>
+<p class="code">.clearfix:after { clear: both; }</p>
+<p class="code">.clearfix { *zoom: 1; }</p>
+</div>
+<p>After the clearfix hack is applied, the float is “contained” as demonstrated below.</p>
+<div style="background-color:lemonchiffon; border: medium solid hotpink; padding-right:1em;" class="clearfix">
+	<article style="background-color:lawngreen; width:40%; padding:0 1em; float:left; margin-right:2em;">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis sem ut ipsum volutpat feugiat a nec nisl. Phasellus tincidunt elit eget mauris tempus tristique vitae id magna. Nulla sit amet tortor nisi, sit amet congue justo. Aenean pretium sodales quam.</p>
+	</article>
+	<p>This paragraph is inside the containing, non-floated div. Now that <code>clearfix</code> has been applied, you can see that the yellow background from the containing <code>div</code> wraps all the content inside the <code>div</code>.</p>
+</div>
+<pre class="prettyprint linenums" style="margin-top:1em;">&lt;div <strong>class=&quot;clearfix&quot;</strong> style=&quot;background-color:lemonChiffon; border: medium solid hotpink&quot;&gt;
+	&lt;article style=&quot;float:left; background-color:lawnGreen; width:250px;&quot;&gt;
+		&lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+	&lt;/article&gt;
+	&lt;p&gt;This paragraph is inside the containing, non-floated...&lt;/p&gt;
+&lt;/div&gt;</pre>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript">
+</script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

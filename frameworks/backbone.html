@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Backbone.js</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.code1 {
+	font-family:"Lucida Console", Monaco, monospace;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Backbone.js </h1>
+<h2>Models</h2>
+<p>Their purpose is to hold all the attributes of a logical piece of information.</p>
+<h3>Basic Interactions</h3>
+<ul>
+	<li>To edit an attribute, call <code>.set({&quot;attr name&quot;: value});</code></li>
+	<li>To retrieve an attribute, call <code>.get(&quot;attr name&quot;);</code></li>
+	<li><code>save()</code> will call validate() if it is present and then sync to the database if it passes validation.</li>
+	<li><code>destroy()</code> will delete the model from the database and fire the &quot;destroy&quot; event.</li>
+</ul>
+<h3>Hints</h3>
+<p><em>Computed Values:</em> Backbone really wants all of the attributes persisted to the database. If you have a read-only, computed attribute, then make it a function of the model. To pass the computed value to a view, you can merge the attributes with the function. For example,<code> _.extend({'duration': this.model.computedField()}, this.model.toJSON())</code></p>
+<p><em>Validation:</em> Validation can happen in a few locations:</p>
+<ul>
+	<li>Right in the DOM (onBlur, onChange, etc.) for user-entered fields.</li>
+	<li>In the validation() function on the model.</li>
+	<li>On the server.</li>
+</ul>
+<p>The concept of optimistic changes to a collection makes Backbone validation problematic. If validation fails, the view is already updated with bad data, so you will then need to back-out those changes if the “invalid” event gets fired. This seems like a lot of back and forth and possibility for conflicts.It is probably best to perform validatation right before the save, which is the default behavior of Backbone (vs. manually validating during a <code>set({key:value},{validate:true})</code>).</p>
+<h2>Collections</h2>
+<p>Collections are a list of models. You can fill a collection using fetch or reset. </p>
+<h3>Basic Interactions</h3>
+<ul>
+	<li>set() will update a model in the collection</li>
+	<li>get() will return a model from the collection</li>
+	<li>fetch() retrieves the default models from the database and fills the collection</li>
+	<li>reset([models]) loads the passed models into the collection</li>
+</ul>
+<h3>Disconnected Collections</h3>
+<p>Most of the time the models will get loaded from the database via Collection.fetch() or some other means, but it is also possible to simply work with transient data that exists only in memory. Simply shove models into the collection when you create it. Ex:</p>
+<pre>var myCollection = new App.MyCollection([
+	{id: 1, name: 'alice'},
+	{id: 2, name: 'bob'},
+	{id: 3, name: 'craig'}
+]);</pre>
+<h2>Views</h2>
+<p>Are responsible for DOM display and interaction. Data will be passed in. Keyboard and mouse events are tied to that DOM, and listeners are created to respond to other actions in the app.</p>
+<p>Your <strong>goal is to have views automatically update themselves</strong> when a model is created, updated, or destroyed. This is achieved by listening to events that get fired by the model attached to the view. For example: </p>
+<pre class="prettyprint linenums">app.MyView = Backbone.View.extend({
+	initialize: function() {
+		//this.model is set when the view is instantiated (it is passed in).
+		this.listenTo(this.model, 'change', this.render);
+		this.listenTo(this.model, 'destroy', this.remove);
+	},
+	...</pre>
+<h3>Basic Interactions</h3>
+<ul>
+	<li><code>render()</code> The job of render is to shove some HTML into the view’s <code>el</code> (or <code>$el</code>) property             and then return the entire view. If you specify the el when you create the view, then you can render the view by simply calling <code>view.render()</code>. If you left el blank, then you will need to do: <code>$('#yourContainer').html(view.render().el);</code></li>
+</ul>
+<h2>Events</h2>
+<p>Most of your event hooks ups are going to happen inside a view (and most inside your main AppView).</p>
+<p>Use the .on() syntax when binding a callback to this object's events.</p>
+<p>Use the this.listenTo('otherObject', event, callback) syntax when working with a different object. </p>
+<h3>Built-In Events</h3>
+<table class="dataTable">
+	<thead>
+		<tr>
+			<th>Model</th>
+			<th>Collection</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>invalid</td>
+			<td>invalid</td>
+			<td>A model’s validation failed on the server</td>
+		</tr>
+		<tr>
+			<td>change</td>
+			<td>change</td>
+			<td>A model's attributes have changed</td>
+		</tr>
+		<tr>
+			<td>destroy</td>
+			<td>destroy</td>
+			<td>A model has been removed from the server</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>add</td>
+			<td>A model was added to collection</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>remove</td>
+			<td>A model has been removed from collection</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>update</td>
+			<td>Any number of models have been added or removed from the collection</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>reset</td>
+			<td>Collection was cleared out (any probably rebuilt)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>sort</td>
+			<td>Has been resorted</td>
+		</tr>
+		<tr>
+			<td>request</td>
+			<td>request</td>
+			<td>Started a request to the server</td>
+		</tr>
+		<tr>
+			<td>sync</td>
+			<td>sync</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>error</td>
+			<td>error</td>
+			<td>Request to server failed</td>
+		</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+<h2>Learning Resources</h2>
+<p>There is a fair amount of documentation for Backbone, a lot of it complete crap. I wouldn&rsquo;t call these resources great, but they are best I&rsquo;ve come across so far:</p>
+<ol>
+	<li><a href="http://addyosmani.github.io/backbone-fundamentals/" target="external">Developing Backbone.js Applications</a> by Addy Osmani</li>
+	<li><a href="http://pragmatic-backbone.com" target="external">Pragmatic Backbone</a> — A series of Backbone opinions</li>
+</ol>
+<hr>
+<p>This tutorial from Christophe Coenraets is perfect if you want to learn how to use Backbone with a PHP/MySQL backend using the Slim Framework for PHP.</p>
+<ul>
+	<li><a href="http://coenraets.org/blog/2011/12/backbone-js-wine-cellar-tutorial-part-1-getting-started/" rel="external">http://coenraets.org/blog/2011/12/backbone-js-wine-cellar-tutorial-part-1-getting-started/</a></li>
+</ul>
+<p>and building my own REST interface with help from this:</p>
+<ul>
+	<li><a href="http://www.gen-x-design.com/archives/create-a-rest-api-with-php/" rel="external">http://www.gen-x-design.com/archives/create-a-rest-api-with-php/</a></li>
+</ul>
+<p>These are quite good, too.</p>
+<ul>
+	<li><a href="http://www.ibm.com/developerworks/library/wa-backbonejs/index.html" rel="external">Getting started with Backbone</a> from IBM developerWorks</li>
+	<li><a href="http://adrianmejia.com/blog/2012/09/11/backbone-dot-js-for-absolute-beginners-getting-started/" rel="external">Backbone.js for Absolute Beginners</a> by Adrian Mejia</li>
+	<li>ToDo example <a href="http://documentcloud.github.com/backbone/docs/todos.html" rel="external">description</a></li>
+	<li><a href="http://coenraets.org/blog/2011/12/restful-services-with-jquery-php-and-the-slim-framework/" rel="external">http://coenraets.org/blog/2011/12/restful-services-with-jquery-php-and-the-slim-framework/</a></li>
+</ul>
+<p>Here are more lists of resources:</p>
+<ul>
+	<li><a href="http://elegantcode.com/2012/01/23/resources-for-getting-started-with-backbone-js/" rel="external">elegantcode.com</a></li>
+	<li><a href="http://movableapp.com/2012/06/backbonejs-by-examples/" rel="external">MoveableApp</a></li>
+	<li><a href="http://www.quora.com/Backbone-js-1/What-is-the-best-tutorial-or-book-for-Backbone-js" rel="external">Quora</a></li>
+	<li><a href="http://news.ycombinator.com/item?id=4434553" rel="external">HackerNews</a></li>
+	<li><a href="http://aaronhardy.com/javascript/javascript-architecture-backbone-js-events/" rel="external">Aaron Hardy</a></li>
+	<li><a href="https://speakerdeck.com/jcarouth/micro-framework-and-javascript-applications" rel="external">https://speakerdeck.com/jcarouth/micro-framework-and-javascript-applications</a></li>
+</ul>
+<h3>Technology Articles</h3>
+<p><a href="http://www.ibm.com/developerworks/webservices/library/ws-restful/" rel="external">RESTful Web Services</a> article from IBM DeveloperWorks.</p>
+<h2>REST Set-up with Slim/PHP/MySQL for Backbone</h2>
+<h3>MySQL</h3>
+<p>Obviously, you need your database up and running. The MAMP on OSX connection is:</p>
+<pre>function getConnection() {
+  $dbhost=&quot;localhost&quot;;
+  $dbuser=&quot;root&quot;;
+  $dbpass=&quot;root&quot;;
+  $dbname=&quot;PxPro&quot;; //Your database name here
+  $dbh = new PDO(&quot;mysql:host=$dbhost;dbname=$dbname&quot;, $dbuser, $dbpass); 
+  $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  return $dbh;
+}</pre>
+<p>The above function is actually located in Slim&rsquo;s <code>index.php</code> page. Which is to say, make sure the correct connection info is specified in Slim&rsquo;s <code>index.php</code> page.</p>
+<p>Backbone makes the assumption that every table has a primary key column called &quot;id&quot;. You can tell it to use another similar type of column (auto-increment) with idAttribute.</p>
+<h3>Slim</h3>
+<p>Put the Slim directory inside folder <code>api</code>. That same folder will contain Slim&rsquo;s <code>index.php</code> file and a .htaccess file. The .htaccess file is a critical bit of magic that allows Slim to work. It tells Apache to rewrite the URL to Slim&rsquo;s <code>index.php</code> if the file requested is not found (which, of course, is why those files had better not exist!).</p>
+<h3>Backbone</h3>
+<p>When setting the url and urlRoot properties, keep in mind that it is a relative address to the <code>api</code> folder from your application's HTML page. Also, include the name of the Slim route (in this case, <code>/airplane</code>). That same route must exist in Slim&rsquo;s <code>index.php</code> file and there should not be an actual directory/file called <code>airplane</code> inside the <code>api</code> folder because Apache's rewrite rule states &ldquo;if no file with that name exists, then call Slim&rsquo;s <code>index.php</code>&rdquo;. This is what we want; Slim&rsquo;s <code>index.php</code> should be processing <em>all</em> data requests.</p>
+<pre>App.Plane = Backbone.Model.extend({
+ &nbsp;&nbsp;&nbsp;&nbsp;urlRoot : &quot;../api/airplane&quot;
+ });
+ 
+App.Planes = Backbone.Collection.extend({
+ &nbsp;&nbsp;&nbsp;&nbsp;model : App.Plane,
+ &nbsp;&nbsp;&nbsp;&nbsp;url : &quot;../api/airplane&quot;
+ });</pre>
+<p>Another way to think of this is, urlRoot and url are mapping data access functions to a physical location on the web server. If we were NOT using Slim (say you are writing your own REST interface from scratch) then you very well may have actual files located there. e.g. <code>http://myDomain.com/api/airplane/index.php</code></p>
+<h3>Backbone Routes vs. Slim Routes</h3>
+<p>These strings can look identical, therefore it is important (and confusing!) to understand that they are completely separate and serve different purposes.</p>
+<h4>Backbone Routes</h4>
+<p>Backbone Routes are requested from the web server as a URL to your webpage (say, <span style="color:#060">http://myDomain.com/index.html</span>) plus a fragment identifier (say, <span style="color:darkred">#/plane/15</span>).</p>
+<p style="font-size:1.5em; padding-left:2em; color:#060">http://myDomain.com/index.html<span style="color:darkred">#/plane/15</span></p>
+<p>In Backbone, you would define the above route as:</p>
+<pre>var <span style="background-color:yellow">AppRouter</span> = Backbone.Router.extend({
+&nbsp;&nbsp;routes:{
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;plane/:id&quot; : <span style="background-color:palegreen">function</span>(id) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//read a specific airplane
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;}
+});</pre>
+<p>Don't make this more complicated than it deserves - all you are doing is requesting your index page. Tthe page is loaded by your browser, your Javascript code starts running, and it will hit the line:</p>
+<pre>var app = new <span style="background-color:yellow">AppRouter</span>();</pre>
+<p>which then inspects the fragment identifier (<span style="color:darkred">#/model/15</span>), and finally kicks off the <span style="background-color:palegreen">function</span>().</p>
+<h4>Slim Routes</h4>
+<p>The reason I am using Slim in this project is because it's little trick of magic is to execute a PHP function you tell it to, depending on the URL requested by your users (or more likely, Backbone). For example, if Backbone requests from the webserver <code>http://myDomain.com/api/airplane/15</code>, Apache will, of course try to find the default file (index.html) at that location. Namely, <code>http://myDomain.com/api/airplane/15/index.html</code>. This file does not, and should not exist. Why? Because we are tricking Apache into responding with Slim&rsquo;s <code>index.php</code> file through the use of Apache's RewriteEngine.</p>
+<p>So, we are requesting (via  the HTTP <em>GET</em> method) <code>http://myDomain.com/api/airplane/15</code>. Instead, <code>http://myDomain.com/api/index.php</code> is called. That file contains and executes:</p>
+<pre class="prettyprint linenums">$app = new Slim();
+$app-&gt;get('/airplane/:id', 'getSpecificAirplane');
+<span style="background-color:papayawhip;">$app-&gt;run();</span>
+ 
+function getSpecificAirplane($id) {
+ 	$sql = &quot;select * FROM modelAirplanes Where planeId=$id ORDER BY name&quot;;
+ 	try {
+ 		$db = getConnection();
+ 		$stmt = $db-&gt;query($sql); 
+ 		$rst = $stmt-&gt;fetchAll(PDO::FETCH_OBJ);
+ 		$db = null;
+ 		echo json_encode($rst);
+ 	} catch(PDOException $e) {
+ 		echo '{&quot;error&quot;:{&quot;text&quot;:'. $e-&gt;getMessage() .'}}'; 
+ 	}
+}</pre>
+<p>When PHP hits <span style="background-color:papayawhip;"><code>$app-&gt;run();</code></span> it will inspect the URL that was actually called, try to find a match (line two above), and then call the appropriate function (getSpecificAirplane in this case).</p>
+<h2>Key properties of Backbone objects</h2>
+<table class="dataTable">
+	<tr>
+		<td>Views</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Properties</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>el</td>
+		<td>The DOM object that is the target of the view. Can be passed as initialization option.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>$el</td>
+		<td>Automatic jQuery reference to el</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>events</td>
+		<td><p>A map of listeners to functions. Ex:</p>
+			<p class="code1">events:{'keypress #myTextbox':'saveOnEnter'}</p></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>model</td>
+		<td>Can be passed as initialization option.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>collection</td>
+		<td>Can be passed as initialization option.</td>
+	</tr>
+	<tr>
+		<td>Methods</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>en</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Collection</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>create</td>
+		<td>Convenience to create a new instance of a model within a collection. Equivalent to instantiating a model with a hash of attributes, saving the model to the server, and adding the model to the set after being successfully created.</td>
+	</tr>
+</table>
+<h2>Common Patterns</h2>
+<p>Views listen to their model&rsquo;s &ldquo;change&rdquo; event, then re-render themselves.</p>
+<p>Views listen to changes in their editable fields, and then call the save method on the model. i.e. </p>
+<pre>app.MyView = Backbone.View.extend({
+
+initialize: function(){
+	this.model.on('change', this.render, this);
+},
+events: {
+	'click #saveBtn' : 'saveRec'
+},
+saveRec: function(){
+	var value = this.input.val().trim();
+	if(value) {
+		this.model.save({title: value});
+	}
+}
+
+});</pre>
+<p>In the background, the save() function delegates to Backbone.sync, which is the component in charge of making RESTful requests, using the jQuery function $.ajax() by default. Because REST style architecture is involved, each Create, Read, Update, or Delete (CRUD) action is associated with a different type of HTTP request (POST, GET, PUT, DELETE). The first time the model object is saved, a POST request is used and an identifier ID is created. For subsequent attempts to send the object to the server, a PUT request is used.</p>
+<p> When a model needs to be retrieved from the server, a Read action is requested and an Ajax GET request is used. This type of request uses the fetch() method. To determine the location on the server where the model data is pushed or pulled from:</p>
+<ul>
+	<li> If the model belongs to a collection, the url attribute from a collection object will be the base of the location and the model ID (not the cid) will be appended to complete the full URL</li>
+	<li> If the model is not inside a collection, the urlroot attribute of the model is used as the base of the location</li>
+</ul>
+<!-- InstanceEndEditable -->
+<footer>
+	<hr>
+	<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a> </p>
+	<p style="text-align:right; font-size:smaller;">Last updated on 
+		<!-- #BeginDate format:Am1 -->September 17, 2016<!-- #EndDate --></p>
+	<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+	<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script> 
+<script type="text/javascript" src="../js/prettify/prettify.js"></script> 
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable --> 
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd -->
+</html>

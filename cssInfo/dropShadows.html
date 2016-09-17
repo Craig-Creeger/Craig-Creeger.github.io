@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Drop Shadows on Elements</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+#apDiv1 {
+	padding:1em;
+	text-align:center;
+	left:363px;
+	top:225px;
+	width:316px;
+	height:53px;
+	box-shadow: 6px 10px black, inset 40px -20px #FF0;
+	border: thin solid #988C71;
+	margin-bottom:2em;
+}
+#apDiv2 {
+	padding:1em;
+	text-align:center;
+	left:364px;
+	top:325px;
+	width:316px;
+	height:53px;
+	box-shadow: 5px 5px 5px #988C71;
+	border: thin solid #988C71;
+	margin-bottom:2em;
+}
+#apDiv3 {
+	padding:1em;
+	text-align:center;
+	left:209px;
+	top:436px;
+	width:471px;
+	height:53px;
+	box-shadow: 0px 0px 10px 5px rgba(0,64,0,0.3) inset;
+	border: thin solid #0F0;
+	margin-bottom:2em;
+}
+#apDiv4 {
+	padding:1em;
+	text-align:center;
+	left:209px;
+	top:436px;
+	width:471px;
+	height:53px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+	border: thin solid #008;
+	margin-bottom:2em;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Drop Shadows on Elements</h1>
+<h2>box-shadow</h2>
+<p>Note: It is possible to put a <a href="../typography/text-shadow.html">drop shadow on your text</a>.</p>
+<p><a href="http://css3please.com/" rel="external">CSS3, Please!</a> has a good interactive way of testing this property. The CSS property box-shadow will allow you to put a drop shadow on any block element.</p>
+<table cellspacing="0">
+	<tr>
+		<td valign="top"><p>The value list takes the parameters:</p>
+<ul>
+	<li> x-distance (required)</li>
+	<li>y-distance (required)</li>
+	<li>blur (integer, optional)</li>
+	<li>spread (integer, optional)</li>
+	<li>color</li>
+	<li>inset (boolean)</li>
+</ul>
+</td>
+		<td><div id="apDiv1"> box-shadow:6px 10px black<br>
+inset 40px -20px #FF0;</div>
+	<div id="apDiv2"> box-shadow: 5px 5px 5px #988C71;</div>
+	<div id="apDiv3"> box-shadow: 0px 0px 10px 5px rgba(0,64,0,0.3) inset;</div>
+	<div id="apDiv4"> 
+		<p>A typical gray shadow would use this:</p>
+		<p>box-shadow: 5px 5px 10px rgba(0,0,0,0.25);</p>
+	</div>
+</td>
+	</tr>
+</table>
+<p>Notice that it is possible to specify multiple shadows (as shown in the first box). Also, for IE you will need to have border-collapse set to &quot;separate&quot;.</p>
+<h2>Advanced Shadows</h2>
+<p>Using nothing more than some tricky CSS you can create some amazing shadows right in the browser (no need for images). Check out the <a href="http://nicolasgallagher.com/css-drop-shadows-without-images/demo/" rel="external">demo and article</a>.&nbsp;&nbsp;&nbsp; <span style="font-size:smaller;">I&rsquo;ve saved a copy <a href="advanced-shadows.html">here</a>.</span></p>
+<p>What makes this technique so awesome is the boxes, with their shadows, can be dynamically sized (whereas an image is going to be a fixed size, or at the very least scales non-proporionately.)</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

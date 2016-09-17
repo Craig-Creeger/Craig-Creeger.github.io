@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Advanced Typography</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+p {
+	text-rendering: speed;
+}
+.nudgeUp {
+	position:relative;
+	top:-.1em;
+}
+.superscript {
+	position:relative;
+	top:-0.5em;
+	font-size:0.8em;
+}
+.subscript {
+	position:relative;
+	top:0.4em;
+	font-size:0.8em;
+}
+.smallCap {
+	font-variant:small-caps;
+}
+.huge {
+	font-size:3em;
+	color:#030;
+	position:relative;
+	top:0.3em;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Advanced Typography</h1>
+<h2 id="hierarchy">Typographic Hierarchy</h2>
+<p>ThinkingWithType has an excellent <a href="http://www.thinkingwithtype.com/contents/text/#Hierarchy" rel="external">description of typographic hierarchy</a>; it is not specific to the web, but rather gives a definition in general terms.</p>
+<h3>Applying it to the Web</h3>
+<p>To apply that to the web, we have a few tags at our disposal; namely <code>h1, h2, h3, h4, h5, h6</code>, and <code>p</code>. On this page, the &quot;Advanced Typography&quot; title at the top is an <code>&lt;h1&gt;</code> tag, the &quot;Typographic Hierarchy&quot; is an <code>&lt;h2&gt;</code>, and &quot;Applying to the Web&quot; is an <code>&lt;h3&gt;</code>. This is not rocket science - don't make it any more confusing than it needs to be. The key is to remember how you are using the tags on your site. For example, for this website the first line of nearly every page is the title, which I'm styling with an <code>&lt;h1&gt;</code> tag.</p>
+<h2>Super and subscripts</h2>
+<p>The CSS route is to shift the baseline using <code>vertical-align:super;</code> or <code>vertical-align:sub;</code></p>
+<p style="line-height:1; font-size:larger;">Sample line one<br>
+Ex: 15<span style="vertical-align:super;">2</span> H<span style=" vertical-align:sub">2</span>O<br>
+Sample line three<br>
+Sample line four</p>
+<p>The problem, however is the line height will increase and you will have an unsightly gap between adjacent lines (more noticable when using tight leading). A better method is relative positioning with a class such as:</p>
+<pre style="float:left; margin-right:3em;padding-right:2em; border-right:solid thin black;">.superscript {
+	position:relative;
+	top:-0.5em;
+	font-size:0.8em;
+}
+</pre>
+<pre>.subscript {
+	position:relative;
+	top:0.4em;
+	font-size:0.8em;
+}
+</pre>
+<p style="line-height:1; float:left; margin-right:3em;">Sample line one<br>
+	Ex: 15<span class="superscript">2</span> H<span class="subscript">2</span>O<br>
+Sample line three
+</p>
+<p style="font-size:smaller;font-style:italic;">Yes, this will suffer from line spacing issues, too, but only if the font size of your super or subscripted characters is larger than the surrounding text.</p>
+<h2>Parenthesis and Dashes with Numbers</h2>
+<p> Paranthesis are designed for use with lower-case letters. See (here) how nicely they are vertically balanced. If they are used with, say a phone number then things look worse.</p>
+<p class="leftJustified" style="font-size:3em; line-height:1;">(555)&nbsp;123&#x2011;6567<span style="font-size:1rem;">original</span></p>
+<p class="leftJustified" style="font-size:3em; line-height:1;"><span class="nudgeUp">(</span>555<span class="nudgeUp">)</span>&nbsp;123<span class="nudgeUp">&#x2011;</span>6567<span style="font-size:1rem;">fixed</span></p>
+<p>Notice that the parenthesis and dash are too low in the first phone number. You can fix it by wrapping the parenthesis and dash in a span and applying the nudgeUp class.</p>
+<p class="code">.nudgeUp {<br>
+	&nbsp;&nbsp;&nbsp;position:relative;<br>
+	&nbsp;&nbsp;&nbsp;top:-.1em;</p>
+<p class="code">}</p>
+<h2 id="quotes">Typographer&rsquo;s Quotes</h2>
+<h3>Hanging Quotes</h3>
+<p style="font-size:2em;"><span style="margin-left:-.5em;">&ldquo;</span>Oh my god, this looks, like, way better.&rdquo; Because the initial quote is hanging outside the left margin.</p>
+<p class="leftJustified">This was created with: <code>&lt;p&gt;&lt;span style=&quot;margin-left:-.5em;&quot;&gt;&amp;ldquo;&lt;/span&gt;Oh my god...</code></p>
+<p>Another way to create  hanging punctuation is via the <a href="textIndent.html">CSS property text-indent</a>. I think either method is equally valid.</p>
+<h3 id="quoteMarks">Prime vs. Quotes</h3>
+<p>Straight (prime) quotes should be used for feet and inches. Example: </p>
+<p>My boat is 24&prime; 9&Prime; long.</p>
+<p class="code">My boat is 24&amp;prime; 9&amp;Prime; long.</p>
+<p>Curly quotes are created by:</p>
+<pre><span style="color:black; text-decoration:underline">Char= Entity  = Keyboard shortcut</span> (Mac only)
+ &lsquo;  = &amp;lsquo; = Opt ]
+ &rsquo;  = &amp;rsquo; = Opt Shift ]
+ &ldquo;  = &amp;ldquo; = Opt [
+ &rdquo;  = &amp;rdquo; = Opt Shift [
+</pre>
+<p>Because you can directly type the quotes marks with the keyboard doesn&rsquo;t mean you should. Dreamweaver templates have a problem copying those values over; it&rsquo;s best to use the Entity values in your code instead.</p>
+<h3>Curly quotes vs. straight quotes</h3>
+<p style="margin-top:-2em;"><span class="huge">&ldquo;</span>Curly<span class="huge">&rdquo;</span> (a.k.a. typographers<span class="huge">&rsquo;</span> or book) quotes should be used for the apostrophy and for quoted material.</p>
+<p>Your web visitors should <strong>never</strong> see the single or double <em>keyboard quote marks</em> on your pages. That is reserved for programming languages like JavaScript, PHP, etc. I suppose the one other exception would be ditto marks.</p>
+<h2>Others</h2>
+<p>On a web page, always use the Entity or Hex codes instead of typing these special characters. You’ll run into problems when you need to copy/paste or using them in a Dreamweaver template.</p>
+<table class="dataTable">
+	<tr>
+		<th scope="col">Name</th>
+		<th scope="col">Ex:&nbsp;&nbsp;</th>
+		<th scope="col">Entity</th>
+		<th scope="col">Hex&nbsp;&nbsp;</th>
+		<th scope="col">Keyboard Shortcut for Mac computers</th>
+		<th scope="col">Notes</th>
+	</tr>
+	<tr>
+		<td>Ellipse</td>
+		<td>…</td>
+		<td>&amp;hellip;</td>
+		<td>&amp;#x2026;</td>
+		<td>Opt ;</td>
+		<td>Depending on the font, three periods often looks better.</td>
+	</tr>
+	<tr>
+		<td>Em Dash</td>
+		<td>—</td>
+		<td>&amp;mdash;</td>
+		<td>&amp;#x2014;</td>
+		<td>Opt Shift -</td>
+		<td>Use to set off parenthetical material that deserves emphasis. <em>My neighbor’s dog—the dumbest animal on the planet—barks all the time.</em></td>
+	</tr>
+	<tr>
+		<td>En Dash</td>
+		<td>&ndash;</td>
+		<td>&amp;ndash;</td>
+		<td>&amp;#x2013;</td>
+		<td>Opt -</td>
+		<td>Use in place of the word “to”. <em>The play is from 12:00 – 2:30.</em></td>
+	</tr>
+	<tr>
+		<td>Copyright</td>
+		<td>©</td>
+		<td>&amp;copy;</td>
+		<td>&amp;#xA9;</td>
+		<td>Opt g</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Reg. trademark</td>
+		<td>&reg;</td>
+		<td>&amp;reg;</td>
+		<td>&amp;#xAE;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Non-breaking space</td>
+		<td>&nbsp;</td>
+		<td>&amp;nbsp;</td>
+		<td>&nbsp;</td>
+		<td><p>Command Shift Space (this is a DW shortcut)</p></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Zero-width space<a name="zwsp"></a></td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&amp;#8203;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<h2>Ligatures</h2>
+<p>Ligatures (such as fi, fj, fl) can automatically be used with the same property as kerning&mdash;<code>text-rendering</code>. To turn it on, set the value to &quot;optimizeLegibility&quot;. <a href="https://developer.mozilla.org/en-US/docs/CSS/text-rendering" rel="external">MDN has a full description</a>.</p>
+<p>Alternatively, you could try <code>font-variant-ligatures</code>. Honestly, the web just isn&rsquo;t ready for ligatures; skip for now.</p>
+<h2>Small Caps</h2>
+<p><span class="smallCap">Using the CSS property font-variant</span>, you can set  type in small caps. This is typically done as the introduction to a new chapter or when using acrynoms such as <span class="smallCap">fbi</span>, <span class="smallCap">cia</span>, or <span class="smallCap">ibm</span>; or time values like 1:00<span class="smallCap">am</span>.</p>
+<pre>.smallCap {
+	font-variant:small-caps;
+}</pre>
+<p>Unfortunately, it can look poor depending on the font. Yet another instance where print typography (when using high-quality fonts) beats the web...</p>
+<h2 id="kerning">Kerning</h2>
+<p>Kerning pairs (the space between two letters) can be achieved automatically through the CSS property text-rendering.</p>
+<p class="code">p {text-rendering: optimizeLegibility;} /* use the font's kerning */</p>
+<p>Unfortunately, there are some <a href="http://adamdscott.com/typography/kerning-for-the-web/" rel="external">serious bugs</a>. You could manually adjust the kerning by adjusting the <code>margin-right</code> of the first character. For example, the following text has the &quot;To&quot;, &quot;Aw&quot;, &quot;we&quot;, &quot;om&quot;, and &quot;me&quot; pairs kerned via:</p>
+<p class="code">&lt;p&gt;&lt;span style=&quot;margin-right:-12px;&quot;&gt;T&lt;/span&gt;otally &lt;span style=&quot;margin-right:-8px;&quot;&gt;A&lt;/span&gt;&lt;span style=&quot;margin-right:-4px&quot;&gt;w&lt;/span&gt;es&lt;span style=&quot;margin-right:-5px;&quot;&gt;o&lt;/span&gt;&lt;span style=&quot;margin-right:-5px;&quot;&gt;m&lt;/span&gt;e&lt;/p&gt;</p>
+<p style="font-size:6em; line-height:1; margin:0;text-align:left;"><span style="margin-right:-12px;">T</span>otally <span style="margin-right:-8px;">A</span><span style="margin-right:-4px">w</span>es<span style="margin-right:-5px;">o</span><span style="margin-right:-5px;">m</span>e <span style="font-size:1rem;">(kerned)</span></p>
+<p style="font-size:6em; line-height:1; margin:0;text-align:left;">Totally Awesome <span style="font-size:1rem;">(not kerned)</span></p>
+<p>If your website has a lot of large text, then a JavaScript library such as Lettering.js and Kern.js could come in handy.</p>
+<h2>Drop Caps</h2>
+<p>Safalra has documented a <a href="http://safalra.com/web-design/typography/css-drop-caps/" rel="external">brute-force method to create drop caps</a>. It is specific to a typeface, which limits its use, but I&rsquo;m not sure there is a better way to do it.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

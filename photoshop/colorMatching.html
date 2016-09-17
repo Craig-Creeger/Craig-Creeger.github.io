@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Matching Colors with Photoshop</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+#mainBackground {
+	width:50%;
+	background-color:#6A0138;
+	padding:0 15px;
+	color:white;
+}
+#innerBackground {
+	background:url(img/gradientBkgd.jpg) repeat-x;
+	min-height:100px;
+	color:black;
+	border:medium solid yellow;
+	border-bottom: none;
+	margin:2em 0;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Matching Colors with Photoshop</h1>
+<h2>The Problem</h2>
+<div id="mainBackground" class="pushRight">
+	<p>This purple background color is defined in CSS as #6A0138.</p>
+	<div id="innerBackground" style="background-image:url(img/poorGradientBkgd.jpg)">
+		<p><strong>Poor:</strong> This block contains the gradient JPEG. Notice how the bottom does not match well.</p>
+	</div>
+	<div id="innerBackground">
+		<p><strong>Good:</strong> This block contains the gradient JPEG. Notice how the bottom blends out smoothly.</p>
+	</div>
+</div>
+<p>Let’s say I want to create a gradient background that blends with your background color. In the example to the right, you can see the all-too-common problem where the color code you define, doesn’t stay that way once you save the image for the web. The gradient looked great in Photoshop during design time and the Hex color code was perfect.</p>
+<h2>How to Fix It</h2>
+<p>This information was based on a Smashing Magazine’s “<a href="http://www.smashingmagazine.com/2009/10/12/setting-up-photoshop-for-web-app-and-iphone-development/" rel="external">Setting Up Photoshop for Web, App, and iPhone Development</a>.” Another article, <a href="http://www.computer-darkroom.com/ps12_colour/ps12_1.htm" rel="external">Photoshop CS5 Color Management</a>, goes into much more detail and explains why/how color management works.</p>
+<ol>
+	<li><p>Assign the “Don’t Color Manage This Document” profile. For new documents, this can be done in the new document dialog box.</p><p><img src="img/colorProfile.png" width="670" height="473"></p>
+<p>For existing images, choose <em>Edit&nbsp;→&nbsp;Assign Profile...</em></p>
+</li>
+<li>
+	<p>Set your Color Settings to “Monitor Color”. From the menu, choose <em>Edit&nbsp;→&nbsp;Color Settings...</em></p>
+<p><img src="img/colorSettings.png" width="627" height="563"></p><p>The important piece you are setting here is the RGB Working Space gets set to your Monitor RGB color space.</p></li><li>Ensure <em>View&nbsp;→&nbsp;Proof Colors</em> is turned off (unchecked).</li>
+<li>When saving files with Save for Web &amp; Devices, ensure that <em>Convert to sRGB</em> is turned off. If you're saving a JPEG file, then also turn off <em>Embed Color Profile</em>.</li>
+<li>Lastly, you may find that colors are still shifting if the JPEG compression is very low (around 15). Try 30 or higher if needed.</li>
+</ol>
+
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

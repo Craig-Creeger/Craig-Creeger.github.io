@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Sidebar Layouts</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+nav {
+	float:left;
+	width:20%;
+	min-width:250px;
+}
+aside {
+	float:right;
+	width:20%;
+	min-width:250px;
+}
+nav, aside {
+	background-color:gainsboro;
+	padding:2em;
+}
+main {
+	overflow:hidden; /* This creates a new Block Formatting Context. */
+	background-color:white;
+	padding:2em;
+}
+#solidContainer {
+	overflow:hidden;
+	background-color:salmon;
+}
+.pushRight, .pushLeft {
+	background-color:yellow;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Sidebar Layouts</h1>
+<h2>Block Formatting Context Method</h2>
+<nav>
+<p>This is a sample navigation sidebar.</p>
+<p>It has been floated left.</p>
+</nav>
+<aside>
+<p>This is a sample sidebar floated to the right.</p>
+<p>The height matches the height of the containing content.</p>
+</aside>
+<main>
+<p>This example was based on the concept as described in <a href="http://www.sitepoint.com/understanding-block-formatting-contexts-in-css/" target="external">Understanding Block Formatting Contexts in CSS</a>. Basically, the center column of text is not wrapping around the sidebars because it was forced into a new block context, which makes it rectangular, using <code>overflow: hidden;</code></p>
+<p>Another cool thing you can do with this technique is contain floated items. Typically one just uses the .clearfix hack to do it, but with a little mark-up and some minor CSS, the same thing is achieved. For example,</p>
+<div id="solidContainer"><p class="pushLeft">I am
+	floated and taller than <br>
+	the content inside the salmon <br>
+	colored box. Normally that <br>
+	box would only contain the <br>
+	main text in the center.</p>
+<p class="pushRight">I am<br>
+	floated.</p>
+<p>This is the “main” text inside the salmon colored box.</p>
+</div>
+<p> This is the main content. Felis netus quis hymenaeos eleifend magna mi et eros tristique consectetuer laoreet. Magna velit nullam senectus parturient aptent bibendum dignissim est ante. Proin ipsum sociosqu. Curae lorem primis sapien nibh condimentum cubilia suspendisse. Fames ipsum neque dictum congue magna. Curae massa dapibus sed habitant. Augue justo nulla vel dictum a vestibulum. Purus justo montes netus nam arcu. Justo ipsum dis vestibulum ve malesuada tincidunt urna nam. Massa augue nec nibh. Etiam risus porta ornare scelerisque. Neque morbi nec sociosqu gravida metus urna sodales. Ipsum nulla eget non magnis faucibus scelerisque vehicula fusce platea vestibulum.</p>
+<p>Justo metus auctor fames dignissim nullam id senectus tempor. Metus donec vel quis sagittis tortor lacinia natoque. Fames proin urna suspendisse id. Donec etiam eros elit hymenaeos cursus. Lacus class lobortis ac eget fames ve ad. Ipsum massa ullamcorper pede. Netus purus pede tortor ad sed erat a nisi adipiscing dui neque aliquam nisi quam hymenaeos. Fusce magna sodales nonummy habitasse odio hendrerit magnis. Porta dolor. Morbi donec justo curae nascetur curae convallis habitant. Vitae curae velit sem odio nibh feugiat et elit class gravida feugiat. Lorem augue suscipit adipiscing litora ve suscipit ligula tempor metus pretium ac eni. Dolor vitae eni duis praesent est quam facilisis.</p>
+<p>Nulla porta integer tellus elit. Vitae dolor eni porta porttitor dis augue imperdiet orci. Netus velit eni bibendum vivamus pellentesque potenti per adipiscing. Morbi risus lacus elit rutrum sociis. Metus curae. Etiam porta. Purus fames duis molestie lacinia. Ipsum class senectus massa inceptos venenatis et duis ligula suscipit phasellus. Fames vitae magnis vitae sagittis. Morbi lacus mus. Felis curae nascetur in vitae senectus. Curae justo egestas habitant eros congue vestibulum vitae arcu purus class metus amet. Lacus fusce velit tempus pellentesque blandit. Magna fames scelerisque inceptos sodales cursus augue id semper pretium euismod luctus. Vitae lorem vivamus justo cum praesent posuere. Fames proin auctor mauris ultricies.</p>
+</main>
+
+
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,79 @@
+<data> 
+    <event start="Sat Jan 01 1949 00:00:00 GMT-0600"
+        title="Gustav Wagner"
+        > 
+        1949: Gustav Wagner establishes the first professional organization for informatics in Germany. 
+        It is currently known as the Deutsche Gesellschaft fur Medizinische Dokumentation, Informatik und Statistik, 
+        which in English means: the German Society for Medical Computer Science and Statistics Documentation.
+        </event> 
+    <event start="Thu Jan 01 1959 00:00:00 GMT-0600"
+        title="Ledley and Lusted"
+        >
+        1959: A seminal article in the area of informatics is published by Ledley and Lusted in &lt;em&gt;Science&lt;/em&gt;, titled &quot;Reasoning Foundations of Medical Diagnosis,&quot; which discusses the potential role of computers in medical diagnostic processes.&lt;br /&gt;&lt;br /&gt; 
+        Ledley, R. S., &amp; Lusted, L. B. (1959). Reasoning foundations of medical diagnosis. &lt;em&gt;Science, 130, 3366&lt;/em&gt;, 9-21. Retrieved November 2010 from &lt;a href=&quot;http://www.jstor.org/stable/1758070&quot; target=&quot;_blank&quot;&gt;http://www.jstor.org/stable/1758070&lt;/a&gt;
+        </event> 
+    <event start="Sat Jan 01 1977 00:00:00 GMT-0600"
+        title="SCAMC"
+        >
+        1977: The Symposium on Computer Applications in Medical Care (SCAMC) begins, which later becomes the AMIA Annual Symposium. This multidisciplinary meeting has been a driving force in development of the field of medical informatics. (&lt;a href=&quot;http://www.ncbi.nlm.nih.gov/pubmed/12087115&quot; target=&quot;_blank&quot;&gt;http://www.ncbi.nlm.nih.gov/pubmed/12087115&lt;/a&gt;)
+        </event> 
+    <event start="Tue Jan 01 1985 00:00:00 GMT-0600"
+        title="The term, Medical Informatics"
+        > 
+        Mid 1980's: During the 1980's, Medical Informatics emerges as a consistent name for the field, a name derived from the French term "Informatique Medicale."
+        </event> 
+    <event start="Tue Jan 01 1985 00:00:00 GMT-0600"
+        title="Computerized information system"
+        > 
+        1985: The U.S. Department of Veterans Affairs (VA) implements computerized information systems, including the Decentralized Hospital Computer Program (DHCP) information system and the Veterans Health Information Systems and Technology Architecture (VistA).
+        </event> 
+    <event start="Sun Jan 01 1989 00:00:00 GMT-0600"
+        title="AMIA"
+        > 
+        1989: AMIA, the &lt;a href=&quot;https://www.amia.org/&quot; target=&quot;_blank&quot;&gt;American Medical Informatics Association&lt;/a&gt;, is founded. The organization continues to serve as an important professional association for biomedical health informaticists.
+        </event> 
+    <event start="Mon Jan 01 1996 00:00:00 GMT-0600"
+        title="HIPAA"
+        > 
+        1996: Concerns about privacy increase due to the growth and storage of electronic health information. In response, Congress passes the Health Insurance Portability and Accountability Act (HIPAA), a law that prevents health information from being shared without a patient's consent. Learn more about &lt;a href=&quot;http://www.hhs.gov/ocr/privacy/hipaa/understanding/index.html&quot; target=&quot;_blank&quot;&gt;HIPAA&lt;/a&gt;.
+        </event> 
+    <event start="Wed Jan 01 1997 00:00:00 GMT-0600"
+        title="CPRS"
+        > 
+        1997: The U.S. Department of Veteran Affairs (VA) develops and launches a comprehensive electronic health record:  Computerized Patient Record System (CPRS).  
+        </event> 
+    <event start="Thu Jan 01 2004 00:00:00 GMT-0600"
+        title="ONC National Coordinator"
+        >
+        2004: The position of National Coordinator for the &lt;a href=&quot;http://healthit.hhs.gov/portal/server.pt/community/healthit_hhs_gov__onc/1200&quot; target=&quot;_blank&quot;&gt;Office of the National Coordinator for Health Information Technology (ONC)&lt;/a&gt; is created, through an Executive Order. Later, it is legislatively mandated in the Health Information Technology for Economic and Clinical Health Act (HITECH Act) of 2009. 
+        </event> 
+    <event start="Thu Jan 01 2004 00:00:00 GMT-0600"
+        title="Minnesota e-Health Initiative"
+        icon="maroon-circle.png"
+        > 
+        2004: The steering committee for the  &lt;a href=&quot;http://www.health.state.mn.us/e-health/index.html&quot; target=&quot;_blank&quot;&gt;Minnesota e-Health Initiative&lt;/a&gt; is convened. Stakeholders have committed to address complex issues that will result in the improvement of the health of all Minnesotans while reducing healthcare costs.
+        </event> 
+    <event start="Thu Jan 01 2007 00:00:00 GMT-0600"
+        title="Minnesota passes mandate into law"
+        icon="maroon-circle.png"
+        > 
+        2007 and 2008: The State of Minnesota passes into law a mandate that, by 2015, all healthcare providers and hospitals must implement an interoperable electronic health record (EHR) system. Learn more about the &lt;a href=&quot;http://www.health.state.mn.us/e-health/ehrplan.html&quot; target=&quot;_blank&quot;&gt;mandate and implementation plan&lt;/a&gt;. Uniform health data standards must be established by 2009. All healthcare providers and payers must implement an e-prescribing system by January 1, 2011.
+        </event> 
+    <event start="Thu Jan 01 2008 00:00:00 GMT-0600"
+        title="'Health care homes' in Minnesota"
+        icon="maroon-circle.png"
+        > 
+        2008: Minnesota passes groundbreaking health reform legislation to develop 'health care homes,' an approach which offers payment to primary care providers to partner with patients and families to provide coordination of care. The vision of health care homes is to improve health outcomes and quality of life for individuals with chronic health conditions and disabilities.
+        </event> 
+    <event start="Thu Jan 01 2009 00:00:00 GMT-0600"
+        title="ARRA"
+        > 
+        2009: The American Recovery and Reinvestment Act (ARRA) is signed into law by President Barack Obama. ARRA provides many stimulus opportunities to assist healthcare providers and organizations to adopt electronic health records. The HITECH (Health Information Technology for Economic and Clinical Health Act) section of the law provides details about health information communication and technology. Learn more about &lt;a href=&quot;http://www.hhs.gov/recovery/overview/index.html&quot; target=&quot;_blank&quot;&gt;ARRA&lt;/a&gt;. &lt;strong&gt;Note: Minnesota enacted a law prior to the federal law.&lt;/strong&gt;
+        </event> 
+    <event start="Thu Jan 01 2015 00:00:00 GMT-0600"
+        title="Interoperable EHR system in MN"
+        icon="maroon-circle.png"
+        >
+            2015: The State of Minnesota mandates that, by this date, all healthcare providers and hospitals must implement an interoperable electronic health record (EHR) system. Learn more about the &lt;a href=&quot;http://www.health.state.mn.us/e-health/ehrplan.html&quot; target=&quot;_blank&quot;&gt;mandate and implementation plan&lt;/a&gt;.
+        </event> 
+</data>

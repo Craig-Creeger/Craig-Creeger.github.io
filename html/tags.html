@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Under-appreciated Tags</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+dt {
+	font-family:"Courier New", Courier, monospace;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>HTML Tags</h1>
+<p style="text-align:right"><a name="firstLine"></a>Don’t become a <a href="#PEBKAC"><acronym title="Problem Exists Between Keyboard And Chair">PEBKAC</acronym></a>.</p>
+<h2>Sectioning Tags</h2>
+<dl>
+<dt>&lt;main&gt;</dt>
+<dd>
+	This element is subject to some constraints:
+		<ul>
+			<li>There must not be more than one &lt;main&gt; element in a document,</li>
+			<li>It must not be a descendent of an &lt;article&gt;,&lt;aside&gt;, &lt;footer&gt;, &lt;header&gt;, or &lt;nav&gt; element.</li>
+		</ul>
+</dd>
+<dt>&lt;article&gt;</dt>
+<dd>This can contain &lt;section&gt;s and other sectioning elements (except main).</dd>
+<dt>&lt;section&gt;</dt>
+<dd>This can contain &lt;article&gt;'s and other sectioning selements (except main).</dd>
+<dt>&lt;nav&gt;</dt>
+<dt>&lt;aside&gt;</dt>
+<dt>&lt;header&gt;</dt>
+<dt>&lt;footer&gt;</dt>
+</dl>
+<h2>Under-appreciated Tags</h2>
+<dl>
+	<dt>&lt;abbr title=&quot;expanded term&quot;&gt;</dt>
+	<dd>Used to expand an abbreviation. Note: As of HTML5, the <code>&lt;acronym&gt;</code> has been deprecated; use <code>&lt;abbr&gt;</code> instead. See <a href="#PEBKAC">below</a> for an example. </dd>
+	<dt>&lt;address&gt;</dt>
+	<dd>For mailing addresses.</dd>
+	<dt>&lt;blockquote&gt;</dt>
+	<dd>Often used, incorrectly, to indent a block of text. This should be reserved for an actual quotation.</dd>
+	<dt>&lt;caption&gt;</dt>
+	<dd>This is used only on tables. There can be only one &lt;caption&gt; tag per table.</dd>
+	<dt>&lt;cite&gt;</dt>
+	<dd>The cite element represents the cited title of a work; for example, the title of a book mentioned within the main text flow of a document. For example, this definition came from the <cite>W3C Org Cheatsheet</cite>. You can see that most browsers render the text inside &lt;cite&gt; as italic.
+	<div class="callout">Note: There is also a <code>cite</code> <strong>attribute</strong> that is intended to hold a URL. It is an attribute for &lt;q&gt;, &lt;blockquote&gt;, &lt;del&gt;, &lt;ins&gt;. For example, <q cite="http://www.twincities.com/localnews/ci_27973563/great-waters-new-tartar-control-ipa-9-out">9 out of 10 dentists recommend beer.</q> Browsers do not apply any special formatting, but it is interesting that they do surround &lt;q&gt; text with typographer’s quotes.</div></dd>
+	<dt>&lt;code&gt;</dt>
+	<dd>To show computer code. A <code>monospaced</code> font is used.</dd>
+	<dt>&lt;dl&gt;</dt>
+	<dd>Definition lists. What you are reading now is a &lt;dl&gt; structure. See below for <a href="#dl">more information</a>.</dd>
+	<dt>&lt;figcaption&gt;</dt>
+	<dd>This is used with the <code>&lt;figure&gt;</code> tag;  typically for photographs, charts, and graphs.</dd>
+	<dt>&lt;q&gt;</dt>
+	<dd>A short quotation. The text automatically get’s typographer’s quotes wrapped around the text.</dd>
+	<dt>&lt;samp&gt;</dt>
+	<dd>To show <samp>computer output.</samp></dd>
+	<dt>&lt;wbr&gt;</dt>
+	<dd>Gives a hint to the browser where it may start a new line. For more information, see the example on the <a href="whiteSpace.html#wbr">White Space</a> page. The opposite of this is the CSS property <code>.nobr	{ white-space:nowrap; }</code></dd>
+	<dt>&lt;del&gt;, &lt;ins&gt;, and Strike</dt>
+	<dd>Used to indicate deleted and new content.<br>
+	&lt;del&gt; is rendered with a strike line. <del>This is an example.<br>
+	</del>&lt;ins&gt; is rendered with an underline (a really poor default if you ask me). <ins>This is an example.</ins><br>
+	<em>Note: &lt;strike&gt; has been obsoleted.</em></dd>
+</dl>
+<h2>Meter and Progress Bar</h2>
+<p>The &lt;progress&gt; element may seem very similar to the &lt;meter&gt; element — which was also introduced in HTML5 — but it can be seen as a more specific kind of &lt;meter&gt; element that's only used to measure progress of a task. It's worth bearing this in mind when deciding which one to use.</p>
+<p>Great article on <a href="http://html5doctor.com/the-progress-element/" rel="external">using and styling the Progress Bar</a>.</p>
+<h2>Summary and Details</h2>
+<p>These HTML5 tags are used to show/hide extra information.</p>
+<details>
+<summary>Show More...</summary>
+<p>Really? It’s that easy to make collapsible panels? Well, it is for Webkit browsers. Firefox displays all the content; same with IE. There are several polyfills available, including this one: <a href="https://github.com/chemerisuk/better-details-polyfill" rel="external">https://github.com/chemerisuk/better-details-polyfill</a></p>
+<p>The source code for this looks like:</p>
+<pre>&lt;details&gt;
+&lt;summary&gt;Show More...&lt;/summary&gt;
+&lt;p&gt;Really? It’s that easy to make collapsible panels?&lt;/p&gt;
+&lt;p&gt;The source code for this looks like:&lt;/p&gt;
+&lt;/details&gt;</pre>
+</details>
+<h2><a name="dl"></a>Definition Lists</h2>
+<p>The required markup for a definition list begins with an opening <code>&lt;dl&gt;</code> tag. Under that will be pairs of <code>&lt;dt&gt;</code> (terms) and <code>&lt;dd&gt;</code> (definitions) tags. For example:</p>
+<dl id="fruitList">
+	<dt><dfn id="Apple">Apple</dfn></dt>
+	<dd>Tasty fruit, or nice computer.</dd>
+	<dt><dfn id="Banana">Banana</dfn></dt>
+	<dd>Another tasty fruit, or dangerous slip hazard in cartoons.</dd>
+</dl>
+<p><code>&lt;dl&gt;<br>
+	  &lt;dt&gt;Apple&lt;/dt&gt;<br>
+	    &lt;dd&gt;Tasty fruit, or nice computer.&lt;/dd&gt;<br>
+	  &lt;dt&gt;Banana&lt;/dt&gt;<br>
+	    &lt;dd&gt;Another tasty fruit, or dangerous slip hazard in cartoons.&lt;/dd&gt;<br>
+&lt;/dl&gt;</code> </p>
+<h3>Definition Element <code>&lt;dfn&gt;</code></h3>
+<p>Related, but serving a different purpose is the <code>&lt;dfn&gt;</code> tag. It is used to mark the location of where a term is being defined. For example:</p>
+<blockquote>After getting called over to Kay’s computer for the fifth time in the same day, the IT guy determined that her problem was a classic case of <abbr title="Problem Exists Between Keyboard And Chair">PEBKAC</abbr>. He didn’t have the heart to tell her that <dfn id="PEBKAC" title="PEBKAC"><abbr title="Problem Exists Between Keyboard And Chair">PEBKAC</abbr></dfn> stood for &ldquo;problem exists between keyboard and chair.&rdquo;</blockquote>
+<p>The markup for this example is:</p>
+<p class="code">&lt;blockquote&gt;After getting called over to Kay's computer for the fifth time in the same day, the IT guy determined that her problem was a classic case of &lt;abbr title=&quot;Problem Exists Between Keyboard And Chair&quot;&gt;PEBKAC&lt;/abbr&gt;. He didn't have the heart to tell her that &lt;dfn id=&quot;PEBKAC&quot; title=&quot;PEBKAC&quot;&gt;&lt;abbr title=&quot;Problem Exists Between Keyboard And Chair&quot;&gt;PEBKAC&lt;/abbr&gt;&lt;/dfn&gt; stood for &quot;problem exists between keyboard and chair&quot;.&lt;/blockquote&gt;</p>
+<p>A couple of things to notice:</p>
+<ol>
+	<li>The <code>&lt;abbr&gt;</code> tag gets styled differently from regular <code>&lt;p&gt;</code> text depending on the browser.</li>
+	<li>By using an <code>id</code> attribute in the <code>&lt;dfn&gt;</code> tag, you can link to it. The <a href="#firstLine">first line</a> in this document does this.</li>
+	<li>As a bonus, this example uses the <code>&lt;abbr&gt;</code> tag. It is not necessary for the <code>&lt;dfn&gt;</code> element, but now you know how to use it. After hovering your mouse over an <code>&lt;abbr&gt;</code> term  you’ll see the title displayed after a short delay (in most browsers).</li>
+</ol>
+<div class="callout">
+	<p>This is from <a href="http://developers.whatwg.org/text-level-semantics.html#the-dfn-element" rel="external">developers.whatwg.org</a></p>
+	<p>Defining term: If the <code>dfn</code> element has a <code>title</code> attribute, then the exact value of that attribute is the term being defined. Otherwise, if it contains exactly one element child node and no child text nodes, and that child element is an <code>abbr</code> element with a <code>title</code> attribute, then the exact value of that attribute is the term being defined. Otherwise, it is the exact textContent of the <code>dfn</code> element that gives the term being defined.</p>
+	<p>If the <code>title</code> attribute of the <code>dfn</code> element is present, then it must contain only the term being defined.</p>
+</div>
+<p>Continuing with our <a href="#fruitList">fruit list from above</a>, it could more accurately be constructed as:</p>
+<p><code>&lt;dl id=&quot;fruitList&quot;&gt;<br>
+	  &lt;dt&gt;&lt;dfn id=&quot;Apple&quot;&gt;Apple&lt;/dfn&gt;&lt;/dt&gt;<br>
+	    &lt;dd&gt;Tasty fruit, or nice computer.&lt;/dd&gt;<br>
+	  &lt;dt&gt;&lt;dfn id=&quot;Banana&quot;&gt;Banana&lt;/dfn&gt;&lt;/dt&gt;<br>
+	    &lt;dd&gt;Another tasty fruit, or dangerous slip hazard in cartoons.&lt;/dd&gt;<br>
+	&lt;/dl&gt;</code></p>
+<p>I recommend this style of mark-up when you plan to link to these definitions. Otherwise, it may be overkill.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

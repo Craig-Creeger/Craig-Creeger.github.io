@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Advanced SVG</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.std400wide {
+	width:400px;
+	height:75px;
+	fill:#056100; /* normal green */
+	cursor:pointer;
+}
+.std400wide:hover {
+	fill:yellow;
+	stroke:#056100; /* normal green */
+	stroke-width:3px;
+}
+figure {
+	display:inline-block;
+	vertical-align:top;
+	max-width:270px;
+}
+figure svg {
+	background-color: white;
+	border: thin solid black;
+}
+
+/* clickableButtons is for the the SVG Button demo */
+#starDemo > a:hover {
+	cursor: pointer;
+}
+#starDemo > a polygon {
+	stroke-width: 0;
+	transition: stroke-width .5s ease
+}
+#starDemo > a:hover polygon {
+	stroke-width: 15;
+	transition: stroke-width 1s ease
+}
+
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<!--Hidden SVG Source-->
+<svg width="0" height="0" viewBox="0 0 745 139" style="margin-left:-100%;">
+<g id="pxPro"> <g> <path d="M143.09,104.78c0,12.24,0.18,26.64,0.72,32.22h-22.68c0.36-5.58,0.72-19.98,0.72-32.22V43.4 c0-12.24-0.36-24.3-0.72-29.7h34.02c26.82,0,42.3,16.38,42.3,38.88c0,22.32-16.38,38.52-42.66,38.52h-11.7V104.78z M143.09,74.9 h9.54c14.58,0,23.58-11.34,23.58-22.5c0-11.7-8.46-22.5-23.58-22.5h-9.54V74.9z"/> <path d="M234.89,118.46c0,6.66,0.18,15.12,0.54,18.54h-21.42c0.36-3.78,0.54-12.24,0.54-18.54V66.44h-8.64 c2.16-2.7,4.32-8.1,5.76-11.88h23.76c-0.36,4.14-0.54,11.88-0.54,18.36V118.46z"/> <path d="M286.36,109.82l-6.12,10.08c-4.86,7.74-7.38,13.68-8.82,17.1h-23.76c4.32-5.4,9.72-13.5,13.68-19.8 l14.22-21.42l-14.76-23.76c-3.6-6.12-7.92-12.42-11.88-17.46h24.3c1.44,3.78,3.78,8.64,7.2,14.4l7.38,12.42l7.74-12.6 c3.42-5.76,6.12-10.8,7.56-14.22h22.5c-4.5,5.76-8.64,11.52-12.42,17.46L298.6,95.24l13.32,21.96c3.96,6.3,9.72,14.58,14.4,19.8 h-24.3c-1.44-2.88-4.32-8.82-6.66-12.78L286.36,109.82z"/> <path d="M348.64,98.12c0.72,13.14,10.98,24.3,25.74,24.3c9.72,0,16.2-1.26,23.4-5.94v17.64 c-5.94,0.54-12.24,4.32-26.82,4.32c-24.84,0-43.02-18.54-43.02-42.3c0-24.66,17.28-43.02,39.6-43.02c24.84,0,38.7,22.14,38.7,40.14 c0,1.8-0.18,3.96-0.36,4.86H348.64z M348.46,84.26h36.72c-1.08-7.74-7.38-16.38-17.82-16.38C357.82,67.88,350.98,74.9,348.46,84.26 z"/> <path d="M441.7,118.63c0,6.48,0.18,14.4,0.72,18.36h-21.6c0.54-3.96,0.72-12.24,0.72-18.36V16.76h-8.64 c1.98-3.24,4.32-8.64,5.4-11.88h24.12c-0.54,4.14-0.72,12.6-0.72,18.36V118.63z"/> <path d="M526.48,104.78c0,12.24,0.18,26.64,0.72,32.22h-22.68c0.36-5.58,0.72-19.98,0.72-32.22V43.4 c0-12.24-0.36-24.3-0.72-29.7h34.02c26.82,0,42.3,16.38,42.3,38.88c0,22.32-16.38,38.52-42.66,38.52h-11.7V104.78z M526.48,74.9 h9.54c14.58,0,23.58-11.34,23.58-22.5c0-11.7-8.46-22.5-23.58-22.5h-9.54V74.9z"/> <path d="M648.16,53.84v21.6c-3.06-1.98-7.02-3.42-11.88-3.42c-10.08,0-16.92,12.24-16.92,23.4v23.22 c0,6.12,0.18,12.24,0.54,18.36h-21.42c0.36-6.12,0.54-12.24,0.54-18.36v-52.2h-8.64c2.16-3.42,4.32-8.28,5.58-11.88h21.42V73.1 c3.06-12.06,12.06-20.16,22.14-20.16C644.74,52.94,645.82,53.84,648.16,53.84z"/> <path d="M701.26,52.94c23.94,0,43.38,19.08,43.38,42.84c0,23.58-19.44,42.48-43.38,42.48 c-23.76,0-43.02-18.9-43.02-42.48C658.24,72.2,677.5,52.94,701.26,52.94z M701.26,120.79c13.14,0,23.94-11.16,23.94-25.02 c0-14.04-10.8-25.2-23.94-25.2c-13.14,0-23.76,11.16-23.76,25.2C677.5,109.64,688.12,120.79,701.26,120.79z"/> </g> <rect x="214.07" y="4.5" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 373.1145 183.5357)" fill="#AD4D00" stroke-opacity="0" width="21" height="20"/> <g> <rect x="25" y="38.28" fill="#AD4D00" stroke-opacity="0" width="24" height="25"/> <rect y="13.28" fill="#AD4D00" stroke-opacity="0" width="25" height="25"/> <rect x="49" y="63.28" fill="#AD4D00" stroke-opacity="0" width="24" height="25"/> <rect y="112.28" fill="#AD4D00" stroke-opacity="0" width="25" height="24"/> <rect x="25" y="88.28" fill="#AD4D00" stroke-opacity="0" width="24" height="24"/> </g> </g> 
+
+<filter id='emboss' x="-25%" y="-25%" width="150%" height="150%">
+	<feOffset in="SourceAlpha" dx="0.16666666666666666" dy="0.8333333333333334" result="17"></feOffset>
+	<feGaussianBlur stdDeviation="0.5" in="17" result="18"></feGaussianBlur>
+	<feSpecularLighting surfaceScale="1" specularConstant="0.9" specularExponent="15" in="18" result="19">
+		<fePointLight x="-1000" y="-5000"   z="300"></fePointLight>
+	</feSpecularLighting>
+	<feComposite in="19" in2="SourceAlpha" operator="in" result="20"></feComposite>
+	<feOffset in="SourceAlpha" dx="-0.16666666666666666" dy="-0.8333333333333334" result="21"></feOffset>
+	<feGaussianBlur stdDeviation="0.5" in="21" result="22"></feGaussianBlur>
+	<feSpecularLighting surfaceScale="1" specularConstant="1.8" specularExponent="8" in="22" result="23">
+		<fePointLight x="100" y="5000" z="300"></fePointLight>
+	</feSpecularLighting>
+	<feComposite in="23" in2="SourceAlpha" operator="in" result="24"></feComposite
+	
+	>
+	<feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .85 0" in="24" result="25"></feColorMatrix>
+	<feComposite k1="0" k2="0.8" k3="0.5" k4="0" in="20" in2="25" operator="arithmetic" result="26"></feComposite>
+	<feMerge in="26" result="27">
+		<feMergeNode in="SourceGraphic"></feMergeNode>
+		<feMergeNode in="26"></feMergeNode>
+	</feMerge>
+</filter>
+  
+</svg>
+
+<h1>Advanced SVG</h1>
+<h2>Applying Dynamic Properties to SVG</h2>
+<p><svg viewBox="0 0 745 139" class="std400wide">
+	<g filter="url(#emboss)">
+		<use xlink:href="#pxPro"></use>
+	</g>
+</svg></p>
+<p><svg viewBox="0 0 745 139" width="200" height="37">
+	<use xlink:href="#pxPro"></use>
+</svg>
+</p>
+<p>The above graphics are embedded on the page once (and hidden) but then added back in. The top graphic has a CSS:hover selector added to it. Notice the emboss filter added at run-time.</p>
+<p>It is possible to create a custom icon font from your vector graphics (such as SVG) through <a href="http://icomoon.io/app/#/select" rel="external">IcoMoon</a>.</p>
+<p>All this information came from: <a href="http://tympanus.net/codrops/2013/11/27/svg-icons-ftw/" rel="external">http://tympanus.net/codrops/2013/11/27/svg-icons-ftw/</a></p>
+<h2>Aspect Ratio</h2>
+<h3>Viewport and viewBox</h3>
+<p>The viewport is the area you carve out on a webpage for the artwork to be displayed in. To set the Viewport, you tweak the width and height attributes of the SVG tag. e.g. <code>&lt;svg width=&quot;100&quot; height=&quot;200&quot;&gt;</code> alternatively, you can set it with CSS. e.g. <code>&lt;svg style=&quot;width:100%;&quot;&gt;</code></p>
+<p>In these, the viewport size is modified.</p>
+<figure><svg width="115" height="190" viewBox="0 0 115 190">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption><strong>Normal:</strong> width and height match the viewBox</figcaption>
+</figure>
+<figure><svg width="115" height="80" viewBox="0 0 115 190">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption>Viewport height reduced by half.</figcaption>
+</figure>
+<figure><svg width="145" height="360" viewBox="0 0 115 190">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption>Viewport height doubled.</figcaption>
+</figure>
+<hr>
+<p>The viewBox is similar in concept to Adobe Illustrator’s artboard; it is the internal canvas upon which the artwork is drawn. In these, the viewport is set to a square, and the viewBox is tweaked.</p>
+<figure><svg width="100" height="100" viewBox="0 0 115 190">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption><strong>Normal:</strong> viewBox has not been changed. Notice the default behavior is to preserve the aspect ratio and center the artwork.</figcaption>
+</figure>
+<figure>
+<svg width="100" height="100" viewBox="55 -5 55 70">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption>Shrinking the viewBox. Use this technique if you want to zoom in on the image and very precisely position it. If you want to zoom and use simpler &quot;snapping&quot; positioning, then see preserveAspectRatio below.</figcaption>
+</figure>
+<figure>
+<svg width="100" height="100" viewBox="0 0 300 300">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption>Growing the viewBox</figcaption>
+</figure>
+<hr>
+<h3>preserveAspectRatio</h3>
+<p>The preserveAspectRatio attribute of the &lt;svg&gt; tag takes the mandatory &quot;align&quot; value and an optional &quot;meet or slice&quot; value (separated by a space). The first (align) value can be:</p>
+<ul>
+	<li>none - Do not preserve the aspect ratio (your artwork will become distorted if the viewport aspect ratio does not match the viewbox). The second value is not needed (in fact, it is ignored).</li>
+	<li>Any combination of (xMin|xMid|xMax)([YMin|YMid|YMax]). This will force uniform scaling (i.e. preserve the aspect ratio of the artwork) For example:
+		<ul>
+			<li>xMinYMax will position the artwork in the lower left corner of the viewport.</li>
+			<li>xMaxYMin will position the artwork in the upper right corner of the viewport.</li>
+			<li>xMidYMid <em>(this is the default value)</em> will position the artwork directly in the middle (centered) of the viewport.</li>
+			<li>etc. See the <a href="http://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute" rel="external">W3C specifications</a> for details.</li>
+		</ul>
+	</li>
+</ul>
+<p>The second value of the preserveAspectRatio can be “meet”, “slice”, or “none” and is needed when the first value is not &quot;none&quot;.</p>
+<ul>
+	<li>meet: <em>This is the default</em> and it will maintain the aspect ratio of the artwork to prevent distortion.</li>
+	<li>slice: This will crop artwork that does not fit into the viewport.</li>
+	<li>none: The artwork will fill the viewport, and it will distort if the viewport has not been manually set to the same aspect ratio as the artwork.</li>
+</ul>
+<figure>
+	<svg width="215" height="190" viewBox="0 0 115 190" preserveAspectRatio="none">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption>preserveAspectRatio="none" and Viewport is wider ratio than viewBox</figcaption>
+</figure>
+<figure>
+	<svg width="215" height="190" viewBox="0 0 115 190" preserveAspectRatio="xMinYMin slice">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption>preserveAspectRatio="xMinYMin slice" and Viewport is wider ratio than viewBox</figcaption>
+</figure>
+<figure>
+	<svg width="215" height="190" viewBox="0 0 115 190" preserveAspectRatio="xMaxYMax meet">
+	<path fill="#BBC42A" d="M5,126.5c-0.6,1.8-1.1,3.6-1.5,5.4c-6.6,29.7,7.5,54.4,43.2,56.7c57,3.8,77.7-25.6,60.5-67.2
+	C90,79.7,82.1,89.7,80.4,57.8c-0.8-14.4-11.1-27.2-26.2-24.6c-17.4,3-19.8,19.9-22.2,34.4C28.4,89.5,11.6,106,5,126.5z"/>
+	<path fill="none" stroke="#59351C" stroke-width="7" stroke-linecap="round" d="M56.4,40.4c0,0-7.4-15.4,8.1-35.8"/>
+	<path fill="#7AA20D" stroke="#7AA20D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M54.2,35.4
+	c0.8-3.8,3.5-7.3,8.4-9.8c10.1-5.2,18.1-4,28.1,0.2c0,0,12.8,5.4,20.5-4.7c-4.8,6.3-9.4,12.5-14.9,18.2C87.4,48.7,71,61.5,59.1,49
+	C55,44.6,53.3,39.8,54.2,35.4z"/>
+	</svg>
+	<figcaption>preserveAspectRatio="xMaxYMax meet" and Viewport is wider ratio than viewBox</figcaption>
+</figure>
+
+<p>Changing the width and height attributes affects the overall size on the screen. By default the viewBox will attempt to fit entirely within the viewport and it will scale proportionally.</p>
+<p>Changing the viewBox is like changing Illustrator’s Artboard. This has a more drastic effect on the appearance of the artwork.</p>
+<h3>Alternate Method</h3>
+<p>If the above fails, perhaps wrapping the SVG in<a href="../mobile/responsiveImages.html#aspectRatioWrap"> a container than maintains its aspect ratio</a> will be a better solution.</p>
+
+<h2>Responsive Sizing and Image Maps</h2>
+<p>It is possible to put an image map on a responsive image when one uses SVG. This process is <a href="http://demosthenes.info/blog/760/Create-A-Responsive-Imagemap-With-SVG" rel="external">described here</a>. </p>
+<p><span style="clear:both;">Codrops has more information about <a href="http://tympanus.net/codrops/2014/08/19/making-svgs-responsive-with-css/" rel="external">Responsive SVG</a>.</span></p>
+<p>I created a demo of <a href="responsiveSVG.html">dynamically sized graphics</a> here.</p>
+<h2> Tricks</h2>
+<h3>Combining the best of PNG and JPEG</h3>
+<p>If you have a large photograph that you want alpha transparency on,  you can do that using SVG. Basically you have to create an 8-bit PNG mask and lay it on top of the JPEG. This technique is <a href="http://peterhrynkow.com/how-to-compress-a-png-like-a-jpeg/" rel="external">described in detail here</a>.</p>
+<pre>&lt;svg preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 560 1388"&gt;
+	&lt;defs&gt;
+		&lt;mask id="canTopMask"&gt;
+			&lt;image width="560" height="1388" xlink:href="img/can-top-alpha.png"&gt;&lt;/image&gt;
+		&lt;/mask&gt;
+	&lt;/defs&gt;
+	&lt;image mask="url(#canTopMask)" id="canTop" width="560" height="1388" xlink:href="can-top.jpg"&gt;&lt;/image&gt;
+&lt;/svg&gt;</pre>
+<h2>Filters</h2>
+<svg version="1.1" width="300px" height="300px" viewBox="8 408 415 415" class="pushRight">
+<filter  width="115%" height="115%" x="-5%" y="-5%" id="dropShadow">
+	<feOffset  dx="6" dy="6" in="SourceAlpha" result="offOut"></feOffset>
+	<feGaussianBlur  in="offOut" stdDeviation="5" result="blurOut"></feGaussianBlur>
+	<feComponentTransfer  in="blurOut" result="lightenOut">
+		<feFuncA  type="table" tableValues="0 0.4"></feFuncA>
+	</feComponentTransfer>
+	<feBlend  mode="normal" in="SourceGraphic" in2="lightenOut"></feBlend>
+</filter>
+<g filter="url(#dropShadow)">
+	<circle fill="#2FA7D1" cx="208" cy="608" r="200"/>
+</g>
+<polygon filter="url(#dropShadow)" fill="#FFFFFF" points="305.5,526.5 301.4,525.8 224,512.9 208,432 207.3,436.1 194.4,513.5 113.5,529.5 117.6,530.2 
+	195,543.1 211,624 211.7,619.9 224.6,542.5 "/>
+</svg>
+<p>Smashing Magazine describes how SVG filters can be used to make display text.</p>
+<p><a href="http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/" rel="external">http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/</a></p>
+<p>Filters are also available in CSS, but there is some sharing with SVG. See <a href="https://css-tricks.com/color-filters-can-turn-your-gray-skies-blue/" rel="external">Color Filters Can Turn Your Gray Skys Blue</a>.</p>
+<h3>Drop Shadow</h3>
+<p>Adobe Illustrator comes with some pretty crappy SVG Drop Shadows. A much better version is:</p>
+<pre class="prettyprint linenums">&lt;svg version=&quot;1.1&quot; width=&quot;300px&quot; height=&quot;300px&quot; viewBox=&quot;8 408 415 415&quot;&gt;
+&lt;filter  width=&quot;115%&quot; height=&quot;115%&quot; x=&quot;-5%&quot; y=&quot;-5%&quot; <strong>id=&quot;dropShadow&quot;</strong>&gt;
+	&lt;feOffset  dx=&quot;6&quot; dy=&quot;6&quot; in=&quot;SourceAlpha&quot; result=&quot;offOut&quot; /&gt;
+	&lt;feGaussianBlur  in=&quot;offOut&quot; stdDeviation=&quot;5&quot; result=&quot;blurOut&quot; /&gt;
+	&lt;feComponentTransfer  in=&quot;blurOut&quot; result=&quot;lightenOut&quot;&gt;
+		&lt;feFuncA type=&quot;table&quot; tableValues=&quot;0 0.4&quot; /&gt;
+	&lt;/feComponentTransfer&gt;
+	&lt;feBlend mode=&quot;normal&quot; in=&quot;SourceGraphic&quot; in2=&quot;lightenOut&quot; /&gt;
+&lt;/filter&gt;
+
+	&lt;circle fill=&quot;#2FA7D1&quot; cx=&quot;208&quot; cy=&quot;608&quot; r=&quot;200&quot; <strong>filter=&quot;url(#dropShadow)&quot;</strong> /&gt;
+	&lt;polygon <strong>filter=&quot;url(#dropShadow)&quot;</strong> fill=&quot;#FFFFFF&quot; points=&quot;305.5,526.5 301.4,525.8 224,512.9 208,432 207.3,436.1 194.4,513.5 113.5,529.5 117.6,530.2 
+ 195,543.1 211,624 211.7,619.9 224.6,542.5&quot; /&gt;
+&lt;/svg&gt;</pre>
+<h4>Explanation:</h4>
+<p><em>filter</em> sets up the filter’s canvas compared to whatever the filter is applied to. </p>
+<p><em>feOffset</em> creates and moves the new object around on the stage. Tweak <code>dx</code> and <code>dy</code> to position the shadow. Since the <code>in</code> attribute specifies SourceAlpha, it will only copy the alpha channel, not all the colors. This effectively makes an all black copy—black is good for drop shadows, so yay.</p>
+<p><em>feGaussianBlur</em> makes that black copy blurry (to mimic a shadow). Tweak the <code>stdDeviation</code> to adjust bluriness.</p>
+<p><em>feFuncA</em> will tweak the alpha channel. Because the black, blurry copy is so dark, this is used to adjust the opacity. Tweak the second number in <code>tableValues</code> to adjust the opacity.</p>
+<p><em>feBlend</em> with a “normal” <code>mode</code> will simply stack the original graphic on top of the drop shadow object.</p>
+<h2>Accessibility</h2>
+<p>The <a href="http://www.sitepoint.com/tips-accessible-svg" rel="external">Sitepoint article on SVG Accessibility</a> contains several tips directly related to accessibility, but also has some interesting comments related to SVG in general, such as:</p>
+<ul>
+	<li>If you inline SVG directly into your HTML, and you are using HTML5, then you do not need to namespace it. In other words, the SVG tag can be something like:<br>
+		<code>&lt;svg version="1.1" width="300" height="200"&gt;...&lt;/svg&gt;</code></li>
+	<li>Use the &lt;title&gt; tag to give a short description</li>
+	<li>Use the &lt;desc&gt; tag to provide a long description of the content</li>
+	<li>The &lt;text&gt; tag is very accessible and is the preferred method for displaying text from an accessible standpoint.</li>
+	<li>Hyperlinks are keyboard focusable. <code>&lt;a xlink:href="<a href="http://example.com/" target="_blank">http://example.com</a>"&gt;</code></li>
+</ul>
+<h2 id="svgButtons">Graphic Reuse and Sprite Sheet</h2>
+<h3>&lt;use&gt;</h3>
+<p>SVG’s &lt;use&gt; tag allows you to reference just a part of some SVG defined elsewhere and draw just that part somewhere else. However, you must use inline SVG to dynamically use only certain pieces. If you want to use SVG as a CSS background-image or in an &lt;img&gt; tag, then you can exploit fragment identifiers. It is a bit like using intra-page anchors (# syntax).</p>
+<h3>Fragment Identifiers</h3>
+<p>This information came from <a href="http://css-tricks.com/svg-fragment-identifiers-work/" target="external">How SVG Fragment Identifiers Work</a>. The concept here is to:</p>
+<ol>
+	<li>Define multiple viewboxes using the &lt;view&gt; element.<br>
+	<pre>&lt;view id=&quot;icon-clock-view&quot; viewBox=&quot;0 0 32 32&quot; /&gt;
+&lt;view id=&quot;icon-heart-view&quot; viewBox=&quot;0 32 32 32&quot; /&gt;
+&lt;view id=&quot;icon-arrow-right-view&quot; viewBox=&quot;0 64 32 32&quot; /&gt;</pre>
+	</li>
+	<li>Reference the views in your HTML or CSS.<br>
+		<pre>&lt;img src=&quot;sprite.svg#icon-heart-view&quot; alt=&quot;&quot;&gt;
+		-or-
+.icon-clock {
+	background: url(sprite.svg#icon-clock-view) no-repeat;
+}
+</pre>
+	</li>
+</ol>
+<h2>Hyperlinked SVG Buttons with Rollover Effect</h2>
+<p>It is super easy to make a stylized button when it is rectangular, but if you want an abstract shape then SVG provides a great solution.</p>
+<svg viewBox="0 0 528 260" style="width:50%;" id="starDemo">
+	<a id="Star1" xlink:href="#svgButtons">
+		<polygon fill="#FFFF00" stroke="#FFFF00" points="134.4,16.6 162.6,102.8 253.3,103 180.1,156.4 
+			207.9,242.7 134.4,189.6 60.9,242.7 88.8,156.4 15.5,103 106.2,102.8 			"/>
+		<path d="M122.1,128.6l-0.6-0.2l-0.4-2.9l0.4-0.4c2.3-0.7,5.3-1.8,8.9-3.3c3.6-1.5,6.2-2.6,7.7-3.4l0.9,0.4
+			c-0.4,10.3-0.6,16.4-0.6,18.5v13c0,3.2,0,6.2,0.1,9.1c0.1,2.8,0.2,4.5,0.3,5c0.1,0.5,0.4,0.9,0.7,1.2c0.3,0.3,0.8,0.5,1.4,0.5
+			c0.6,0.1,2.4,0.2,5.4,0.4l0.2,0.3v1.6l-0.2,0.3c-5.1-0.2-8.8-0.3-10.9-0.3c-1.6,0-5.5,0.1-11.7,0.3l-0.2-0.3v-1.6l0.3-0.3
+			c3.5-0.3,5.5-0.4,6-0.6c0.5-0.1,0.9-0.3,1.2-0.6c0.3-0.3,0.5-0.8,0.7-1.7c0.2-0.8,0.3-3.2,0.4-7.3c0.1-4,0.2-6.1,0.2-6.2v-13.9
+			c0-6.8,0-10.5-0.1-11.1c0-0.6-0.2-0.9-0.6-0.9c-0.1,0-0.2,0-0.4,0.1c-0.2,0-0.7,0.3-1.5,0.6l-3.5,1.5
+			C124.7,127.2,123.4,127.9,122.1,128.6z"/>
+	</a>
+	<a id="Star2" xlink:href="#svgButtons">
+		<polygon fill="#EDED00" stroke="#FFFF00" points="390.4,16.6 418.6,102.8 509.3,103 436.1,156.4 
+			463.9,242.7 390.4,189.6 316.9,242.7 344.8,156.4 271.5,103 362.2,102.8 			"/>
+		<path d="M375.3,168.7l-0.4-0.4v-1.6l11.8-12.5c4.9-5.1,8-9.1,9.4-11.9s2.1-5.4,2.1-7.9c0-2.9-0.9-5.2-2.6-7.1s-4.1-2.8-7-2.8
+			c-1.9,0-3.6,0.3-5,0.9c-1.4,0.6-2.3,1.2-2.8,2c-0.5,0.7-1.2,2.8-2.1,6.1l-0.3,0.3H377l-0.4-0.3c0.5-3.2,0.9-6.3,1.1-9.4
+			c2.2-2.2,4.3-3.5,6.2-4.1s3.9-0.9,6-0.9c2.5,0,4.9,0.5,7.1,1.4c2.3,0.9,4.1,2.5,5.5,4.6c1.4,2.1,2.1,4.5,2.1,7.3
+			c0,2.1-0.4,4.1-1.2,6.2s-2,4.1-3.6,6s-3.7,4.2-6.4,6.9l-11,11.2h13.9c4.3,0,7.8-0.2,10.7-0.5l0.2,0.3c-0.1,0.8-0.2,1.8-0.2,3.1
+			c0,1.2,0.1,2.1,0.2,2.8l-0.2,0.4c-1.7-0.1-4.3-0.2-7.8-0.2s-5.8-0.1-6.9-0.1c-2.3,0-5.3,0-9.2,0.1
+			C379.3,168.5,376.7,168.6,375.3,168.7z"/>
+	</a>
+</svg> <ol>
+	<li>To make this demo, first create your SVG code.
+		<ol>
+			<li>The <code>&lt;svg&gt;</code> element only needs the <code>viewbox</code> attribute (although you will often want an <code>id</code> attribute too).</li>
+			<li>Wrap the clickable element in an anchor tag. You will need to use SVG’s attribute syntax for the href attribute. For example:
+				<p class="code">&lt;a id=&quot;Star1&quot; xlink:href=&quot;http://example.com/&quot;&gt;</p>
+			</li>
+		</ol>
+	</li>
+	<li>Place the SVG on your web page using the &lt;svg&gt; tag (do <em>not</em> use &lt;img&gt;, &lt;iframe&gt;, or CSS background-image).</li>
+	<li>Add some CSS to style the rollover effect.
+		<ol>
+			<li>In this demo, the star’s stroke-width will increase to 15. (The star is a &lt;polygon&gt; defined with an initial stroke of 1.)	</li>
+		</ol>
+	</li>
+</ol>
+<p>In the second star I changed the fill color so you can see what happens a bit easier on the rollover. SVG strokes are always centered over their path.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

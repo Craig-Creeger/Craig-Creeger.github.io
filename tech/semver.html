@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Semantic Versioning - SemVer</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Semantic Versioning (SemVer)</h1>
+<h2>Definition</h2>
+<p><a href="http://semver.org" target="external">Sementic Versioning</a> is an unofficial standard used to describe changes to your software versions. It uses a tuple of numbers where the first is the Major version, the second is Minor, and the final is the Patch version.</p>
+<p>For example, using jQuery 2.1.8.</p>
+<p>2 = Major version<br>
+	1 = Minor version<br>
+	8 = Patch version
+</p>
+<div class="callout">
+	<h1>Summary</h1>
+	<p>Given a version number MAJOR.MINOR.PATCH, increment the: </p>
+	<ol>
+		<li>MAJOR version when you make incompatible API changes, </li>
+		<li>MINOR version when you add functionality in a backwards-compatible manner, and </li>
+		<li>PATCH version when you make backwards-compatible bug fixes. </li>
+	</ol>
+	<p>Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.</p>
+</div>
+<h2>Usage with npm and Bower</h2>
+<p>npm’s <code>package.json</code> and Bower’s <code>bower.json</code> files often include dependencies to the project. When including external packages you can specify an exact version, a range, greater than, etc.</p>
+<p>The primitive operators are: &gt;, &gt;= , &lt;, &lt;=, and =. Boolean logic operators are: space = And, || = Or.</p>
+<p>Advanced syntax operators are: ~, ^, –, and x. Each of these can actually be written using the primitive operators, but provide for a shortened syntax.</p>
+<p><em>In the examples below, remember that a space is a boolean AND.</em></p>
+<h3>~ range</h3>
+<p><code>~1.2.3</code> same as <code>&gt;=1.2.3 &lt;1.3.0</code></p>
+<p><code>~1.2</code> same as <code>&gt;=1.2.0 &lt;2.0.0</code></p>
+<p class="callout">Assuming library authors follow SymVer rules correctly, this is the most useful syntax (specifying Major and Minor tuples with the tilde). Example: {&quot;jQuery&quot;: &quot;~1.9&quot;}<br>
+Use any version of jQuery greater than or equal 1.9.0 <strong>and</strong> less than the 2.x version. </p>
+<h3>^ range</h3>
+<p>Allows changes that do not modify the left-most non-zero digit in the [major, minor, patch] tuple. Do not use — this is more clearly expressed using the primitives syntax.</p>
+<h3>– range</h3>
+<p>Inclusive range between two versions. If there are missing tuples, they will be replaced with zeros.</p>
+<p><code>1.2 - 2.4.3</code> same as <code>&gt;=1.2.0 &lt;=2.4.3</code></p>
+<h3>x range</h3>
+<p>You can use x, X, or * as a wildcard character.</p>
+<p><code>1.2.x</code> same as <code>&gt;=1.2.0 &lt;1.3.0</code></p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+<footer>
+<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->November 7, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

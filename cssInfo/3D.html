@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>3D Effects Using CSS</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.space3D { /* Remember, CSS names cannot begin with a number, so .3Dspace is wrong. */
+	perspective: 700px;
+}
+.square {
+	display: inline-block;
+	margin-right: 2em;
+	width: 200px;
+	height: 200px;
+	background-color: whitesmoke;
+	border: thin solid black;
+}
+table {
+	width:100%;
+}
+td {
+	width:33%;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>3D Effects Using CSS</h1>
+<h2>Perspective</h2>
+<p>Think of DOM objects as normally existing on a plane that is the same as the surface of your monitor. Push that item away from you (z-axis) and it gets smaller. Tip the top away from you (x-axis rotation) and it will appear smaller while at the same time the bottom will appear to get larger.</p>
+<div class="space3D">
+	<table>
+		<tr>
+			<td><div class="square">
+					<p>This is an unadulturated square.</p>
+				</div></td>
+			<td><div class="square" style="transform: translateZ(-300px);">
+					<p>transform: translateZ(-300px);</p>
+				</div></td>
+			<td><div class="square" style="transform: rotateX(45deg);">
+					<p>transform: rotateX(45deg);</p>
+				</div></td>
+		</tr>
+	</table>
+</div>
+<p>For any of this to work, you need to tell CSS that you want to render items in a 3D space. You can either create a container where all items inside it share the same vanishing point. You do that with the <code>perspective</code> property. Ex:</p>
+<pre>.space3D {
+	perspective: 700px;
+}</pre>
+<p>Alternatively, you can use the <code>perspective()</code> function if you need to transform only one DOM element independent of any others. Ex:</p>
+<div style="width:380px; height:50px; background-color:thistle; transform: perspective(700px) rotateY(30deg) translateZ(100px); border:thin solid white; padding:1em;">transform: perspective(700px) rotateY(35deg);</div>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

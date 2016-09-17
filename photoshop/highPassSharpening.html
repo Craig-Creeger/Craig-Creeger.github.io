@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Using the High Pass Filter</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Using the  High Pass Filter</h1>
+<h2>Sharpening and Softening an Image</h2>
+<p>This filter will isolate the edges of your image. The great thing about this is you can both sharpen <em><strong>and</strong></em> soften portions of a photograph with great control over the effect. Additionally, because you are creating new layer(s), the original image is left unmodified.</p>
+<h3>Process to Create a Soft-Focus Effect</h3>
+<ol>
+	<li>Starting with <a href="img/prom.jpg">this photo <img src="img/prom-thumbnail.jpg" width="23" height="35"></a>, duplicate the background layer (Command-J).</li>
+	<li>Fix any skin blemishes before you begin (the Spot Healing Brush tool is awesome for this).</li>
+	<li>Using the duplicate, choose Filter &gt; Other &gt; High Pass.</li>
+	<li>Set the radius so that the edges are just visible and then a bit more. Try 3.5 pixels, which will make the layer look like this:
+<p><img src="img/High-pass-3-5.jpg" width="382" height="388"></p>
+	</li>
+	<li>Desaturate this grayish layer using the keyboard shortcut Shift-Command-U.</li>
+	<li>Invert the layer with keyboard shortcut Command-I, or menu item Image &gt; Adjustments &gt; Invert.</li>
+	<li>Blend the layer using “Overlay”. If you want less softening, choose “Soft Light”; for more, choose “Hard Light”.</li>
+	<li>Back-off the amount of softening, if you wish, by dropping the opacity of the High Pass layer.</li>
+	<li>Add a mask to isolation only certain parts of the image. For this image, I will create a black mask by Option-clicking the mask button. Next, using a soft white brush, paint onto the mask the areas that should be softened.</li>
+</ol>
+<div class="callout">
+	<h3>Skin Smoothing Technique</h3>
+	<p>This technique is very similar to the Soft-Focus effect, but is particularly good on skin. It looks like you have added foundation make-up; it will even out the coloring a bit, but still leaves the skin texture.</p>
+	<ul>
+		<li>Do steps 1–3 from above.</li>
+		<li>For step 4, increase the High-pass radius to 9 (a higher number here will increase the effect). The radius must be divisible by 3.</li>
+		<li>Apply a gaussian blur to the High-pass layer where the blur amount is 1/3 of the High-pass radius (in this case, 3).</li>
+		<li>Do steps 5–9 above.</li>
+	</ul>
+</div>
+<h3>Process to Sharpen an Image</h3>
+<p>We are going to continue on with the same image to sharpen other areas in the picture.</p>
+<ol>
+	<li>Duplicate the background layer (Command-J).</li>
+	<li>Using the duplicate, choose Filter &gt; Other &gt; High Pass.</li>
+	<li>Set the radius so that the edges are just visible. Try 1.2 pixels, which will make the layer look like this:<p><img src="img/High-pass-1-2.jpg" width="382" height="388"></p>
+	</li>
+	<li>Blend the layer using “Overlay”. If you want less sharpening, choose “Soft Light”; for more, choose “Hard Light”.</li>
+	<li>Back-off the amount of sharpening, if you wish, by dropping the opacity of the High Pass layer.</li>
+	<li>Add a mask to isolate only certain parts of the image. For this image, I will duplicate the mask from the softening step by Option-dragging the mask to this new sharpening layer.</li>
+	<li>Now invert the mask by pressing Command-I.</li>
+	<li>Continue to tweak by brushing in areas that should be masked or revealed as necessary.</li>
+</ol>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

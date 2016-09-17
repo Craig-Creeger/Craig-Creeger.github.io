@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Browser Bugs</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Browser Bugs</h1>
+<h2>Webkit</h2>
+<p>There are times when Webkit browsers won’t paint the screen correctly (you will probably find elements located in the wrong position; this has happened to me before when using FooterStick.) There are a few hacks to force the browser to repaint/reflow the page. The hack that ended up working for me was to:</p>
+<ol>
+	<li>Wait a little bit</li>
+	<li>Set opacity to 99%</li>
+	<li>Wait a little bit and put it back to 100%.</li>
+</ol>
+<pre class="linenums prettyprint">function redrawElement(elem) {
+	//This can be used to force the browser to repaint the screen. Webkit tends to need this the most.
+	//The tricky bit might be finding the right element to apply this hack to. For footerStick I needed
+	//to apply this to the wrapping element.
+	var repaintStyle = 'opacity';
+	switch (repaintStyle) {
+		case 'opacity':
+			$(elem).css("opacity", .99);
+			setTimeout(function(){
+			   $(elem).css("opacity", 1);
+			},90);    
+			break;
+		case 'newElement':
+			var n = document.createTextNode(' ');
+			$(elem).append(n);
+			setTimeout(function(){n.parentNode.removeChild(n)}, 90);
+			break;
+	}
+}</pre>
+<h2>Firefox</h2>
+<h3>Responsive Images</h3>
+<p class="callout pushRight">Side note:<br>
+I’m not exactly sure if this would be considered a bug or not. It kinda seems like Firefox’s layout engine is behaving correctly, and Webkit is a bit loosey goosey. Whatever, you still need to make it work on all browsers...</p>
+<p> I like to use the CSS property <code>max-width: 100%</code> on images to make them fit their container. There are times, however when it doesn’t work in Firefox. The key is to make sure the <em>immediate</em> parent element has a defined size. So, if the parent is a block or inline-block, then set a width. If the parent is a table cell, then you may to change the layout rule with:</p>
+<pre>table {
+	table-layout: fixed;
+}</pre>
+<h2>Internet Explorer</h2>
+<h3>Telling to Be Modern</h3>
+<p>IE users can have the compatibility mode checked which may display your modern site to display poorly. Tell IE to use compliant behavior with the head tag:</p>
+<pre class="prettyprint linenums">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;</pre>
+<p>This should be placed as high as possible in the page; along with other meta tags is fine. IE=edge means to use the latest (Trident) rendering engine. chrome=1 means to use Google Chrome Frame  if it is installed.</p>
+<h3>Box Model Hack</h3>
+<p>The easiest way to avoid box sizing problems is to use CSS property <code>box-sizing: border-box;</code> as show here.</p>
+<pre class="prettyprint linenums">/* apply a natural box layout model to all elements */
+* {
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}</pre>
+<p>If you must (or want to) use the default box-sizing value, then my prefered method for making box sizes consistent across browsers is to put put a &lt;div&gt; in a &lt;div&gt;. The outer div should have no margins or padding, and it will specify the width. Apply the margins/padding to the inner div.</p>
+<h3 id="mq">Media Queries</h3>
+<p>IE8 and earlier do not understand CSS media queries. More information is on the <a href="../mobile/mediaQueries.html#ie8">Media Query page</a>.</p>
+<h3>Rounded Corners</h3>
+<p>IE9 and up supports the CSS <code>border-radius</code> property. You may need to include this to get it to work:</p>
+<pre class="prettyprint linenums">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=9&quot;&gt;</pre>
+<h3>has-layout</h3>
+<p>Applying <code>zoom: 1;</code> to every element is a way to force elements to gain the proprietary hasLayout property in IE browsers. This can fix a number of (truly) weird bugs in IE.<br>
+Read more about it <a href="http://www.satzansatz.de/cssd/onhavinglayout.html" rel="external">here</a>.</p>
+<h3>min-height Property</h3>
+<p>If IE is not obeying the min- or max-height properties, then you will have to use the height property instead. This may have to be done with conditional comments such as:</p>
+<pre><a name="condComment"></a>&lt;body&gt;
+<span style="color:black; font-style:italic; font-weight:bold;">&lt;!--[if IE]&gt;</span>
+&lt;div id=&quot;IEroot&quot;&gt;
+<span style="color:black; font-style:italic; font-weight:bold;">&lt;![endif]--&gt;</span>
+
+&lt;p&gt;Wrap the whole body with conditional comments so you can target 
+   IE specific items in your CSS with:
+#IEroot .thing {
+	height:500px;
+}
+&lt;/p&gt;
+
+<span style="color:black; font-style:italic; font-weight:bold;">&lt;!--[if IE]&gt;</span>
+&lt;/div&gt;
+<span style="color:black; font-style:italic; font-weight:bold;">&lt;![endif]--&gt;</span>
+&lt;/body&gt;</pre>
+<h3>Conditional Comments</h3>
+<p>Internet Explorer has a proprietary way of reading comments. You can target certain sections of HTML to <em><strong>not</strong></em> be a comment by using the special syntax shown <a href="#condComment">above</a>.</p>
+<p>&lt;p class=&quot;accent&quot;&gt;<br>
+	&lt;!--[if IE]&gt;<br>
+	According to the conditional comment this is IE&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if IE 6]&gt;<br>
+	According to the conditional comment this is IE 6&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if IE 7]&gt;<br>
+	According to the conditional comment this is IE 7&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if IE 8]&gt;<br>
+	According to the conditional comment this is IE 8&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if IE 9]&gt;<br>
+	According to the conditional comment this is IE 9&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if gte IE 8]&gt;<br>
+	According to the conditional comment this is IE 8 or higher&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if lt IE 9]&gt;<br>
+	According to the conditional comment this is IE lower than 9&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if lte IE 7]&gt;<br>
+	According to the conditional comment this is IE lower or equal to 7&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if gt IE 6]&gt;<br>
+	According to the conditional comment this is IE greater than 6&lt;br /&gt;<br>
+	&lt;![endif]--&gt;<br>
+	&lt;!--[if !IE]&gt; --&gt;<br>
+	According to the conditional comment this is not IE&lt;br /&gt;<br>
+	&lt;!-- &lt;![endif]--&gt;<br>
+&lt;/p&gt;</p>
+<h3>Iterating Over an Array</h3>
+<p>IE8 and lower doesn’t pay attention to the enumerable property for arrays, so when looping through all the elements there is a right way and wrong way to do it.</p>
+<h4>Right Way</h4>
+<p class="code">for (var i=0;i&lt;myArray.length;i++) {<br>
+  alert(myArray[i]);<br>
+}</p>
+<p>Frankly, when iterating over an Array (vs. object) this is the better approach regardless of the browser or version because you can be guaranteed of the index position this way.</p>
+<h4>Wrong Way (Although this works fine in real browsers)</h4>
+<p class="code">for  (var i in myArray) {<br>
+	  alert(myArray[i]);<br>
+	} </p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

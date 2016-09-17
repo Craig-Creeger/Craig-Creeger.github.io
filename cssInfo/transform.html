@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CSS Transform Property</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.simpleRotation {
+	background-color:#FC0;
+	color:indigo;
+	margin:0;
+	padding:0;
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	;
+	-o-transform: rotate(270deg);
+	transform: rotate(270deg);
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.fixPosition {
+	position:absolute;
+	left: 0;
+	top:9em;
+	-webkit-transform-origin:left bottom;
+	-moz-transform-origin:left bottom;
+	-ms-transform-origin:left bottom;
+	-o-transform-origin:left bottom;
+	transform-origin:left bottom;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Rotating Text with Transform</h1>
+<h2>CSS Transform Property</h2>
+<p>Rotation of an element is easy, positioning it where you want after you rotate it is a bit trickier. By default, the rotation axis is  right in the middle of the element. This is best demonstrated with an example. Below I have rotated a header. You'll notice a few things right off the bat. First, the space where the header was located before the rotation is still there; is behaves like <code>position:relative;</code> Also, my intent was to place the header on the left and aligned with the top of the paragraph.</p>
+<p>Vary the width of your browser window to see the in-line block move around on the page. The first heading, since it was floated left, just sits in the same spot.</p>
+<p>&nbsp;</p>
+<h3 class="simpleRotation" style="float:left;">float: left</h3>
+<p style="margin-top:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis sem ut ipsum volutpat feugiat a nec nisl. Phasellus tincidunt elit eget mauris tempus tristique vitae id magna. Nulla sit amet tortor nisi, sit amet congue justo. Aenean pretium sodales quam. Aenean pretium pharetra ante, et ullamcorper arcu vehicula vel. Sed sit amet diam nunc. Vestibulum sed ornare orci. Suspendisse eget turpis sed ligula pretium tempor at sit amet lectus. Suspendisse urna purus, pretium malesuada sollicitudin sit amet, semper et <em>dolor</em>. <span class="simpleRotation" style="display:inline-block; width:9em">Inline-block</span>, <strong>velit</strong> ac vulputate gravida, velit velit ultrices elit, eget molestie lorem lacus vitae nunc. Aenean leo nulla, ornare eu mollis et, consequat vitae leo. Sed tristique fringilla varius. Sed laoreet pharetra aliquet. Pellentesque tempus, neque sit amet commodo condimentum, risus neque dignissim enim, vitae fringilla justo purus sed tortor. Curabitur dignissim iaculis pellentesque. In a nunc lorem. Aenean ut neque libero. Pellentesque accumsan lobortis arcu, a commodo risus consectetur id.</p><hr>
+<p>To fix the positioning of the header I'll do a <code>position:absolute</code> on it to remove it from the page flow. Keep in mind, its container will need to be <code>position:relative, fixed</code>, or <code>absolute</code>.</p>
+<div style="position:relative;">
+	<h3 class="simpleRotation fixPosition" style="float:left;">position:absolute</h3>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis sem ut ipsum volutpat feugiat a nec nisl. Phasellus tincidunt elit eget mauris tempus tristique vitae id magna. Nulla sit amet tortor nisi, sit amet congue justo. Aenean pretium sodales quam. Aenean pretium pharetra ante, et ullamcorper arcu vehicula vel. Sed sit amet diam nunc. Vestibulum sed ornare orci. Suspendisse eget turpis sed ligula pretium tempor at sit amet lectus. Suspendisse urna purus, pretium malesuada sollicitudin sit amet, semper et <em>dolor</em>. <span class="simpleRotation" style="display:inline-block; width:9em">Inline-block</span>, <strong>velit</strong> ac vulputate gravida, velit velit ultrices elit, eget molestie lorem lacus vitae nunc. Aenean leo nulla, ornare eu mollis et, consequat vitae leo. Sed tristique fringilla varius. Sed laoreet pharetra aliquet. Pellentesque tempus, neque sit amet commodo condimentum, risus neque dignissim enim, vitae fringilla justo purus sed tortor. Curabitur dignissim iaculis pellentesque. In a nunc lorem. Aenean ut neque libero. Pellentesque accumsan lobortis arcu, a commodo risus consectetur id.</p>
+</div>
+<h2>The CSS Used Above</h2>
+<pre class="prettyprint linenums">.simpleRotation {
+	 background-color:#FC0;
+	 color:indigo;
+	 margin:0;
+	 padding:0;
+	 -webkit-transform: rotate(270deg);
+	 -moz-transform: rotate(270deg);
+	 ;
+	 -o-transform: rotate(270deg);
+	 transform: rotate(270deg);
+	 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+ }
+ .fixPosition {
+	 position:absolute;
+	 left: 0;
+	 top:9em;
+	 -webkit-transform-origin:left bottom;
+	 -moz-transform-origin:left bottom;
+	 -ms-transform-origin:left bottom;
+	 -o-transform-origin:left bottom;
+	 transform-origin:left bottom;
+ }</pre>
+<h3 class="sidewaysHeader">Standards-compliant code</h3>
+<pre class="prettyprint linenums">-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg);
+transform: rotate(-90deg);</pre>
+<h3 class="sidewaysHeader">IE code</h3>
+<pre class="prettyprint linenums">filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);</pre>
+<p>The rotation values of 0, 1, 2, and 3, equate to 0&deg;, 90&deg;, 180&deg;, and 270&deg;.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

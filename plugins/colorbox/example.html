@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Colorbox</title>
+<link href="colorbox-basic.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Colorbox (modal dialog box)</h1>
+<h2>&nbsp;</h2>
+<p><a href="#example" class="colorbox">Here is an example</a> of it in action.</p>
+<p>For more information, <a href="#reference" class="colorbox">click here</a>.</p>
+<div style="display:none;">
+
+	<div id="example">
+		<h1>This is #example</h1>
+		<p>You can put anything in a pop-up that you want; headers, paragraphs, images, video, etc.</p>
+		<p>Notice how you can click the shaded “overlay” to close this box. Alternatively, you can click the Close button in the corner.</p>
+	</div>
+	
+	<div id="reference">
+		<h1>Official Site</h1>
+		<p>You can get the latest version from <a href="http://www.jacklmoore.com/colorbox/" rel="external">Jack’s site</a>. I’m just scratching the surface with what can be done with this library, so be sure to read the FAQ and Beginner’s Guide on his website.</p>
+	</div>
+	
+</div>
+<script type="text/javascript" src="../../js/jquery.js"></script> 
+<script type="text/javascript" src="jquery.colorbox-min.js"></script> 
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.colorbox').colorbox({
+		inline:true,
+		opacity:0.5,
+		width:'80%'
+	});
+});
+</script>
+</body>
+</html>

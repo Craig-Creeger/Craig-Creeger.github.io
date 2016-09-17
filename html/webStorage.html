@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Web Storage</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<script type="text/javascript">
+var veggie = ["apple","banana","carrot","dill"];
+window.sessionStorage.setItem("veggie",JSON.stringify(veggie));
+window.sessionStorage.egg = "eggplant";
+</script>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Web Storage</h1>
+<h2>Intro Articles</h2>
+<p>See Apple’s <a href="../assets/SafariJSDatabaseGuide.pdf">tutorial on Web Applications</a>.</p>
+<p>From <a href="http://html5doctor.com/storing-data-the-simple-html5-way-and-a-few-tricks-you-might-not-have-known/" rel="external">HTML5Doctor</a> and one from <a href="http://www.webdirections.org/blog/webstorage-persistent-client-side-data-storage/" rel="external">WebDirections</a>.</p>
+<p>Also, take a quick look at the <a href="applicationCache.html#filesystem">Filesystem API</a>.</p>
+<h2>Description</h2>
+<p>The API for localStorage and sessionStorage is exactly the same, and distills down to the following methods:</p>
+<div class="halfWidthBox">
+	<p>If Web Storage is working, you will see two identical columns of text below.
+</p>
+<div>
+	<ul style="float:left; margin-right:4em;">
+		<li>apple</li>
+		<li>banana</li>
+		<li>carrot</li>
+		<li>dill</li>
+		<li>eggplant</li>
+	</ul>
+	<ul>
+		<script type="text/javascript">
+			//window.sessionStorage.clear(); //remove all entries
+			var fridge = JSON.parse(window.sessionStorage.getItem("veggie"));
+			for (var i=0;i<fridge.length;i++) {
+				document.write("<li>"+fridge[i]+"</li>");
+			}
+			document.write("<li>"+window.sessionStorage.egg+"</li>");
+		</script>
+	</ul>
+	</div>
+</div>
+<div class="halfWidthBox" style="margin-top:1em;">
+<h3>Another example</h3>
+<p>Clicking a checkbox will immediately save that value to the database. After closing your browser and coming back to this page, you should see your previously saved values.</p>
+<form name="formToDo" method="post" action="" onsubmit="return false;">
+	<p>
+		<label>
+			<input type="checkbox" name="ToDoList" value="als15pages" id="ToDoList_0">
+			Create 5 pages</label>
+		<br>
+		<label>
+			<input type="checkbox" name="ToDoList" value="als2offsiteLink" id="ToDoList_1">
+			Include off-site link</label>
+		<br>
+		<label>
+			<input type="checkbox" name="ToDoList" value="als3repeatingBkgd" id="ToDoList_2">
+			Create repeating background</label>
+		<br>
+		<label>
+			<input type="checkbox" name="ToDoList" value="als4buildForm" id="ToDoList_3">
+			Build a form</label>
+		<br>
+	</p>
+</form>
+</div>
+<p>.setItem(key, value);<br>
+	.getItem(key)<br>
+	.removeItem(key)<br>
+	.clear() - empties out all contents<br>
+	.key(index)<br>
+	.length</p>
+<h3>Storing Data</h3>
+<p>Call the .setItem() method &mdash; for example:</p>
+<p class="code">if (window<wbr>.sessionStorage) { //we use sessionStorage</p>
+<p class="code">    window<wbr>.sessionStorage<wbr>.setItem(<wbr>&quot;fullName&quot;,<wbr>&quot;Craig Creeger&quot;);</p>
+<p class="code">} else {</p>
+<p class="code">    //we do something else, perhaps use cookies, or another fallback</p>
+<p class="code">    //NOTE: There are a few <a href="https://gist.github.com/350433" rel="external">polyfills</a> available for IE7 and older.</p>
+<p class="code">}</p>
+<p>There is also a shortcut method for calling setItem(). Simply create and set a property on the sessionStorage object. This will automatically call setItem() behind the scenes. For example:</p>
+   <p class="code">window.sessionStorage.fullName = "Craig Creeger";</p>
+   <h3>Retrieving Data</h3>
+   <p>This is done in a similar manner as storing the data.</p>
+   <p class="code">var myName = window.sessionStorage.getItem(&quot;fullName&quot;);</p>
+   <p>    or</p>
+   <p class="code">var myName = window.sessionStorage.fullName;</p>
+   <p>If for some reason the key doesn&rsquo;t exists, it will return a null. So you could do a test after the read, such as:</p>
+   <pre class="prettyprint linenums">var myName = window.sessionStorage.fullName;
+if (myName!=null) {
+  //use it
+} else {
+  myName = &quot;default value&quot;;
+}</pre>
+   <h3>Delete a Key/Value Pair</h3>
+   <p class="code">window.sessionStorage.removeItem(&quot;fullName&quot;);</p>
+   <p>    or</p>
+   <p class="code">delete window.sessionStorage.fullName;</p>
+   <h2>Gotchas, Tips and Tricks</h2>
+   <h3>sessionStorage and localStorage store all data as strings</h3>
+   <p>As mentioned earlier, the values stored in local and session storage are strings, which has a number of implications for developers.</p>
+   <p>In particular, when we store boolean values, integers, floating point numbers, dates, objects and other non-​​string values, we need to convert to and from a string when writing to and reading from storage.</p>
+<p>There’s also a more subtle side effect of storing values as strings. JavaScript strings are UTF-​​16 encoded, which means each character is 2 bytes (in UTF-​​8 characters are one byte). This effectively halves the available storage space.</p>
+<p>The main gotcha with Web Storage is that although the specification used to say that any object type can be stored, in fact all browsers currently coerce to strings. That means if you want to store a JavaScript object (or an array perhaps), you’ll need to use JSON to encode and decode:</p>
+<p class="code">var doctors = [<br>
+	   'rem', <br>
+	   'rich_clark', <br>
+	   'brucel', <br>
+	   'jackosborne', <br>
+	   'leads', <br>
+	   'akamike', <br>
+	   'boblet'];<br>
+	localStorage.doctors = <strong>JSON.stringify</strong>(doctors);</p>
+<p class="code">// later that evening…<br>
+	var html5docs = <strong>JSON.parse</strong>(localStorage.doctors);<br>
+alert('There be ' + html5docs.length + ' doctors in the house');</p>
+<h3>Private Browsing</h3>
+<p>Many browsers now have private (or ‘incognito’) browsing modes, where no history or other details are stored between sessions. In this situation, what happens with sessionStorage and localStorage varies widely by browser.</p>
+<p>Safari returns null for any item set using localStorage.setItem either before or during the private browsing session. In essence, neither sessionStorage nor localStorage are available in private browsing mode.</p>
+<p>Chrome and Opera return items set previous to private (&quot;incognito&quot;) browsing commencing, but once private browsing commences, treat localStorage like sessionStorage (only items set on the localStorage by that session will be returned) but like localStorage for other private windows and tabs.</p>
+<p>Firefox, like Chrome will not retrieve items set on localStorage prior to a private session starting, but in private browsing treats localStorage like sessionStorage for non-private windows and tabs, but like localStorage for other private windows and tabs.</p>
+<h3>Getters and Setters</h3>
+<p>In addition to using getItem and setItem we can use a key directly to get and set an item in sessionStorage and localStorage, like so (where the key is &quot;keyName&quot;):</p>
+<p>var itemValue = window.localStorage.keyName;</p>
+<h3>localStorage and sessionStorage Limits</h3>
+<p>The webStorage specification recommends browsers implement a 5MB limit on the amount of data localStorage or sessionStorage can save for a given domain. If you try to exceed the limit that various browsers have in place (for some browsers users can change this allowance) setItem throws an error. There's no way of asking localStorage for the amount of space remaining, so it's best to set item values with a try and catch for any error:</p>
+   <p>try {<br>
+   	window.localStorage.setItem(key, value);<br>
+   	}<br>
+   	catch (exception) {<br>
+//test if this is a QUOTA_EXCEEDED_ERR </p>
+   <p>}<br>
+   	If the available space for this localStorage is exceeded, the exception object will have the name &quot;QUOTA_EXCEEDED_ERR&quot; and a code of 22.</p>
+   <p>As mentioned, in JavaScript strings are UTF-16 encoded, which means they are 2 bytes. So, when saving the string &ldquo;John&rdquo;, we are actually using 8 bytes, not 4. Which means instead of 5MB of storage space per storage area, we effectively have 2.5MB.</p>
+<p>If the storage needs of your application are likely to exceed 5MB, then web databases are likely to be a better solution. However, the situation with web databases is complicated, with two different standards, one, webSQL widely supported but deprecated, and the other IndexedDB, currently supported only in Firefox, Chrome and IE10.</p>
+   <h3>Storage Events</h3>
+   <p>We can add an event listener to the window for storage events so that when a storage object has been changed then we can be notified and respond to those changes.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+$('input[type="checkbox"][name="ToDoList"]').change(function() {
+	//while this is not the most efficient, it works well for small lists (I'm updating every single property)
+	if (window.localStorage) { //we use localStorage
+		$('input[type="checkbox"][name="ToDoList"]').each(function() {
+			window.localStorage.setItem(this.value,Boolean(this.checked).toString());
+		});
+	}
+});
+
+$('input[type="checkbox"][name="ToDoList"]').each(function() {
+	var thisChecked = window.localStorage[this.value];
+	if (thisChecked==null||thisChecked==="false") {
+	  this.checked = false;
+	} else {
+	  this.checked = true;
+	}
+});
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

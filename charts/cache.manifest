@@ -1,0 +1,21 @@
+CACHE MANIFEST
+# 2012-04-12:v3
+
+CACHE:
+scatter.html
+amiable.png
+analytical.png
+driving.png
+expressive.png
+flags/france.png
+flags/norway.png
+flags/russia.png
+flags/spain.png
+flags/seychelles.png
+flags/trinidad.png
+flags/unitedStates.png
+scripts/exporting.js
+scripts/highcharts.js
+scripts/jquery.js
+worldMap.png
+../favicon.ico

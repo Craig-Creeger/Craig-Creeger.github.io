@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Tables</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+<!--
+table {
+	border-collapse:collapse;
+background: rgb(201,200,169); /* Old browsers */
+
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2M5YzhhOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5N2Q5ZWQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+
+background: -moz-linear-gradient(top,  rgba(201,200,169,1) 0%, rgba(151,217,237,1) 100%); /* FF3.6+ */
+
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(201,200,169,1)), color-stop(100%,rgba(151,217,237,1))); /* Chrome,Safari4+ */
+
+background: -webkit-linear-gradient(top,  rgba(201,200,169,1) 0%,rgba(151,217,237,1) 100%); /* Chrome10+,Safari5.1+ */
+
+background: -o-linear-gradient(top,  rgba(201,200,169,1) 0%,rgba(151,217,237,1) 100%); /* Opera 11.10+ */
+
+background: -ms-linear-gradient(top,  rgba(201,200,169,1) 0%,rgba(151,217,237,1) 100%); /* IE10+ */
+
+background: linear-gradient(top,  rgba(201,200,169,1) 0%,rgba(151,217,237,1) 100%); /* W3C */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9c8a9', endColorstr='#97d9ed',GradientType=0 ); /* IE6-8 */
+
+}
+/* style columns */
+col {
+	width:8em;
+	background-color:lemonchiffon;
+}
+tr td:first-child {
+	font-weight:bold;
+}
+td + td {
+	text-align:right;
+}
+/* style rows */
+table td, th {
+	padding:5px 1em;
+	border:thin solid #030;
+}
+th {
+	background-color:#C9C8A9; 
+	color:#1C4D1A;
+}
+tfoot td {
+	background-color:#09C;
+	color:#FFF;
+}
+-->
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Tables</h1>
+<h2>Documentation</h2>
+<p><a href="http://developers.whatwg.org/tabular-data.html" title="HTML tables technical documentation" rel="external">http://developers.whatwg.org/tabular-data.html</a></p>
+<p>Check into the <span class="code">scope</span> attribute sometime…</p>
+<h2>Creating the Structure</h2>
+<p>A table can have a header, body, footer, and caption.</p>
+<p>Structure rules:</p>
+<ol>
+	<li>Tags <strong>must</strong> appear in this order: &lt;table&gt;, &lt;caption&gt;, &lt;colgroup&gt;, &lt;col&gt;, &lt;thead&gt;, &lt;tfoot&gt;, &lt;tbody&gt;.<br>
+	&lt;tr&gt; and &lt;td&gt; will appear inside the head, footer, and body sections.</li>
+	<li>If you use &lt;thead&gt;, then you must use &lt;tbody&gt;. In fact, &lt;tbody&gt; is always required unless there is only one body and you are <strong>not</strong> using &lt;thead&gt;.</li>
+	<li>&lt;thead&gt;, &lt;tfoot&gt;, and &lt;tbody&gt; end tags are not required and can be safely omitted.</li>
+	<li>The ending tag for &lt;colgroup&gt; is optional. The ending tag for &lt;col&gt; is forbidden.</li>
+</ol>
+<table>
+	<caption>Sales Results &ndash; 2012</caption>
+	<col>
+	<colgroup span="4">
+	<thead>
+		<tr>
+			<th>District</th>
+			<th>1<sup>st</sup> Quarter</th>
+			<th>2<sup>nd</sup> Quarter</th>
+			<th>3<sup>rd</sup> Quarter</th>
+			<th>4<sup>th</sup> Quarter</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td>Total</td>
+			<td>$2,987,987.00</td>
+			<td>$987,987.00</td>
+			<td>$987,987.00</td>
+			<td>$987,987.00</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>Northern</td>
+			<td>$123,998.00</td>
+			<td>$4,123,998.00</td>
+			<td>$123,998.00</td>
+			<td>$98.00</td>
+		</tr>
+		<tr>
+			<td>Eastern</td>
+			<td>$998.00</td>
+			<td>$998.00</td>
+			<td>$998.00</td>
+			<td>$998.00</td>
+		</tr>
+		<tr>
+			<td>Southern</td>
+			<td>$13,998.00</td>
+			<td>$123,998.00</td>
+			<td>$98.00</td>
+			<td>$4,123,998.00</td>
+		</tr>
+		<tr>
+			<td>Western</td>
+			<td>$1,998.00</td>
+			<td>$98.00</td>
+			<td>$4,123,998.00</td>
+			<td>$123,998.00</td>
+		</tr>
+	</tbody>
+</table>
+<h2>Styling Tables</h2>
+<p>There are a few weird things when attempting to make your table look beautiful.</p>
+<ol>
+	<li>The margin property only applies to <code>&lt;table&gt;</code>. Internal elements (<code>&lt;tr&gt;, &lt;td&gt;, &lt;th&gt;, &lt;col&gt;</code>, etc.) can not have margin.</li>
+	<li><code>&lt;colgroup&gt;</code> and <code>&lt;col&gt;</code>  allow only four properties for styling: width, border, background, and visibility.</li>
+</ol>
+<p>The above table was styled with:</p>
+<p class="code">table {<br>
+  border-collapse:collapse;<br>
+  background: linear-gradient(top, rgba(201,200,169,1) 0%,rgba(151,217,237,1) 100%); /* W3C */<br>
+}<br>
+  <span class="comment">/* style columns */</span><br>
+  col { <span class="comment">/* The table was defined with only the first column getting the <strong>col</strong> element. */</span><br>
+    width:8em;<br>
+    background-color:lemonchiffon;<br>
+  }<br>
+  tr td:first-child { <span class="comment">/* text in first column */</span><br>
+    font-weight:bold;<br>
+  }<br>
+  td + td { <span class="comment">/* all columns except the first */</span><br>
+    text-align:right;<br>
+  }<br>
+  /* style rows */<br>
+  table td, th { <span class="comment">/*all body and header cells */</span><br>
+    padding:5px 1em;<br>
+    border:thin solid #030;<br>
+  }<br>
+  th { <span class="comment">/* header - aka. the first row */</span><br>
+    background-color:#C9C8A9; <br>
+    color:#1C4D1A;<br>
+  }<br>
+  tfoot td {<span class="comment">/* footer - aka. the last row */</span><br>
+    background-color:#09C;<br>
+    color:#FFF;<br>
+}</p>
+<h3>Styling Columns</h3>
+<p>If you are only styling width, border, background or visibility, then you can target the CSS against &lt;col&gt; or &lt;colgroup&gt;. Any other CSS property must be applied to cells (<code>&lt;td&gt;</code>) using a selector such as <code>tr &gt; td + td { &hellip; }</code> or <code>tr td:first-child { &hellip; }</code> Refer to the <a href="../cssInfo/selectors.html">CSS Selectors</a> page for more information on this advanced selector.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

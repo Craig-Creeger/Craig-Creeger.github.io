@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Drupal Text Formats and Filters</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Drupal Text Formats and Filters</h1>
+<h2>Concepts</h2>
+<h3>Definition</h3>
+<p>Text Formats are applied to text fields, and are way to group and configure a set of Filters. Permissions are assigned to the Text Format. Filters will dynamically rewrite the souce code at display time (usually they are restricting the HTML or otherwise making it safer).</p>
+<h3>Input and Output</h3>
+<p>Whatever a user enters into a text field is exactly what gets stored in the database (although Drupal will make it SQL safe). Therefore, filters are applied at output (page display) time.</p>
+<h3>Best Practices</h3>
+<p>Give your visitors and editors as little leeway as possible.</p>
+<h2>Filters</h2>
+<h3>Drupal Core Filters</h3>
+<p>There are some core filters that come with Drupal:</p>
+<p>
+<div class="callout pushRight" style="width:40%;">The first two filters listed here are mutually exclusive. If you try to use both at the same time, “Display any HTML as plain text” will win.</div>
+</p>
+<h4>Limit Allowed HTML Tags</h4>
+<p>This lets you create a white-list of HTML tags.</p>
+<h4>Display any HTML as plain text</h4>
+<p>Converts HTML special characters to their entity equivalents.</p>
+<h4>Convert line breaks into HTML</h4>
+<p>Any newline characters typed into the text field will be rendered as either a <code>&lt;p&gt;</code> or <code>&lt;br&gt;</code>.</p>
+<h4>Convert URLs into links</h4>
+<p>For anonymous users or people entering comments this should be shut off (to prevent clickable spam links).</p>
+<p>For content editors this is a nice time saver, however it is probably a good idea to combine it with “Limit allowed HTML tags” if you need to add the <code>rel=&quot;nofollow&quot;</code> attribute.</p>
+<h4>Correct faulty and chopped off HTML</h4>
+<p>Does what it says.</p>
+<h3>Other Common Filters</h3>
+<h4>Convert Media tags to markup</h4>
+<p>This is installed as part of the CKEditor (ckeditor) module. You will need to enable this filter if you want to use the WYSIWYG editor to insert <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> tags (I think).</p>
+<h2>Text Formats</h2>
+<p>When configuring Text Formats, I tend to consider the typical user types, the WYSIWIG editor, and Filters. This is what I used for one website:</p>
+<table class="dataTable">
+	<thead>
+		<tr>
+			<th> </th>
+			<th>Plain Text</th>
+			<th>Filtered HTML</th>
+			<th>Full HTML</th>
+			<th>Expert Coder</th>
+			<th>PHP Filter</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>Intended User and Purpose</th>
+			<td>eLearning users when they enter comments</td>
+			<td>Lab employees and student workers to edit nodes.</td>
+			<td>Computer Programmers (admin role) – Used to craft simple pages.</td>
+			<td>Computer Programmers - Used to craft complex web pages</td>
+			<td>Computer Programmers - Used to craft complex web pages</td>
+		</tr>
+		<tr>
+			<th>Filters</th>
+			<td>Convert line breaks to &lt;p&gt; or &lt;br&gt;</td>
+			<td><ul>
+				<li>Limit tags to the basics</li>
+				<li>Convert line breaks to &lt;p&gt; or &lt;br&gt;</li>
+				<li>Correct faulty and chopped off HTML</li>
+			</ul></td>
+			<td colspan="3"><strong>None</strong> (i.e. This is means you have the ability to do anything because the filters restrict functionality.)</td>
+		</tr>
+		<tr>
+			<th>WYSIWIG Editor</th>
+			<td><strong>No</strong></td>
+			<td><strong>Yes</strong>. Functions should be mapped to the limited HTML tags.</td>
+			<td><strong>Yes</strong></td>
+			<td colspan="2"><strong>No</strong>; because the editor tends to butcher and erase your code.</td>
+		</tr>
+	</tbody>
+</table>
+<h3>Deleting (disabling) a Text Format</h3>
+<p>Core Drupal handles the removal of Text Formats in a very rudimentary way. There is a link to “disable” a text format. Clicking this will:</p>
+<ul>
+	<li>Remove that Text Format from the list of available formats.</li>
+	<li>Unassign it from all nodes that used that Text Format. When viewing those nodes, the content will NOT be displayed until you explicity assign a new Text Format to all of them.</li>
+</ul>
+<p>If you have hundreds of nodes using a text format that you want to get rid of, then an automated solution is in order. You will need to know the table name for your fields and then run some SQL:</p>
+<pre class="prettyprint linenums">UPDATE field_revision_foo SET field_foo_format = 'new_format';
+UPDATE field_data_foo SET field_foo_format = 'new_format';</pre>
+<h4>Re-enabling a Disabled Text Format</h4>
+<p>When you disable a Text Format (as the name implies) you are not actually deleting it. To get it back, find the machine name for your filter using:</p>
+<p class="code">Select * from filter_format;</p>
+<p>Then re-enable using a SQL statement similar to this:</p>
+<p class="code">Update filter_format Set status=1 Where format='machine_name';</p>
+<p>Finally, clear all caches and it will be back!</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

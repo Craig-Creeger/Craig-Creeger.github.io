@@ -1,0 +1,94 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/*****************
+ * color schemes *
+ *****************/
+/* line 24, ../sass/main.scss */
+.stdScheme, body {
+  background-color: #d9bf8f;
+  color: #260b01; }
+
+/* line 28, ../sass/main.scss */
+.richScheme, .callout {
+  background-color: #592202;
+  color: #d4d8dc; }
+
+/* line 33, ../sass/main.scss */
+html {
+  background-color: #727d8c;
+  font-size: 100%;
+  line-height: 1.4; }
+
+/* line 39, ../sass/main.scss */
+body {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #d9bf8f;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px 5px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px 5px; }
+
+/**************
+ * typography *
+ **************/
+/* line 49, ../sass/main.scss */
+p {
+  margin: 1em 0;
+  font-family: Georgia, "Times New Roman", Times, serif; }
+
+/* line 53, ../sass/main.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: bold; }
+
+/* line 58, ../sass/main.scss */
+h1 {
+  font-size: 2.2em; }
+
+/* line 61, ../sass/main.scss */
+h2 {
+  font-size: 1.5em; }
+
+/********************
+ * structure        *
+ ********************/
+/* line 67, ../sass/main.scss */
+.textualAreas, header, footer, #main, .callout {
+  overflow: hidden;
+  padding: 0 2rem; }
+
+/* line 71, ../sass/main.scss */
+header, footer {
+  background-color: #a66329;
+  color: #592202;
+  border-top: thin solid black;
+  border-bottom: thick solid #727d8c;
+  font-size: 4em;
+  box-sizing: border-box;
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+
+/* line 82, ../sass/main.scss */
+footer {
+  font-size: .8em;
+  color: #222; }
+
+/*********************
+ * block-level stuff *
+ *********************/
+/* line 93, ../sass/main.scss */
+.callout {
+  overflow: hidden;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0.1em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0.1em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+  box-shadow: 0.1em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+  width: 80%;
+  margin: 0 auto; }

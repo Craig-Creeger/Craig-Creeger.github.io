@@ -1,18 +1,549 @@
-<!doctype html>
-<html lang=en>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Craig Creeger’s Portfolio</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes">
+<title>Web Design Reference</title>
+<script type="text/javascript" src="js/modernizr_full_build.js"></script>
+<link href="css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<style type="text/css">
+a:link, a:visited {
+	color: #060;
+	text-decoration: none;
+}
+section {
+	float: left;
+	width: 45%;
+}
+.centerSpace {
+	float: left;
+	width: 7.9%;
+}
+ul ul {
+	margin-left: 0;
+}
+form p {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: smaller;
+}
+@media only screen and (max-width: 650px) {
+/* use when screen is 650 or less - Make page only a single column of bullets */
+section {
+	float: none;
+	width: auto;
+}
+.centerSpace {
+	display: none;
+}
+}
+</style>
+</head>
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-    </body>
+<body>
+<h1>The Pixel Pro Web Design Reference</h1>
+<p>The information on this subdomain is not intended to be a tutorial, but rather a reference for common (but easily forgotten :-) items that a web designer is faced with when creating a website. These pages are rapidly changing right now; expect to find missing or non-working items...</p>
+<form method="get" action="http://www.google.com/search" style="float:right">
+	<p>
+		<input type="text"   name="q" size="25" maxlength="255" value="">
+		<input type="submit" value="Search">
+	</p>
+	<p>
+		<input type="checkbox"  name="sitesearch" value="wook.pixelpro.biz" checked>
+		search only this site</p>
+</form>
+<p style="float:right; margin:0 2em;">
+	<button id="expandAll">Expand All</button>
+</p>
+<p>Cheers,<br>
+	Craig Creeger</p>
+<hr>
+<section>
+	<h2>Web Design</h2>
+	<ul class="fauxAccordion">
+		<li><a href="#projectManagement" id="projectManagement">Project Management</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="projectMgmt/questionnaire.html">New Client Questionnaire</a> to help create a proposal</li>
+					<li><a href="projectMgmt/designBrief.html">Abbreviated Design Brief</a> document</li>
+					<li><a href="projectMgmt/informationArchitecture.html">Information Architecture</a></li>
+					<li><a href="projectMgmt/web-development-steps.html">Steps of a Web Development Project</a></li>
+					<li><a href="projectMgmt/freelancing.html">Freelancing</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="cssInfo/color.html#Constants">Colors</a></li>
+		<li><a href="#CascadeStyleSheets" id="CascadeStyleSheets">Cascade Style Sheets</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="http://reference.sitepoint.com/css" rel="external">Reference</a> (Sitepoint)</li>
+					<li><a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariCSSRef/Introduction.html" rel="external">Reference</a> (Apple)</li>
+					<li><a href="cssInfo/gettingStarted.html">Getting Started with CSS</a> (<a href="http://enjoycss.com/" rel="external">CSS Generators</a>, and other Misc info)</li>
+					<li><a href="assets/css3-cheat-sheet.pdf" rel="external">Cheat Sheet</a> (PDF)</li>
+					<li><a href="cssInfo/selectors.html">CSS3 Selectors</a></li>
+					<li><a href="cssInfo/cascade.html">Cascade, Inheritance, Specificity</a></li>
+					<li><a href="mobile/mediaQueries.html">Media Queries</a></li>
+					<li><a href="cssInfo/boxModel.html">Box Model</a></li>
+				</ul>
+				<p>Specific Properties and Value</p>
+				<ul>
+					<li><a href="cssInfo/color.html#Constants">Color</a>, <a href="cssInfo/color.html" style="font-size: smaller;">Alpha Transparency, and Opacity</a></li>
+					<li><a href="cssInfo/gradients.html">Gradients</a> </li>
+					<li><a href="cssInfo/roundedCorners.html">Rounded corners</a></li>
+					<li><a href="cssInfo/dropShadows.html">Drop Shadows (on boxes)</a></li>
+					<li><a href="typography/text-shadow.html">Drop Shadows (on text)</a></li>
+					<li><a href="cssInfo/outlinesBorders.html">Outlines and Borders</a></li>
+				</ul>
+				<p>Advanced Topics and Tricks</p>
+				<ul>
+					<li><a href="http://reference.sitepoint.com/css/inlineformatting" rel="external">Inline elements</a></li>
+					<li><a href="cssInfo/geometricShapes.html">Geometric Shapes Using CSS</a></li>
+					<li><a href="cssInfo/animation.html">Animation</a> and <a href="cssInfo/transitions.html">Transitions</a></li>
+					<li><a href="cssInfo/transform.html">CSS Transform Property</a></li>
+					<li><a href="cssInfo/gettingCurrentValue.html">Reading current property value</a></li>
+					<li><a href="sass/index.html">SASS CSS Pre-processor and Compass</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#InterestingEffects" id="InterestingEffects">Interesting Effects</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="cssInfo/slidingContentRollover.html">Neat-o Effects</a></li>
+					<li><a href="cssInfo/transform.html">Rotation</a>, skew, scaling</li>
+					<li><a href="http://christianheilmann.com/" rel="external">Rotating Sidebar</a> example (uses CSS to do this)</li>
+					<li><a href="cssInfo/accordionPanels.html">CSS3 Accordion Panel</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#Typography" id="Typography">Typography</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="typography/principles.html">Basic Principles</a></li>
+					<li><a href="typography/atFontFace.html">Web fonts with @font-face</a></li>
+					<li><a href="cssInfo/text-properties.html">CSS Properties for text</a></li>
+					<li><a href="typography/text-shadow.html">Drop Shadows (on text)</a></li>
+					<li><a href="typography/gfxStandards.html">Typographic Hierarchy and Graphic Standards</a></li>
+					<li><a href="html/whiteSpace.html">White Space</a> (wbr, pre, text-wrap)</li>
+					<li><a href="typography/textIndent.html">Text Indentation</a></li>
+					<li><a href="http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style/" rel="external">Sizing</a></li>
+					<li><a href="typography/hyphenation.html">Hyphenation</a></li>
+					<li><a href="typography/lineHeight.html">Line height and leading</a></li>
+					<li><a href="typography/lists.html">Lists</a></li>
+					<li><a href="typography/anchorTags.html">Anchor tags</a> (hyperlinks)</li>
+					<li><a href="typography/bloodyAmazingTypography.html">Bloody Amazing Typography</a></li>
+					<li><a href="typography/textEffects.html">Text Effects</a></li>
+					<li><a href="typography/SVG-text.html">SVG Text</a> <span class="comment" style="font-size:smaller">(place image in the type instead of a solid color)</span></li>
+					<li><a href="typography/advanced-typography.html">Advanced typography</a> <span class="comment" style="font-size:smaller">(kerning, ligatures, etc.)</span></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#GraphicDesignandWebGraphics" id="GraphicDesignandWebGraphics">Graphic Design and Web Graphics</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li>Choosing a <a href="gfxDesign/colorScheme.html">color scheme</a></li>
+					<li><a href="graphics/textures.html">Textures</a>, <a href="graphics/patterns.html">Patterns</a>, and <a href="cssInfo/gradients.html">Gradients</a></li>
+					<li><a href="buttons/buttonBasics.html">How to Choose the Type of Button</a></li>
+					<li>Basic <a href="buttons/sprites.html">Sprite Buttons</a> (Rollovers)</li>
+					<li><a href="graphics/favicon.html">Favicon</a></li>
+					<li><a href="graphics/canvas.html">Canvas Element</a></li>
+					<li><a href="cssInfo/filters.html">Filters</a></li>
+					<li><a href="gfxDesign/crap.html">Principles of Design</a> (CRAP)</li>
+					<li><a href="gfxDesign/webVprint.html">Web Design v. Graphic Design</a></li>
+					<li><a href="cssInfo/imageCornerTags.html">Image Corner</a> decoration</li>
+					<li><a href="graphics/How-to-Retinafy-your-Website.pdf" rel="external">Retina display gfx</a></li>
+					<li><a href="graphics/graphic-file-types.html">Graphic File Types</a></li>
+					<li><a href="layout/summitMenus/index.html">Summit-style drop-down menus</a></li>
+					<li><a href="layout/masonry.html">Masonry</a></li>
+					<li><a href="layout/singlePageSite.html">Single Page Site</a> with smooth scrolling</li>
+					<li><a href="http://www.turnjs.com/#home" rel="external">Animated "book" effect</a> where the pages turn.</li>
+					<li><a href="graphics/bees/beeDemo.html">Full-height headers</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#GraphicsSVG" id="GraphicsSVG">Graphics – SVG</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="svg/scalable-vector-graphics.html">Scaleable Vector Graphics</a> (SVG)</li>
+					<li><a href="svg/svgAdvanced.html">Advanced SVG</a> (aspect ratio, rollovers</li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#PageLayoutandCSSPositioning" id="PageLayoutandCSSPositioning">Page Layout and CSS Positioning</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="layout/beginners-guide.html">Beginner&rsquo;s Guide to Page Layout</a></li>
+					<li><a href="layout/positioning.html">Basic CSS Positioning</a></li>
+					<li><a href="layout/gridLayout.html">Creating Grid Layouts</a></li>
+					<li><a href="layout/block-formatting-context.html">Block Formatting Context</a></li>
+					<li><a href="layout/floats.html">Floating Elements</a> with CSS</li>
+					<li><a href="layout/centerExample.html">Single Column, Centered Layout</a></li>
+					<li><a href="layout/sidebar-layouts.html">Responsive 3-Column layout using block context</a></li>
+					<li><a href="mobile/responsive-design.html">Responsive Design</a></li>
+					<li><a href="mobile/responsiveImages.html">Responsive Images</a></li>
+					<li><a href="layout/centeringVertically.html">Centering Vertically</a></li>
+					<li><a href="layout/captions.html">Photo and Figure Captions</a></li>
+					<li><a href="layout/multiColumnLayout.html">Snaking columns</a> using <code>column-count</code></li>
+					<li><a href="layout/CssColumnLayout.html">Pure CSS Columns</a> layout <span style="font-size:smaller">(hint, kinda sux)</span></li>
+					<li><a href="layout/flexbox.html" rel="external">Flexbox</a> <span style="font-size:smaller; color:darkRed">(this is awesome, but browser support is poor)</span></li>
+					<li><a href="layout/footerStick.html">Footer Stick</a> <span style="font-size:smaller">(web page footer should appear at bottom of window or below all content, whichever is lower)</span></li>
+					<li><a href="layout/fixedFooter/fixedFooter.html">Fixed Footer</a> <span style="font-size:smaller">(web page footer should <strong>always</strong> appear at bottom of window)</span></li>
+					<li>Header and footer <a href="layout/headerBkgdProblem.html">background problems</a></li>
+					<li><a href="layout/regions.html">Regions</a> <span style="font-size:smaller">(very poor browser support)</span></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#PhotoshopTips" id="PhotoshopTips">Photoshop Tips</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="photoshop/repeatingPhotshop.html">Repeating an element many times</a></li>
+					<li><a href="photoshop/tips.html">Miscellaneous Tips</a></li>
+					<li><a href="photoshop/highPassSharpening.html">High Pass Sharpening</a></li>
+					<li><a href="photoshop/colorMatching.html">Matching Colors</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#Inspiration" id="Inspiration">Inspiration</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="http://www.makebetterwebsites.com/" target="inspiration">http://www.makebetterwebsites.com/</a> Compilation of interesting websites.</li>
+					<li><a href="http://sixrevisions.com/web_design/16-best-web-design-galleries-for-inspiration/" target="inspiration">Web design galleries</a></li>
+					<li>Awesome <a href="http://bloggerspath.com/creative-and-beautiful-business-cards-templates-to-get-inspiration/" rel="external">Business Cards</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#AdobeIllustrator" id="AdobeIllustrator">Adobe Illustrator</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="gfxDesign/illustrator.html">Is So Confusing</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</section>
+<section>
+	<h2>Front-end Dev</h2>
+	<ul class="fauxAccordion">
+		<li><a href="http://devdocs.io" rel="external">http://devdocs.io</a></li>
+		<li><a href="http://uptodate.frontendrescue.org" rel="external">Staying Current</a></li>
+		<li><a href="#JavaScript" id="JavaScript">JavaScript</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="https://developer.mozilla.org/en/JavaScript/Reference" rel="external">Ref</a> and jQuery</li>
+					<li><a href="javascript/objects.html">Objects—Instances, Static members</a></li>
+					<li><a href="javascript/empty-values.html">Empty values</a> <small>('', null, Object, 'undefined')</small></li>
+					<li><a href="javascript/inheritance.html">Inheritance</a> &ndash; <a href="javascript/prototypes.html">Prototypes</a> &ndash; <a href="javascript/scopeExperiments.html">Scope/Context</a></li>
+					<li><a href="javascript/events.html">Events</a></li>
+					<li><a href="javascript/window-timer-functions.html">Window Timers (setTimeout, setInterval)</a></li>
+					<li><a href="javascript/compressingJavascript.html">Compressing JavaScript</a> <span style="font-size:smaller;">(obfusication and syntax check)</span></li>
+					<li><a href="javascript/learning.html">Learning JavaScript</a> (tutorials)</li>
+					<li><a href="javascript/debugging.html">Debugging</a> your code</li>
+					<li><a href="javascript/searchingStrings.html">String Handling and RegExp</a></li>
+					<li><a href="javascript/arrays.html">Arrays</a></li>
+					<li><a href="javascript/windowOpen.html">Launching a new window</a> to specific size and without browser chrome.</li>
+					<li><a href="javascript/ready_vs_onload.html">DOM Ready event v. onLoad</a></li>
+					<li><a href="javascript/animation.html">Animation of properties</a></li>
+					<li><a href="javascript/onunloadEvent.html">Executing a Script When Closing a Page</a></li>
+					<li><a href="javascript/jQuery.html">jQuery</a></li>
+					<li><a href="javascript/polyfills.html">Polyfills</a> and Modernizr <span style="font-size:smaller;">(supporting older browsers)</span></li>
+					<li><a href="javascript/keystrokes.html">Trapping keystrokes</a></li>
+					<li><a href="javascript/dateValidation.html">Date Validation</a></li>
+					<li><a href="javascript/table-of-contents.html">Dynamically Generate a Table of Contents</a></li>
+					<li><a href="javascript/coolStuff.html">Cool Stuff in JavaScript</a> </li>
+					<li><a href="javascript/scrolling.html">Scrolling</a></li>
+					<li><a href="javascript/jshint.html">jshint</a> and <a href="javascript/standard.html">StandardJS</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#ES2015" id="ES2015">ES2015 (ES6)</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="ES2015/introduction.html">Introduction</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#HTML" id="HTML">HTML</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="http://developers.whatwg.org/" rel="external">Reference: </a>
+						<ul>
+							<li><a href="http://developers.whatwg.org/" rel="external">The Living Standard</a> <span style="font-size:smaller;">(very good)</span></li>
+							<li><a href="http://docs.webplatform.org/wiki/Main_Page" rel="external">WebDocs</a> <span style="font-size:smaller;">(still in development)</span></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" rel="external">MDN HTML Element Reference</a></li>
+							<li><a href="http://www.w3.org/2009/cheatsheet/" rel="external">W3C Cheatsheet</a></li>
+						</ul>
+					</li>
+					<li><a href="typography/lists.html">Lists</a></li>
+					<li><a href="html/links.html">Links and defeating spam bots</a></li>
+					<li><a href="html/tables.html">Tables</a></li>
+					<li><a href="html/cheatSheets.html">Cheat Sheets (elements, browser support, events)</a></li>
+					<li><a href="html/tags.html">Under-appreciated or obscure tags</a></li>
+					<li><a href="html/browser-bugs.html">Browser Bugs</a> </li>
+					<li><a href="tech/testing-and-debugging.html">Testing Web Pages</a></li>
+					<li>Buttons
+						<ul>
+							<li><a href="buttons/buttonBasics.html">Button types, styling</a></li>
+							<li>Basic <a href="buttons/sprites.html">CSS Sprite</a> buttons</li>
+							<li>Advanced <a href="buttons/rolloverButtons.html">Rollover Button</a> Effects</li>
+							<li><a href="http://jobyj.in/adipoli/" rel="external">Adipoli</a> image effects </li>
+						</ul>
+					</li>
+					<li><a href="html/includeHTML.html">Including HTML content</a> from another page.</li>
+					<li><a href="html/webStorage.html" rel="external">Web Storage</a></li>
+					<li><a href="html/applicationCache.html">Application Cache</a> (manifest file)</li>
+					<li><a href="html/dragAndDrop.html">Drag and Drop</a> with HTML5</li>
+					<li><a href="html/microdata.html">Microformats and Microdata</a></li>
+					<li><a href="layout/html-body.html"><code>html</code> v. <code>body</code></a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="html/forms.html">Forms</a></li>
+		<li><a href="#Dreamweaver" id="Dreamweaver">Dreamweaver</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="dreamweaver/keyboardShortcuts.htm">Keyboard Shortcuts</a></li>
+					<li><a href="dreamweaver/siteMgmt.html">Site Management</a></li>
+					<li><a href="dreamweaver/templates.html">Templates</a></li>
+					<li><a href="dreamweaver/dreamweaver_cs5_extending.pdf" rel="external">Extending DW</a> (custom commands, behaviors, panels, etc.)</li>
+					<li>Writing <a href="dreamweaver/comments-and-notes.html">comments and notes</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#MediaAudioandVideo" id="MediaAudioandVideo">Media (Audio and Video)</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="media/audioVideo.html">HTML5 Audio and Video</a></li>
+					<li><a href="media/mediaelement/demo/mediaelementPxPro.html">Mediaelement</a> - a cross-browser player</li>
+					<li><a href="media/youTube.html">YouTube video</a></li>
+					<li><a href="media/FLVPlayerSkins/FLVPlayerSkins.html">Screenshots</a> of the various FLVPlayer skins</li>
+					<li style="font-size:smaller">
+						<hr>
+						You can ignore the following</li>
+					<li style="font-size:smaller"><a href="http://www.jplayer.org/" rel="external">jPlayer</a> - For cross-browser audio and video. See <a href="http://www.netmagazine.com/features/top-five-cross-platform-video-players?utm_source=html5weekly&utm_medium=email" rel="external">this list</a> for more options.</li>
+					<li style="font-size:smaller"><a href="media/audio_jPlayer.html">jPlayer Audio</a> demo</li>
+					<li style="font-size:smaller"><a href="media/audio_SM2.html">SoundManager2 Audio</a></li>
+					<li style="font-size:smaller"><a href="pixelburstVideo/pbVideoTutorial.html">Pixelburst Video</a> (this is Pixel Pro's video player)</li>
+					<li style="font-size:smaller"><a href="media/comprehensiveVideoFLVPlayer.html">Comprehensive Video Using FLVPlayer</a> (Dreamweaver solution)</li>
+					<li style="font-size:smaller"><a href="media/comprehensiveVideoFLVPlayback.html">Comprehensive Video Using FLVPlayback</a> (Flash solution)</li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#SEOandAccessibility" id="SEOandAccessibility">SEO and Accessibility</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="seo/seo.html">General Info</a></li>
+					<li><a href="seo/robots.html">Handling Robots</a></li>
+					<li><a href="seo/accessibility.html">Accessibility</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#Flash" id="Flash">Flash</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="flash/flash.html#embedding">Embedding Flash with SWFObject</a></li>
+					<li><a href="flash/flash.html#communication">Using ExternalInterface</a></li>
+					<li><a href="flash/articulate.html">Movies in Articulate</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#MobiletouchscreenSites" id="MobiletouchscreenSites">Mobile (touch-screen) Sites</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="mobile/responsive-design.html">Responsive Design</a></li>
+					<li><a href="mobile/responsiveImages.html">Responsive Images</a></li>
+					<li><a href="mobile/mediaQueries.html">Media Queries (<code>@media {}</code>)</a></li>
+					<li><a href="mobile/mimic-native-app.html">Mimic Native Apps</a></li>
+					<li>Testing on small screens with <a href="http://www.browserstack.com/" rel="external">BrowserStack</a></li>
+					<li><a href="http://www.html5rocks.com/en/mobile/responsivedesign/" rel="external">Article</a> on mobile first development</li>
+					<li><a href="http://stuffandnonsense.co.uk/projects/320andup/" rel="external">320 and Up</a> boilerplate </li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#PluginsandSpecialtyObjects" id="PluginsandSpecialtyObjects">Plug-ins and Specialty Objects</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="http://janpaepke.github.io/ScrollMagic/" rel="external">Scroll Magic</a> for Parallax and many other scroll-triggered effects.</li>
+					<li><a href="plugins/colorbox/PxColorboxInstructions.html">Colorbox</a> - Creates a modal popup box.</li>
+					<li>Charting and Graphing
+						<ul>
+							<li><a href="http://www.humblesoftware.com/flotr2/index" rel="external">Flotr2</a></li>
+							<li><a href="http://highcharts.com/" rel="external">Highcharts</a> - This is a great charting engine.</li>
+							<li><a href="charts/scatter.html">An experiment with Highcharts</a></li>
+						</ul>
+					</li>
+					<li><a href="http://visionmedia.github.com/uikit/" rel="external">UI Components</a> such as color picker, menu, dialog, Growl notification, split button</li>
+					<li>UI Components from <a href="http://chico-ui.com.ar/" rel="external">Chico UI</a></li>
+					<li><a href="http://codemirror.net/" rel="external">CodeMirror</a> In-browser code editing</li>
+					<li><a href="plugins/showMorePane.html">Show More</a> pane.</li>
+					<li><a href="plugins/cssAccordionPanel.html">Pure CSS Accordion panels</a></li>
+					<li>Sliders
+						<ul>
+							<li><a href="media/slideshows.html">Image slideshows</a></li>
+							<li><a href="plugins/AnythingSlider/index.html">AnythingSlider</a> jQuery Plugin</li>
+							<li><a href="plugins/superSimple.html">Super Simple</a> <span style="font-size:smaller">(very light-weight and easy-to-use, it cross-fades images)</span></li>
+							<li><a href="plugins/PxContentSlider/instructions.html">Pixel Pro Content Slider</a> <span style="font-size:smaller">(easy-to-use, slide any element, skinnable, no autoplay)</span></li>
+							<li><a href="plugins/PxProSlideShow/PxProSlideShow.html">Pixel Pro Content Slideshow</a> <span style="font-size:smaller">(any element slides automatically)</span></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</section>
+<section>
+	<h2>Frameworks/Libraries</h2>
+	<ul class="fauxAccordion">
+		<li><a href="frameworks/codeLibraries.html">Misc Libraries and Frameworks</a></li>
+		<li><a href="libraries/bluebird-promise.html">Bluebird Promise</a> library</li>
+		<li></li>
+		<li><a href="frameworks/handlebars.html">Handlebars</a> templating</li>
+		<li><a href="frameworks/static-site-generation.html">Static Site Generation</a></li>
+		<li><a href="php/REST-API.html">REST API</a></li>
+		<li><a href="#backbone" id="backbone">Backbone JS</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="frameworks/backbone.html">Backbone.js</a></li>
+					<li><a href="https://lostechies.com/derickbailey/2012/06/13/why-should-i-use-backbone-marionette-instead-of-%E2%80%A6/">Marionette</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#devTools" id="devTools">Development Tools and Automation</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="dev-tools/init-new-website.html">Spinning up a new website</a></li>
+					<li><a href="dev-tools/npm.html">npm Package Manager</a></li>
+					<li><a href="dev-tools/bower.html">Bower</a></li>
+					<li><a href="dev-tools/build-tools.html">Build Tools</a></li>
+					<li><a href="dev-tools/grunt.html">Grunt</a><a href="projectMgmt/freelancing.html"></a></li>
+					<li><a href="dev-tools/webpack.html">Webpack</a></li>
+					<li><a href="dev-tools/file-system-watchers.html">File System Watchers</a></li>
+					<li><a href="https://strongloop.com/strongblog/javascript-babel-future/">Babel</a></li>
+					<li><a href="dev-tools/mercurial.html">Mercurial</a></li>
+					<li><a href="dev-tools/git.html">Git</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#Ember" id="Ember">Ember</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="ember/introduction.html">Introduction</a></li>
+					<li><a href="ember/ember-cli.html">Ember CLI</a></li>
+					<li><a href="ember/ember-routes.html">Routes and Resources</a></li>
+					<li><a href="ember/ember-models.html">Models and ember-data</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</section>
+<section>
+	<h2>Back-end Dev.</h2>
+	<ul class="fauxAccordion">
+		<li><a href="#WebServers" id="WebServers">Web Servers</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="servers/htaccess.html">.htaccess</a> for the Apache web server</li>
+					<li><a href="servers/node.html">Node</a></li>
+					<li><a href="servers/lamp.html">LAMP set-up on OSX</a></li>
+					<li><a href="servers/filePermissions.html">File Permissions under OSX</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#TechnicalAdvanced" id="TechnicalAdvanced">Technical / Advanced</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="tech/ajax.html">AJAX</a></li>
+					<li><a href="tech/advanced-web-development.html">Advanced Web Developement Processes</a></li>
+					<li>Frameworks for starting a new project
+						<ul>
+							<li><a href="http://www.initializr.com/" rel="external">Initializr</a> (my favorite) </li>
+							<li><a href="http://html5boilerplate.com/" rel="external">HTML5 Boilerplate</a></li>
+							<li><a href="http://dhgamache.github.com/Cinderblock/" rel="external">Cinderblock</a> <span style="font-size:smaller;">(a simpler version of HTML5 Boilerplate)</span></li>
+							<li><a href="http://foundation.zurb.com/" rel="external">Foundation</a></li>
+						</ul>
+					</li>
+					<li><a href="tech/embedded-html-editors.html">Embedded HTML Editors</a></li>
+					<li><a href="javascript/polyfills.html#feature-support">Feature Support</a></li>
+					<li><a href="html/browser-bugs.html">Making IE Play Nice</a></li>
+					<li>Comparison of <a href="media/fileFormats.html">audio and video formats</a>.</li>
+					<li><a href="http://www.dreamweaver-templates.org/css-resources.html#tutorials" rel="external">This page</a> has a ton of reference links, somewhat similar to this subdomain.</li>
+					<li><a href="tech/xmlFormat.html">XML format</a></li>
+					<li><a href="http://dvcs.w3.org/hg/aria-unofficial/raw-file/tip/index.html" rel="external">ARIA and Accessibility</a></li>
+					<li>Allow users to <a href="html/downloadAttribute.html">download a file</a></li>
+					<li><a href="tech/network.html">UTF-8 and HTTP Headers</a></li>
+					<li><a href="tech/semver.html">Semantic Versioning</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#PHPandMySQL" id="PHPandMySQL">PHP and MySQL</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="http://php.net/manual/en/index.php" rel="external">PHP Manual</a></li>
+					<li><a href="php/miscPHP-info.html">Misc Information</a></li>
+					<li><a href="php/php-frameworks.html">Frameworks</a></li>
+					<li><a href="php/mySQL.html">Reading and Writing to MySQL</a></li>
+					<li><a href="php/debugTool.html">Debug tool</a></li>
+					<li><a href="php/simpleContact.php">Contact Form</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#WordPress" id="WordPress">WordPress</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="wordPress/learnWP.html">Various articles for first learning WordPress</a></li>
+					<li><a href="wordPress/themes.html">Themes, including Child Themes</a></li>
+					<li><a href="wordPress/typicalWebsite.html">Typical website</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#drupal" id="drupal">Drupal</a>
+			<div class="fauxAccordionContent">
+				<ul>
+					<li><a href="drupal/why-drupal-sucks.html">Why Drupal 7 Sucks</a></li>
+					<li><a href="drupal/concepts.html">Concepts</a></li>
+					<li><a href="drupal/account-mgmt.html">Account Management</a></li>
+					<li><a href="drupal/theming.html">Theming</a></li>
+					<li><a href="drupal/custom-modules.html">Writing Custom Modules</a></li>
+					<li><a href="drupal/front-end-technology-in-drupal.html">Front-end Technologies</a> <small>(js, css, jQuery)</small></li>
+					<li><a href="drupal/core-modules.html">Core and Contributed Modules</a></li>
+					<li><a href="drupal/fapi.html">Form API</a></li>
+					<li><a href="drupal/entities.html">Entities</a></li>
+					<li><a href="drupal/drush.html">Drush</a></li>
+					<li><a href="drupal/views-menus.html">Views and Menus</a></li>
+					<li><a href="drupal/account-mgmt.html">Boilerplate code</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</section>
+<footer style="clear:left;">
+	<hr>
+	<p style="font-size:1rem !important; text-align:left;margin-bottom:1em;"><a href="/index.html">Table of Contents</a></p>
+	<p class="tagLine">Making Every Pixel Count</p>
+	<p class="pixelBorder">&nbsp;</p>
+	<p>2013 &mdash; All rights reserved. <a href="http://pixelpro.biz/">Pixel Pro, Inc.</a></p>
+</footer>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	$('.fauxAccordionContent').hide();
+
+	$('.fauxAccordion>li>a').click(function() {
+		var anchor = this;
+		$(anchor).parent().children('.fauxAccordionContent').toggle(800, function() {
+			var newOffset =  100;
+			$('html, body').animate({ scrollTop: $(anchor).offset().top - newOffset }, 500, 'linear');
+		});
+	});
+	
+	$('#expandAll').on('click',function() {
+		$('.fauxAccordionContent').show();
+	});
+	
+	//If the location contains a hash, open that fauxAccordion.
+	var uri = String(window.location).split('#');
+	if (uri.length > 1) {
+		$('#' + uri[1] + ' + .fauxAccordionContent').show(0);
+	}
+</script>
 </html>

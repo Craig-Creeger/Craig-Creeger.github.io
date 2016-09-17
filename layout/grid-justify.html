@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Justify Grid</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.grid {
+	text-align:justify;
+}
+.grid:after {
+	content:'';
+	display:inline-block;
+	width:100%;
+}
+.grid .column {
+	display: inline-block;
+	text-align: left;
+	width: 100%;
+	margin:0;
+	vertical-align:top;
+}
+.grid .placeholder {
+	padding:0;
+	height:0;
+}
+
+/* These are some sensible defaults for the grid size based on screen width. */
+@media screen and (min-width: 481px) {
+.grid .column {
+	width: 47%;
+}
+}
+@media screen and (min-width: 769px) {
+.grid .column {
+	width: 30%;
+}
+}
+@media screen and (min-width: 1025px) {
+.grid .column {
+	width: 22%;
+}
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Justify Grid</h1>
+<h2>Overview</h2>
+<p>The Justify Grid exploits the CSS property text-align: justify; to evenly space columns across the page. <strong>I really like this method!!</strong></p>
+<h3>Pros:</h3>
+<ul>
+	<li>No need to calculate gutters</li>
+	<li>The left-most and right-most columns are vertically aligned with the surrounding content. This is a huge win.</li>
+	<li>No need to define “rows” if you don’t want to; it just automatically flows.</li>
+	<li>Like other grids, it is responsive.</li>
+	<li>Minimal CSS, minimal HTML.</li>
+	<li>Works fine with responsive images.</li>
+</ul>
+<h3>Cons:</h3>
+<ul>
+	<li>The width of the column gutters varies depending on the width of the screen. This is usually a minor issue.</li>
+	<li>You may need to add dummy placeholders (thereby junking up your markup) so the last “row” displays nicely.</li>
+</ul>
+<h2>Example</h2>
+<div class="grid">
+	<div class="column">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum scelerisque ligula ut condimentum. Fusce et dui nibh. Ut consequat felis ac nisl blandit, vel viverra lacus consectetur. Mauris porta ante vel mauris ornare venenatis. Donec ac pellentesque nibh, quis auctor nunc. Suspendisse nec ipsum nec purus malesuada hendrerit. Duis a mollis augue. Ut pulvinar felis sed arcu cursus ultricies. In commodo dui dui, eget ultrices mi efficitur et. Vestibulum lobortis imperdiet erat. Maecenas eu arcu nulla.</p>
+	</div>
+	<div class="column">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum scelerisque ligula ut condimentum. Fusce et dui nibh. Ut consequat felis ac nisl blandit, vel viverra lacus consectetur. Mauris porta ante vel mauris ornare venenatis. Donec ac pellentesque nibh, quis auctor nunc. Suspendisse nec ipsum nec purus malesuada hendrerit. Duis a mollis augue. Ut pulvinar felis sed arcu cursus ultricies. In commodo dui dui, eget ultrices mi efficitur et. Vestibulum lobortis imperdiet erat. Maecenas eu arcu nulla.</p>
+	</div>
+	<div class="column">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum scelerisque ligula ut condimentum. Fusce et dui nibh. Ut consequat felis ac nisl blandit, vel viverra lacus consectetur. Mauris porta ante vel mauris ornare venenatis. Donec ac pellentesque nibh, quis auctor nunc. Suspendisse nec ipsum nec purus malesuada hendrerit. Duis a mollis augue. Ut pulvinar felis sed arcu cursus ultricies. In commodo dui dui, eget ultrices mi efficitur et. Vestibulum lobortis imperdiet erat. Maecenas eu arcu nulla.</p>
+	</div>
+	<div class="column">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum scelerisque ligula ut condimentum. Fusce et dui nibh. Ut consequat felis ac nisl blandit, vel viverra lacus consectetur. Mauris porta ante vel mauris ornare venenatis. Donec ac pellentesque nibh, quis auctor nunc. Suspendisse nec ipsum nec purus malesuada hendrerit. Duis a mollis augue. Ut pulvinar felis sed arcu cursus ultricies. In commodo dui dui, eget ultrices mi efficitur et. Vestibulum lobortis imperdiet erat. Maecenas eu arcu nulla.</p>
+	</div>
+	<div class="column">
+		<p><img src="../img/tamaleTruckCatering.png" style="max-width:100%;"></p>
+	</div>
+	<div class="column">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum scelerisque ligula ut condimentum. Fusce et dui nibh. Ut consequat felis ac nisl blandit, vel viverra lacus consectetur. Mauris porta ante vel mauris ornare venenatis. Donec ac pellentesque nibh, quis auctor nunc. Suspendisse nec ipsum nec purus malesuada hendrerit. Duis a mollis augue. Ut pulvinar felis sed arcu cursus ultricies. In commodo dui dui, eget ultrices mi efficitur et. Vestibulum lobortis imperdiet erat. Maecenas eu arcu nulla.</p>
+	</div>
+	<div class="column">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum scelerisque ligula ut condimentum. Fusce et dui nibh. Ut consequat felis ac nisl blandit, vel viverra lacus consectetur. Mauris porta ante vel mauris ornare venenatis. Donec ac pellentesque nibh, quis auctor nunc. Suspendisse nec ipsum nec purus malesuada hendrerit. Duis a mollis augue. Ut pulvinar felis sed arcu cursus ultricies. In commodo dui dui, eget ultrices mi efficitur et. Vestibulum lobortis imperdiet erat. Maecenas eu arcu nulla.</p>
+	</div>
+	<div class="column placeholder">
+	</div>
+</div>
+<h2>The Code</h2>
+<pre class="prettyprint linenums">&lt;style type=&quot;text/css&quot;&gt;
+ .grid {
+ 	text-align:justify;
+ }
+ .grid:after {
+	 content:'';
+	 display:inline-block;
+	 width:100%;
+ }
+ .grid .column {
+	 display: inline-block;
+	 text-align: left;
+	 width: 100%;
+	 margin:0;
+	 vertical-align:top;
+ }
+ .grid .placeholder {
+	 padding:0;
+	 height:0;
+ }
+ 
+ /* These are some sensible defaults for the grid size based on screen width. */
+ @media screen and (min-width: 481px) {
+ 	.grid .column {
+ 		width: 47%;
+ 	}
+ }
+ @media screen and (min-width: 769px) {
+ 	.grid .column {
+ 		width: 30%;
+ 	}
+ }
+ @media screen and (min-width: 1025px) {
+ 	.grid .column {
+ 		width: 22%;
+ 	}
+ }
+&lt;/style&gt;
+
+&lt;div class=&quot;grid&quot;&gt;
+	&lt;div class=&quot;column&quot;&gt;Your content here&lt;/div&gt;
+	&lt;div class=&quot;column&quot;&gt;Your content here&lt;/div&gt;
+	&lt;div class=&quot;column&quot;&gt;Your content here&lt;/div&gt;
+	&lt;div class=&quot;column placeholder&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+	</pre>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

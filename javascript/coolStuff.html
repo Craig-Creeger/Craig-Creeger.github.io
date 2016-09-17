@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Cool Stuff About JavaScript</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Cool Stuff About JavaScript</h1>
+<p>This <a href="http://dublintech.blogspot.co.uk/2012/04/javascript-language-z-cheat-sheet.html" rel="external">“Javascript Language A to Z Cheat Sheet”</a> is a very good read.</p>
+<h2>Callbacks</h2>
+<p>When creating your own library, it is often nice to give your users the ability to execute their own function at a predetermined time. This is done through a callback.</p>
+<p class="code">function libraryCode(userCallback) {</p>
+<p class="code">  <span class="comment">//do regular stuff, and then…</span></p>
+<p class="code">  userCallback(); <span class="comment">//execute their code</span></p>
+<p class="code">}</p>
+<h2>Closures</h2>
+<p>The power of a  closure is in the fact that a variable (<code>count</code>, in this example) is kept alive even after the function has finished running (<code>var bob = counter(2);</code>). To create a closure, you need a function definition inside another function definition, and the inner function uses a variable in the outer function.</p>
+<p class="code">function counter(count) {<br>
+  console.log(&quot;&gt;&gt; setting count to &quot; + count);<br>
+  return { <span class="comment">//this object is the closure</span><br>
+    getCount: function() {<br>
+      return ++count;<br>
+    }<br>
+  };<br>
+};<br>
+var bob = counter(2);<br>
+console.log(bob.getCount()); //3<br>
+console.log(bob.getCount());​ //4</p>
+<p>Notice that the inner closure object is referencing variable <code>count</code> outside of it.</p>
+<h2>Constructor Functions (Custom) </h2>
+<p> When a function is invoked with the keyword <code>new</code>, it is referred to as a Constructor function. The <code>new</code> means that the new object will have a hidden link to value of the function's prototype member and the <code>this</code> keyword will be bound to the new object. </p>
+<p class="code"> function Pet(animal) {<br>
+	  this.animal = animal;<br>
+ }<br>
+	<br>
+	var killer = new Pet('dog');<br>
+	console.log(typeof killer);    // &quot;object&quot;<br>
+	console.log(killer.animal);  // &quot;dog&quot;</p>
+<p class="code"><br>
+	var noNewObject = Pet();<br>
+	console.log(typeof noNewObject);  // &quot;undefined&quot;<br>
+</p>
+<p>
+	The convention is that constructor functions should begin with a capital letter. Note: if the <code>new</code> keyword is not used, then the 'this' variable inside the function will refer to the global object. Can you smell a potential mess? Hence why the capital letter convention for constructor functions is used. The capital letter means: &quot;I am a constructor function, please use the <code>new</code> keyword&quot;. </p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

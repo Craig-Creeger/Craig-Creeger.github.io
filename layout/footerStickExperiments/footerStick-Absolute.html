@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FooterStick - Absolute</title>
+<style type="text/css">
+/* The items required for the FooterStick are above the blank line in the list of property/value pairs. */
+html {
+	height:100%;
+
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:100%;
+	line-height:1.4;
+	background-color:#7A0019;
+}
+body {
+	min-height:100%;
+	position:relative;
+	padding-bottom:60px;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+
+	width:80%;
+	margin:0 auto;
+	background-color:#FC3;
+}
+body > :first-child {
+	margin-top:0;
+	padding-top:1em;
+}
+footer {
+	height:60px;
+	width:100%;
+	position:absolute;
+	bottom:0px;
+
+	background-color:white;
+	text-align:center;
+}
+</style>
+</head>
+
+<body>
+<h1>FooterStick - Absolute</h1>
+<p>This seems to work well in Safari and Firefox. Not tested yet with IE.</p>
+<p>This version is  Absolute positioning the footer at the bottom of the &lt;body&gt;.</p>
+<h2>Tips</h2>
+<ul>
+	<li>Footer needs a fixed height.</li>
+	<li>Make sure the the first element in body does not have a top margin.</li>
+</ul>
+<footer>This is the footer</footer>
+</body>
+</html>

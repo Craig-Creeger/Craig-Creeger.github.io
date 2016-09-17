@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Line Height, Leading, and Baseline</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+#baseline p {
+	margin:0 inherit;
+	font-size:25px;
+	line-height:4;
+	font-family:Futura, Verdana, Geneva, sans-serif;
+}
+table p {
+	text-align:left;
+}
+</style>
+
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Line Height, Leading, and Baseline</h1>
+<h2>Leading</h2>
+<p>In traditional typography, leading is the amount of space between lines of text. On the web, we use the CSS property <code>line-height</code> to adjust the leading. In the first column below,  the line-height has been set to 0.5, which is causing the text to overlap. </p>
+<table width="100%" cellspacing="0">
+	<tr>
+		<td valign="top"><p style="line-height:.5">In this paragraph, the line-height has been set to 0.5. You can see that the text is overlapping itself, which could be a great way for some specially display text effects.</p>
+		<p style="line-height:.5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod mollis molestie. There is a 50 px tall graphic appearing now:<img src="img/px50.jpg" width="100" height="50" style="vertical-align:middle;">. As you can see, the line height changed for the line in which the image appears. Yn consequat risus adipiscing id. In hac habitasse platea dictumst. Nulla ac quam ligula. Proin euismod mi ut felis viverra tristique. Ut ut auctor diam. Aliquam commodo varius mi, at accumsan mi varius at.</p></td>
+		<td valign="top"><p style="line-height:1">In this paragraph, the line-height has been set to 1.0. You can see that the text is tightly packed with no overlapping or gaps.</p>
+		<p style="line-height:1">The relation of the font-size property to what you actually see rendered is determined by the font's designer. This relationship is set as an em square (some call it an em box) within the font itself. This em square, and thus the font size, doesn't have to refer to any boundaries established by the characters in a font themselves. Instead, it refers to the distance between baselines when the font is set without any extra leading (line-height in CSS). It is quite possible for fonts to have characters that are taller than the default distance between baselines. For that matter, a font might be defined such that all of its characters are smaller than its em square.</p></td>
+		<td valign="top"><p style="line-height:1.8;">In this paragraph, the line-height has been set to 1.8. The leading is a bit too much to make this paragraph easy to read. This website has the line-height set to 1.4, which works for most body text sized fonts.</p>
+		<p style="line-height:1.8;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod mollis molestie. Phasellus congue rutrum nisi, in consequat risus adipiscing id. In hac habitasse platea dictumst. Nulla ac quam ligula. Proin euismod mi ut felis viverra tristique. Ut ut auctor diam. Aliquam commodo varius mi, at accumsan mi varius at.</p></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<h2>CSS Property line-height</h2>
+<p>You can use the standard units for specifying the <code>line-height</code>, such as:</p>
+<p class="code">p {</p>
+<p class="code">&nbsp;&nbsp;&nbsp;font-size:14px;</p>
+<p class="code">&nbsp;&nbsp;&nbsp;line-height:16px;</p>
+<p class="code">}</p>
+<p>In this example, the height of the font is 14px and there is a 2px leading (16-14=2). You’ll notice that we can’t directly specify the leading, instead it is derived from the line height and font size.</p>
+<p>Keep in mind, individual lines of text can have a larger line height than what you specify in order to contain all the content. For example, in the first column above there is a 50px tall graphic place inline with the text. For that line, the height is 50px.</p>
+<h2>Using Unitless line-height</h2>
+<p><a href="http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/" rel="external">Eric Meyer explains</a> that it is better to not include a unit when specifying the line height. The line&rsquo;s overall height is a ratio when a unit is <strong>not</strong> specified for <code>line-height</code>. For example, if you font-size is 24px and you want 5px leading, the line height will be 1.2083=(24+5)/24</p>
+<h2>Baseline</h2>
+<p>The baseline is the invisible line that all characters sit on. The baseline will be positioned such that the line's text will be centered vertically within the line height (as demonstrated by LINE TWO). All the examples below have their <code>line-height</code> set to 4.</p>
+<div id="baseline">
+<p style="background-color:gainsboro">LINE ONE abcdefghijklm <span style="font-size:smaller;color:#333;">smaller</span> <span style="font-size:larger; color: indigo;">larger</span><img src="img/px50.jpg" width="100" height="50" style="vertical-align:middle"><span style="font-size: smaller;">vertical-align:middle</span></p>
+<p style="background-color:lawnGreen">LINE TWO abcdefghijklmnopqrstuvwxyz</p>
+<p style="line-height:25px; background-color:hotPink;">LINE THREE line-height:75px;
+<img src="img/px25.jpg" width="100" height="25" alt="25 px block" style="vertical-align:baseline;">
+<img src="img/px75.jpg" width="100" height="75" style="vertical-align:top;"><span style="font-size:1rem;">vertical-align:baseline</span></p>
+<p style="background-color:gainsboro">LINE FOUR abcdefghijklmnopqrstuvwxyz</p></div>
+<p>LINE THREE is interesting because the baseline shifted because the 75px image has vertical-align:top applied to it. Honestly, I’m still trying to wrap my head around that one; change the line-height to 13 and take a look – mind blown.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

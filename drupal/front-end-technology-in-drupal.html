@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Front-end Technology in Drupal</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+span[title] {
+	border-bottom:thin dotted navy;
+	cursor:help;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Front-end Technology in Drupal 7</h1>
+<h2 id="javascript">Javascript</h2>
+<div class="callout pushRight" style="width:40%;">
+<p>Check out "<a href="custom-modules.html#whereToPlace">Where to Put Your Main Logic</a>" for additional thoughts on how to inject the Javascript or CSS.</p>
+</div>
+<p><a href="https://www.drupal.org/node/756722" rel="external">Managing JavaScript in Drupal 7</a></p>
+<p><a href="https://www.drupal.org/node/304258" rel="external">The Drupal Javascript API</a></p>
+<h3>Adding to all pages regardless of theme</h3>
+<p>Using this method will place the Javascript on ALL pages in the site.</p>
+<p>Inside the <code>*.info</code> file enter the line:</p>
+<pre class="prettyprint linenums">scripts[] = foo.js</pre>
+<p>Alternatively, you could place it in the module’s <code><em>yourModule</em>.module</code> file.</p>
+<pre>function COA_preprocess_page(&amp;$varibles) { <em>// or perhaps COA_preprocess_html(&amp;$variables) {...</em>
+	$node = menu_get_object(); <strong><em>//This may not be needed; the node type might be located in $variables['node']['type']...</em></strong>
+	if (isset($node-&gt;type)) {
+		if($node-&gt;type == &quot;book&quot;) {
+			drupal_add_library('system', 'ui.dialog', true); //args=(module, library, everyPage) Included with EVERY page on the site when added in this manner.
+			drupal_add_css(drupal_get_path('module', 'COA') . '/coa-CSS.css');
+			drupal_add_js(drupal_get_path('module', 'COA') . '/coaSetup.js');
+		}
+	}
+}</pre>
+<h3>Adding to a Form</h3>
+<p>Using this method will place the Javascript only on the page that creates the form.</p>
+<pre class="prettyprint linenums">$form['#attached'] = array(
+  'js' =&gt; array(<a href="https://api.drupal.org/api/drupal/includes%21common.inc/function/drupal_get_path/7" title="Returns the path to a system item (module, theme, etc.).">drupal_get_path</a>('module', 'yodesa') . '/yodesa.js'),
+);</pre>
+<h3>Adding to all pages utilizing a specific theme</h3>
+<p>Option 1: Place it in the theme’s <code>.info</code> file.</p>
+<p>Option 2: Place this function in the theme’s <code>template.php</code> file.</p>
+<pre>function <em>yourTheme</em>_preprocess_page(&amp;$variables) {
+	//Include this on all pages.
+	drupal_add_js(drupal_get_path('theme', '<em>yourTheme</em>') . 'js/<em>yourJavascript.js</em>');
+}
+
+/* OR */
+
+function <em>yourTheme</em>_preprocess_html(&amp;$variables) {
+	...
+}</pre>
+<h3>Adding to all Nodes or Content Types</h3>
+<p>You will need to add the following code to an appropriate hook for your situation. Perhaps the easiest is to watch the generation of every single page, and if the current page is the one you want the code added to, then you can call <code>drupal_add_js()</code>. For example, in your theme’s<code> template.php</code> file (assume the theme name is “ribbon”) you could write:</p>
+<pre>function <em>yourTheme</em>_preprocess_node(&amp;$variables) {
+	//Include this on all nodes.
+	drupal_add_js(drupal_get_path('theme', '<em>yourTheme</em>') . 'js/<em>yourJavascript.js</em>');
+
+	//Include this on all &quot;Basic Page&quot; content types
+	if ($variables['node']['type'] === 'page') {
+		drupal_add_js(drupal_get_path('theme', '<em>yourTheme</em>') . '/js/page.js');
+	}
+}</pre>
+<h3>Include Javascript only on Home Page</h3>
+<pre>function <em>yourTheme</em>_preprocess_node(&amp;$variables) {
+	if (drupal_is_front_page()) {
+		drupal_add_js(drupal_get_path('theme', '<em>yourTheme</em>') .'/js/ribbon.js', array('type'=&gt;'file', 'scope'=&gt;'footer'));
+		drupal_add_css(drupal_get_path('theme', '<em>yourTheme</em>') .'/front.css', array('type'=&gt;'file', 'group'=&gt;CSS_THEME));
+	}
+	//Include this on all nodes.
+	drupal_add_js('sites/all/themes/ribbon/js/ExpandAnswerCase.js'); // To show/hide case study answers
+}</pre>
+<h3>Include Javacript on a Specific Node</h3>
+<pre>function <em>yourTheme</em>_preprocess_node(&amp;$variables) {
+	if ($variables['nid'] == '<em>INSERT_NODE_ID</em>') {
+		drupal_add_js(drupal_get_path('theme', '<em>yourTheme</em>') . '<em>yourScript.js</em>');
+	}
+}</pre>
+<h3>Include Javacript on a Specific View</h3>
+<pre>function <em>yourTheme</em>_preprocess_views_view(&amp;$variables){
+	if ($variables['name'] == '<em>INSERT_VIEW_MACHINE_NAME</em>') {
+		drupal_add_js(drupal_get_path('theme', '<em>yourTheme</em>') . '<em>yourScript.js</em>');
+	}
+}</pre>
+<h3>Passing PHP data (server side) to Javascript (client side)</h3>
+<p>Let’s say a variable is set on the server that some client side code needs access to. Traditionally, you would inject a variable into a Javascript <code>&lt;script&gt;</code> tag on the page. Drupal does the same thing in a more automated way. View the links above for more information or page 293 of <em>Drupal 7 Module Development</em>.</p>
+<h2>jQuery</h2>
+<p>Core Drupal makes extensive use of jQuery and as custom module builders we also have access to it. There is a module that allows you to use a more recent version of jQuery than what ships with Drupal, however I would NOT recommend using it. There were a few problems with user Contributed modules (such as Views and CKEditor) that relied on the older version of jQuery.</p>
+<p>Drupal, in their infinite misguided assumptions, removed the $ variable that maps to jQuery, which means you either need to fully qualify jQuery or reassign the $ symbol. See page 288 of <em>Drupal 7 Module Development</em> for examples.</p>
+<h3>jQuery UI Widgets</h3>
+<p>Noticably absent is the Tooltip widget. Try just using the <span title="For example span title=''">title</span> attribute or use the Modal widget instead, which is more touch friendly.</p>
+<h2>Cascading Style Sheets (CSS)</h2>
+<h3>Adding to a Module</h3>
+<pre class="prettyprint linenums">$form['#attached'] = array(
+  'js' =&gt; array(<a href="https://api.drupal.org/api/drupal/includes%21common.inc/function/drupal_get_path/7" title="Returns the path to a system item (module, theme, etc.).">drupal_get_path</a>('module', 'yodesa') . '/yodesa.js'),
+  'css' =&gt; array(<a href="https://api.drupal.org/api/drupal/includes%21common.inc/function/drupal_get_path/7" title="Returns the path to a system item (module, theme, etc.).">drupal_get_path</a>('module', 'yodesa') . '/yodesa.css'),
+);</pre>
+<p>An alternate way to include external CSS is through the use of <a href="https://api.drupal.org/api/drupal/includes!common.inc/function/drupal_add_css/7" rel="external">drupal_add_css()</a>. This function will get added in the same manner as described above in <a href="#javascript">Javascript</a> section.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

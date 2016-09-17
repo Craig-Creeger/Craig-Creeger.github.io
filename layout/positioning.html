@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CSS Positioning</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+<!--
+html, body {
+	height:100%;
+}
+article {
+	display:block;
+	position:relative;
+	width:90%;
+	height:50%;
+	background-color:crimson;
+}
+section {
+	position:absolute;
+	background-color:green;
+	right:0;
+	bottom:0;
+}
+.bl {
+	bottom:0;
+	left:0;
+	background-color:slateblue;
+	height:2em;
+	width:12em;
+}
+.tr {
+	top:0;
+	right:0;
+	background-color:hotpink;
+	height:2em;
+}
+article pre, article {
+	color:AliceBlue;
+	text-shadow: 0 0 3px black;
+}
+-->
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>CSS Positioning</h1>
+<h2>Positioning from an Edge</h2>
+<article>
+	<pre>This crimson colored box is:
+	display:block;<br>	<strong style="color:white;">position:relative;</strong><br>	width:90%;<br>	height:300px;<br>	background-color:crimson;</pre>
+	<section>
+		<pre>	<strong style="color:white;">position:absolute;</strong><br>	background-color:green;<br>	right:0;<br>	bottom:0;</pre>
+	</section>
+	<section class="bl">
+		<p>	bottom:0;
+	left:0;</p>
+	</section>
+	<section class="tr">
+		<p>	top:0;
+	right:0;</p>
+	</section>
+</article>
+<p>&nbsp;</p>
+<p>As my comments hint at above, the critial bit is the block you want to position must be absolutely positioned within either a relative or absolutely positioned element.</p>
+<h2>Fixed Positioning</h2>
+<p>A <code>position:fixed</code> element will be taken out of the normal flow and it’s position is always relative to the viewport, unlike <code>position:absolute</code> that is relative to its (positioned) parent container. This is fine if your page is not in a centered column, but for many websites, you’ll find the fixed content is not where you want it. The code below gets around this limitation.</p>
+<p class="code">&lt;div id=&quot;circleBottom&quot;&gt;</p>
+<p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;/div&gt;</p>
+<p class="code">&lt;/div&gt;</p>
+<p class="code">&nbsp;</p>
+<pre class="code">#circleBottom {
+	top:200px;
+	left:54px;
+	position:absolute;
+}
+#circleBottom div {
+	position:fixed;
+	background-image:url(../images/circleBottom.png);
+	background-repeat:no-repeat;
+	width:259px;
+	height:78px;
+}</pre>
+	<p>You’ll notice that we are first positioning the object with an <code>absolute</code> container, which then holds the <code>fixed</code> element. The key here, is to NOT specify the position (left, top, etc.) on the <code>fixed</code> element, but rather on the absolutely positioned element.</p>
+	<h2>Fixing Background Image</h2>
+	<p>If you use <code>background-attachment: fixed;</code> to prevent an element’s background image from scrolling, you may see severe jerky scrolling in the browser. iOS just ignores it because the performance is so poor. The solution is to do a <code>position:fixed</code> on an element and set its z-index so it looks like a background image. Also, <code>will-change: transform;</code> tells the browser to paint that element on its own layer. The details are described in <a href="https://fourword.fourkitchens.com/article/fix-scrolling-performance-css-will-change-property" target="external">https://fourword.fourkitchens.com/article/fix-scrolling-performance-css-will-change-property</a></p>
+<pre>.what-we-do-cards {
+	@include clearfix;
+	border-top: 10px solid rgba(255, 255, 255, .46);
+	color: $white;
+	padding-bottom: 4em;
+	<strong>overflow: hidden; // added for pseudo-element
+	position: relative; // added for pseudo-element</strong>
+	
+	// Fixed-position background image
+	&amp;:<strong>:before</strong> {
+		content: ' ';
+		<strong>position: fixed; // instead of background-attachment</strong>
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: white;
+		background: url('/img/front/strategy.jpg') no-repeat center center;
+		background-size: cover;
+		<strong>will-change: transform; // creates a new paint layer
+		z-index: -1;</strong>
+	}
+}</pre>
+	<h2>z-index</h2>
+	<p>When positioned elements overlapping each other you can specify which which one is on top (or bottom, or anywhere in between) via the CSS z-index property. Generally, those items with a higher z-index value are shown on top of those with a lower value. However, there are a few poorly understood rules that are <a href="http://philipwalton.com/articles/what-no-one-told-you-about-z-index/" rel="external">documented  well in a Philip Walton post</a>.</p>
+	<p>He states,</p>
+<blockquote>	<p>Groups of elements with a common parent that move forward or backward together in the stacking order make up what is known as a stacking context. A full understanding of stacking contexts is key to really grasping how z-index and the stacking order work.</p>
+	<p>Every stacking context has a single HTML element as its root element. When a new stacking context is formed on an element, that stacking context confines all of its child elements to a particular place in the stacking order. That means that if an element is contained in a stacking context at the bottom of the stacking order, there is no way to get it to appear in front of another element in a different stacking context that is higher in the stacking order, even with a z-index of a billion!</p>
+<p>New stacking contexts can be formed on an element in one of three ways:</p>
+<ul>
+	<li>When an element is the root element of a document (the &lt;html&gt; element)</li>
+	<li> When an element has a position value other than static and a z-index value other than auto</li>
+	<li> When an element has an opacity value less than 1</li>
+</ul>
+<p>Here are the basic rules to determine stacking order within a single stacking context (from back to front):</p>
+<ol>
+	<li>The stacking context's root element</li>
+		<li> Positioned elements (and their children) with negative z-index values (higher values in front of lower ones, otherwise ordered by appearance in the HTML)</li>
+	<li> Non-positioned elements (ordered by appearance in the HTML)</li>
+	<li> Positioned elements (and their children) with a z-index value of auto (ordered by appearance in the HTML)</li>
+	<li> Positioned elements (and their children) with positive z-index values (higher values in front of lower ones, otherwise ordered by appearance in the HTML)</li>
+</ol>
+</blockquote><!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript">
+/**/</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

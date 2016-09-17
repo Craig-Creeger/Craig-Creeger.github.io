@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Drush</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Drush</h1>
+<h2>Common Commands</h2>
+<p>Official <a href="http://drush.ws/" rel="external">Drush documentation</a></p>
+<dl class="functions">
+<dt>drush help</dt>
+<dd>List all drush commands. Use the format &quot;<code>drush help</code> <em>command</em>&quot; to show help specific to one command.</dd>
+<dd>For more help, see <a href="http://www.drush.org/" rel="external">http://www.drush.org/</a> or do a $ drush </dd>
+<dt>drush cc all</dt>
+<dd>Clear all the caches</dd>
+<dt>drush rr</dt>
+<dd>Repair Registries</dd>
+<dt>drush ard</dt>
+<dd>Backup a Site to your default location (<code>~/drush-backups</code>)</dd>
+<dt>drush arr <em>archiveFile options</em></dt>
+<dd>Restore a site. Example: </dd>
+<dd><code>drush arr ~/drush-backups/<wbr>archive-dump/<wbr>20140522165827/<wbr>vanillaDrupal.20140522_165827.tar.gz --overwrite</code><br>
+	<strong>IMPORTANT:</strong><br>
+<ol>
+	<li>Your database user must temporarily be given more privileges (I just give it god-level during the restore) than when running with the standard production level privileges.</li>
+	<li>The current working directory must be up one level from the site because the site directory will be created during this process. </li>
+	<li>After the restore, remember to set directory permissions. i.e. give the webserver <a href="concepts.html#fileSecurity">appropriate security permissions</a>.</li>
+</ol>
+<dt>drush up <em>project</em></dt>
+<dd>Upgrade modules and/or drupal core.</dd>
+<dt>drush dl <em>project</em></dt>
+<dd>Downloads a module to your site.</dd>
+<dt>drush en <em>project</em></dt>
+<dd>Enables an extension (module or theme). This is often used on conjunction with <code>drush dl <em>project</em></code></dd>
+</dl>
+<h3>Reinstall a Module</h3>
+<p>If you have devel enabled, then you can use this command:</p>
+<p><code>drush dre <em>project</em></code></p>
+<p>Otherwise, run these three commands:</p>
+<p><code>drush pm-disable <em>project</em></code></p>
+<p><code>drush pm-uninstall <em>project</em></code></p>
+<p><code>drush pm-enable <em>project</em></code></p>
+<h2>Upgrading to Newer Version of Drupal</h2>
+<p>On your local install version, do this to upgrade Drupal using Drush:</p>
+<ol>
+	<li>Perform a Drush archival dump first. <code>$ drush archive-dump</code>
+		<p>Another example: <code>$ drush ard --description="taken prior to 7.31 upgrade"</code></p>
+		<p><code>archive-dump</code> will copy the database and all the files. It puts it in a gzip tar ball and by default it goes to ~/drush-backups/archive-dump/</p>
+		<p>The AZ guys replaced the stock GNU tar file with the BSD version instead because GNU wasn&rsquo;t handling special characters. OS X already uses the BSD version of tar.</p>
+	</li>
+	<li>Save a copy of the <code>web.config</code> file (found in the root directory of the Drupal site, and in the /tools folder of Cyfernet)</li>
+	<li>Make sure module &quot;Update Manager&quot; is enabled. (I turn it off in Development).</li>
+	<li>Run <code>$ drush up drupal</code><p>Prior to running the command, make sure you have write permissions and the webserver doesn&rsquo;t have any locks on the files. This can be accomplished by stopping the website and then using Task Manager to kill the w3wp processes and php* process owned by the site you just shut down.</p>
+	</li>
+	<li>Run <code>/update.php</code> (if Drush didn&rsquo;t do the database update portion for you.)<br>
+		Note: When pulling these updates, via Mercurial/GIT, to the Production server, you will need to manually run the 
+	<code>/update.php</code> after doing the pull/update.</li>
+	<li>Compare <code>web.config</code> with the copy you saved in step 2; you may have to manually tweak our copy.</li>
+	<li>Test.</li>
+	<li>Push to development server.</li>
+	<li>Run <code>/update.php</code> if there were schema changes.</li>
+</ol>
+
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Higher-Order Array Functions in Javascript</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1> Javascript Arrays</h1>
+<h2>Basic Usage</h2>
+<h3>Creating</h3>
+<p>Shorthand method:</p>
+<p>var myArray = Array('apple', 'banana', 'carrot');</p>
+<h3>Length</h3>
+<h3>Iterating</h3>
+<p>You can use a standard for-loop:</p>
+<pre class="prettyprint linenums">var myArray = Array('apple', 'banana', 'carrot');
+for (var i = 0, j = myArray.length; i &lt; j; i++) {
+	console.log(myArray[i]);
+}</pre>
+<p>or you could use a higher-order function (see below).</p>
+<pre class="prettyprint linenums">var myArray = Array('apple', 'banana', 'carrot');
+function showFruit(fruit) {
+	console.log(fruit);
+}
+myArray.forEach(showFruit);</pre>
+<p class="callout">Do <strong>not</strong> use the <code>for each ($item in $array) {...</code> construct to loop over an array.</p>
+<h2>Higher-Order Array Functions</h2>
+<div class="callout pushRight" style="width:45%;">
+	<h4>Mozilla Developer Network Documentation</h4>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype" rel="external">Array.prototype</a></p>
+	<p>Scroll down to the Iteration Methods section.</p>
+</div>
+<p>In mathematics and computer science, a <strong>higher-order function</strong> is a function that does at least one of the following:</p>
+<ul>
+	<li>takes one or more functions as an input</li>
+	<li>outputs a function</li>
+</ul>
+<p>From a practical perspective, Javascript’s Array object has the following prototype functions that are higher-order (Mozilla calls these Iteration Methods).</p>
+<h3>Most common</h3>
+<h4>map()</h4>
+<h4>reduce()</h4>
+<p>Uses an accumulator to get a single value.</p>
+<pre class="prettyprint linenums">var myArray = Array(
+	{age: 15, name: 'Samantha'},
+	{age: 46, name: 'Craig'},
+	{age: 52, name: 'Nancy'},
+	{age: 8, name: 'Alison'},
+	{age: 77, name: 'Betty'}
+);
+function sumAge(previousValue, currentValue, index, array) {
+	//Because currentValue is an object, you need to return an object.
+	return {
+		age: previousValue.age + currentValue.age
+	};
+}
+var ageSummation = myArray.reduce(sumAge);
+console.log('Average age is ' + (ageSummation.age / myArray.length)); //39.6</pre>
+<h4>forEach()</h4>
+<h4>find()</h4>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script>
+var myArray = Array(
+	{age: 15, name: 'Samantha'},
+	{age: 46, name: 'Craig'},
+	{age: 52, name: 'Nancy'},
+	{age: 8, name: 'Alison'},
+	{age: 77, name: 'Betty'}
+);
+function sumAge(previousValue, currentValue, index, array) {
+	//Because currentValue is an object, you need to return an object.
+	return {
+		age: previousValue.age + currentValue.age
+	};
+}
+var ageSummation = myArray.reduce(sumAge);
+console.log('Average age is ' + (ageSummation.age / myArray.length)); //39.6
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

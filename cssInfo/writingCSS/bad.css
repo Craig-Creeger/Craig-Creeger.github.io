@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* Structure */
+html, body {
+	margin:0;
+	background-color:#999;
+	font-family:Verdana, Geneva, sans-serif;
+}
+#wrap {
+	margin: 0 auto;
+	width: 80%;
+	background-color:white;
+}
+#header, aside h1 {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	background:url(sinewave.png) repeat;
+}
+#navigation {
+	background-color:#FC9;
+	text-align:center;
+	border-top: medium solid #9C6;
+	border-bottom: thick ridge #9C6;
+	clear:both;
+}
+#navigation ul {
+	list-style-type:none;
+	margin:0;
+}
+#navigation ul li {
+	display:inline-block;
+	margin:.5em 1.5em;
+}
+[role="main"] {
+	padding:0 2em;
+}
+#aside {
+	background-color:#FFC;
+	margin-right:-2em;
+	max-width:300px;
+	float:right;
+	margin-left:2em;
+	margin-bottom:0.5em;
+}
+#footer {
+	background-color:#999;
+	padding-top:1em;
+}
+#footer p {
+	font-size:smaller;
+	text-align:center;
+	margin:0;
+}
+/* Typography */
+h1, h2, h3, h4, h5 {
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+h1 {
+	font-size:1.5em;
+}
+.title {
+	font-size:3em;
+	font-family:"Arial Black", Gadget, sans-serif;
+	text-align:center;
+	margin:0;
+}
+/* Buttons */
+.button {
+	display:inline-block;
+	padding:5px 1em;
+	background-color:#9C6;
+	border:medium solid #930;
+	color:#300;
+	border-radius:8px;
+	text-decoration:none;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Pixel Pro Content Slider</title>
+<link href="PxContentSlider/css/PxContentSlider.css" type="text/css" rel="stylesheet">
+<style type="text/css">
+.PxSliderCaption {
+	position:relative; 
+	top:-1.4em; 
+	margin-top:0; 
+	background-color:white; 
+	background-color:rgba(255,255,255,.5); 
+	line-height:1.4em;
+}
+</style>
+
+</head>
+
+<body>
+<table cellspacing="0">
+	<tr>
+		<td style="vertical-align:middle"><button class="PxSliderPrev"></button></td>
+		<td style="border-top:#6C6 3px solid; border-bottom:#6C6 3px solid;">
+			<!-- All the "slides" must appear inside this class. -->
+			<div class="PxSliderWrapper"> 
+				<!-- Each slide must have the class="PxSliderContent" -->
+				<img src="PxContentSlider/css/img/Kermit.jpg" width="160" height="160" class="PxSliderContent">
+				<div class="PxSliderContent">
+					<h3>This is a header</h3>
+					<p>and some paragraph text. See, this can hold more than just images.</p>
+				</div>
+				<img src="PxContentSlider/css/img/Grover.jpg" width="160" height="160" class="PxSliderContent">
+				<div class="PxSliderContent">
+					<img src="PxContentSlider/css/img/Piggy.jpg" width="160" height="160" style="display:block;"> <!-- The display:block helps when using overlaid captions. -->
+					<p class="PxSliderCaption">The Glorious Ms. Piggy</p>
+				</div>
+			</div></td>
+		<td style="vertical-align:middle"><button class="PxSliderNext"></button></td>
+	</tr>
+	<tr>
+		<td colspan="3" class="PxSliderIndicators"></td>
+	</tr>
+</table>
+<script type="text/javascript" src="PxContentSlider/jQuery-2.0.3.js"></script> 
+<script type="text/javascript" src="PxContentSlider/PxContentSlider.js"></script>
+</body>
+</html>

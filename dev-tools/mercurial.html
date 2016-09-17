@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Mercurial</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Mercurial</h1>
+<h2>Common Commands</h2>
+<dl>
+<dt>hg init</dt>
+<dd>Creates a new repository</dd>
+<dt>hg clone source destFolder</dt>
+<dd>Copies a repo</dd>
+<dt>hg verify</dt>
+<dd>Makes sure it isn’t FUBAR</dd>
+<dt>hg add</dt>
+<dd>Start tracking untracked files</dd>
+<dt>hg commit</dt>
+<dd>Lock in a set of changes</dd>
+<dt>hg push</dt>
+<dd>Send a changeset to another repo</dd>
+<dt>hg update</dt>
+<dd>Integrate someone else’s changeset</dd>
+</dl>
+<h2>Pushing from Local to Dev</h2>
+<p>When doing Mercurial work at the U:</p>
+<ol>
+	<li> Map to the Dev server (smb://)</li>
+	<li> Check for new change sets</li>
+	<li> Prior to doing a push, do a hg verify (run on the Dev machine or else it will be REALLY slow).</li>
+	<li> Make sure Dev and Prod are in sync.</li>
+	<li> Do your push to Dev.</li>
+	<li> If it goes completely FUBAR, copy the .hg folder over from Prod. </li>
+</ol>
+<h2>Ways to Undo Changes</h2>
+<h3>Revert</h3>
+<p>Backs out all modifications to the last commit.</p>
+<h3>Rollback</h3>
+<p>This will undo the last transaction such as a commit, pull, etc.</p>
+<h3>Backout</h3>
+<p>Undo effect of a commit by adding to the repository the inverse of the last commit.</p>
+<h3>Histedit</h3>
+<p>This is a Mercurial extension that allows you to do surgery on a repo.</p>
+<h2>Many Modified Files, but They Are Identical</h2>
+<p>When updating the entire <code>.hg</code> folder from the Windows servers onto my local machine, SourceTree or Mercurial will show that there are thousands of modified files, but <code>diff</code> shows that they are identical. This is because some tracked flag is different.</p>
+<p>The fix is easy, just Revert all the local changes. In SourceTree, this is done by highlighting your current branch and then clicking the big “Revert” button on the toolbar.</p>
+<p>You may then have to apply standard Drupal security permissions.</p>
+<h2>Branching</h2>
+<p>There are several ways to branch in Mercurial, but common consensus seems to recommend &quot;Named Branches&quot;. I believe this is the method that happens when clicking the &quot;Branch&quot; button inside SourceTree. Creating a branch will label the Working Copy, but it is not actually created until you do the first commit. (Hence people creating commits called &quot;stupid commit&quot;, etc.)</p>
+<h3>Closing Branches</h3>
+<p>Once you are done with a branch, you probably should close it. There are a few methods:</p>
+<h4>--close-branch</h4>
+<pre>hg commit --close-branch</pre>
+<p>I'm not exactly sure, but I think this just means do not list in active branches command (<code>hg branches</code>)</p>
+<h4>Clone</h4>
+<p>The recommended procedure to really eliminate unwanted heads is to use hg clone --rev. First, you rename your current repo to a backup. Then you clone the backup back to the original name, but you specify --rev X where X is the parent of the first of the chain of wanted changesets. If your repository has other heads you need to preserve, specify them too, as additional --rev Y arguments. For example:<span id="line-55"> </span></p>
+<pre><span id="line-1-3"> </span>hg clone backup repo --rev X --rev Y</pre>
+<span id="line-59"> </span><span id="line-60"> </span>
+<p>When you've cloned, verify that<span id="line-61"> </span></p>
+<pre><span id="line-1-4"> </span>hg incoming -R repo backup</pre>
+<span id="line-65"> </span><span id="line-66"> </span>
+<p>really only shows the changesets you wanted to drop. If you discover changesets you do need, after all (for instance, another head you forgot to specify above), you can pull them over using<span id="line-67"> </span></p>
+<pre><span id="line-1-5"> </span>hg pull -R repo backup --rev Y</pre>
+<span id="line-71"> </span><span id="line-72"> </span>
+<p>Repeat until you're satisfied with the pruned repo.<span id="line-73"> </span><span id="line-74"> </span></p>
+<p>Copy over all non-tracked files you might want to preserve. In particular, you might want to copy .hg/hgrc from the backup since your default path now points to the backup instead of the original clone source.<span id="line-75"> </span><span id="line-76"> </span></p>
+<p>You can remove your backup repository now.</p>
+<h2>Compared to GIT</h2>
+<p>There&rsquo;s one more <em>big</em> difference between Mercurial&rsquo;s branching and git&rsquo;s branching:</p>
+<p><strong>Mercurial will push/pull <em>all</em> branches by default, while git will push/pull only the <em>current</em> branch.</strong></p>
+<p>This is important if you&rsquo;re a git user working with Mercurial. If you want to push/pull only a single branch with Mercurial you can use the --rev option (-r for short) and specify the tip revision of the branch:</p>
+<div>
+	<pre class="prettyprint linenums">$ hg push --rev branchname $ hg push --rev bookmarkname $ hg push --rev 4 </pre>
+</div>
+<p>If you specify a revision, Mercurial will push that changeset and any ancestors of it that the target doesn&rsquo;t already have.</p>
+<p>&nbsp;</p>
+<p></p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

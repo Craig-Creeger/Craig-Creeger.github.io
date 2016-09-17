@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>Footer Stick</title>
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+html, body {
+	/* Note: You should also make the first and last items on your page has zero margins. */
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+#wrap {
+	min-height: 100%;
+	/* This is not necessary for footer stick, just to make this page look nicer */
+	background-color: white;
+	width: 80%;
+	margin: 0 auto;
+}
+#main {
+	overflow: auto;
+	padding-bottom: 80px; /* must be same height as the footer */
+	/* This is not necessary for footer stick, just to make this page look nicer */
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+footer {
+	position: relative;
+	margin-top: -80px; /* negative value of the footer height */
+	height: 80px;
+	box-sizing: border-box;
+	clear: both;
+	/* These lines are not required for FooterStick; here to make page look nicer */
+	background-color: gainsboro;
+	padding: 20px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* Opera and IE Fixes */
+body:before {
+	content: "";
+	height: 100%;
+	float: left;
+	width: 0;
+	margin-top: -32767px;
+}
+</style>
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
+</head>
+
+<body>
+<div id="wrap">
+	<div id="main"> <a href="../index.html" style="float:left"><img src="../img/PxIcon36x36.png" border="0"></a>
+		<h1>Footer Stick</h1>
+		<h2>CSS Tables Version</h2>
+		<p>A far simplier, robust, and semantic method is to mimic HTML &lt;tables&gt; using CSS table properties. For an example, check out the <a href="footerStickCssTables.html">demo page</a>.</p>
+		<h2>Legacy Methods</h2>
+		<p>This page was was built using the IE8 Version as described below.</p>
+		<h3>IE8 Version</h3>
+		<p>The method I&rsquo;m using here is from <a href="http://www.cssstickyfooter.com/using-sticky-footer-code.html" rel="external">http://www.cssstickyfooter.com/</a></p>
+		<p>Very often you will find that the vertical scrollbar is still appearing (when it shouldn&rsquo;t) and it scrolls only a few pixels. This is because there is padding or margin set somewhere, or the heights in your footer are not correct. Things to check: </p>
+		<ul>
+			<li>Is there margin defined on the first or last element in the page?</li>
+			<li>Is there margin defined on  the first and last element that contains text (such as <code>&lt;h1&gt;</code> or <code>&lt;p&gt;</code> tags)?</li>
+		</ul>
+		<p><strong><em>View the source code to see how this page was built.</em></strong></p>
+		<h1>Updates</h1>
+		<p>Now that IE8 and the old Opera engine are basically dead, I am now using a simplified method create create a FooterStick. Check these out instead:</p>
+		<p class="pushRight" style="width:55%; margin-top:0;">Note: None of these work in IE8. They all work in IE10. In IE8, the footer will still show, but not necessarily where you want it; the first two behave differently from the last one.</p>
+		<p><a href="footerStickExperiments/footerStick-Absolute.html">footerStick-Absolute</a></p>
+		<p><a href="footerStickExperiments/footerStick-AbsoluteWrapper.html">footerStick-AbsoluteWrapper</a></p>
+		<p><a href="footerStickExperiments/footerStick-NormalFlow.html">footerStick-NormalFlow</a></p>
+	</div>
+</div>
+<footer>
+	<p style="font-weight:bold;">This is the footer.</p>
+</footer>
+</body>
+</html>

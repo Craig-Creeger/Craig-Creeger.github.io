@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Embedded HTML Editors</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Embedded HTML Editors</h1>
+<h2>Editor Libraries</h2>
+<p>Think WordPress, or any other CMS. They give the average Joe the ability to craft web page content. If you find yourself in this situation, try one of these editors.</p>
+<h3>CKEditor</h3>
+<p>These guys have been around for quite some time.</p>
+<p><a href="http://ckeditor.com/" rel="external">http://ckeditor.com/</a></p>
+<h3>TinyMCE</h3>
+<p>This is the editor actually used by WordPress.</p>
+<p><a href="http://www.tinymce.com/" rel="external">http://www.tinymce.com/</a></p>
+<h3>contentEditable attribute</h3>
+<p>If you want to go for a simple and compliant method, you can use contentEditable attribute and the execCommand function. This is demonstrated on <a href="http://www.barneyparker.com/world-simplest-html5-wysisyg-inline-editor/" rel="external">Barney Parker’s site</a>.</p>
+<p>Check-out the information on <a href="https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla" rel="external">Rich-Text Editing</a> can be found on Mozilla’s site.</p>
+<div class="callout">
+	<p>Taking this concept to a really nice conclusion is: <a href="http://getcontenttools.com/" target="external">http://getcontenttools.com/</a></p>
+	<p>I would try this the next time I need an on-page HTML editor.</p>
+</div>
+<h2>Scripting Attacks</h2>
+<p>If you are allowing people to enter content into your website, and then presumably display it back later, you must be certainly to filter their content. In a nutshell, escape everything. Some people escape it prior to going into the database, others do it right before generating the  webpage.</p>
+<p><a href="http://www.howtocreate.co.uk/crosssite.html#escapedata" rel="external">Read this article on cross-site scripting</a></p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FooterStick - Normal Flow with Negative Margin</title>
+<style type="text/css">
+/* The items required for the FooterStick are above the blank line in the list of property/value pairs. */
+html {
+	height:100%;
+	
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:100%;
+	line-height:1.4;
+	background-color:#7A0019;
+}
+body {
+	height:100%;
+	
+	margin:0 auto;
+	width:80%;
+	background-color:#FC3;
+}
+#main {
+	min-height:100%;
+	padding-bottom:60px;
+	overflow:auto;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+footer {
+	height:60px;
+	margin-top:-60px;
+	overflow:hidden;
+	
+	text-align:center;
+	background-color:white;
+}
+</style>
+</head>
+<body>
+<div id="main">
+	<h1>FooterStick - Normal Flow with Negative Margins</h1>
+	<p>This is the minimum amount of code necessary to create a FooterStick page. It works in IE9, Firefox, Chrome, and Safari.</p>
+	<h2>Tips/Requirement</h2>
+	<ul>
+		<li>This needs a #wrapper before the &lt;footer&gt;.</li>
+	</ul>
+</div>
+<footer>This is the footer</footer>
+</body>
+</html>

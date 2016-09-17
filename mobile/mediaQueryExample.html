@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Media Query Example for iPads</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes">
+<style type="text/css">
+/* mobile-first development, so assume .mq320 */
+.mq320 {
+	background-color:lemonchiffon;
+	display:inherit;
+	margin:0;
+	padding:1em;
+}
+.mq480 {
+	background-color:lawnGreen;
+	display:none;
+	margin:0;
+	padding:1em;
+}
+.mq768 {
+	background-color:hotPink;
+	display:none;
+	margin:0;
+	padding:1em;
+}
+.mq1024 {
+	background-color:papayaWhip;
+	display:none;
+	margin:0;
+	padding:1em;
+}
+
+/* Smartphones (landscape) ———– */
+@media only screen and (min-width : 321px) {
+.mq320 {
+	background-color:lemonchiffon;
+	display:none;
+}
+.mq480 {
+	background-color:lawnGreen;
+	display:inherit;
+}
+.mq768 {
+	background-color:hotPink;
+	display:none;
+}
+.mq1024 {
+	background-color:papayaWhip;
+	display:none;
+}
+}
+/* iPads (portrait) ———– */
+@media only screen and (min-width : 481px) {
+.mq320 {
+	background-color:lemonchiffon;
+	display:none;
+}
+.mq480 {
+	background-color:lawnGreen;
+	display:none;
+}
+.mq768 {
+	background-color:hotPink;
+	display:inherit;
+}
+.mq1024 {
+	background-color:papayaWhip;
+display:;
+}
+}
+/* iPads (landscape) ———– */
+@media only screen and (min-width : 769px) {
+.mq320 {
+	background-color:lemonchiffon;
+	display:none;
+}
+.mq480 {
+	background-color:lawnGreen;
+	display:none;
+}
+.mq768 {
+	background-color:hotPink;
+	display:none;
+}
+.mq1024 {
+	background-color:papayaWhip;
+	display:inherit;
+}
+}
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Media Query Example for iPads</h1>
+<h2>Dynamically Sizing the Page Contents to the Viewport</h2>
+<div class="callout">
+	<p>If you are using a standard browser, change the width of the window so you can see this in action.</p>
+	<p class="mq320">Using 320 and smaller (phone portrait orientation)</p>
+	<p class="mq320">default</p>
+	<p class="mq480">Using 321 to 480 (phone landscape orientation)</p>
+	<p class="mq480">min-width : 321px</p>
+	<p class="mq768">Using 481 to 768 (iPad portrait orientation)</p>
+	<p class="mq768">min-width : 481px</p>
+	<p class="mq1024">Using 769 and larger (iPad landscape or full-screen monitor)</p>
+	<p class="mq1024">min-width : 769px</p>
+</div>
+<p>This page is built on premis of mobile-first development; in other words, the standard CSS is for narrow screens.</p>
+<h3>Fixing IE8</h3>
+<p>Older browsers don't understand media queries, but there are a few polyfills that can help. This page is using &quot;css3-mediaqueries.js&quot;. See the <a href="../javascript/polyfills.html#mq">Polyfill</a> page for more information.</p>
+<h3>Fixing the iOS Bug</h3>
+<p>There is an iOS Safari bug where the whole screen is scaled up when rotating from portrait to landscape. The solution is to add a bit of <a href="responsive-design.html#iOS">JavaScript to your page to allow pinch and zoom</a>.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript" src="../js/css3-mediaqueries.js"></script>
+<script type="text/javascript">
+if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+    var viewportmeta = document.querySelector('meta[name="viewport"]');
+    if (viewportmeta) {
+        viewportmeta.content = 'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0';
+        document.body.addEventListener('gesturestart', function () {
+            viewportmeta.content = 'width=device-width, minimum-scale=0.25, maximum-scale=1.6';
+        }, false);
+    }
+}</script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

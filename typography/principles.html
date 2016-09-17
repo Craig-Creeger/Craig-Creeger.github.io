@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Basic Principles of Typographic Design</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<link href='http://fonts.googleapis.com/css?family=Seaweed+Script&text=z' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Germania+One&text=PixelroInc.' rel='stylesheet' type='text/css'>
+<style type="text/css">
+.legible {
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:larger;
+}
+.illegible {
+	font-family:'Seaweed Script', cursive;
+	color:#DCC185;
+	font-size:larger;
+}
+.display {
+	font-family:'Germania One', Verdana, Geneva, sans-serif;
+	color:#333;
+	font-size:4.5em;
+	text-align:center;
+	margin:.3em 0;
+}
+.displayTags {
+	text-align:center;
+	color:Orange; 
+	font-style:italic; 
+	font-family:Georgia, 'Times New Roman', Times, serif
+}
+.threeCol {	-webkit-column-count:3; -webkit-column-gap:20px;
+	-moz-column-count:3; -moz-column-gap:20px;
+	-o-column-count:3; -o-column-gap:20px;
+	column-count:3; column-gap:20px;
+}
+.threeCol1 {-webkit-column-count:3; -webkit-column-gap:20px;
+	-moz-column-count:3; -moz-column-gap:20px;
+	-o-column-count:3; -o-column-gap:20px;
+	column-count:3; column-gap:20px;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Basic Principles of Typographic Design</h1>
+<h2><span style="margin-left:-.5em;">“</span>Practical Typography” by Matthew Butterick</h2>
+<p>This online book on typography is fantastic. At the <em>very least</em>, you should read the <a href="http://practicaltypography.com/typography-in-ten-minutes.html" rel="external">Typography in Ten Minutes</a> chapter.</p>
+<p><a href="http://practicaltypography.com/index.html" rel="external">http://practicaltypography.com/index.html</a></p>
+<h2>General Font Information</h2>
+<div class="callout">
+	<h3 style="margin-top:0">Terms</h3>
+	<p><dfn title="font">A <em>font</em> is a specific style and weight of a typeface.</dfn> On the web, font can be used interchangably with <em>typeface</em>.</p>
+	<p><dfn title="font-family">A <em>font family</em> is the collection of related fonts.</dfn></p>
+</div>
+<h3 id="sizing">Font Sizing</h3>
+<p>You can specify font size with absolute units such as inches (in), points (pt), and centimeters (cm). Alternatively, you can use relative measurements such as larger, smaller, percentages (%), ems (em), root em (rem), and pixels (px). Note: in CSS, pixels are relative because their actul size can vary by display resolution when the resolution is very different from the typical screen, e.g. 300 dpi when printing.</p>
+<pre class="prettyprint linenums">body {font-size: 76% } /* result in 12 px text when base size is 16 */
+p { font-size: 1em; }
+h1 { font-size: 1.5em; }</pre>
+<p><code>rem</code> is a relative unit, but it&rsquo;s always relative to a fixed base value, which is the font size of the root element of the document (in HTML, that's always the <code>html</code> element).</p>
+<h3>Specifying a Typeface</h3>
+<p>To choose a font, use CSS the property <code>font-family</code>. Example:</p>
+<pre class="prettyprint linenums">&lt;style&gt;
+	p {
+		font-family:&quot;Courier New&quot;, Courier, monospace;
+	}
+&lt;/style&gt;</pre>
+<p>Your browser will attempt to use the first typeface listed in the <code>font-family</code> property, if that font is not installed, then it will try the next typeface, and so on.</p>
+<p>If you choose a typeface that is not installed on the user's computer, then the browser will pick one. <span  style="font-family:iAmNotA_ValidFontName">For example, this sentence was created using the font “iAmNotA_ValidFontName”.</span></p>
+<p>To embed a typeface in the web page, use the <a href="atFontFace.html">@font-face</a> rule. This is typically done when you want to use a special <em>display</em> typeface for design reasons, or to use a customer’s corporate typography standard.</p>
+<h2 id="readability">Readability Considerations</h2>
+<p>How quickly can you read <em><strong>a paragraph of text</strong></em> and understand it? To create highly readable text, you should:</p>
+<ul>
+	<li>Start with using legible characters</li>
+	<li>Don’t concern yourself too much with the serif vs. sans serif debate; first get these items correct:
+		<ul>
+			<li>Font size (via the CSS property <code>font-size</code>)</li>
+			<li>Leading (<code>line-height</code>)</li>
+			<li>Word spacing (<code>word-spacing</code>)</li>
+			<li>Tracking (<code>letter-spacing</code>)</li>
+		</ul>
+	</li>
+	<li>If you want to go all out, start looking at using:
+		<ul>
+			<li>Typographer’s quotes</li>
+			<li>Hanging punctuation</li>
+			<li>Ligatures</li>
+			<li>En and Em dashes correctly</li>
+			<li>Kerning</li>
+		</ul>
+	</li>
+</ul><hr>
+		<p><a href="http://ethos.bl.uk/OrderDetails.do?did=1&uin=uk.bl.ethos.301973" rel="external">Ole Lund&rsquo;s 1999 Ph.D. dissertation</a> posited a counterclaim that sans serif fonts are no less readable than serif typefaces. I learned of this through a <a href="http://asserttrue.blogspot.se/2013/01/the-serif-readability-myth.html" rel="external">blog post</a>, but this blog didn't touch on other factors that can make a huge difference; namely line length, contrast, leading, tracking, kerning, justification, size, and weight.</p>
+		<p style="line-height:.9;font-size:smaller;width:50%;text-align:justify;">For example, you can screw up the readability if the leading is incorrectly set for the specific typeface you choose. For me, the argument is not sans serif v. serif, but rather choose a font with high legibility and then ensure all the other factors are correct. You would not want to read this paragraph much longer, right? :-)</p>
+		<p>Read &ldquo;<a href="http://blog.usabilla.com/web-designers-need-to-remember-typography-influences-usability/" rel="external">Web Designers Need To Remember Typography Influences Usability</a>&rdquo; for some more basic information about choosing and setting web type.</p>
+<h2>Legibility</h2>
+<p>Are the <strong><em>individual characters</em></strong> easily made out? In other words, how difficult is it to determine what each letter is? Highly legible letters are:</p>
+<ul>
+	<li>Big enough to see (font size on the web is often debated; for full size monitors about an arms length away, I like to use 16px.)</li>
+	<li>Have good contrast from the background</li>
+	<li>And are rendered in a clear font</li>
+</ul>
+<p><span class="legible">Z</span>: This “Z” is very legible.</p>
+<p><span class="illegible">z</span>: This "Z" is very illegible.</p>
+<h2>Display Text</h2>
+<p>Large text such as headers and titles (pretty much anything that is not a paragraph of text) is called “display text”. It is fun to play with because you are not limited to the readability rules listed above and you may not even have to follow the legibility rules either.</p>
+<p>Example of various techniques being used to create engaging display text.</p>
+<div>
+	<p class="display">Pixel</p>
+	<p class="displayTags">Making Every Pixel Count</p>
+	<p class="display">Pro</p>
+	<p class="displayTags">Good Web Design is Fun for All</p>
+	<p class="display">Inc.</p>
+</div>
+<h2>Popular Free Fonts</h2>
+<div class="callout" style="float:right; width:60%">
+	<p><a href="http://fortawesome.github.com/Font-Awesome/" rel="external">http://fortawesome.github.com/Font-Awesome/</a></p>
+	<p>Font Awesome is a wing-ding type of font with many icons related to the web. Plus, they can be animated and styled in many ways. Worth checking out.</p>
+</div>
+<ul class="threeCol1">
+	<li>Myriad Pro</li>
+	<li>League Gothic</li>
+	<li>Cabin</li>
+	<li>Corbel</li>
+	<li>Museo Slab</li>
+	<li>Bebas Neue</li>
+	<li>Ubuntu</li>
+	<li>Lobster</li>
+	<li>Franchise</li>
+	<li>PT Serif</li>
+	<li>PT Sans</li>
+</ul>
+<h2>CSS Shorthand <em>font</em> Property</h2>
+<p>Font information can be specified using a shorthand method, but I find it confusing and not worth using. If you must use the shorthand, <a href="../assets/css-font-shorthand-cheat-sheet.pdf" rel="external">use this guide</a>.</p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

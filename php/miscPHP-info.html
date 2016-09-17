@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Misc PHP Info</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.directoryExample ul {
+	list-style:none;
+	padding-left:0;
+	margin-left:0;
+	margin-bottom:0;
+}
+.directoryExample ul {
+	padding-left:0;
+	margin-left:2em;
+}
+</style>
+<script src="../SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css">
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Misc PHP Info</h1>
+<h2>Learning PHP </h2>
+<p><a href="http://www.phptherightway.com/" rel="external">PHP the Right Way</a> is a great resource when first getting started with PHP.</p>
+<p>The best book I've found for learning PHP, and other things, is <a href="http://lpmj.net/" rel="external">Learning PHP, MySQL, JavaScript, &amp; CSS</a> by Robin Nixon. The table of contents <a href="PMJC-TOC.html">pages are here</a>. The <a href="PHP-Code-examples.zip">sample code is here</a>. Chapter 16 is especially good for Form processing.</p>
+<h2>Configuration for Development</h2>
+<h3>Settings</h3>
+<p>&nbsp;</p>
+<h3>Handling Notices</h3>
+<p>Instead of using falsy logic, it is better to explicitly check to see if a variable is first set. Otherwise, PHP will generate a Notice error. This can be fixed as follows:</p>
+<pre class="prettyprint linenums">if (<strong>isset</strong>($_GET['barrier'])) {
+	if ($_GET['barrier']==='closed') {
+		echo 'alert(&quot;Access to that course has been suspended.&quot;);' . PHP_EOL;
+	}
+}</pre>
+<p>Alternatively, using the <code>array_key_exists()</code> function may work better. As in:</p>
+<p class="code">array_key_exists('barrier',$_GET)</p>
+<h2>Classes and functions()</h2>
+<h3>Function Arguments</h3>
+<p>Normally, when you pass a variable into a function, it is done &ldquo;by value&rdquo;. If you want to pass a variable &ldquo;by reference&rdquo;, then prefix the variable name with an ampersand.</p>
+<pre class="prettyprint linenums">function titleCase(<strong style="font-size:larger">&amp;</strong>$name, $isAwesome = false) {
+	$name = ucfirst(strtolower($name));
+	if ($isAwesome) {
+		$name .= ' is awesome!';
+}
+$myName = &quot;CrAiG&quot;;
+titleCase($myName);
+echo $myName; //Craig
+
+titleCase($myName, true);
+echo $myName; //Craig is awesome!</pre>
+<h3>Creating an Empty Object</h3>
+<p>To create an empty object (similar to what Javascript does with <code>myObject = {};</code>), you can use:</p>
+<p><code>$myObject = new stdClass();</code></p>
+<p>or</p>
+<p><code>$myObject = (object) null;</code></p>
+<h3>Creating an Empty Array</h3>
+<p class="code">$myArray = array();</p>
+<p>To add items to the end of the array leave the array index blank, for example:</p>
+<p class="code">$myArray[] = $newItem;</p>
+<h2>Forms</h2>
+<p>To call the same page that the form is on, use this action attribute.</p>
+<pre class="prettyprint linenums">&lt;form action=&quot;&lt;?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?&gt;&quot; method=&quot;POST&quot;&gt;
+</pre>
+<h3>Passing Data</h3>
+<p>To pass data (via GET variables) the function http_build_query($queryData) may come in handy. For example:</p>
+<pre class="prettyprint linenums">$myGetVariables['pageId'] = 14;
+$myGetVariables['action'] = 'rebuild';
+header('Location: mypage.php?' . http_build_query($myGetVariables));</pre>
+<p>Which results in the url <code>mypage.php?pageId=14&amp;action=rebuild</code></p>
+<h2>Headers</h2>
+<p>You will often find the need to call one PHP page, but return a different one. PHP’s equivalent of the HTML statement<br>
+	<code>document.location = &quot;http://www.myDomain.com&quot;; /* Javascript */</code> is <br>
+	<code>header('Location: http://www.myDomain.com'); /* PHP code */</code></p>
+<p>PHP’s header function will only accept a fully qualified filename, but you can mimic relative paths using this code:</p>
+<pre class="prettyprint linenums">$host  = $_SERVER['HTTP_HOST']; //domain name (no trailing slash)
+$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); //folder containing this page (no trailing slash)
+
+//modify the $uri to go up one level
+$uriArray = explode(&quot;/&quot;,$uri);
+unset($uriArray[count($uriArray) - 1]); //remove the last item in the array (i.e. go up one level)
+$uri = implode(&quot;/&quot;,$uriArray); //reassemble the string
+
+$extra = 'myNewPage.php';
+
+header(&quot;Location: http://$host$uri/$extra&quot;);</pre>
+<h2 id="includes">Echo</h2>
+<p>There are a few ways to write code out to your web page. The first is a single line echo like:</p>
+<pre class="prettyprint linenums">$variable = 'cats';
+echo &quot;&lt;p&gt;I enjoy $variable.&lt;/p&gt;&quot;; //I enjoy cats.</pre>
+<p>Because the previous line uses double quotes, variable names will be replaced with their contents. Using a single quote would result in: <samp>I enjoy $variable.</samp></p>
+<h3>heredoc Syntax</h3>
+<p>In the previous example, variables can be resolved or not, depending on the use of double or single quotes. The same is true when defining Strings using <code>heredoc</code> and <code>nowdoc</code> syntax.</p>
+<pre class="prettyprint linenums">&lt;?php
+$variable = 'cats';
+echo &lt;&lt;&lt;END
+&lt;div&gt;
+	&lt;h1&gt;My Header&lt;/h1&gt;
+	&lt;p&gt;I enjoy $variable.&lt;/p&gt; //resolves the variable
+&lt;/div&gt;
+END;
+?&gt;</pre>
+<p>The previous block of code will resolve the variable, whereas the next will not. 
+<h3>nowdoc Syntax</h3>
+<p>The difference is the single quotes around the word END. You can use any word after the &lt;&lt;&lt;, just make sure you use the same word to mark the end of your block. The ending marker must also start in the first column and can be the only thing on that line.
+<pre class="prettyprint linenums">&lt;?php
+$variable = 'cats';
+echo &lt;&lt;&lt;'END'
+&lt;div&gt;
+	&lt;h1&gt;My Header&lt;/h1&gt;
+	&lt;p&gt;I enjoy $variable.&lt;/p&gt; //will not resolve the variable
+&lt;/div&gt;
+END;
+?&gt;</pre>
+<h3>Another Option</h3>
+<p>If you are conditionally echoing a large chunk of HTML, then this syntax will probably be easier to use.</p>
+<pre class="prettyprint linenums"><span style="color:darkred;">&lt;?php if ($lovesCakes): ?&gt;</span>
+<span class="prettyprint linenums">&lt;div&gt;
+	&lt;h1&gt;Pancake Master&lt;/h1&gt;
+	&lt;p&gt;I enjoy making pancakes.&lt;/p&gt;
+&lt;/div&gt;
+</span><span style="color:darkred;">&lt;?php endif; ?&gt;</span></pre>
+<p>In this example I used PHP’s <a href="http://php.net/manual/en/control-structures.alternative-syntax.php" rel="external">Alternative Syntax for Control Structures</a>. You could also use the standard curly brace syntax. Many people feel the code is easy to read the Alternative Syntax when mixing PHP and other languages (HTML, CSS, Javascript, etc.).</p>
+<h2>Includes</h2>
+<div class="directoryExample pushRight textbox">
+	<p>Let’s say your directory structure looks like this:</p>
+	<ul>
+		<li><code>www/</code>
+			<ul>
+				<li>index.php</li>
+				<li>studentRecords.php</li>
+				<li>courses.php</li>
+				<li><code>actions/</code>
+					<ul>
+						<li>insertRecord.php</li>
+						<li>deleteRecord.php</li>
+					</ul>
+					<code>includes/</code>
+					<ul>
+						<li>common.php</li>
+						<li> </li>
+						<li><code>htmlFragments/</code>
+							<ul>
+								<li>header.php</li>
+								<li>main.php</li>
+								<li>footer.php</li>
+							</ul>
+						</li>
+						<li><code>classes/</code>
+							<ul>
+								<li>Student.php</li>
+								<li>Course.php </li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<p>Specifying the location of your include files can get a bit tricky because the location of the file is relative to the page called by the browser. Certainly not a problem if page A includes page B; but when A includes B, and B includes C, and C includes B, and all these files are in different directories; well then you'll have references to files that can not be resolved. This strategy works pretty well to make sense of it all.</p>
+<h3>1. Organize your directory structure.</h3>
+<p>Arrange your files such that browser-facing files (such as index.php) are anywhere <strong>except</strong> the “includes” directory. The files inside “includes” should never be called from the browser address bar.</p>
+<h3>2. Create some PHP constants that define the location of the “include” folder.</h3>
+<p>common.php will contain the magic bit of code that tells other other files where to find the includes. This would also be a great place to put your database connection information. <em>Note to self: See the GEM project for an example.</em></p>
+<pre class="prettyprint linenums">//dirname(__FILE__)); //get the directory location of this included file
+define('APP_ROOT', dirname(dirname(__FILE__))); //double-pumping to go up one level since this is in a sub-directory.
+define('INCLUDE_ROOT', APP_ROOT . &quot;/php/&quot;);</pre>
+<h3>3. Use the common.php file.</h3>
+<p>Our new constants (APP_ROOT and INCLUDE_ROOT) won’t do any good unless you get them into your web pages; therefore, all files that need an include will first need a hard-coded reference to common.php. This applies to both browser-facing files such as index.php and files called via AJAX such as actions/insertRecord.php.</p>
+<p>Example: In <code>index.php</code> you would have:</p>
+<pre class="prettyprint linenums">&lt;?php
+require_once 'includes/common.php';
+
+//Build the page structure
+require_once INCLUDE_ROOT . 'htmlFragments/header.php';
+require_once INCLUDE_ROOT . 'htmlFragments/main.php';
+require_once INCLUDE_ROOT . 'htmlFragments/footer.php';
+
+?&gt;</pre>
+<p>Notice that once common.php has been loaded, you can start to use the constant INCLUDE_ROOT.  All “require” and “include” statements use INCLUDE_ROOT.</p>
+<p>Let’s say <code>studentRecords.php</code> uses an instance of the Student class, defined in <code>student.php</code>, and it calls a method in <code>course.php</code>.</p>
+<p>studentRecords.php is:</p>
+<pre class="prettyprint linenums">&lt;?php
+require_once 'includes/common.php';
+require_once INCLUDE_ROOT . 'classes/Student.php';
+
+//Build the page structure
+require_once INCLUDE_ROOT . 'htmlFragments/header.php';
+require_once INCLUDE_ROOT . 'htmlFragments/main.php';
+
+$s = new Student(&quot;Craig&quot;);
+$s-&gt;showCourses();
+
+require_once INCLUDE_ROOT . 'htmlFragments/footer.php';
+
+?&gt;</pre>
+<p><code>Student.php</code> would start out like this:</p>
+<pre class="prettyprint linenums">&lt;?php
+require_once INCLUDE_ROOT . 'classes/course.php';
+
+class Student {
+	public function showCourses() {
+		$courseArray = Course::getCourses($this-&gt;studentId);
+		//echo out the list of courses for this student
+	}
+}
+?&gt;</pre>
+<p>The <code>require_once</code> will work because INCLUDE_ROOT was already brought in by <code>studentRecords.php</code>. This is why <em>it is vital that no file inside the “includes” directory are ever called directly</em>.</p>
+<h2>Variables and Constants</h2>
+<p>Variables are defined simply by referencing them. All variable must begin with a $ character. Ex: <code>$myVar = 1;</code></p>
+<p>To reference a variable variable name, enclose it in curly braces. e.g. <code>$pr-&gt;{'response'.($idx + 1)} = $guess;</code> Here I am setting an instance variable (for example, <code>$pr-&gt;response1, $pr-&gt;response2, $pr-&gt;response3</code>, etc.) value to $guess. </p>
+<p>Constants are defined with the PHP function define(). Ex: <code>define(&quot;MY_CONSTANT&quot;, 3.14159);</code> By convention, constants are usually in all upper-case. To use your constant, just reference its name. i.e. <code>$pi = MY_CONSTANT;</code></p>
+<h3>Pre-defined &ldquo;Magic&rdquo; Constants</h3>
+<p>PHP comes with some constants already for you to use (they are prefixed and suffixed with double underscores):</p>
+<p><span style="padding-right:2px;">_</span>_LINE<span style="padding-right:2px;">_</span>_ : The current line number of the file.</p>
+<p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">FILE_</span>_ : The full path and filename of the file. If inside an include, then the include's filename is used.</p>
+<p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">DIR_</span>_ : Directory of the file.</p>
+<p><span style="padding-right:2px;">_</span>_FUNCTION<span style="padding-right:2px;">_</span>_ : The function's name</p>
+<p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">CLASS_</span>_ : The class name.</p>
+<p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">METHOD_</span>_ : The class method name.</p>
+<p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">NAMESPACE_</span>_ : The current namespace.</p>
+<h3>Variable Scope</h3>
+<p>Variables are visible only within the area in which they are defined. If you would like a global variable to be visible to a function, then use the global keyword as in the following example.</p>
+<pre class="prettyprint linenums"><strong>$db</strong> = new PDO($dbDSN, $dbUserId, $dbPassword);
+$db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+function showDbInfo() {
+ 	<strong>global $db;</strong>
+	echo $db-&gt;getAttribute(PDO::ATTR_CONNECTION_STATUS);
+}
+showDbInfo();
+</pre>
+<h2>Handling Dates with PHP and MySQL</h2>
+<p>This section has not been written yet. <span style="font-size:smaller;">I have some notes in my green folder and an example is in the Intel Solution Architect 2013 project. See claimform/index.php.</span></p>
+<div id="CollapsiblePanel1" class="CollapsiblePanel">
+	<div class="CollapsiblePanelTab" tabindex="0">Information from Richard Lord’s blog post (click here to view)</div>
+	<div class="CollapsiblePanelContent">
+		<p><a href="http://www.richardlord.net/blog/dates-in-php-and-mysql" rel="external">Dates in PHP and MySQL</a></p><p>PHP uses unix timestamps for all its date functionality. It has methods to convert these timestamps into pretty much any text format you could want but internally it uses the timestamp format. A timestamp is simply an integer. Specifically, it's the number of seconds that have elapsed since midnight on January 1st 1970 (greenwich mean time).</p>
+		<p>MySQL has three date types for use in columns. These are DATETIME, DATE, and TIMESTAMP. DATETIME columns store date and time as a string in the form YYYY-MM-DD HH:MM:SS (e.g. 2006-12-25 13:43:15). DATE columns use just the date part of this format – YYYY-MM-DD (e.g. 2006-12-25). TIMESTAMP columns, despite their name, are nothing like the unix timestamps used in PHP. A TIMESTAMP column is simply a DATETIME column that automatically updates to the current time every time the contents of that record are altered. (That's a simplification but broadly true and the details are not important here). In particular, since version 4.1 of MySQL the TIMESTAMP format is exactly the same as the DATETIME format.</p>
+		<p>So the problem is how to work with these two very different date formats – the PHP timestamp integer and the MySQL DATETIME string. There are three common solutions…</p>
+		<p>One common solution is to store the dates in DATETIME fields and use PHPs date() and strtotime() functions to convert between PHP timestamps and MySQL DATETIMEs. The methods would be used as follows -</p>
+		<pre class="prettyprint linenums">$mysqldate = date( 'Y-m-d H:i:s', $phpdate );
+ 			$phpdate = strtotime( $mysqldate );</pre>
+		<p> Our second option is to let MySQL do the work. MySQL has functions we can use to convert the data at the point where we access the database. UNIX_TIMESTAMP will convert from DATETIME to PHP timestamp and FROM_UNIXTIME will convert from PHP timestamp to DATETIME. The methods are used within the SQL query. So we insert and update dates using queries like this -</p>
+		<pre class="prettyprint linenums">$query = &quot;UPDATE table SET
+ 			datetimefield = FROM_UNIXTIME($phpdate)
+ 			WHERE...&quot;;
+ 			$query = &quot;SELECT UNIX_TIMESTAMP(datetimefield)
+ 			FROM table WHERE...&quot;;</pre>
+		<p> Our last option is simply to use the PHP timestamp format everywhere. Since a PHP timestamp is a signed integer, use an integer field in MySQL to store the timestamp in. This way there's no conversion and we can just move PHP timestamps into and out of the database without any issues at all.</p>
+		<p>Be aware, however, that by using an integer field to store your dates you lose a lot of functionality within MySQL because MySQL doesn't know that your dates are dates. You can still sort records on your date fields since php timestamps increase regularly over time, but if you want to use any of MySQL's date and time functions on the data then you'll need to use FROM_UNIXTIME to get a MySQL DATETIME for the function to work on.</p>
+		<p>However, if you're just using the database to store the date information and any manipulation of it will take place in PHP then there's no problems.</p>
+		<p>So finally we come to the choice of which to use. For me, if you don't need to manipulate the dates within MySQL then there's no contest and the last option is the best. It's simple to use and is the most efficient in terms of storage space in the data table and speed of execution when reading and writing the data.</p>
+		<p>However, some queries will be more complicated because your date is not in a date field (e.g. select all users who's birthday is today) and you may lose out in the long run. If this is the case it may be better to use either option 1 or 2. Which of these you use depends on whether you'd rather place the work on MySQL or PHP. I tend to use option 2 but there's no right or wrong answer – take your pick.</p>
+		<p>So to summarise, for those who've skipped straight to the last paragraph, most of the time I use option 3 but occasionally I use option 2 because I need MySQL to know the field contains a date.</p>
+	</div>
+</div>
+<p>&nbsp;</p>
+<h2>phpinfo()</h2>
+<p>The phpinfo() function returns data about your PHP installation. This function will generate a complete, fully-formed web page, so start with a blank file, name it something like &quot;info.php&quot; and put this in it:</p>
+<pre class="prettyprint linenums">&lt;?php
+	phpinfo();
+?&gt;
+</pre>
+<h2>Security</h2>
+<p><a href="https://www.owasp.org/index.php/ZAP" target="external">OWASP Zed Attack Proxy</a> can be used to test the security vulnerabilities of your web app.</p>
+<p><a href="http://phpsecurity.readthedocs.org/en/latest/index.html" target="external">Survive the Deep End: PHP Security</a> is a great resource for learning how to secure your site.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript">
+var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel1", {contentIsOpen:false});
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

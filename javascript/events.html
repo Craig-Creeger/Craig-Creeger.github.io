@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Events</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+#lcd {
+	display:inline-block;
+	width:20em;
+	padding:.5em;
+	background-color:#68CBE0;
+	color:#666;
+	border: thin solid black;
+	margin-bottom:1em;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Events</h1>
+<h2>Binding Events with Javascript</h2>
+<p>There are four ways to respond to an event.</p>
+<ol>
+	<li>Element Attribute <em>e.g.</em> <span class="code">&lt;button id=&quot;myBtn&quot; onclick=&quot;doThis();&quot;&gt;</span></li>
+	<li>Object Property <em>e.g.</em> <span class="code">document.getElementById(&quot;myBtn&quot;).onclick = doThis;</span></li>
+	<li>W3C Listeners <em>e.g.</em> <span class="code">document.getElementById(&quot;myBtn&quot;).addEventListener(&quot;click&quot;, doThis, false);</span></li>
+	<li>IE Attachments <em>e.g.</em> <span class="code">document.getElementById(&quot;myBtn&quot;).attachEvent(&quot;onclick&quot;, doThis);</span></li>
+</ol>
+<p>Using the first method is quick and dirty, but doesn't follow unobtrusive Javascript and is less flexible. The second method is cross-browser and is good for  standard DOM events, however you can only attach one function to the element this way.</p>
+<p>The most flexible method, and only way if you are generating your own events, is to use a combination of methods 3 and 4 because Microsoft uses a non-standard way to bind events.</p>
+<h2>jQuery Events</h2>
+<p>The previous section talked about pure JavaScript for handling events; it&rsquo;s also possible to <a href="jQuery.html#events">bind events using jQuery</a>.</p>
+<h2>One-Time Events</h2>
+<p>Sometimes an event need only be called once in your page. For example, clicking a thumbnail which loads and plays a video file or clicking a &quot;more&quot; icon which retrieves and displays extra content via Ajax. However, you've probably defined an event handler which is called every time that action occurs. At best, it's a little inefficient and the browser is retaining unnecessary resources. At worst, your handler could do something unexpected or reload data which is already available. </p>
+<p>Fortunately, it's relatively easy to create one-time event handlers in JavaScript. The process: </p>
+<ol>
+	<li>A handler is assigned to an event, such as clicking an element. </li>
+	<li>When the element is clicked, the handler runs. </li>
+	<li>The handler is removed. Further clicks on that element will no longer call the function.</li>
+</ol>
+<h3>jQuery</h3>
+<p> Let's look at the simplest solution first. If you're using jQuery, there's a little-known one() event binding method which implements one-time events.</p>
+<p class="code">$(&quot;#myelement&quot;).one( &quot;click&quot;, function() { </p>
+<p class="code">&nbsp;&nbsp;alert(&quot;You'll only see this once!&quot;); </p>
+<p class="code">}); </p>
+<p>It’s used identically to other jQuery event methods. For more information, refer to <a href="http://api.jquery.com/one/">api.jquery.com/one/</a>.</p>
+<h3>Plain Javascript</h3>
+<p>Refer to the <a href="http://www.sitepoint.com/create-one-time-events-javascript/" rel="external">original article that describes One-time events</a>.</p>
+<h2>Custom Events</h2>
+<p>In the example above, all the events were getting bound to DOM elements, which are smart enough to know about standard mouse and keyboard events. If you want to place a listenener on one of your own objects, then you'll need to create a custom event handler.</p>
+<p><a href="http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/" rel="external">http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/</a></p>
+<p><a href="http://www.codeproject.com/Articles/13914/Observer-Design-Pattern-Using-JavaScript" rel="external">http://www.codeproject.com/Articles/13914/Observer-Design-Pattern-Using-JavaScript</a> Very in depth article on creating the Observer pattern.</p>
+<h3>Example</h3>
+<div class="callout"><div id="lcd">&nbsp;</div> <button id="updateBtn">Update</button></div>
+<p><button onClick="alert(model.curTime);">Show Last Time</button></p>
+<p>The HTML code that creates the above example is shown here.</p>
+<pre class="prettyprint linenums">&lt;div class=&quot;callout&quot;&gt;&lt;div id=&quot;lcd&quot;&gt;&lt;/div&gt; &lt;button id=&quot;updateBtn&quot;&gt;Update&lt;/button&gt;&lt;/div&gt;
+&lt;p&gt;&lt;button onClick=&quot;alert(model.curTime);&quot;&gt;Show Last Time&lt;/button&gt;&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../scripts/common.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;scripts/EventExample.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var model = new EventExample.Model('Click Update for current time.');
+    var view = new EventExample.View(document.getElementById('lcd'),document.getElementById('updateBtn'));
+    // ------------ BEGIN CONTROLLER CODE
+     view.addListener(&quot;updateRequested&quot;,function() {
+         model.updateTime();
+     });
+     model.addListener(&quot;newTime&quot;,function(evt) {
+         view.content(evt.curTime);
+     });
+     // ------------ END CONTROLLER CODE
+&lt;/script&gt;</pre>
+<p>Click the filename to download/view the external scripts:</p>
+<ul>
+	<li><a href="../js/common.js" rel="external"><code>common.js</code></a></li>
+	<li><a href="scripts/EventExample.js" rel="external"><code>EventExample.js</code></a></li>
+</ul>
+<h2>Deferreds and Promises</h2>
+<h3>Resources</h3>
+<p><a href="http://net.tutsplus.com/tutorials/javascript-ajax/wrangle-async-tasks-with-jquery-promises/" rel="external">Wrangle Async Tasks With JQuery Promises</a> tutorial</p>
+<p><a href="http://wiki.commonjs.org/wiki/Promises/A" rel="external">Promises/A specification</a></p>
+<p><a href="http://learn.jquery.com/code-organization/deferreds/" rel="external">jQuery Tutorial page</a></p>
+<p><a href="http://api.jquery.com/category/deferred-object/" rel="external">jQuery Deferred API</a></p>
+<h2>Event Capturing and Bubbling</h2>
+<p>DOM Elements are nested in each other. For example, the &lt;body&gt; can contain a &lt;div&gt; and that can contain a &lt;section&gt; and that can contain a &lt;h1&gt;.</p>
+<pre>&lt;body&gt;
+	&lt;div&gt;
+		&lt;section&gt;
+			&lt;h1&gt; ... &lt;/h1&gt;
+			&lt;p&gt; ... &lt;/p&gt;
+			&lt;img&gt;
+		&lt;/section&gt;
+	&lt;/div&gt;
+&lt;/body&gt;</pre>
+<p>When, typically, a mouse event fires (such as onClick or onMouseOut) it will try to execute ALL event handlers in the hierarchy. Let us say that the mouse is hovering over the &lt;section&gt; element in the code above and the user then mouses over the &lt;div&gt;. When the mouse leaves the &lt;section&gt; element the MouseOut event fires, which begins the event processing.</p>
+<p>First, that event goes through the Capturing Phase for W3C browsers (in other words, IE8 and older does not have a Capturing phase). This is mostly a non-issue because it is pretty rare to use that phase anyway. Capturing means the MouseOut (capture) event is fired for every parent DOM element starting at the top. So, in this example, first <code>&lt;body&gt;</code>, then <code>&lt;div&gt;</code>, and lastly <code>&lt;section&gt;</code>.</p>
+<p>Now we begin the Bubbling Phase. During this phase, there are three properties of the Event Object that are most interesting. Event.relatedTarget (IE8 calls it toElement), Event.target (IE8 calls it srcElement), and Event.currentTarget (IE8 uses the &quot;this&quot; object). The following table shows the order and value of the variables as it bubbles up the DOM tree.</p>
+<table class="dataTable">
+	<thead>
+	<tr>
+		<th>Element</th>
+		<th>target</th>
+		<th>currentTarget</th>
+		<th>relatedTarget</th>
+	</tr></thead><tbody>
+	<tr>
+		<td>&lt;section&gt;</td>
+		<td>section</td>
+		<td>section</td>
+		<td>div</td>
+	</tr>
+	<tr>
+		<td>&lt;div&gt;</td>
+		<td>section</td>
+		<td>div</td>
+		<td>div</td>
+	</tr>
+	<tr>
+		<td>&lt;body&gt;</td>
+		<td>section</td>
+		<td>body</td>
+		<td>div</td>
+	</tr></tbody>
+</table>
+<p><strong>Event.target</strong> is the DOM element that initiated the Event process, therefore it stays the same.</p>
+<p><strong>Event.currentTarget</strong> is the handler that is actively being processed. If there is an event handle on &lt;section&gt; and &lt;div&gt;, they will be called.</p>
+<p><strong>Event.relatedTarget</strong> depends on the type of MouseEvent that is triggered. For MouseOut, it is the DOM object that the mouse rolled into.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="scripts/EventExample.js"></script>
+<script type="text/javascript">
+var model = new EventExample.Model('Click Update for current time.');
+var view = new EventExample.View(document.getElementById('lcd'),document.getElementById('updateBtn'));
+
+// ------------ BEGIN CONTROLLER CODE
+view.addListener("updateRequested",function() {
+	model.updateTime();
+});
+model.addListener("newTime",function(evt) {
+	view.content(evt.curTime);
+});
+view.content(model.curTime); //initialize the display
+// ------------ END CONTROLLER CODE
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Flash Integration</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<script src="../js/common.js" type="text/javascript"></script>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+	<h1>Flash Integration</h1>
+	<h2><a name="embedding"></a>Flash Security Settings</h2>
+	<p>To edit the Flash Security settings for your computer, click the link below. Yes, it's a bit weird that a website will make changes to your local machine, but that’s the way it works.</p>
+<p><a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html" rel="external">http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html</a></p>
+	<p>The most common use I have found for this tool is when you are testing a SWF locally in Safari (this trick won’t work for Firefox) and you  see a bunch of icons instead of the video. Adobe’s official statement is you must view videos from a server when you have embedded an FLV using Dreamweaver, which uses the FLVPlayer_Progressive swf to play your video.</p>
+	<p>When using the above too, simply add your local folder to the list of trusted areas.</p>
+	<h2>Embedding Using SWFObject</h2>
+<p>The standard Dreamweaver way of embedding Flash doesn't always work, especially when trying to communicate with JavaScript as in this example. In fact, Adobe now recommends using SWFObject to embed SWF's.</p>
+<p>There are two methods of placing a SWF on your page with SwfObject: Static or Dynamic publishing. The method that I always use is Dynamic publishing.</p>
+<p>You can either copy <code>swfobject.js</code> <a href="http://code.google.com/p/swfobject/" rel="external">from Google</a> and put it on your site, or reference a copy from the CDN as shown on line five. The last line of the script will actually place the Flash (swf) file onto the page dynamically. You need to tell it the name and location of the SWF file (temperatureDial.swf in this example) the name of the DOM element that the swf will be placed into (tempGauge), the width and height (550 x 400), version of Flash Player, and finally any variables, Flash operating parameters, and DOM attributes.</p>
+	<pre class="prettyprint linenums">&lt;div id=&quot;tempGauge&quot;&gt;<br>	&lt;p&gt;A temperature gauge would display here if your browser could play Adobe Flash files.&lt;/p&gt;<br>&lt;/div&gt;
+
+<em>&lt;!-- These script lines can appear anywhere in the page, but directly beneath the &lt;/body&gt; tag is a good place. --&gt;</em>
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ 	var flashvars = {};
+ 	var params = {
+ 		wMode: &quot;transparent&quot;,
+ 		allowScriptAccess: &quot;always&quot;,
+		allowFullScreen: true};
+ 	var attributes = {
+ 		id: &quot;flashGauge&quot;,
+ 		name: &quot;flashGauge&quot;,
+ 		style: &quot;outline:none&quot;};</pre>
+<pre class="prettyprint linenums">	swfobject.embedSWF(&quot;temperatureDial.swf&quot;, &quot;tempGauge&quot;, &quot;550&quot;, &quot;400&quot;, &quot;9.0.0&quot;, &quot;expressInstall.swf&quot;, flashvars, params, attributes);
+&lt;/script&gt;
+	</pre>
+<h2><a name="communication"></a>JavaScript Communication</h2>
+	<p>The most general purpose way to get Flash and JavaScript to talk to each other is with the Flash class &quot;ExternalInterface&quot;. An example of the ActionScript 3.0 code you need to place in your *.as file is:</p>
+	<pre style="margin-bottom:0">import flash.external.ExternalInterface;
+
+function myFlashFunction():void {</pre>
+<p class="code" style="margin-left:3em;margin-bottom:0">ExternalInterface.call('jsSetTemp',celsius); <span class="comment">/* In this example, jsSetTemp is the name of a JavaScript function on your web page. */</span></p>
+<p class="code">}</p>
+	<div id="tempGauge">
+		<p>A temperature gauge would display here if your browser could play Adobe Flash files.</p>
+	</div>
+	<p id="temperature" style="width:550px; text-align:center; font-size:1.3em; color:#006;">The current temperature is 50.0.</p>
+		<p>
+			<label for="newTemp">Enter a temperature</label>
+			<input name="newTemp" type="text" id="newTemp" value="50" size="5">
+		</p>
+		<p>To send a message to Flash (in other words, to call a Flash function) your JavaScript inside your web page would look like this:</p>
+		<pre class="prettyprint linenums">document.getElementById(&quot;flashGauge&quot;).asMoveNeedle(newTemp);</pre>
+		<p>Notice that you must first get a reference to the SWF file (via <code>getElementById(&quot;flashGauge&quot;)</code>) and then call the ActionScript function name, in this case, <code>asMoveNeedle</code>.</p>
+		<p>For a better description of how this works, and a neat demo, checkout <a href="http://circlecube.com/wp-content/uploads/2010/12/as3-javascript/" rel="external">Circlecube.com</a></p>
+<h3 style="margin-top:2em;">ActionScript 3.0 APIs (<a href="http://kb2.adobe.com/cps/164/tn_16494.html" rel="external">copied from Adobe</a>)</h3>
+	<p>Outbound scripting and URL access (using HTTP URLs, mailto:, and so on) are achieved through use of the following ActionScript 3.0 APIs:</p>
+	<p>The flash.system.fscommand() function<br>
+		The ExternalInterface.call() method<br>
+		The flash.net.navigateToURL() function</p>
+	<p>		For SWF files running locally, calls to APIs are successful only if the SWF file and containing web pages are in the locally trusted security sandbox. Calls to these methods fail if the content is in the local-with-networking or local-with-file system sandbox.</p>
+<p>The <code>AllowScriptAccess</code> parameter in the HTML code that loads a SWF file controls the ability to perform outbound URL access from within the SWF file. Set this parameter inside the <code>PARAM</code> or <code>EMBED</code> tag. If no value is set for <code>AllowScriptAccess</code>, the SWF file and the HTML page can communicate only if both are from the same domain.</p>
+	<p>The <code>AllowScriptAccess</code> parameter can have one of three possible values: &quot;always,&quot; &quot;sameDomain,&quot; or &quot;never:&quot;</p>
+	<p>When <code>AllowScriptAccess</code> is &quot;always,&quot; the SWF file can communicate with the HTML page in which it is embedded. This rule applies even when the SWF file is from a different domain than the HTML page.</p>
+	<p>When <code>AllowScriptAccess</code> is &quot;sameDomain,&quot; the SWF file communicates with the HTML page it's embedded in only when the SWF file is from the same domain. This value is the default value for <code>AllowScriptAccess</code>. To prevent a SWF file hosted from one domain from accessing a script in an HTML page on another domain, use this setting. Or, because this is the default, simply don't set a value for <code>AllowScriptAccess</code>.</p>
+	<p>When <code>AllowScriptAccess</code> is &quot;never,&quot; the SWF file cannot communicate with any HTML page. Using this value is <em>deprecated and not recommended</em>, and is unnecessary if you don't serve untrusted SWF files from your own domain. If it is necessary to serve untrusted SWF files, Adobe recommends that you create a distinct subdomain and place all untrusted content there.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js" type="text/javascript"></script>
+<script type="text/javascript">
+ 	var flashvars = {};
+ 	var params = {
+ 		wMode: "transparent",
+ 		allowScriptAccess: "always"};
+ 	var attributes = {
+ 		id: "flashGauge",
+ 		name: "flashGauge",
+ 		style: "outline:none"};
+
+	swfobject.embedSWF("temperatureDial.swf", "tempGauge", "550", "400", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
+</script>
+<script type="text/javascript">
+	function jsSetTemp(celsius) {
+		var commentary;
+		if (celsius < 0) {
+			commentary = "Water can freeze at this temperature.";
+		} else if (celsius < 27) {
+			commentary = "It is a great temperature to go for a walk.";
+		} else if (celsius < 37) {
+			commentary = "I sure hope you're in an air-conditioned room.";
+		} else if (celsius < 90) {
+			commentary = "Not a bad temperature for a sauna.";
+		} else if (celsius < 100) {
+			commentary = "You can throw some pasta in the water now.";
+		} else {
+			commentary = "Water turns to steam.";
+		}
+		document.getElementById("temperature").innerHTML = "The current temperature is " + Number(celsius).toFixed(1).toString() + ".<br>" + commentary;
+		document.getElementById("newTemp").value = Number(celsius).toFixed(1).toString();
+	}
+	jsSetTemp(50); //default position when page first loads.
+	
+	document.getElementById("newTemp").onchange = function() {
+		document.getElementById("flashGauge").asMoveNeedle(document.getElementById("newTemp").value);
+		jsSetTemp(document.getElementById("newTemp").value);
+	};
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

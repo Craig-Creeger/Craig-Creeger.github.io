@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Prototypes</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.box {
+	border: thin solid black;
+}
+.center, .center p {
+	text-align:center;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Prototypes</h1>
+<h2>Overview</h2>
+<p>Prototypes are how JavaScript provides inheritance. See the <a href="inheritance.html#sources">Inheritance page</a> for good articles on Inheritance and Prototypes in JavaScript.</p>
+<table width="100%" cellspacing="0">
+	<tr valign="top">
+		<td>Functions that are <strong>Constructors</strong> (because they are called with the <code>new</code> keyword)</td>
+		<td class="center"><strong>Properties</strong></td>
+		<td><strong>Prototype</strong> (this is nothing more or less than an Object)</td>
+		<td>&nbsp;</td>
+		<td><strong>Instances</strong> (of an object because it was created with <code>new</code>)</td>
+	</tr>
+	<tr>
+		<td class="box"><pre>function Pet(weight, fullname) {
+ //create the instance variables
+ this.weight = weight;
+ this.fullname = fullname;
+ console.log(' ');
+ }</pre></td>
+		<td class="center"><p>&#x2011;&#x2011;&#x2011;&nbsp;.prototype&nbsp;&#x2011;&#x2011;&#x2011;&gt;</p>
+		<p>&lt;&#x2011;&#x2011;&#x2011;&nbsp;.constructor&nbsp;&#x2011;&#x2011;&#x2011;</p></td>
+		<td class="box"><p>{</p>
+			<p>constructor: Pet,</p>
+		<p>eat: function(),</p>
+		<p>makeNoise: function(),</p>
+		<p>who: function()</p>
+		<p>}</p></td>
+		<td>&nbsp;</td>
+		<td class="box">var <strong>salamander</strong> = new Pet();</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td class="center"><p>&uarr; Cat is sub-classed from Pet &uarr;</p>
+		<p>Because we did: <code>Cat.prototype = new Pet;</code></p>
+		<p class="code">Cat.prototype.constructor = Cat;</p></td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="box"><pre>function Cat(weight, breed, fullname) {
+ Pet.call(this, weight, fullname);
+ this.breed = breed;
+ }</pre></td>
+		<td class="center"><p>&#x2011;&#x2011;&#x2011;&nbsp;.prototype&nbsp;&#x2011;&#x2011;&#x2011;&gt;</p>
+		<p>&lt;&#x2011;&#x2011;&#x2011;&nbsp;.constructor&nbsp;&#x2011;&#x2011;&#x2011;</p>
+		<p>&nbsp;</p></td>
+		<td class="box"><p>{</p>
+			<p>constructor: Cat,</p>
+			<p>purr: function()</p>
+		<p>}</p></td>
+		<td>&nbsp;</td>
+		<td class="box"><p>var <strong>maria</strong> = new Cat();</p></td>
+	</tr>
+</table>
+<p>Prototype is a property of functions, not objects. Therefore Cat.prototype is valid (returns an Object), but maria.prototype is not (returns undefined). If you want the prototype of an instance (like maria) then you need to use one of these three ways:</p>
+<h3>W3C standard <span style="font-weight:normal">(fails in IE&lt;=8 and Opera)</span>:</h3>
+<p class="code">Object.getPrototypeOf(maria);</p>
+<h3>Non-standard <span style="font-weight:normal">(but supported by most browsers except IE)</span>:</h3>
+<p class="code">maria.__proto__;</p>
+<h3>Fallback <span style="font-weight:normal">(but only if constructor.prototype has not been replaced and fails with Object.create)</span></h3>
+<p class="code">maria.constructor.prototype;</p>
+<h2>Full Example</h2>
+<p>Look at the source code for this page, and inspect the console, to fully understand what is going on.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script type="text/javascript">
+
+//A Prototype is an Object that other objects inherit properties from.
+
+function Pet(weight, fullname) {
+	//create the instance variables
+	this.weight = weight;
+	this.fullname = fullname;
+	console.log(' ');
+}
+Pet.prototype.eat = function(amount) {
+	this.weight += amount;
+	console.log(this.fullname + ' now weighs ' + this.weight);
+}
+Pet.prototype.makeNoise = function() {
+	console.log('sounds of silence');
+}
+Pet.prototype.who = function() {
+	console.log('My name is ' + this.fullname);
+}
+
+function Cat(weight, breed, fullname) {
+	Pet.call(this, weight, fullname);
+	this.breed = breed;
+}
+Cat.prototype = new Pet; //This is not making a copy of the Pet's prototype, but rather linking to it. See below (when Pets can start loving.)
+Cat.prototype.constructor = Cat; //Not needed in this example, but otherwise it points to Pet
+Cat.prototype.makeNoise = function() {
+	//We can override the makeNoise method from Pet.
+	console.log('meow meow');
+}
+Cat.prototype.who = function() {
+	Pet.prototype.who.call(this);
+	console.log('  and I am a ' + this.breed);
+}
+Cat.prototype.purr = function() {
+	//We can create new methods on the Cat prototype.
+	console.log('purr purr');
+}
+
+function Dog(weight, breed, fullname) {
+	Pet.call(this, weight, fullname);
+	this.breed = breed;
+}
+Dog.prototype = new Pet;
+Dog.prototype.constructor = Dog;
+Dog.prototype.chaseSquirrel = function() {
+	console.log(this.fullname + ' is having fun chasing squirrels.');
+}
+/****************************************************/
+var salamander = new Pet(8, 'Sally');
+salamander.eat(1);
+salamander.makeNoise();
+salamander.who();
+
+var maria = new Cat(15, 'Maine Coon', 'Maria');
+maria.eat(2);
+maria.makeNoise();
+maria.who();
+maria.purr();
+
+var killer = new Dog(20, 'Doberman', 'Killer');
+killer.eat(2);
+killer.makeNoise();
+killer.who();
+killer.chaseSquirrel();
+//killer.purr(); //throws an error because purr is in the Cat prototype.
+
+//Updating the Pet prototype will affect all instances sub-classed from Pet.
+Pet.prototype.love = function() {
+	console.log(this.fullname + ' loves you!');
+}
+maria.love(); //All critters derived from Pet can now love you.
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Bluebird Promise Library</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Bluebird Promise Library</h1>
+<h2>Advantages</h2>
+<p>jQuery comes with Promises (via the Deferred object), but Bluebird claims to be faster, is focused on real-world use-cases, and works everywhere.</p>
+<h2>Usage</h2>
+<p>After including the library in your page (<code>&lt;script src=&quot;bluebird.min.js&quot;&gt;&lt;/script&gt;</code>), you could create a Promise like this:</p>
+<pre class="prettyprint linenums">function getRandomNumber(max) {
+	return new Promise(function (resolve, reject) {
+		var rand = Math.random() * max;
+		rand = Math.floor(rand);
+		if (rand &gt; max * 0.4) {
+			resolve(rand);
+		} else {
+			reject(rand);
+		}
+	});
+}
+getRandomNumber(100)
+.then(function(data) {
+	console.log(&quot;SUCCESS: &quot; + data);
+}).catch(function(data) {
+	console.log(&quot;FAIL   : &quot; + data);
+});</pre>
+<script src="bluebird.min.js"></script>
+<script>
+/* This is a bit contrived since it is not async.
+ * The Promise will be "resolved" is the random number is
+ * greater than 40% of the argument passed in, otherwise
+ * it will "reject" it.
+ */
+function getRandomNumber(max) {
+	return new Promise(function (resolve, reject) {
+		var rand = Math.random() * max;
+		rand = Math.floor(rand);
+		if (rand > max * 0.4) {
+			resolve(rand);
+		} else {
+			reject(rand);
+		}
+	});
+}
+
+getRandomNumber(100)
+.then(function(data) {
+	console.log("SUCCESS: " + data);
+}).catch(function(data) {
+	console.log("FAIL   : " + data);
+});
+</script>
+<!-- InstanceEndEditable -->
+<footer>
+	<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

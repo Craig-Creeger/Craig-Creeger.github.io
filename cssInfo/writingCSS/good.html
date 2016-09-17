@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The “Good” Example</title>
+<link href="good.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="wrap">
+	<header>
+		<p class="title">My Great Website</p>
+		<img src="../../svg/PxPro-Logo-optimized.svg" width="182" height="50" class="pushRight"><p>An example in how to write great code (with an ugly design :-)</p>
+		<nav><a href="#" class="button">Home</a><a href="#" class="button">Products</a><a href="#" class="button">Services</a><a href="#" class="button">Contact Us</a></nav>
+	</header>
+	<div role="main">
+		<aside class="pushRight">
+			<header>
+				<h1>Additional Info</h1>
+			</header>
+			<p>An example of a <a href="bad.html">poorly constructed web page</a> has been created so that you can compare the differences and learn from others’ mistakes.</p>
+		</aside>
+		<p>This is a simple layout that contains the core features of most websites. We have a header, an area for navigation, a “main” content area, sidebar, and a footer. Take a look at the source code of this page and you will notice that:</p>
+		<ul>
+			<li>Only two &lt;div&gt; tags are used and they are both absolutely necessary. The first one, <code>&lt;div id=&quot;wrap&quot;&gt;</code>, is used to center this content; admittedly it is not semantic and does add extra code to the HTML, but necessary, none-the-less. The second <code>&lt;div role=&quot;main&quot;&gt;</code> is semanatic (an ARIA marker for the main content of the web page).</li>
+			<li><code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> tags are used for both semantic meaning and to target specific CSS styles to them.</li>
+			<li><code>&lt;header&gt;</code> tags can be used multiple times. They are styled with the diagonal grid.</li>
+			<li>A class, “pushRight” is reused for the aside and logo.</li>
+		</ul>
+		<p>&nbsp;</p>
+	</div>
+	<footer>All rights reserved.<br>
+	2013 Pixel Pro, Inc.</footer>
+</div>
+</body>
+</html>

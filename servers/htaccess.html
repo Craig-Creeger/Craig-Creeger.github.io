@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>.htaccess</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>.htaccess</h1>
+<h2>Customizing the Apache Web Server</h2>
+<p>This looks to be a rather <a href="http://www.javascriptkit.com/howto/htaccess.shtml" rel="external">in-depth article</a> on .htaccess.</p>
+<p>The .htaccess (also known as Hypertext Access) file is a Web server configuration file that is used to control the behavior, security and performance of a site. Most webmasters create .htaccess file and use this file to control their sites and make sure everything is in good hands. I think there is a global .htaccess file for the whole server, and .htaccess that can be placed in individual directories to affect the contents in that directory and deeper.</p>
+<p>	While there are many ways that you can configure your .htaccess file, the most common usage can be categorized into the following 5 scenarios:</p>
+<h3>	Authorization and authentication</h3>
+<p>The .htaccess file serves as a control to authorize and authenticate who can view your site (or certain page of the site). While you want your site to be visible to everyone, there may be times when it is visited by spambots and you start to receive many spam mails, comments, form submissions and so on. With the .htaccess file, you will be able to block access that comes from unauthorized sources (such as particular domain names or IP addresses).</p>
+<p>Rather than blocking access, you can also set a password (together with the .htpasswd file) for your site and grant only authorized personnel to visit your site. This can be used on a multi-author blog or a collaboration site.</p>
+<h3>Customized error responses</h3>
+<p>In the event that your visitor mistyped your site's URL or you have accidentally deleted a page from the server, the visitor will see a 'HTTP 404 Not Found' page. This page is ugly and always turn people off. With the .htaccess file, you can easily direct your visitor to a beautifully designed 404 page and make them stay longer on your site.<br>
+</p>
+<h3>Redirection</h3>
+<p>If you have migrated to a new domain name, or have changed the permalinks structure of the whole site, you can use the .htaccess file to direct your reader to the new address and also to inform the search engine (especially Google) of the change in address. This is, so far, the best way to retain your readers and won't lose any of your search engine rankings.</p>
+<h3>Create a nice clean URL</h3>
+<p>Some of the commonly used CMS software (such as WordPress) have already included this feature in , but in some cases where the platform (forum software) that you are using does not create a nice clean URL, you can use the .htaccess file to rewrite the ugly URL and present your reader with a short, clean and nice one.</p>
+<h3>Performance</h3>
+<p>The .htaccess file can help you to reduce your site bandwidth usage and make it load faster and perform better. If you are hosting your files on a third-party server and you need to pay for the bandwidth (such as Amazon S3), using the .htaccess file is also a good way to help you to save costs.</p>
+<p>There are mainly two areas where you can increase the performance of the site:</p>
+<p>Cache control – specify what and how long a file can be cached and prevent the server from querying the database unnecessarily.</p>
+<p>Compression – compress your file so that it is sent to the browser in a smaller piece.</p>
+<h4>How Do I Create .htaccess file (if I am not technically inclined)</h4>
+<p>I am not going to go through all the technical details and expect you to learn everything in one post. Instead, I am going to recommend to you one software (website) that you can use to create your .htaccess file easily (or edit the existing one), even if you don't have any technical or programming knowledge.<br>
+	The <a href="http://htaccesser.apacheblog.de/index-nojs.php" rel="external">.htaccess file generator</a> is a simple, but detailed Web form that you can use to specify your site's needs and get it to generate the .htaccess code. All you need to do is to copy and paste the generated code into a text file, save it as .htaccess and upload to your Web server.<br>
+</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Lists</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+ol {
+	list-style-type: lower-alpha;
+}
+.floatBox {
+	float:left;
+	background-color:gainsboro;
+	width:10em;
+	height:150px;
+	margin:.5em 0;
+}
+.floatBox p {
+	margin:0;
+}
+.listBox {
+	width:12em;
+	margin:.5em 0;
+	padding:0;
+	background:white url(../assets/grid_15x15.png) repeat;
+	float:left;
+}
+section {
+	margin:1em 0;
+	border-bottom: dotted medium gainsboro;
+}
+ul.listFix, ol.listFix {
+	margin:1em 0;
+	padding:0;
+}
+.listFix li {
+	position:relative;
+	left:2.5em;
+	margin-right:2.5em;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Lists</h1>
+<h2>Basic Construction</h2>
+<h3>Unordered Lists</h3>
+<pre class="prettyprint linenums">&lt;ul&gt;
+	&lt;li&gt;OS X&lt;/li&gt;
+	&lt;li&gt;Windows&lt;/li&gt;
+	&lt;li&gt;Linux&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<p>Apply the <code>list-style-type</code> property to the <code>&lt;ul&gt;</code> tag to change the type of list. Valid values are: <code>disc, circle, square,  decimal, lower-roman, upper-roman, lower-alpha, upper-alpha</code>, and <code>none</code>.</p>
+<h3>Ordered Lists</h3>
+<pre class="prettyprint linenums">&lt;ol&gt;
+	&lt;li&gt;January&lt;/li&gt;
+	&lt;li&gt;February&lt;/li&gt;
+	&lt;li&gt;March&lt;/li&gt;
+&lt;/ol&gt;</pre>
+<p>In the example below, the Second Quarter starts with letter d because the <code>&lt;li&gt;</code> tag was written as: <code>&lt;li value=&quot;4&quot;&gt;</code></p>
+<pre class="prettyprint linenums pushRight" style="width:60%;">&lt;h4&gt;First Quarter&lt;/h4&gt;
+&lt;ol&gt;
+	&lt;li&gt;January&lt;/li&gt;
+	&lt;li&gt;February&lt;/li&gt;
+	&lt;li&gt;March&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Second Quarter&lt;/h4&gt;
+&lt;ol&gt;
+	&lt;li value=&quot;4&quot;&gt;April&lt;/li&gt;
+	&lt;li&gt;May&lt;/li&gt;
+	&lt;li&gt;June&lt;/li&gt;
+&lt;/ol&gt;</pre>
+<h4>First Quarter</h4>
+<ol>
+	<li>January</li>
+	<li>February</li>
+	<li>March</li>
+</ol>
+<h4>Second Quarter</h4>
+<ol>
+	<li value="4">April</li>
+	<li>May</li>
+	<li>June</li>
+</ol>
+<p style="clear:both;">Alternatively, you can use the <code>start</code> attribute on the <code>&lt;ol&gt;</code> tag.<code></code> Before you use either the <code>start</code> attribute or <code>value</code> attribute on the <code>&lt;li&gt;</code> tag, are you sure you need to? See the next section on <a href="#listItems">List Items</a>.</p>
+<pre class="prettyprint linenums pushRight" style="width:60%;">&lt;h4&gt;First Quarter&lt;/h4&gt;
+&lt;ol&gt;
+	&lt;li&gt;January&lt;/li&gt;
+	&lt;li&gt;February&lt;/li&gt;
+	&lt;li&gt;March&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Second Quarter&lt;/h4&gt;
+&lt;ol start=4&gt;
+	&lt;li&gt;April&lt;/li&gt;
+	&lt;li&gt;May&lt;/li&gt;
+	&lt;li&gt;June&lt;/li&gt;
+&lt;/ol&gt;</pre>
+<h4>First Quarter</h4>
+<ol>
+	<li>January</li>
+	<li>February</li>
+	<li>March</li>
+</ol>
+<h4>Second Quarter</h4>
+<ol start=4>
+	<li value="4">April</li>
+	<li>May</li>
+	<li>June</li>
+</ol>
+<h3 style="clear:both;">List<span id="listItems"> It</span>ems</h3>
+<p style="clear:both;">In most cases, the content inside the list item <code>(&lt;li&gt;</code>) tag will simply be text, as shown above. However, you can put most anything inside a list item. For example:</p>
+<ul style="max-width:500px;">
+	<li><p>Milk</p>
+	<p>Please get 1%.</p></li>
+	<li><img src="cheese-illustration.png" width="131" height="100" class="pushRight">
+		<p>Cheese</p><p>Make sure you get the good stuff, not that crappy mass-produced junk.</p><p>Perhaps something from Wisconsin, eh?</p>
+	</li>
+	<li>Pretzels</li>
+</ul>
+<pre class="prettyprint linenums">&lt;ul style=&quot;max-width:500px;&quot;&gt;
+	&lt;li&gt;
+		&lt;p&gt;Milk&lt;/p&gt;
+		&lt;p&gt;Please get 1%.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;img src=&quot;cheese-illustration.png&quot; width=&quot;131&quot; height=&quot;100&quot; class=&quot;pushRight&quot;&gt;
+		&lt;p&gt;Cheese&lt;/p&gt;
+		&lt;p&gt;Make sure you get the good stuff, not that crappy mass-produced junk.&lt;/p&gt;
+		&lt;p&gt;Perhaps something from Wisconsin, eh?&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Pretzels&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<h2>Advanced Formatting</h2>
+<p><a href="http://www.alistapart.com/articles/taminglists/" rel="external">A List Apart</a> has a great article on formatting lists.</p>
+<h3>Horizontal Positioning</h3>
+<p>The most common thing you may need to do is adjust the margins and padding to move your list from its default location. Browsers have different default methods for indenting the list; either padding-left or margin-left depending on the browser.</p>
+<section class="clearfix">
+	<div class="floatBox">
+		<p>This is a floated box.</p>
+	</div>
+	<!--<div class="listBox" style="margin-right:2em;">-->
+		<ul style="margin:0; padding:0;">
+			<li>Short item 1</li>
+			<li>Short item 2</li>
+			<li>This is a much longer item so we can see how wrapping affects it. I always like to see the text aligned flush left and the markers aligned right.</li>
+		</ul>
+		<p>The obvious problem is the the markers are spilling outside the intended area. That's because, by default, the marker (bullets) are set to display on the outside of the margin. This is done explicitly with CSS property <code>li { list-style-position:outside; }</code></p>
+	<!--</div>-->
+</section>
+<section class="clearfix">
+	<h4 id="solution">Solution</h4>
+	<div class="floatBox" style="margin-top:0;">
+		<p>This is a floated box. Notice how the list flows nicely around this box.</p>
+	</div>
+	<ul class="listFix">
+		<li>Short item 1</li>
+		<li>Short item 2</li>
+		<li>Short item 3</li>
+		<li>Short item 4</li>
+		<li>This is a much longer item so we can see how wrapping affects it. I always like to see the text aligned flush left and the markers aligned right.</li>
+		<li>This is a much longer item so we can see how wrapping affects it. I always like to see the text aligned flush left and the markers aligned right.</li>
+		<li>This is a much longer item so we can see how wrapping affects it. I always like to see the text aligned flush left and the markers aligned right.</li>
+		<li>This is a much longer item so we can see how wrapping affects it. I always like to see the text aligned flush left and the markers aligned right.</li>
+	</ul>
+	<p>The fix is to slide the list over to the right and reduce its width by an equal amount.</p>
+	<pre class="prettyprint linenums">ul.listFix, ol.listFix {
+	margin:1em 0;
+	padding:0;
+}
+.listFix li {
+	position:relative;
+	left:2.5em;
+	margin-right:2.5em;
+}</pre>
+</section>
+<h2>Markers</h2>
+<p>You can place the markers outside or inside the list using CSS property list-marker-position. For example:</p>
+<ul style="background-color:#6C9; width:300px">
+	<li>This list has the markers positioned outside the normal flow. This is the</li>
+	<li> default (standard) way of doing things.</li>
+</ul>
+<h3>list-marker-position</h3>
+<p>You can use the <code>list-marker-position</code> property to set the bullets or numbers inside the normal flow, however <em><strong>I have never come across a situation yet where <code>list-marker-position:inside</code> is the best solution</strong></em>. Go with &quot;<a href="#solution">the Solution</a>&quot; above instead.</p>
+<ul style="background-color:#6C9; width:400px">
+	<li style="list-style-position:inside">This list has the markers positioned inside the normal flow.</li>
+	<li style="list-style-position:inside"> The only time you would ever want to do this is if you can guarantee the width of your marker.</li>
+	<li style="list-style-position:inside">Then you can hack together some nice alignment with negative text-indent and an equal but positive left margin.</li>
+	<li style="list-style-position:inside; text-indent:-1em; margin-left:1em;">Like this bullet. I applied style=&quot;list-style-position:inside; text-indent:-1em; margin-left:1em;&quot;</li>
+	<li style="list-style-position:inside; text-indent:-1em; margin-left:1em;">It works reasonable well full bullets, but sucks for numbers (ordered lists).</li>
+</ul>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> <!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

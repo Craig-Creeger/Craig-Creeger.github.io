@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Application Cache</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+<!--
+#halfWidthBox p {
+	color:black !important;
+}
+-->
+</style>
+<script type="text/javascript">
+function logEvent(event) {
+	console.log(event.type);
+}
+window.applicationCache.addEventListener('checking', logEvent, false);
+window.applicationCache.addEventListener('noupdate', logEvent, false);
+window.applicationCache.addEventListener('downloading', logEvent, false);
+window.applicationCache.addEventListener('cached', logEvent, false);
+window.applicationCache.addEventListener('updateready', logEvent, false);
+window.applicationCache.addEventListener('obsolete', logEvent, false);
+window.applicationCache.addEventListener('error', logEvent, false); 
+</script>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Application Cache</h1>
+<h2>Definition</h2>
+<p>The Application Cache is an HTML5 feature that allows you to cache a part or all of your website locally. This allows, say mobile users, the ability to use your site even if their wireless connection quits.</p>
+<h3 id="filesystem">File System API</h3>
+<p>The File System API might be a better choice for you depending on your needs and goals. There is even a <a href="https://github.com/ebidel/idb.filesystem.js" rel="external">file system polyfill</a> for older browsers.</p>
+<h2>Tutorial</h2>
+<p class="callout">Note: I wrote this back in 2012 or so; therefore this information is a bit old. You’ve been warned...</p>
+<p>See Apple’s <a href="../assets/SafariJSDatabaseGuide.pdf">tutorial on Web Applications</a>.</p>
+<p><a href="http://html5doctor.com/go-offline-with-application-cache/" rel="external">HTML5Doctor has a great article</a> on the App Cache.</p>
+<p><a href="http://alistapart.com/article/application-cache-is-a-douchebag" rel="external">Application Cache is a Douchebag</a> goes into the pitfalls and nuances; very good article.</p>
+<p>This information came from the excellent article <a href="http://www.html5rocks.com/en/tutorials/appcache/beginner/" rel="external">A Beginner’s Guide to Using the Application Cache</a>.</p>
+<p>Allows for a whole, or part, of a website to be cache locally for offline browsing/use.</p>
+<ol>
+	<li>Add a manifest attribute to the HMTL tag. Ex: <code>&lt;html lang=&quot;en&quot; manifest=&quot;offline.appcache&quot;&gt;</code></li>
+	<li>Ensure your web server is sending the right mime-type for your manifest file. For the Apache server you could include a file called <code>.htaccess</code> with the following line inside it. <code>AddType text/cache-manifest .appcache</code> Alternatively, your web host may have an on-line form for adding mime-types.</li>
+	</ol>
+<div class="halfWidthBox">
+	<p class="code">CACHE MANIFEST<br>
+		# 2010-06-18:v2</p>
+	<p class="code"><span style="color: #03F;"># Explicitly cached 'master entries'.</span><br>
+		CACHE:<br>
+		/favicon.ico<br>
+		index.html<br>
+		stylesheet.css<br>
+		images/logo.png<br>
+		scripts/main.js</p>
+	<p class="code"><span style="color: #03F;"># Resources that require the user to be online.</span><br>
+		NETWORK:<br>
+		login.php<br>
+		/myapi<br>
+		http://api.twitter.com</p>
+	<p class="code"><span style="color: #03F;"># static.html will be served if main.py is inaccessible<br>
+		# offline.jpg will be served in place of all images in images/large/<br>
+		# offline.html will be served in place of all other .html files</span><br>
+		FALLBACK:<br>
+		/main.py /static.html<br>
+		images/large/ images/offline.jpg<br>
+		*.html /offline.html</p>
+	</div>
+	<ol start="3">
+	<li>Create the manifest file with at least the first line and a CACHE section. Files are relative to the manifest document, not the webpage.</li>
+</ol>
+<p>Lines starting with a ‘#’ are comment lines, but can also serve another purpose. <strong>An application's cache is only updated when its manifest file changes.</strong> So for example, if you edit an image resource or change a javascript function, those changes will not be re-cached. You must modify the manifest file itself to inform the browser to refresh cached files. Creating a comment line with a generated version number, hash of your files, or timestamp is one way to ensure users have the latest version of your software. You can also programmatically update the cache once a new version.</p>
+<p>A manifest can have three distinct sections: CACHE, NETWORK, and FALLBACK.</p>
+<p><code>CACHE:</code><br>
+	This is the default section for entries. Files listed under this header (or immediately after the CACHE MANIFEST) will be explicitly cached after they’re downloaded for the first time. Note: The HTML file that references your manifest file is automatically cached. There's no need to include it in your manifest, however it is encouraged to do so.</p>
+<p>
+	<code>NETWORK:</code><br>
+	Files listed under this section are white-listed resources that require a connection to the server. All requests to these resources bypass the cache, even if the user is offline. Wildcards may be used.</p>
+<p><code>FALLBACK:</code><br>
+	An optional section specifying fallback pages if a resource is inaccessible. The first URI is the resource, the second is the fallback. Both URIs must be relative and from the same origin as the manifest file. Wildcards may be used.</p>
+<p>Note: These sections can be listed in any order and each section can appear more than one in a single manifest.</p>
+<h2>Testing</h2>
+<p>In Safari, check the error console or look in the Application Cache section under the Resources tab. You can also put this JavaScript code on your page to check when/if events are firing.</p>
+<pre class="prettyprint linenums">function logEvent(event) {<br>    console.log(event.type);<br>}<br>window.applicationCache.addEventListener('checking', logEvent, false);<br>window.applicationCache.addEventListener('noupdate', logEvent, false);<br>window.applicationCache.addEventListener('downloading', logEvent, false);<br>window.applicationCache.addEventListener('cached', logEvent, false);<br>window.applicationCache.addEventListener('updateready', logEvent, false);<br>window.applicationCache.addEventListener('obsolete', logEvent, false);<br>window.applicationCache.addEventListener('error', logEvent, false);</pre>
+<p>Change the timestamp/version comment after each modification to ensure the cache is rebuilt. <span class="todo">Also, I should look into whether or not it is possible to force reloading the cache with the swapCache() function when a GET query is added to the page (e.g. </span><span class="code">myPage.html?swap=true</span><span class="todo">)</span></p>
+<h2>Pitfalls to avoid when using .appcache</h2>
+<p><strong>PITFALL #1 : When a file is available in the cache and on the remote HTTP server, it will always be retrieved from the cache!</strong> You can force the cache to update itself by modifying the manifest.appcache file, or via programmatic methods.</p>
+<p><strong>PITFALL #2: If one file cannot be retrieved and cached, zero files will be updated in the cache.</strong> There is not "partial update" possible. A best practice is to always validate you manifest file using a tool such as:</p>
+<ul>
+	<li><a href="http://westciv.com/tools/manifestR/" target="external">manifestR</a></li>
+	<li><a href="https://github.com/jamesgpearce/confess" target="external">Confess.js</a></li>
+	<li><a href="http://manifesto.ericdelabar.com/" target="external">Manifesto</a></li>
+	<li><a href="http://manifest-validator.com/" target="_blank">http://manifest-validator.com/</a></li>
+</ul>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

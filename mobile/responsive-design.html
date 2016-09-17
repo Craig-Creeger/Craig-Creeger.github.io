@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Responsive Design</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Responsive Design</h1>
+<h2>Definition</h2>
+<p>Responsive  Design is a technique where the contents of a web page change depending on the device size and/or viewport width.  <a href="http://www.html5rocks.com/en/mobile/responsivedesign/" rel="external">HTML5 Rocks</a> has a great description of the process.  <a href="http://www.alistapart.com/articles/responsive-web-design/" rel="external">Ethan Marcotte&rsquo;s A List Apart article</a> is a very good read, too.</p>
+<h3>Mobile-first vs. Desktop-first Development</h3>
+<p>If your primary target audience is mobile users, then you should certainly construct your CSS so the &ldquo;default&rdquo; styling is for mobile. However, one of my websites was not compatible with either <code>Respond.js</code> nor <code>css3-mediaqueries.js</code>, so I had to create it as a desktop-first site so that it would display on IE8.</p>
+<h2>Techniques</h2>
+<h3>Fluid Layouts</h3>
+<p>A fluid layout is one where all the content flows to fill the whole width of the screen AND a horizontal scrollbar is not generated when the browser width gets narrow. This is is the core of creating a Responsive Design.  Here are a few  guidelines:</p>
+<ul>
+	<li>Do  not set absolute widths, such as pixels or ems, on elements; relative units such as percentages are OK.</li>
+	<li>Use the CSS rule <code>img { max-width:100%; }</code> to create <a href="responsiveImages.html">responsive images</a>.</li>
+	<li>Do not use tables to layout the page. <em>Note: I will occasionally break this rule to create simple columns, but when I do this I limit the table to one row (<code>&lt;tr&gt;</code>) and the table and cells are sized using percentages.</em></li>
+	<li>Use AP Divs (<code>position: absolute;</code>) only as a last resort and its containing element should not be the <code>&lt;html&gt;</code> tag (rather it should be something defined as <em>fixed</em>, <em>absolute</em>, or <em>relative</em>.)</li>
+</ul>
+<h3>Set the Viewport Size</h3>
+<p>Phone-sized browsers usually have a viewport larger than the actual (physical) size of the screen. In other words, if the actual width is 320 pixels, the mobile browser may report that the width is 700 pixels. The web page is the shrunk (scaled) down so everything is very tiny so that the user must now scroll and zoom-in on the content they wish to see.</p>
+<p>This <code>head</code> tag will tell iOS <span style="font-size:smaller;">(and perhaps other?)</span> devices to size the browser window (viewport) to fit the physical screen.</p>
+<pre class="prettyprint linenums">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;</pre>
+<h3>Media Queries</h3>
+<p><a href="mediaQueries.html">Media Queries</a> are a CSS technique to (generally) show or hide content, or otherwise format the page, depending on the size of the viewport (screen).</p>
+<h3>window.matchMedia(mediaQueryString)</h3>
+<p>This is the Javascript equivalent of CSS’s @media. Check out <a href="http://caniuse.com/#search=matchmedia" rel="external">caniuse</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window.matchMedia" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/Window.matchMedia</a></p>
+<h3>Responsive Images</h3>
+<p>Text naturally wants to flow within its container; images, on the other hand, will naturally want to stay their original pixel dimensions. You can change images to get smaller as the width of the browser window gets smaller. The key bit of CSS that allows images to shrink is:</p>
+<p class="code">img { max-width:100%; }</p>
+<p>I have written a description of <a href="responsiveImages.html">how to make responsive images</a>.</p>
+<h2>Mobile HTML5 Tricks</h2>
+<p>There is a ton of good information in the 
+<a href="http://www.creativebloq.com/html5/12-html5-tricks-mobile-81412803" rel="external">12 HTML5 tricks for Mobile</a> article.</p>
+
+<h2 id="iOS">iOS (6?) Bug</h2>
+<p>There is an iOS Safari bug where the whole screen is scaled up when rotating from portrait to landscape. First try this:</p>
+<pre class="prettyprint linenums">// Prevent iOS text size adjust after orientation change, without disabling user zoom.
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}</pre>
+<p>If you are still having troubles, give this is shot:</p>
+<pre class="prettyprint linenums">//This makes iOS devices display better.
+if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+	var viewportmeta = document.querySelector('meta[name=&quot;viewport&quot;]');
+	if (viewportmeta) {
+		viewportmeta.content = 'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0';
+		document.body.addEventListener('gesturestart', function () {
+		viewportmeta.content = 'width=device-width, minimum-scale=0.25, maximum-scale=1.6';
+		}, false);
+	}
+}</pre>
+<h2>Building a Mobile Menu</h2>
+<p>Graphical menus often don’t work for mobile sites; one technique is to hide the menu and then dynamically building a <code>select</code> menu using JavaScript. This is a technique that was used for an eLearning site I worked on.</p>
+<p><a href="../layout/dynamicallyBuildingMobileMenu.pdf">PDF Document</a></p>
+<h2>jQuery</h2>
+<p><a href="http://www.jqmgallery.com/jquery-mobile-tutorials/" rel="external">jQuery Mobile Tutorials</a></p>
+<h2>iOS Icons</h2>
+<h3>Web Clip Icons</h3>
+<p>See Apple <a href="http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html" rel="external">doco here</a>.</p>
+<p>This feature is enabled by supplying a <code>&lt;link rel=&quot;apple-touch-icon&quot; ...&gt;</code> in the <code>&lt;head&gt;</code> section of documents served by the web site.</p>
+<p>iOS Note: The Web Clip feature is available in iOS 1.1.3 and later. The apple-touch-icon-precomposed.png filename is available in iOS 2.0 and later. Support for multiple icons for different device resolutions is available in iOS 4.2 and later.</p>
+<p> You may want users to be able to add your web application or webpage link to the Home screen. These links, represented by an icon, are called Web Clips. Follow these simple steps to specify an icon to represent your web application or webpage on iOS.</p>
+<p>To specify an icon for the entire website (every page on the website), place an icon file in PNG format in the root document folder called apple-touch-icon.png or apple-touch-icon-precomposed.png. If you use apple-touch-icon-precomposed.png as the filename, Safari on iOS won't add any effects to the icon.</p>
+<p> To specify an icon for a single webpage or replace the website icon with a webpage-specific icon, add a link element to the webpage, as in:</p>
+<p> &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/custom_icon.png&quot;/&gt;</p>
+<p> In the above example, replace custom_icon.png with your icon filename. If you don't want Safari on iOS to add any effects to the icon, replace apple-touch-icon with apple-touch-icon-precomposed.</p>
+<p> To specify multiple icons for different device resolutions—for example, support both iPhone and iPad devices—add a sizes attribute to each link element as follows:</p>
+<p class="callout"><code>&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;touch-icon-iphone.png&quot; /&gt;<br>
+	&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;72x72&quot; href=&quot;touch-icon-ipad.png&quot; /&gt;<br>
+	&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;114x114&quot; href=&quot;touch-icon-iphone4.png&quot; /&gt;</code></p>
+<p> The icon that is the most appropriate size for the device is used. If no sizes attribute is set, the element's size defaults to 57 x 57.</p>
+<p> If there is no icon that matches the recommended size for the device, the smallest icon larger than the recommended size is used. If there are no icons larger than the recommended size, the largest icon is used. If multiple icons are suitable, the icon that has the precomposed keyword is used.</p>
+<p>If no icons are specified using a link element, the website root directory is searched for icons with the apple-touch-icon... or apple-touch-icon-precomposed... prefix. For example, if the appropriate icon size for the device is 57 x 57, the system searches for filenames in the following order:</p>
+<ol>
+	<li>apple-touch-icon-57x57-precomposed.png</li>
+	<li> apple-touch-icon-57x57.png</li>
+	<li> apple-touch-icon-precomposed.png</li>
+	<li> apple-touch-icon.png</li>
+</ol>
+<p>If you have a web application or a website, you can provide a custom icon that users can display on their Home screens using the web clip feature. Users tap the icon to reach your web content in one easy step. You can create an icon that represents your website as a whole or an icon that represents a single webpage.</p>
+<p>If your web content is distinguished by a familiar image or recognizable color scheme, it makes sense to incorporate it in your icon. However, to ensure that your icon looks great on the device, you should also follow the guidelines in this section. (To learn how to add code to your web content to provide a custom icon, see Safari Web Content Guide.)</p>
+<p>For iPhone and iPod touch, create icons that measure:</p>
+<ul>
+	<li>57 x 57 pixels</li>
+	<li> 114 x 114 pixels (high resolution)</li>
+</ul>
+<p> For iPad, create icons that measure:</p>
+<ul>
+	<li>72 x 72 pixels</li>
+	<li> 144 x 144 (high resolution)</li>
+</ul>
+<p> As it does with application icons, iOS automatically adds some visual effects to your icon so that it coordinates with the built-in icons on the Home screen. Specifically, iOS adds:</p>
+<ul>
+	<li>Rounded corners</li>
+	<li> Drop shadow</li>
+	<li> Reflective shine</li>
+</ul>
+<p>Note: You can prevent the addition of all effects by naming your icon apple-touch-icon-precomposed.png (this is available in iOS 2 and later).</p>
+<h4>Summary</h4>
+<p>iTunesArtwork – Icon for iTunes AdHoc distribution (512×512)<br>
+	Icon@2x.png – Home screen icon for iPhone 4 (114×114)<br>
+	Icon-72.png – Home screen icon for iPad (72×72)<br>
+	Icon-Small@2x.png – Settings/Spotlight icon for iPhone 4 (58×58)<br>
+	Icon.png – Home screen icon for iPhone 3 (57×57)<br>
+	Icon-Small-50.png – Spotlight icon for iPad (50×50)<br>
+	Icon-Small.png - Settings/Spotlight icon for iPhone 3 (29×29)</p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CSS Selectors</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+#descendant section img {
+	border:thick dotted red;
+}
+#children section > img {
+	border:thick dotted red;
+}
+#sibling h3 + p {
+	border:thick dotted red;
+}
+#general h3 ~ p {
+ border:thick dotted red;
+}
+li {
+	color: #00F;
+}
+li:nth-child(odd):not(:last-child) {
+	color: #F00;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>CSS Selectors</h1>
+<article id="descendant">
+	<h2>Descendant</h2>
+	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"><img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
+		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
+		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
+	</section>
+	<p>Select elements that are anywhere within the parent element.</p>
+	<p class="code">section img {<br>
+		&nbsp;&nbsp;&nbsp;border:thick dotted red;<br>
+		}</p>
+</article>
+<article id="children">
+	<h2>Children</h2>
+	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"> <img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
+		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
+		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
+	</section>
+	<p>Select elements that are only one level below the parent element.</p>
+	<p class="code">section &gt; img {<br>
+		&nbsp;&nbsp;&nbsp;border:thick dotted red;<br>
+		}</p>
+	<p>Because the second image is a grandchild of the section, it does not the the dotted border.</p>
+</article>
+<article id="sibling">
+	<h2>Adjacent Sibling</h2>
+	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"> <img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
+		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
+		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
+		<p>This is another paragraph.</p>
+	</section>
+	<p>Select an element that comes immediately after another element with the same parent element</p>
+	<p class="code">h3 + p {<br>
+		&nbsp;&nbsp;&nbsp;border:thick dotted red;<br>
+		}</p>
+	<p>You&rsquo;ll notice that the first paragraph does not have the dotted border because it does not have an <code>&lt;h3&gt;</code> sibling before it.</p>
+</article>
+<article id="general">
+	<h2>General Sibling</h2>
+	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"> <img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
+		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
+		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
+		<p>This is another paragraph.</p>
+	</section>
+	<p>Select an element that comes  after (but not necessarily directly after) another element with the same parent element</p>
+	<p class="code">h3 ~ p {<br>
+		&nbsp;&nbsp;&nbsp;border:thick dotted red;<br>
+		}</p>
+	<p>All paragraphs following the h3 are targeted.</p>
+</article>
+<h2>Class and Id</h2>
+<p>.className</p>
+<p>#idName</p>
+<h2>Pseudo Selectors</h2>
+<p>These selectors target elements that have a particular characteristic.</p>
+<h3>Pseudoclasses</h3>
+<h4>Anchor</h4>
+<p>These <em>can</em> apply to elements other than anchors.</p>
+<p>:link, :visited, :hover, :active</p>
+<h4>Other</h4>
+<h5>:disabled, :enabled</h5>
+<h5>:focus</h5>
+<h5>:checked &mdash; A form element that is checked.</h5>
+<h5>:selection &mdash; User highlighted text.</h5>
+<h5>:lang</h5>
+<h5>:nth-child(<em>n</em>), :nth-last-child(<em>n</em>)</h5>
+<p>Would you care if I blow your mind now? Check this out:</p>
+<pre class="prettyprint linenums">li { color: #00F; }
+li:nth-child(odd):not(:last-child) { color: #F00; }</pre>
+<ul>
+	<li>line 1</li>
+	<li>line 2</li>
+	<li>line 3</li>
+	<li>line 4</li>
+	<li>line 5</li>
+</ul>
+<p>This will alternate the coloring of every other row, but force the last row to always be blue.</p>
+<h5>:first-child, :last-child, :only-child</h5>
+<p><em>Examples:</em> p:first-child means select the first paragraph that is a child.<br>
+	:first-child means select the first anything that is subordinate to another element.<br>
+	div :first-child means select the first anything that appears anywhere inside a div (could be multiple hits).<br>
+	<strong>div&gt;:first-child</strong> means target the first thing following a div. This one is actually pretty neat and I can see using it in several places.</p>
+<h5>:nth-last-of-type(<em>n</em>), :last-of-type, :first-of-type, :only-of-type</h5>
+<h5>:empty An element that has no children</h5>
+<h5>:root</h5>
+<h5>:not(<em>x</em>)</h5>
+<h5>:target</h5>
+<h3 id="pseudoElements">Pseudo-elements</h3>
+<h5>:first-line</h5>
+<h5>:first-letter</h5>
+<h5>:before and :after</h5>
+<p>Smashing magazine has a <a href="http://coding.smashingmagazine.com/2011/07/13/learning-to-use-the-before-and-after-pseudo-elements-in-css/" rel="external">great description of <code>:before</code> and <code>:after</code></a>.</p>
+<h2>Attribute Selectors</h2>
+<p>These are used to target elements based on their attributes.</p>
+<h3>Has the attribute: p[id]</h3>
+<p>Matches <code>&lt;p id&gt;</code>, <code>&lt;p id=&quot;this-one&quot;&gt;</code></p>
+<h3>Exact match: p[id<strong>=</strong>&quot;thisOne&quot;]</h3>
+<p>Matches <code>&lt;p id=&quot;thisOne&quot;&gt;</code></p>
+<h3>Contains: p[id<strong>~</strong>=&quot;this&quot;]</h3>
+<p>Matches <code>&lt;p id=&quot;this&quot;&gt;</code>, <code>&lt;p id=&quot;thisOne&quot;&gt;</code>, and <code>&lt;p id=&quot;and-this&quot;&gt;</code></p>
+<h3>Prefix: p[id|=&quot;this&quot;]</h3>
+<p>Matches <code>&lt;p id=&quot;this&quot;&gt;</code>, <code>&lt;p id=&quot;this-one&quot;&gt;</code>, and <code>&lt;p id=&quot;this-two&quot;&gt;</code> </p>
+<h2>Cheat Sheet</h2>
+<p>See the last page of the the <a href="../assets/css3-cheat-sheet.pdf" rel="external">CSS3 Cheat Sheet</a> for a summary of these selectors.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript">
+</script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

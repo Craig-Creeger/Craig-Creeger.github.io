@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>hCard Microformat</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1> Microformats and Microdata</h1>
+<h2>Definition</h2>
+<p>Microformats and microdata are a way to make certain data machine-readable (by say Google or Bing) by adding semantic attributes.</p>
+<p>There are two competing standards, but both work in a nearly identical fashion. <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&answer=99170&topic=1088472&ctx=topic">Google is throwing its weight behind the Microdata format</a>, but has agreed to also index Microformats.</p>
+<h2>Microdata</h2>
+<!--microdata-->
+<div itemscope itemtype="http://schema.org/Organization" class="halfWidthBox" style="margin-bottom:1em;">
+	<p itemprop="founder" itemscope itemtype="http://schema.org/Person"><a href="http://pixelpro.biz">
+		<span itemprop="givenName">Craig</span> 
+		<span itemprop="familyName">Creeger</span></a>, 
+		<span itemprop="jobTitle">President</span>
+	</p>
+	<p><span itemprop="legalName">Pixel Pro, Inc.</span><br>
+		<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+			<span itemprop="streetAddress">1225 Dawn Lane</span> 
+			<span itemprop="addressLocality">Woodbury</span>, 
+			<span itemprop="addressRegion">MN</span> 
+			<span itemprop="postalCode">55125</span> 
+			<span itemprop="addressCountry">USA</span>
+		</span></p>
+	<p itemprop="telephone">(&#054;&#053;&#049;)&#032;&#051;&#054;&#049;&#045;&#048;&#052;&#053;&#055;</p>
+	<p><a itemprop="email" href="mailto:&#099;&#114;&#097;&#105;&#103;&#064;&#112;&#105;&#120;&#101;&#108;&#112;&#114;&#111;&#046;&#098;&#105;&#122;">&#099;&#114;&#097;&#105;&#103;&#064;&#112;&#105;&#120;&#101;&#108;&#112;&#114;&#111;&#046;&#098;&#105;&#122;</a></p>
+</div>
+<p><a href="http://dev.w3.org/html5/md/" rel="external">Microdata</a> is a W3C Draft Specification and a good description of how to use it can be found on <a href="http://www.schema.org/docs/schemas.html" rel="external">schema.org</a>.</p>
+<p>The formatted &ldquo;card&rdquo; on the right was created with the following <a href="http://dev.w3.org/html5/md/" rel="external">microdata</a><a href="http://microformats.org/wiki/Main_Page" rel="external"></a> markup:</p>
+<pre style="clear:both;">&lt;div itemscope itemtype=&quot;http://schema.org/Organization&quot;&gt;
+&lt;p itemprop=&quot;founder&quot; itemscope itemtype=&quot;http://schema.org/Person&quot;&gt;
+	&lt;a href=&quot;http://pixelpro.biz&quot;&gt;
+	&lt;span itemprop=&quot;givenName&quot;&gt;Craig&lt;/span&gt; 
+	&lt;span itemprop=&quot;familyName&quot;&gt;Creeger&lt;/span&gt;&lt;/a&gt;, 
+	&lt;span itemprop=&quot;jobTitle&quot;&gt;President&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;span itemprop=&quot;legalName&quot;&gt;Pixel Pro, Inc.&lt;/span&gt;&lt;br&gt;
+&lt;span itemprop=&quot;address&quot; itemscope itemtype=&quot;http://schema.org/PostalAddress&quot;&gt;
+	&lt;span itemprop=&quot;streetAddress&quot;&gt;1225 Dawn Lane&lt;/span&gt; 
+	&lt;span itemprop=&quot;addressLocality&quot;&gt;Woodbury&lt;/span&gt;, 
+	&lt;span itemprop=&quot;addressRegion&quot;&gt;MN&lt;/span&gt; 
+	&lt;span itemprop=&quot;postalCode&quot;&gt;55125&lt;/span&gt; 
+	&lt;span itemprop=&quot;addressCountry&quot;&gt;USA&lt;/span&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;p itemprop=&quot;telephone&quot;&gt;(&amp;#054;&amp;#053;&amp;#049;)&amp;#032;&amp;#051;&amp;#054;&amp;#049;&amp;#045;&amp;#048;&amp;#052;&amp;#053;&amp;#055;&lt;/p&gt;
+&lt;p&gt;&lt;a itemprop=&quot;email&quot; href=&quot;mailto:&amp;#099;&amp;#114;&amp;#097;&amp;#105;&amp;#103;&amp;#064;&amp;#112;&amp;#105;&amp;#120;&amp;#101;&amp;#108;&amp;#112;&amp;#114;&amp;#111;&amp;#046;&amp;#098;&amp;#105;&amp;#122;&quot;&gt;&amp;#099;&amp;#114;&amp;#097;&amp;#105;&amp;#103;&amp;#064;&amp;#112;&amp;#105;&amp;#120;&amp;#101;&amp;#108;&amp;#112;&amp;#114;&amp;#111;&amp;#046;&amp;#098;&amp;#105;&amp;#122;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</pre>
+<h2>hCard Microformat Example</h2>
+<div class="halfWidthBox" style="margin-bottom:1em;">
+	<p><a href="http://pixelpro.biz">Craig Creeger</a>, President</p>
+	<p>Pixel Pro, Inc.<br>
+1225 Dawn Lane Woodbury, MN 55125 USA
+	<p>(&#054;&#053;&#049;)&#032;&#051;&#054;&#049;&#045;&#048;&#052;&#053;&#055;</p>
+	<p><a href="mailto:&#099;&#114;&#097;&#105;&#103;&#064;&#112;&#105;&#120;&#101;&#108;&#112;&#114;&#111;&#046;&#098;&#105;&#122;">&#099;&#114;&#097;&#105;&#103;&#064;&#112;&#105;&#120;&#101;&#108;&#112;&#114;&#111;&#046;&#098;&#105;&#122;</a></p>
+</div>
+<p>The formatted &ldquo;card&rdquo; on the right was created with the following <a href="http://microformats.org/wiki/Main_Page" rel="external">microformats</a> markup:</p>
+<p class="code" style="clear:right;">&lt;head&gt;</p>
+<p class="code">&lt;link rel=&quot;<strong>profile</strong>&quot; href=&quot;http://microformats.org/profile/hcard&quot;&gt;</p>
+<p class="code">&lt;/head&gt;</p>
+<p class="code">&nbsp;</p>
+<p class="code">&lt;div <strong>class=&quot;vcard</strong> halfWidthBox&quot; id=&quot;hcard-Craig-Creeger&quot;&gt;<br>
+	&lt;p&gt;&lt;a <strong>class=&quot;url fn&quot;</strong> href=&quot;http://pixelpro.biz&quot;&gt;&lt;span <strong>class=&quot;given-name&quot;</strong>&gt;Craig&lt;/span&gt; &lt;span <strong>class=&quot;family-name&quot;</strong>&gt;Creeger&lt;/span&gt;&lt;/a&gt;, &lt;span <strong>class=&quot;title&quot;</strong>&gt;President&lt;/span&gt;&lt;/p&gt;<br>
+	&lt;span <strong>class=&quot;org&quot;</strong>&gt;Pixel Pro, Inc.&lt;/span&gt;&lt;br&gt;<br>
+	&lt;span <strong>class=&quot;adr&quot;</strong>&gt; &lt;span <strong>class=&quot;street-address&quot;</strong>&gt;1225 Dawn Lane&lt;/span&gt; &lt;span <strong>class=&quot;locality&quot;</strong>&gt;Woodbury&lt;/span&gt;, &lt;span <strong>class=&quot;region&quot;</strong>&gt;MN&lt;/span&gt; &lt;span <strong>class=&quot;postal-code&quot;</strong>&gt;55125&lt;/span&gt; &lt;span <strong>class=&quot;country-name&quot;</strong>&gt;USA&lt;/span&gt;&lt;/span&gt;<br>
+	&lt;p <strong>class=&quot;tel&quot;</strong>&gt;(&amp;#054;&amp;#053;&amp;#049;)&amp;#032;&amp;#051;&amp;#054;&amp;#049;&amp;#045;&amp;#048;&amp;#052;&amp;#053;&amp;#055;&lt;/p&gt;<br>
+	&lt;p&gt;&lt;a <strong>class=&quot;email&quot;</strong> href=&quot;mailto:&amp;#099;&amp;#114;&amp;#097;&amp;#105;&amp;#103;&amp;#064;&amp;#112;&amp;#105;&amp;#120;&amp;#101;&amp;#108;&amp;#112;&amp;#114;&amp;#111;&amp;#046;&amp;#098;&amp;#105;&amp;#122;&quot;&gt;&amp;#099;&amp;#114;&amp;#097;&amp;#105;&amp;#103;&amp;#064;&amp;#112;&amp;#105;&amp;#120;&amp;#101;&amp;#108;&amp;#112;&amp;#114;&amp;#111;&amp;#046;&amp;#098;&amp;#105;&amp;#122;&lt;/a&gt;&lt;/p&gt;<br>
+	&lt;/div&gt;</p>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+ 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

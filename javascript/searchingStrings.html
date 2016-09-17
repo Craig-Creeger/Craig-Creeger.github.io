@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>String Handling</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>String Handling</h1>
+<h2>Javascript String Object</h2>
+<h3>Searching</h3>
+<p>Searching a string for the occurance of another string is a very common need. For example, does an email address contain the &quot;@&quot; symbol?</p>
+<p>You can do this various ways using the String object.</p>
+<h4>For methods that use RegEx, the flags are:</h4>
+<p>g – Global match – Whether to test the regular expression against all possible matches in a string, or only against the first.<br>
+i – Ignore case<br>
+m – Multi-line; ^ and $ work over all lines, not just the input string (in other words, it will be sensitive to \n characters).<br>
+y – Sticky</p>
+<h4>indexOf()</h4>
+<pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
+	var email = &quot;larry@stooges.com&quot;;
+	var pos = email.indexOf(&quot;@&quot;); //pos=5 (zero-based)
+&lt;/script&gt;</pre>
+<h4>match()</h4>
+<pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
+	var email = &quot;larry@stooges.com&quot;;
+	var posArray = email.match(/@/g); //[0]=&quot;@&quot;, [1]=&quot;@&quot;
+&lt;/script&gt;</pre>
+<p><code>match()</code> will return an array of matched strings if the global flag is used (in this example, it is the g following the last slash).</p>
+<h4>search()</h4>
+<pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
+	var email = &quot;larry@stooges.com&quot;;
+	var pos = email.search(/@/); //pos=5 (zero-based)
+&lt;/script&gt;</pre>
+<p>This is similar to indexOf(), except a Regular Expression is used to find the &quot;sought&quot; string. <code>.search()</code> returns a -1 if the string is not found.</p>
+<h4>&nbsp;</h4>
+<h3>Substrings</h3>
+<h4>String.substring(start,end)</h4>
+<p>When specifying the start and end values, think of them as the spaces <em>between</em> the characters. If we want just the word “ipsum” specify the start and end values that <em><strong>wrap</strong></em> the word — 6 and 11.</p>
+<p class="code" style="font-size:2em; letter-spacing:6px; position:relative; left:-0.4em; white-space:pre">      ↓    ↓</p>
+<p class="code" style="font-size:2em; letter-spacing:6px;">Lorem ipsum dolor sit amet</p>
+<p class="code" style="font-size:2em; letter-spacing:6px; position:relative; left:-0.4em;">012345678901234567890123456</p>
+<pre class="prettyprint linenums">var myString = String(&quot;Lorum ipsum dolor sit amet&quot;);
+var ipsum = myString.substring(6, 11);</pre>
+<h4>String.substr(start, length)</h4>
+<p>This is similar to the previous example, but instead of an end (index) value, you specify the length that you want extracted out of the string. So, if you just want “ipsum” you would specify:</p>
+<pre class="prettyprint linenums">var myString = String(&quot;Lorum ipsum dolor sit amet&quot;);
+var ipsum = myString.substr(6, 5);</pre>
+<h2>Javascript RegExp Object</h2>
+<p>It is possible to bypass the String object and go straight to RegExp. This example will find a query parameter in a URL.</p>
+<pre class="prettyprint linenums">function getParameterByName(name) {
+	var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+	return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}</pre>
+<p>The <a href="../php/regex.html">Regular Expressions page</a> contains more information about the syntax of RegEx. </p>
+<h2>Character Replacement</h2>
+<p>Let's say you need to replace one string with another. You could use the String object's <code>.replace()</code> method but you will need to write a RegEx statment to use it. An alternate way is to create the following custom function that uses plain text arguments, so it is a bit easier to use.</p>
+<pre class="prettyprint linenums">String.prototype.replaceAll = function(str1, str2, ignore)  {
+	//str1 = original string, str2 = replacement value, ignore = case
+	//'cheese corn'.replaceAll('cheese', 'caramel') will become 'caramel corn'
+	return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\&lt;\&gt;\-\&amp;])/g,&quot;\\$&amp;&quot;),(ignore?&quot;gi&quot;:&quot;g&quot;)),(typeof(str2)==&quot;string&quot;)?str2.replace(/\$/g,&quot;$$$$&quot;):str2);
+};</pre>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script type="text/javascript">
+var myString = String('Lorum ipsum dolor sit amet');
+console.log(myString.substring(6, 11));
+console.log(myString.substr(6, 5));
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

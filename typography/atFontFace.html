@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>@font-face</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<link href="Caviar-Dreams/stylesheet.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.caviar {
+	font-family:CaviarDreams, Verdana, Geneva, sans-serif;
+}
+</style>
+
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Web Fonts with @font-face</h1>
+<h2>Life Beyond Verdana and Georgia...</h2>
+<p>In the old-days, we used web-safe fonts&mdash;a limited set of fonts that are installed on all computers. We can now use a greater selection of fonts through the use of the CCS <a href="http://www.w3.org/TR/css3-fonts/#font-face-rule" rel="external">@font-face <span style="font-size:smaller">[W3C Specification]</span></a> rule.</p>
+<p>There are several locations on the web where you can download, or link to, free fonts for use on your website. The 3 big ones right now are Google, Adobe, and Font Squirrel. Instructions for using each of them are described below.</p>
+<hr>
+<h3>Google Fonts Workflow</h3>
+<p>This is far easier than the Font Squirrel workflow, but there are more fonts to choose from on Font Squirrel.</p>
+<ol>
+	<li>
+		<p>Find the font you like from <a href="http://www.google.com/fonts/" rel="external">Google Fonts</a>. Again, I look for fonts that include a Normal, Bold, Italic, and Bold Italic variations.</p>
+		<p><img src="googleFonts.png" alt="" width="579" height="163"></p>
+	</li>
+	<li>Click the “Quick Use” button (the middle one in the above screenshot).</li>
+	<li>Follow the instructions that appear after clicking the “Quick Use” button.</li>
+</ol>
+<p><strong>Optional:</strong> If you want to download the font to your machine (say you want to use it with Photoshop) click the download button.</p>
+<p><img src="google-download-font.png" alt="" width="498" height="323"></p>
+<hr>
+<h3 id="edge">Adobe Edge Web Fonts Workflow</h3>
+<ol>
+	<li><p>Find the font you like from <a href="https://edgewebfonts.adobe.com/fonts" rel="external">Adobe Edge Web Fonts</a>.</p></li>
+	<li>
+		<p>Mouse over the font and a pop-up will appear showing the font variations. Click the “Select this font” link.</p>
+	<p><img src="adobeEdge.png" width="491" height="317"></p>
+	</li>
+	<li>Click the custom styles radio button and choose the variations (bold, italic, etc.) that you need. If you choose default styles, you will get regular, <strong>bold</strong>, <em>italic</em>, and <em><strong>bold italic</strong></em>.</li>
+	<li>Follow step 2 and 3 instructions on the Adobe Edge page.</li>
+</ol>
+<hr>
+<h3>Font Squirrel Workflow</h3>
+<ol>
+	<li>Find a font you like from <a href="http://www.fontsquirrel.com/" rel="external">Font Squirrel</a>. I look for fonts that include a Normal, Bold, Italic, and Bold Italic variations. Ensure that it is also licensed for use on the web.</li>
+	<li>For this example, I will choose <a href="http://www.fontsquirrel.com/fonts/Caviar-Dreams" rel="external">Caviar Dreams</a>.</li>
+	<li>Download the Webfont Kit and place the Caviar-Dreams folder in your website (I like to put it in a “<code>css</code>” folder).</li>
+	<li>You should see a stylesheet.css file included with the Webfont kit. It will look similar to this:</li>
+</ol>
+<pre class="prettyprint linenums">@font-face {
+	font-family: 'CaviarDreamsRegular';
+	src: url('CaviarDreams-webfont.eot');
+	src: url('CaviarDreams-webfont.eot?#iefix') format('embedded-opentype'),
+	url('CaviarDreams-webfont.woff') format('woff'),
+	url('CaviarDreams-webfont.ttf') format('truetype'),
+	url('CaviarDreams-webfont.svg#CaviarDreamsRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'CaviarDreamsBold';
+	src: url('Caviar_Dreams_Bold-webfont.eot');
+	src: url('Caviar_Dreams_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+	url('Caviar_Dreams_Bold-webfont.woff') format('woff'),
+	url('Caviar_Dreams_Bold-webfont.ttf') format('truetype'),
+	url('Caviar_Dreams_Bold-webfont.svg#CaviarDreamsBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'CaviarDreamsItalic';
+	src: url('CaviarDreams_Italic-webfont.eot');
+	src: url('CaviarDreams_Italic-webfont.eot?#iefix') format('embedded-opentype'),
+	url('CaviarDreams_Italic-webfont.woff') format('woff'),
+	url('CaviarDreams_Italic-webfont.ttf') format('truetype'),
+	url('CaviarDreams_Italic-webfont.svg#CaviarDreamsItalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'CaviarDreamsBoldItalic';
+	src: url('CaviarDreams_BoldItalic-webfont.eot');
+	src: url('CaviarDreams_BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+	url('CaviarDreams_BoldItalic-webfont.woff') format('woff'),
+	url('CaviarDreams_BoldItalic-webfont.ttf') format('truetype'),
+	url('CaviarDreams_BoldItalic-webfont.svg#CaviarDreamsBoldItalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}</pre>
+<p>This stylesheet certainly works, but when you want to use the font it becomes cumbersome to do so because using the bold or italic versions is done differently than when you use a web-safe font. Notice that font-weight and font-style are all set to normal, and they have different font-family names. Time to fix that.</p>
+<ol start="5">
+	<li id="mod">Change the four lines containing font-family to read <code>font-family: 'CaviarDreams</code>';</li>
+	<li>Change the font-weight and font-style lines as appropriate for the specific font. See below for my final edits.</li>
+</ol>
+<pre class="prettyprint linenums">@font-face {
+	font-family: 'CaviarDreams';
+		src: url('CaviarDreams-webfont.eot');
+		src: url('CaviarDreams-webfont.eot?#iefix') format('embedded-opentype'),
+		url('CaviarDreams-webfont.woff') format('woff'),
+		url('CaviarDreams-webfont.ttf') format('truetype'),
+		url('CaviarDreams-webfont.svg#CaviarDreamsRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CaviarDreams';
+		src: url('Caviar_Dreams_Bold-webfont.eot');
+		src: url('Caviar_Dreams_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+		url('Caviar_Dreams_Bold-webfont.woff') format('woff'),
+		url('Caviar_Dreams_Bold-webfont.ttf') format('truetype'),
+		url('Caviar_Dreams_Bold-webfont.svg#CaviarDreamsBold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CaviarDreams';
+		src: url('CaviarDreams_Italic-webfont.eot');
+		src: url('CaviarDreams_Italic-webfont.eot?#iefix') format('embedded-opentype'),
+		url('CaviarDreams_Italic-webfont.woff') format('woff'),
+		url('CaviarDreams_Italic-webfont.ttf') format('truetype'),
+		url('CaviarDreams_Italic-webfont.svg#CaviarDreamsItalic') format('svg');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'CaviarDreams';
+		src: url('CaviarDreams_BoldItalic-webfont.eot');
+		src: url('CaviarDreams_BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+		url('CaviarDreams_BoldItalic-webfont.woff') format('woff'),
+		url('CaviarDreams_BoldItalic-webfont.ttf') format('truetype'),
+		url('CaviarDreams_BoldItalic-webfont.svg#CaviarDreamsBoldItalic') format('svg');
+	font-weight: bold;
+	font-style: italic;
+}</pre>
+<br>
+<ol start="7">
+	<li>To use this font, include the CSS file in your web page and then use like you would use any other font.</li>
+</ol>
+<div class="caviar" style="padding:1em; font-size:1.5em; background-color:white;">
+	<p>For example, this text is <strong>CaviarDreams</strong> because the containing div is specified as <code>&lt;div class=&quot;caviar&quot;&gt;</code> and this page has a CSS rule of:</p>
+	<pre>.caviar {
+	font-family:CaviarDreams, Verdana, Geneva, sans-serif;
+}</pre>
+	<p>The <strong>&lt;strong&gt;</strong> and <em>&lt;em&gt; tags</em> should work just as you would expect them to.</p>
+	<p>If you would like, say an &lt;h1&gt; tag to use your custom font, the CSS could look like this:</p>
+	<p class="code">h1 { font-family:CaviarDreams; font-weight:bold; font-style:italic; }</p>
+	<h4 class="caviar" style="font-weight:bold; font-style:italic; font-size:1.5em;">I Am a Sample Header Using Caviar</h4>
+</div>
+<h2>Problems</h2>
+<p>When testing locally, Firefox may not display the @font-face fonts. This is due to only allowing relative paths from the same server or something like that. Anyway, test Firefox off a server before you give up.</p>
+<h3 id="variants">Dealing with Font Variations</h3>
+<p>Steps <a href="#mod">5 and 6</a> of the Font Squirrel worksflow were inspired by these articles:</p>
+<ul>
+	<li><a href="http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/" rel="external">http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/</a></li>
+	<li><a href="http://stackoverflow.com/questions/2436749/how-to-define-bold-italic-using-font-face" rel="external">http://stackoverflow.com/questions/2436749/how-to-define-bold-italic-using-font-face</a></li>
+	<li><a href="http://www.metaltoad.com/blog/how-use-font-face-avoid-faux-italic-and-bold-browser-styles" rel="external">http://www.metaltoad.com/blog/how-use-font-face-avoid-faux-italic-and-bold-browser-styles</a></li>
+	<li><a href="http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/" rel="external">http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/</a></li>
+</ul>
+<h3>Flash of Unstyled Text</h3>
+<p>See the article <a href="http://ianfeather.co.uk/web-fonts-and-the-critical-path/" rel="external">Web Fonts and the Critical Path</a> for an interesting discussion of Flash of Unstyled Text (FOUT).</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>setTimeout and setInterval</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>setTimeout and setInterval</h1>
+<h2>Usage</h2>
+<p>These function are simple enough to understand — pass it a function, and a duration. After the duration has elapsed the passed function will be called once (if using setTimeout) or repeatedly (if using setInterval). Example:</p>
+<pre class="prettyprint linenums">var blinkInterval = window.setInterval(blink, 2000); //calls blink every two seconds
+
+function blink() {
+	//flash a light
+}
+
+function killBlinky() {
+	window.clearInterval(blinkInterval);
+}</pre>
+<p>It is possible to cancel the blinking by calling <code>clearInterval</code>.</p>
+<p>Very frequently you will find that you want to pass a parameter or context to the called function; now it gets interesting. Read on...</p>
+<h2>Passing Context</h2>
+<h3>Old School Method—Use a Closure</h3>
+<p>Mozilla <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval#The_this_problem" target="external">describes this well</a>. Basically, when these timer functions call your custom function, the context is set at the document root level. In the example below, <code>self</code> was created so that a closure would be created around it when the anonymous function inside <code>setInterval</code> is declared. If you tried to reference the Person methods directly (e.g. <code>this.incrementReminder();</code> ) then you would get the error message “this.incrementReminder is not a function” because <strong><code>this</code></strong> refers to the window object, not a Person instance.</p>
+<pre class="prettyprint linenums">var Person = function(fullName) {
+	this.fullName = fullName;
+	this.reminders = 0; 
+}
+Person.prototype.incrementReminder = function() {
+	this.reminders++;
+}
+Person.prototype.toString = function() {
+	return this.fullName + ' has been reminded ' + this.reminders + ' times.';
+}
+Person.prototype.beginReminders = function(seconds) {
+	<strong>var self = this;</strong>
+	window.setInterval(function() {
+		// BAD CODE =&gt; <strong>this</strong>.incrementReminder();
+		<strong>self</strong>.incrementReminder();
+		console.log(String(<strong>self</strong>));
+	}, seconds * 1000);
+}
+
+var craig = new Person(&quot;Craig Stronbolli&quot;);
+var nancy = new Person(&quot;Nancy Lopez&quot;);
+
+console.log(String(craig));
+console.log(String(nancy));
+
+craig.beginReminders(2);
+nancy.beginReminders(5);</pre>
+<h3>Binding Context Method</h3>
+<p>Using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind#With_setTimeout" target="external"><code>Function.prototype.bind()</code></a> is a rather elegent way to handle the problem. Using the example above, replace <code>Person.prototype.beginReminders</code> with this:</p>
+<pre class="prettyprint linenums">Person.prototype.beginReminders = function(seconds) {
+	window.setInterval((function() {
+		this.incrementReminder();
+		console.log(String(this));
+	}).bind(this), seconds * 1000);
+};</pre>
+<h3>New School Method—ES6 Arrow Functions</h3>
+<p>If you are using ES6 syntax, then use:</p>
+<pre class="prettyprint linenums">Person.prototype.beginReminders = function(seconds) {
+	window.setInterval(() =&gt; {
+		this.incrementReminder();
+		console.log(String(this));
+	}, seconds * 1000);
+};</pre>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+<script>
+
+var Person = function(fullName) {
+	this.fullName = fullName;
+	this.reminders = 0;	
+}
+Person.prototype.incrementReminder = function() {
+	this.reminders++;
+}
+Person.prototype.toString = function() {
+	return this.fullName + ' has been reminded ' + this.reminders + ' times.';
+}
+/*
+//Let's go old school on this sucker using Closures!
+
+Person.prototype.beginReminders = function(seconds) {
+	var self = this;
+	window.setInterval(function() {
+		self.incrementReminder();
+		console.log(String(self));
+	}, seconds * 1000);
+}
+*/
+
+//Let's go tricky on this sucker using .bind()
+Person.prototype.beginReminders = function(seconds) {
+	window.setInterval((function() {
+		this.incrementReminder();
+		console.log(String(this));
+	}).bind(this), seconds * 1000);
+};
+var craig = new Person("Craig Stronbolli");
+var nancy = new Person("Nancy Lopez");
+
+console.log(String(craig));
+console.log(String(nancy));
+
+craig.beginReminders(1);
+//nancy.beginReminders(5);
+
+
+</script>
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

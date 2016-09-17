@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Vertical Centering Example</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.block {
+	text-align: center;
+	background: #c0c0c0;
+	border: #a0a0a0 solid 1px;
+	margin: 20px;
+}
+.block:before { /* this creates the ghost */
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.25em; /* Adjusts for spacing */
+	
+	background: hotpink; width:10px; /* Here just to demonstrate the pseudo element */
+ }
+.centered {
+	display: inline-block;
+	vertical-align: middle;
+	width: 300px;
+	padding: 10px 15px;
+	border: #a0a0a0 solid 1px;
+	background: #f5f5f5;
+}
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>Vertical Centering Example</h1>
+<h2>Using &ldquo;Ghost&rdquo; Element</h2>
+<p>This technique uses a pseudo element to position an unknown, or dynamically changing, sized element.</p>
+<div class="block" style="height: 300px;">
+	<div class="centered">
+		<h1>Some text</h1>
+		<p>But he stole up to us again, and suddenly clapping his hand on my shoulder, said&mdash;"Did ye see anything looking like men going towards that ship a while ago?"</p>
+	</div>
+</div>
+<p>​<a href="http://tympanus.net/codrops/2013/07/14/justified-and-vertically-centered-header-elements/" rel="external">This article</a> takes this concept and applies it, along with the Justified text trick, to create a centered and responsive header.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" --> 
+<script type="text/javascript">
+</script> 
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

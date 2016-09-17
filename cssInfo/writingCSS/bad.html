@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The “Bad” Example</title>
+<link href="bad.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="wrap">
+	<div id="header">
+		<p class="title">My Nasty Website</p>
+		<img src="../../svg/PxPro-Logo-optimized.svg" width="182" height="50" style="float:right; margin-left:2em;">
+		<p style="margin-left:2em;">An example in how to write poor code (with an ugly design :-)</p>
+		<div id="navigation">
+			<ul>
+				<li><a href="#" class="button">Home</a></li>
+				<li><a href="#" class="button">Products</a></li>
+				<li><a href="#" class="button">Services</a></li>
+				<li><a href="#" class="button">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+	<div role="main">
+		<div id="aside">
+			<h1 style="background:url(sinewave.png) repeat; padding:.8em 2em; margin-top:0;">Additional Info</h1>
+			<p style="padding:0 2em;">An example of a <a href="good.html">well constructed web page</a> has been created so that you can compare the differences and learn from others’ mistakes.</p>
+		</div>
+		<p>This is a simple layout that contains the core features of most websites. We have a header, an area for navigation, a “main” content area, sidebar, and a footer. Take a look at the source code of this page and you will notice that:</p>
+		<ul>
+			<li>There are  unnecessary <code>&lt;div&gt;</code> tags</li>
+			<li>HTML5 structure tags are not used.</li>
+			<li>The navigation area is an unordered list. Once will often see this, but I do not think this is an appropriate use of a list.</li>
+			<li>Excess use of ID attributes and in-line styles.</li>
+		</ul>
+		<p>If you compare the number of lines of HTML and CSS between the “good” page and “bad” page, you’ll see they are quite close, but as the size and complexity of the pages/site goes up, you will begin to save lines of code, and therefore sources of errors.</p>
+	</div>
+	<div id="footer">
+		<p>All rights reserved.</p>
+		<p>2013 Pixel Pro, Inc.</p>
+	</div>
+</div>
+</body>
+</html>

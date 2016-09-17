@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>OS X File Permissions and Flags</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<h1>OS X File Permissions and Flags</h1>
+<h2>Locked Files</h2>
+<p>A file is considered locked when that flag is set. To batch unlock files (common when copying files from a CD, or when Dreamweaver has locked the files when using Check-in/Check-out), issue the command: <code>chflags -R nouchg /path/to/folder</code></p>
+<p><code>nochg</code> means clear the &quot;user immutable flag&quot;, which apparently is a fancy way of saying &quot;locked&quot;. Use <code>chg</code> to set the file to locked.</p>
+<h2>Unix file permissions </h2>
+<p>In Unix, each file belongs to a single user and a single group. Unix file permissions control the ability to perform three actions: read from a file, write to a file, and execute a file. For a given file, the permissions allow or deny each of these three actions for the user who owns the file, the group the file belongs to, and everyone else. That's a total of nine permissions: read, write, and execute for owner, group, and other. In the text-based interface of Unix, the actions are traditionally abbreviated by the letters &quot;r&quot;, &quot;w&quot;, and &quot;x.&quot; The file's owner and group are also displayed.</p>
+<h2>ACL Permissions</h2>
+<p>Unix only allows one user, or group, defined to have permissions set on a file. To get around that limitation, ACL's come to the rescue. OS X let's these two co-exist by first applying standard Unix permissions, and then applying any ACL's that may exist.</p>
+<h3>More Info</h3>
+<p>I have a .webarchive in my programming folder that describes this better. Also, check out the books from Safari Online.</p>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="http://wook.pixelpro.biz/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>

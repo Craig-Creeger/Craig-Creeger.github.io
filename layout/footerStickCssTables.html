@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Holy Grail Layout - CSS Tables</title>
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+html {
+	height: 100%;
+}
+body, #main {
+	display: table;
+	height: 100%;
+	width: 100%;
+	margin:0;
+}
+header, footer {
+	display: table-row;
+	background-color: gainsboro;
+	height: 1px; /* Give a small height otherwise it will attempt to make equal height rows, which would be way to tall. */
+}
+section {
+	display: table-cell;
+	padding:1em 2em;
+}
+.leftSidebar, .rightSidebar {
+	width: 8em;
+	background-color: lightGreen;
+}
+@media only screen and (max-width:700px) {
+	#main {
+		display: block;
+	}
+	section {
+		display: block;
+		width:100% !important;
+	}
+}
+</style>
+</head>
+
+<body>
+<header>
+	<h1>This is the &lt;header&gt;.</h1>
+</header>
+<div id="main">
+	<section class="leftSidebar">
+		<p>Left sidebar</p>
+	</section>
+	<section>
+		<p>The beauty of laying out the page using CSS table values is you can switch them to something else for Responsive design. Make the page more narrow to check that out.</p>
+		<h1>HTML</h1>
+		<pre class="prettyprint linenums" style="white-space:pre-wrap;">&lt;body&gt;
+	&lt;header&gt;
+		&lt;h1&gt;This is the header.&lt;/h1&gt;
+	&lt;/header&gt;
+	&lt;div id=&quot;main&quot;&gt;
+		&lt;section class=&quot;leftSidebar&quot;&gt;Left sidebar&lt;/section&gt;
+		&lt;section&gt;
+			&lt;p&gt;This is the main content area.&lt;/p&gt;
+		&lt;/section&gt;
+		&lt;section class=&quot;rightSidebar&quot;&gt;Right sidebar.&lt;/section&gt;
+	&lt;/div&gt;
+	&lt;footer&gt;
+		&lt;p&gt;This is the footer.&lt;/p&gt;
+	&lt;/footer&gt;
+&lt;/body&gt;</pre>
+		<h1>CSS</h1>
+		<pre class="prettyprint linenums" style="white-space:pre-wrap;">html {
+	height: 100%;
+}
+body, #main {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+header, footer {
+	display: table-row;
+	background-color: gainsboro;
+	padding: 1em 2em;
+	height: 1px; /* Give a small height otherwise it will attempt to make equal height rows, which would be way to tall. */
+}
+section {
+	display: table-cell;
+}
+.leftSidebar, .rightSidebar {
+	width: 10em;
+	background-color: lightGreen;
+}</pre>
+	</section>
+	<section class="rightSidebar">
+		<p>Right sidebar.</p>
+	</section>
+</div>
+<footer>
+	<p>This is the &lt;footer&gt;.</p>
+</footer>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+</body>
+</html>
