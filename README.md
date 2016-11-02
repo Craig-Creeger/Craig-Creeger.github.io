@@ -1,2 +1,2 @@
 # Craig-Creeger.github.io
-Craig Creeger’s Portfolio of Work
+http://craig-creeger.github.io
