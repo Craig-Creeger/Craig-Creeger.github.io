@@ -17,34 +17,23 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>npm - Node Package Manager</h1>
-<h2>Introduction</h2>
+<h1>npm and yarn</h1>
+<h2>yarn</h2>
+<h3>Quick Start</h3>
+<p>Documentation: <a href="https://yarnpkg.com/en/docs/" target="external">https://yarnpkg.com/en/docs/</a></p>
+<p><strong>yarn init</strong> Spin up a new repo.</p>
+<p><strong>yarn install</strong> Install all packages listed in the <code>package.json</code> file.</p>
+<p><strong>yarn add -D <em>packageName</em></strong> Downloads the package and save in <code>devDependencies</code></p>
+<p><strong>yarn remove -D <em>packageName</em></strong> Uninstalls the package and removes from <code>package.json</code> file.</p>
+<h2>npm - Node Package Manager</h2>
 <p><em>npm</em> makes it easy for JavaScript developers to share and reuse code, and it makes it easy to update the code that you’re sharing.</p>
-<div class="callout"><p>Opinion: </p>
-<p>NPM is primarily targeted at more backend oriented solutions, and therefore comes with a bit more complexity and isn’t particularly well suited for front end dependencies. NPM is fine for build tools or server components, but it is a bit overkill when you just want to add JQuery to your site.</p>
-<p>Contradictory opinion:</p>
-<p>Back when this post was originally written, I used to think this, too. Since I still got here from a Google search, I figure it's worth reviving this conversation. Here are a few of the reasons that I dumped bower, and now just use npm :</p>
-<ul>
-	<li>
-		<p><a href="http://blog.npmjs.org/post/101775448305/npm-and-front-end-packaging" rel="nofollow">npm has made it clear that they are comfortable with folks using the npm registry for front-end development<span title="3 clicks">3</span></a>.</p>
-	</li>
-	<li>
-		<p>Browserify is pretty awesome. If you're not using it, you should try it.</p>
-	</li>
-	<li>
-		<p>Jquery recently moved all of the plugins from their old registry into npm.</p>
-	</li>
-	<li>
-		<p><a href="https://github.com/npm/npm/wiki/Roadmap" rel="nofollow">npm@3 is going to use a flattened de-duped package structure.<span title="7 clicks">7</span></a> Bower got this right. Soon npm will get it right, too.</p>
-	</li>
-</ul>
-</div><h3>Documentation</h3>
+<h3>Documentation</h3>
 <p><a href="https://docs.npmjs.com/" rel="external">https://docs.npmjs.com/</a></p>
 <h3>Packages</h3>
 <p>Packages are just a folder containing reusable code. It will contain a <code>package.json</code> file.</p>
-<h2>Commands</h2>
+<h3>Commands</h3>
 <p>There are <a href="https://docs.npmjs.com/" rel="external">a lot of npm commands</a>, but these are the most common a site developer will need.</p>
-<h3>Install</h3>
+<h4>Install</h4>
 <div class="callout">
 	<p><strong>Note:</strong> Before installing a package, it is a good idea to make sure npm itself is current. Issue:</p>
 	<p class="code">npm update -g npm</p>
@@ -55,18 +44,18 @@
 <p>Note that if any package is already installed and satisfies the SemVer rule in <code>package.json</code>, running npm install will not update it to the latest version, even if there is a newer one satisfying the same rule. In fact, no change is made to the package in this case, even if it was modified.</p>
 <p>Thus, to reliably reinstall the latest versions of all packages satisfying the semver rules in <code>package.json</code>, delete the node_modules folder and run npm install.</p>
 <p>When saving to the <code>package.json</code> file, npm will include the version number. You may want to double check that it specified it the way you want. Refer to the <a href="../tech/semver.html">SemVer syntax</a> if needed.</p>
-<h3>Update</h3>
-<h4>Local packages</h4>
+<h4>Update</h4>
+<h5>Local packages</h5>
 <p>Run <code>npm update</code> in the same directory as the <code>package.json</code> file.</p>
-<h4>Global packages</h4>
+<h5>Global packages</h5>
 <p>Run <code>npm update -g <em>packageName</em></code></p>
 <p>To find out which packages need to be updated, you can use <code>npm outdated -g --depth=0</code>.</p>
-<h3>Uninstall</h3>
-<h4>Local packages</h4>
+<h4>Uninstall</h4>
+<h5>Local packages</h5>
 <p>Run <code>npm uninstall <em>packageName</em></code></p>
-<h4>Global packages</h4>
+<h5>Global packages</h5>
 <p><code>npm uninstall -g packageName</code></p>
-<h3>Other Common Commands</h3>
+<h4>Other Common Commands</h4>
 <ul>
 	<li>outdated</li>
 	<li>cache clear</li>
