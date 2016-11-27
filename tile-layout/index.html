@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>Tile Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <output></output>
+  <div id="controls">
+    <p><label>
+      <input id="showHeaders" type="checkbox"> Show Row/Column Headers
+    </label></p>
+    <p><label for="panelWidth">Width</label><br>
+      <input id="panelWidth" size=4></p>
+    <p><label for="panelHeight">Height</label><br>
+      <input id="panelHeight" size=4></p>
+    <p><label for="jitter">Jitter</label><br>
+      <input id="jitter" size=2><br>
+      Enter 0 to make all color blocks 5 tiles wide. Entering larger numbers
+      here will create more blocks that are 4 or 6 tiles wide.</p>
+    <p><button id="new">Generate New Grid</button></p>
+    <hr>
+    <p><button id="save">Save</button></p>
+    <p><button id="whack">Whack this Nasty One</button></p>
+    <div id="gridList"></div>
+  </div>
+<!--   <div id="pattern"></div> -->
+   <div id="map">
+  </div>
+<script type="text/javascript" src="main.js"></script></body>
+</html>
