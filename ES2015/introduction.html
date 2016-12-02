@@ -21,6 +21,19 @@
 <h2>Learning the Details</h2>
 <p>The <a href="https://hacks.mozilla.org/category/es6-in-depth/" target="external">Mozilla In-Depth Series</a> might be the best place to learn the right way to do ES2015.</p>
 <p>Dr. Alex R. also has a paid book and free version on LeanPub called <a href="http://exploringjs.com/es6/" target="external">Exploring ES6</a>.</p>
+<h2>Destructuring</h2>
+<h3>for variable assignment</h3>
+<p>Use this to extract data out of an array or object. The destructoring operator is used 
+	on the left side of the equal sign. You must know the order of your input array
+	or names of the keys in the input object to be able to use destructuring.</p>
+<pre>[a, b, ...rest] = [1, 2, 3, 4, 5];
+console.log(a); // 1
+console.log(b); // 2
+console.log(rest); // [3, 4, 5]</pre>
+<h3>for passing anonymously (spread)</h3>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">The Spread operator</a> works similarly to destructuring by expanding iterable into individual pieces.</p>
+<h3>Rest operator</h3>
+<p>Rest is the opposite of Spread. It will condense multiple values into an array or object.</p>
 <h2>Default Function Argument Values</h2>
 <pre>function (color = 'red') {
 	console.log(color); //red
