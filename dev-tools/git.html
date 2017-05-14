@@ -16,20 +16,25 @@
 </head>
 
 <body>
-<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!--
+InstanceBeginEditable name="content" -->
 <h1>Git</h1>
+
 <h2>Resources for Learning</h2>
-<p><a href="http://alistapart.com/article/git-the-safety-net-for-your-projects" target="external">http://alistapart.com/article/git-the-safety-net-for-your-projects</a></p>
+<p><a href="http://alistapart.com/article/git-the-safety-net-for-your-projects"
+target="external">http://alistapart.com/article/git-the-safety-net-for-your-projects</a></p>
 <p><a href="https://www.atlassian.com/git/" target="external">https://www.atlassian.com/git/</a></p>
-<h3>GUI’s</h3>
-<p>Github has a basic GUI client. I don’t like it one bit.</p>
-<p>Atlassian has SourceTree, which is freaking awesome.</p>
+<p>Github has a basic GUI client. I don’t like it one bit. Atlassian has SourceTree, which is
+freaking awesome. That said, once you get used to the CLI, using your terminal is going to be the
+fast most of the time.</p>
+
 <h2>Concepts</h2>
 <ul>
 	<li>You commit <em>changesets</em>.</li>
 	<li>Each commit has a parent commit.</li>
-	<li>All repos are equal—there is no central master. (Although in practice one is often designated the master.)</li>
+	<li>All repos are equal—there is no central master. (Although in practice one is often designated the main repo.)</li>
 </ul>
+
 <h2>Configuration</h2>
 <table class="dataTable">
 	<thead>
@@ -63,6 +68,7 @@
 <p>To set the default editor to Sublime, do this:</p>
 <pre class="prettyprint linenums">ln -s /Applications/Sublime Text.app/Contents/SharedSupport/bin/subl /usr/local/bin
 git config --global core.editor 'sublime --wait'</pre>
+
 <h2>Basic Commands</h2>
 <h3>git init [directory]</h3>
 <p>Creates a new repo in your current directory (or in the directory specified by the optional [directory] parameter.)</p>
