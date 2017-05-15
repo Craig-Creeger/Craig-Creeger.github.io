@@ -18,6 +18,26 @@
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
 <h1>AJAX</h1>
+
+<h2>Libraries</h2>
+<p>Using the native XMLHttpRequest API is not easy, especially if you need to fetch across domains.
+For this reason, most people reach for an library that abstracts some of the complexity away. You
+could use the newer Fetch API, but that is not supported on IE and you’d still want to abstract away
+some of the complexity. My recommendation:</p>
+<ul>
+	<li>Is jQuery already on the page? Just use <code>$.ajax({});</code></li>
+	<li>Will any of the endpoint calls be cross-origin? Use
+		<a href="https://github.com/mzabriskie/axios" target="external">Axios</a>. It is a cross-browser
+		and cross-environment (both browser and Node) library built around XMLHttpRequest.</li>
+	<li>Otherwise, you could try the Fetch API with a polyfill for IE. Consider layering in the
+		<a href="https://github.com/zellwk/zl-fetch" target="external">zlFetch library.</a></li>
+</ul>
+
+<h3>Fetch API</h3>
+<p><a href="https://css-tricks.com/using-fetch/">Using Fetch</a> from CSS-Tricks does a great job
+of explaining how to use Fetch in a production environment.</p>
+
+<h2>XMLHttpRequest</h2>
 <img src="ajax/ajax001.jpg">
 <img src="ajax/ajax002.jpg">
 <img src="ajax/ajax004.jpg">
