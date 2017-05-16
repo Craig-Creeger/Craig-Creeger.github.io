@@ -25,6 +25,34 @@ to use it for local development as a webserver, be sure to checkout <a href="htt
 target="external">Express</a>.
 <p>Read this  to get an <a href="http://www.nodebeginner.org" rel="external">overview of
 Node</a>.</p>
+
+<h2>Express Server</h2>
+<h3>Debugging Middleware</h3>
+<p>When writing middleware function for you routes you may find this debugging code usefull.</p>
+<pre class="prettyprint linenums">/**
+ * This can be used during development to inspect the values of req and res. To use, place this
+ * middleware piece in the app.post flow below. Example:
+ *
+ *    app.get('/site/store-locator/:zipCode?',
+ *      firstMiddlewareFunction,
+ *      debugMiddleware('after firstMiddlewareFunction'),
+ *      secondMiddlewareFunction,
+ *      render
+ *    );
+ *
+ *
+ * @param {object} req Express Request class
+ * @param {object} res Express Response class
+ * @param {function} next 
+ */
+function debugMiddleware (commentOrLocation) {
+	return function (req, res, next) {
+		console.log('\n\n' + commentOrLocation);
+		// console.log(res.body);
+		next();
+	};
+}
+</pre>
 <!-- InstanceEndEditable -->
 <footer>
 		<hr>
