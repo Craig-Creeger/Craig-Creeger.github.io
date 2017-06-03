@@ -34,7 +34,7 @@
 <h3>Set the Viewport Size</h3>
 <p>Phone-sized browsers usually have a viewport larger than the actual (physical) size of the screen. In other words, if the actual width is 320 pixels, the mobile browser may report that the width is 700 pixels. The web page is the shrunk (scaled) down so everything is very tiny so that the user must now scroll and zoom-in on the content they wish to see.</p>
 <p>This <code>head</code> tag will tell iOS <span style="font-size:smaller;">(and perhaps other?)</span> devices to size the browser window (viewport) to fit the physical screen.</p>
-<pre class="prettyprint linenums">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;</pre>
+<pre class="prettyprint linenums">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes, shrink-to-fit=no&quot;&gt;</pre>
 <h3>Media Queries</h3>
 <p><a href="mediaQueries.html">Media Queries</a> are a CSS technique to (generally) show or hide content, or otherwise format the page, depending on the size of the viewport (screen).</p>
 <h3>window.matchMedia(mediaQueryString)</h3>
