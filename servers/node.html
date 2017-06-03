@@ -26,6 +26,47 @@ target="external">Express</a>.
 <p>Read this  to get an <a href="http://www.nodebeginner.org" rel="external">overview of
 Node</a>.</p>
 
+<h2>Node Version Switching with <strong>nvm</strong></h2>
+
+<p>check to see what version you are using by doing:<br>
+<code>$ nvm current</code></p>
+
+<p>To show the actual path, do:<br>
+<code>$ nvm which current</code></p>
+
+<p>Then your path will be similar to:<br>
+<code>/Users/a6001374/.nvm/versions/node/v5.6.0/bin/node</code></p>
+
+<h3>List Local and Remote Versions</h3>
+<pre><code>$ nvm ls
+$ nvm ls-remote</code></pre>
+ 
+<h3>Installing a Version</h3>
+<p>Check to see what versions are available.<br>
+<code>$ nvm ls-remote</code></p>
+
+<p>Install the one you want. For example, to install the latest stable version do:</p>
+<p><code>$ nvm install node</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<em>or for a specific version do:</em><br>
+<code>$ nvm install 6.0.0</code></p>
+
+<p>Then alias ‘default’ to the new version. This will set a default Node version to be used in any new shell.<br>
+<code>$ nvm alias default 6.0.0</code></p>
+
+
+<h3>Switching Versions</h3>
+<p>You can install and switch to different versions using the command:</p>
+<pre>$ nvm use 4.2.1
+$ nvm alias default 4.2.1</pre>
+
+<p class="callout">If you are switching to a new (updated) version of Node, then be aware all of your globally installed packages will be gone since they are tied to specific versions.</p>
+
+<h3>Uninstalling a Version</h3>
+<p><code>$ nvm uninstall 4.2.1</code></p>
+
+<h3>Updating npm</h3>
+<p><code>npm install npm@latest -g</code></p>
+
 <h2>Express Server</h2>
 <h3>Debugging Middleware</h3>
 <p>When writing middleware function for you routes you may find this debugging code usefull.</p>
