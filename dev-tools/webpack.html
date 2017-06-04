@@ -24,16 +24,27 @@
     <h1>Webpack</h1>
     
     <h2>Overview</h2>
-    <p><a href="http://webpack.github.io" target="external">Webpack</a> can often replace Grunt or Gulp because it can transpile Javascript and CSS, and intelligently concatenate fields together. It supports various module systems such as AMD, CommonJS, ES6, and Angular.</p>
-    <p>The <a href="https://github.com/petehunt/webpack-howto" target="external">Webpack How-To Guide</a> is a great resource for getting started with it.</p>
-    <p>The official Webpack <a href="http://webpack.github.io/docs/" target="external">documentation</a> is known for being crappy, however several <a href="http://webpack.github.io/docs/list-of-tutorials.html" target="external">tutorials</a> are listed on that site.</p>
+    <p><a href="http://webpack.github.io" target="external">Webpack</a> can often replace Grunt or Gulp because it can transpile Javascript and CSS, and intelligently concatenate files together. It supports various module systems such as AMD, CommonJS, ES6, and Angular.</p>
+    <p>Some resources for learning Webpack:</p>
+    <ul>
+        <li><a href="https://survivejs.com/webpack/developing/" target="external">Survive Webpack</a></li>
+        <li><a href="https://webpack.js.org/concepts/" target="external">Official documentation</a></li>
+        <li><a href="https://github.com/petehunt/webpack-howto" target="external">Webpack How-To Guide</a></li>
+    </ul>
     
+    <h2>Config File</h2>
+    <p>There are some important top-level objects in the config file that you should understand.</p>
+    <h3>Entry and Output <small>(required elements)</small></h3>
+    <p>These are the only required keys in the config file. Entry specifies a javascript file that is your top-level module. In other words, there are no other modules that include (import) it. The entry file is, by convention, often named index.js or main.js.</p>
+    <p>Output holds informtion about how to construct the bundled file. Remember, the primary purpose of Webpack is to take multiple files (the entry point and all its dependencies) and concatenate all of them into one Javascript file that can be put on a webpack via a <code>&lt;script&gt;</code> tag.</p>
+
     <h2>Optimization and Analysis</h2>
     <p>Use these tools to ensure the final bundle is constructed as you expect.</p>
     <ul>
         <li><a href="https://chrisbateman.github.io/webpack-visualizer/" target="external">https://chrisbateman.github.io/webpack-visualizer/</a></li>
         <li><a href="http://webpack.github.io/analyse/" target="external">http://webpack.github.io/analyse/</a></li>
     </ul>
+
     <!-- InstanceEndEditable -->
     <footer>
         <hr>

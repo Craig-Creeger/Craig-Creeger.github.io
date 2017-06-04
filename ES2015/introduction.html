@@ -26,11 +26,19 @@
 <p>Use this to extract data out of an array or object. The destructoring operator is used 
 	on the left side of the equal sign. You must know the order of your input array
 	or names of the keys in the input object to be able to use destructuring.</p>
+<p>The destructing operator <code>...</code> will always be inside [square brackets] for arrays
+	or inside {curly braces} for objects.</p>
 <pre>[a, b, ...rest] = [1, 2, 3, 4, 5];
 console.log(a); // 1
 console.log(b); // 2
 console.log(rest); // [3, 4, 5]</pre>
 <h3>for passing anonymously (spread)</h3>
+<p>The spread operator can be used when <strong>calling</strong> a function:<br>
+<code>let greeting = formatGreeting(...user);</code></p>
+<p>Notice the spread operator is <em>not</em> wrapped in curly braces or square brackets.</p>
+<p>It also works when <strong>constructing an array literal</strong>:<br>
+<code>let trucks = ['f-150', 'ram'];</code><br>
+<code>let cars = ['acura', 'buick', 'cadillac', ...trucks];</code></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">The Spread operator</a> works similarly to destructuring by expanding iterable into individual pieces.</p>
 <h3>Rest operator</h3>
 <p>Rest is the opposite of Spread. It will condense multiple values into an array or object.</p>
