@@ -84,8 +84,6 @@ Greeting.defaultProps = {
   userName: 'Earthling'
 };
 
-Greeting.displayName = 'Greeting'; // Useful for debugging
-
 export default Greeting;
 </pre>
 <h3>JSX Attributes to DOM Attributes</h3>
@@ -113,7 +111,7 @@ export default (...props) =&gt; (
 
 <h4>render when false</h4>
 <pre>let studentIsAgeOfMajority = false;
-&lt;p&gt;{studentIsAgeOfMajority || 'Parent’s permission needed'}&lt;/p&gt;
+&lt;p&gt;{!(studentIsAgeOfMajority) && 'Parent’s permission needed'}&lt;/p&gt;
 </pre>
 <p>Is equivalent to:</p>
 <pre>
