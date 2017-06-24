@@ -61,7 +61,7 @@ foo.call({id: 123}); //returns an error because &quot;this&quot; does not have a
 	}, 1000);
 }
 foo.call({id: 123}); //displays 123</pre>
-<p>The reason it works with arrow functions the <code>this</code> property is not created or set. So, when <code>this.id</code> was referenced Javascript couldn’t find <code>this</code>. It then does what it always does when a variable is not found; it looks looks up the chain to see if the parent has <code>this</code> defined. This behavior is <a href="http://blog.getify.com/arrow-this/" target="external">explained really well on the Getiblog</a>. It is interesting to note that MDN explains it quite a bit differently; I’m not sure who to believe...</p>
+<p>The reason it works with arrow functions the <code>this</code> property is not created or set. So, when <code>this.id</code> was referenced Javascript couldn’t find <code>this</code>. It then does what it always does when a variable is not found; it looks looks up the chain to see if the parent has <code>this</code> defined.</p>
 <h2>Classes</h2>
 <p>Example:</p>
 <pre class="prettyprint linenums">class Polygon {
