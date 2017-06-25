@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body {
 	font: 87.5%/1.4 Verdana, Arial, Helvetica, sans-serif;
-	background-color: #fff2d5; /* cream */
+	background-color: whitesmoke;
 	margin: 0;
 	padding: 1em 1.5em 2em 2em;
 	color: #000;
@@ -23,13 +23,13 @@ h1, h2, h3, h4, h5, h6, p, pre, address {
 	padding-right: 0;
 	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
 }
-h1, .title {
+.title {
 	text-align:center;
 	color:rgba(0,0,0,0.75);
 	text-shadow: rgba(255, 255, 255, 0.5) 3px 3px 3px;
 	font-size:2em;
 }
-h2 {
+h1 {
 	color:#F60;
 	text-shadow:rgba(212,161,127,0.5) 2px 3px;
 	margin-top:.5em;
@@ -39,18 +39,18 @@ h2 {
 	font-size:2em;
 	border-top:thin solid;
 }
-h2:first-letter {
+h1:first-letter {
 	font-weight:bold;
 }
-h3 {
+h2 {
 	margin-top:1em;
 	margin-bottom:1em;
 }
-h4 {
+h3 {
 	color:#006;
 	font-family:Georgia, "Times New Roman", Times, serif;
 }
-h5 {
+h4 {
 	padding-left:3em;
 	color:darkGreen;
 	font-size:1em;

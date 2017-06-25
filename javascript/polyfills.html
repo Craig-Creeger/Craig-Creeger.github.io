@@ -15,11 +15,11 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Polyfills</h1>
-<h2>Definition</h2>
+<div class="title">Polyfills</div>
+<h1>Definition</h1>
 <p>A polyfill is JavaScript code that emulates a native feature for older browsers. For example, IE 7 doesn’t understand the new HTML5 tags such as <code>&lt;nav&gt;</code> or <code>&lt;section&gt;</code>. By using a polyfill, you can use those newer features in IE 7.</p>
 <p>If you really want to understand them, <a href="http://javascriptplayground.com/blog/2012/06/writing-javascript-polyfill?utm_source=javascriptweekly&utm_medium=email" rel="external">write your own polyfill</a>; JavaScript Playground has a tutorial on doing just that.</p>
-<h2>List of Polyfills</h2>
+<h1>List of Polyfills</h1>
 <p>A <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills" rel="external">good list of current polyfills</a> is maintained on Github by Modernizr. <a href="http://html5please.com/" rel="external">HTML5 Please</a> also maintains a list and has helpful information about each use.</p>
 <p>The ones I tend to use the most are:</p>
 <ul>
@@ -34,13 +34,13 @@ To use it, just include the library after the CSS has been loaded. If Respond is
 	<li><strong>css3-mediaqueries.js:</strong> Similar to Respond, but may work better at the expense of being a bit slower.</li>
 	<li><strong>HTML5shiv:</strong> Allows you to use HTML5 structure tags (&lt;section&gt;, &lt;header&gt;, etc.) in older browsers.</li>
 </ul>
-<h2>How to Use a Polyfill</h2>
+<h1>How to Use a Polyfill</h1>
 <p>A typical pattern is to call Modernizr, and then dynamically load polyfills if they are required by the current browser. I have another page that talks <a href="../frameworks/codeLibraries.html">more about Modernizr</a>.</p>
 <h2 id="feature-support">Feature Support</h2>
 <p>Shows a table of which browser supports which feature.</p>
 <p><a href="http://caniuse.com/" rel="external">http://caniuse.com/</a></p>
 <p><a href="http://html5please.com/" rel="external">http://html5please.com/</a></p>
-<h2>More Information</h2>
+<h1>More Information</h1>
 <ul>
 	<li>This site tells you what your browser supports (the one you are using right now). <a href="http://fmbip.com/" rel="external">http://fmbip.com/</a></li>
 	<li><a href="html5oxyblast.ppsx">These slides</a> talk about HTML5 and there is some good info on polyfills towards the end of the slides.</li>

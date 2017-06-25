@@ -29,14 +29,14 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Misc PHP Info</h1>
-<h2>Learning PHP </h2>
+<div class="title">Misc PHP Info</div>
+<h1>Learning PHP </h1>
 <p><a href="http://www.phptherightway.com/" rel="external">PHP the Right Way</a> is a great resource when first getting started with PHP.</p>
 <p>The best book I've found for learning PHP, and other things, is <a href="http://lpmj.net/" rel="external">Learning PHP, MySQL, JavaScript, &amp; CSS</a> by Robin Nixon. The table of contents <a href="PMJC-TOC.html">pages are here</a>. The <a href="PHP-Code-examples.zip">sample code is here</a>. Chapter 16 is especially good for Form processing.</p>
-<h2>Configuration for Development</h2>
-<h3>Settings</h3>
+<h1>Configuration for Development</h1>
+<h2>Settings</h2>
 <p>&nbsp;</p>
-<h3>Handling Notices</h3>
+<h2>Handling Notices</h2>
 <p>Instead of using falsy logic, it is better to explicitly check to see if a variable is first set. Otherwise, PHP will generate a Notice error. This can be fixed as follows:</p>
 <pre class="prettyprint linenums">if (<strong>isset</strong>($_GET['barrier'])) {
 	if ($_GET['barrier']==='closed') {
@@ -45,8 +45,8 @@
 }</pre>
 <p>Alternatively, using the <code>array_key_exists()</code> function may work better. As in:</p>
 <p class="code">array_key_exists('barrier',$_GET)</p>
-<h2>Classes and functions()</h2>
-<h3>Function Arguments</h3>
+<h1>Classes and functions()</h1>
+<h2>Function Arguments</h2>
 <p>Normally, when you pass a variable into a function, it is done &ldquo;by value&rdquo;. If you want to pass a variable &ldquo;by reference&rdquo;, then prefix the variable name with an ampersand.</p>
 <pre class="prettyprint linenums">function titleCase(<strong style="font-size:larger">&amp;</strong>$name, $isAwesome = false) {
 	$name = ucfirst(strtolower($name));
@@ -59,26 +59,26 @@ echo $myName; //Craig
 
 titleCase($myName, true);
 echo $myName; //Craig is awesome!</pre>
-<h3>Creating an Empty Object</h3>
+<h2>Creating an Empty Object</h2>
 <p>To create an empty object (similar to what Javascript does with <code>myObject = {};</code>), you can use:</p>
 <p><code>$myObject = new stdClass();</code></p>
 <p>or</p>
 <p><code>$myObject = (object) null;</code></p>
-<h3>Creating an Empty Array</h3>
+<h2>Creating an Empty Array</h2>
 <p class="code">$myArray = array();</p>
 <p>To add items to the end of the array leave the array index blank, for example:</p>
 <p class="code">$myArray[] = $newItem;</p>
-<h2>Forms</h2>
+<h1>Forms</h1>
 <p>To call the same page that the form is on, use this action attribute.</p>
 <pre class="prettyprint linenums">&lt;form action=&quot;&lt;?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?&gt;&quot; method=&quot;POST&quot;&gt;
 </pre>
-<h3>Passing Data</h3>
+<h2>Passing Data</h2>
 <p>To pass data (via GET variables) the function http_build_query($queryData) may come in handy. For example:</p>
 <pre class="prettyprint linenums">$myGetVariables['pageId'] = 14;
 $myGetVariables['action'] = 'rebuild';
 header('Location: mypage.php?' . http_build_query($myGetVariables));</pre>
 <p>Which results in the url <code>mypage.php?pageId=14&amp;action=rebuild</code></p>
-<h2>Headers</h2>
+<h1>Headers</h1>
 <p>You will often find the need to call one PHP page, but return a different one. PHP’s equivalent of the HTML statement<br>
 	<code>document.location = &quot;http://www.myDomain.com&quot;; /* Javascript */</code> is <br>
 	<code>header('Location: http://www.myDomain.com'); /* PHP code */</code></p>
@@ -99,7 +99,7 @@ header(&quot;Location: http://$host$uri/$extra&quot;);</pre>
 <pre class="prettyprint linenums">$variable = 'cats';
 echo &quot;&lt;p&gt;I enjoy $variable.&lt;/p&gt;&quot;; //I enjoy cats.</pre>
 <p>Because the previous line uses double quotes, variable names will be replaced with their contents. Using a single quote would result in: <samp>I enjoy $variable.</samp></p>
-<h3>heredoc Syntax</h3>
+<h2>heredoc Syntax</h2>
 <p>In the previous example, variables can be resolved or not, depending on the use of double or single quotes. The same is true when defining Strings using <code>heredoc</code> and <code>nowdoc</code> syntax.</p>
 <pre class="prettyprint linenums">&lt;?php
 $variable = 'cats';
@@ -111,7 +111,7 @@ echo &lt;&lt;&lt;END
 END;
 ?&gt;</pre>
 <p>The previous block of code will resolve the variable, whereas the next will not. 
-<h3>nowdoc Syntax</h3>
+<h2>nowdoc Syntax</h2>
 <p>The difference is the single quotes around the word END. You can use any word after the &lt;&lt;&lt;, just make sure you use the same word to mark the end of your block. The ending marker must also start in the first column and can be the only thing on that line.
 <pre class="prettyprint linenums">&lt;?php
 $variable = 'cats';
@@ -122,7 +122,7 @@ echo &lt;&lt;&lt;'END'
 &lt;/div&gt;
 END;
 ?&gt;</pre>
-<h3>Another Option</h3>
+<h2>Another Option</h2>
 <p>If you are conditionally echoing a large chunk of HTML, then this syntax will probably be easier to use.</p>
 <pre class="prettyprint linenums"><span style="color:darkred;">&lt;?php if ($lovesCakes): ?&gt;</span>
 <span class="prettyprint linenums">&lt;div&gt;
@@ -131,7 +131,7 @@ END;
 &lt;/div&gt;
 </span><span style="color:darkred;">&lt;?php endif; ?&gt;</span></pre>
 <p>In this example I used PHP’s <a href="http://php.net/manual/en/control-structures.alternative-syntax.php" rel="external">Alternative Syntax for Control Structures</a>. You could also use the standard curly brace syntax. Many people feel the code is easy to read the Alternative Syntax when mixing PHP and other languages (HTML, CSS, Javascript, etc.).</p>
-<h2>Includes</h2>
+<h1>Includes</h1>
 <div class="directoryExample pushRight textbox">
 	<p>Let’s say your directory structure looks like this:</p>
 	<ul>
@@ -169,14 +169,14 @@ END;
 	</ul>
 </div>
 <p>Specifying the location of your include files can get a bit tricky because the location of the file is relative to the page called by the browser. Certainly not a problem if page A includes page B; but when A includes B, and B includes C, and C includes B, and all these files are in different directories; well then you'll have references to files that can not be resolved. This strategy works pretty well to make sense of it all.</p>
-<h3>1. Organize your directory structure.</h3>
+<h2>1. Organize your directory structure.</h2>
 <p>Arrange your files such that browser-facing files (such as index.php) are anywhere <strong>except</strong> the “includes” directory. The files inside “includes” should never be called from the browser address bar.</p>
-<h3>2. Create some PHP constants that define the location of the “include” folder.</h3>
+<h2>2. Create some PHP constants that define the location of the “include” folder.</h2>
 <p>common.php will contain the magic bit of code that tells other other files where to find the includes. This would also be a great place to put your database connection information. <em>Note to self: See the GEM project for an example.</em></p>
 <pre class="prettyprint linenums">//dirname(__FILE__)); //get the directory location of this included file
 define('APP_ROOT', dirname(dirname(__FILE__))); //double-pumping to go up one level since this is in a sub-directory.
 define('INCLUDE_ROOT', APP_ROOT . &quot;/php/&quot;);</pre>
-<h3>3. Use the common.php file.</h3>
+<h2>3. Use the common.php file.</h2>
 <p>Our new constants (APP_ROOT and INCLUDE_ROOT) won’t do any good unless you get them into your web pages; therefore, all files that need an include will first need a hard-coded reference to common.php. This applies to both browser-facing files such as index.php and files called via AJAX such as actions/insertRecord.php.</p>
 <p>Example: In <code>index.php</code> you would have:</p>
 <pre class="prettyprint linenums">&lt;?php
@@ -217,11 +217,11 @@ class Student {
 }
 ?&gt;</pre>
 <p>The <code>require_once</code> will work because INCLUDE_ROOT was already brought in by <code>studentRecords.php</code>. This is why <em>it is vital that no file inside the “includes” directory are ever called directly</em>.</p>
-<h2>Variables and Constants</h2>
+<h1>Variables and Constants</h1>
 <p>Variables are defined simply by referencing them. All variable must begin with a $ character. Ex: <code>$myVar = 1;</code></p>
 <p>To reference a variable variable name, enclose it in curly braces. e.g. <code>$pr-&gt;{'response'.($idx + 1)} = $guess;</code> Here I am setting an instance variable (for example, <code>$pr-&gt;response1, $pr-&gt;response2, $pr-&gt;response3</code>, etc.) value to $guess. </p>
 <p>Constants are defined with the PHP function define(). Ex: <code>define(&quot;MY_CONSTANT&quot;, 3.14159);</code> By convention, constants are usually in all upper-case. To use your constant, just reference its name. i.e. <code>$pi = MY_CONSTANT;</code></p>
-<h3>Pre-defined &ldquo;Magic&rdquo; Constants</h3>
+<h2>Pre-defined &ldquo;Magic&rdquo; Constants</h2>
 <p>PHP comes with some constants already for you to use (they are prefixed and suffixed with double underscores):</p>
 <p><span style="padding-right:2px;">_</span>_LINE<span style="padding-right:2px;">_</span>_ : The current line number of the file.</p>
 <p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">FILE_</span>_ : The full path and filename of the file. If inside an include, then the include's filename is used.</p>
@@ -230,7 +230,7 @@ class Student {
 <p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">CLASS_</span>_ : The class name.</p>
 <p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">METHOD_</span>_ : The class method name.</p>
 <p><span style="padding-right:2px;">_</span>_<span style="padding-right:2px;">NAMESPACE_</span>_ : The current namespace.</p>
-<h3>Variable Scope</h3>
+<h2>Variable Scope</h2>
 <p>Variables are visible only within the area in which they are defined. If you would like a global variable to be visible to a function, then use the global keyword as in the following example.</p>
 <pre class="prettyprint linenums"><strong>$db</strong> = new PDO($dbDSN, $dbUserId, $dbPassword);
 $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -241,7 +241,7 @@ function showDbInfo() {
 }
 showDbInfo();
 </pre>
-<h2>Handling Dates with PHP and MySQL</h2>
+<h1>Handling Dates with PHP and MySQL</h1>
 <p>This section has not been written yet. <span style="font-size:smaller;">I have some notes in my green folder and an example is in the Intel Solution Architect 2013 project. See claimform/index.php.</span></p>
 <div id="CollapsiblePanel1" class="CollapsiblePanel">
 	<div class="CollapsiblePanelTab" tabindex="0">Information from Richard Lord’s blog post (click here to view)</div>
@@ -267,13 +267,13 @@ showDbInfo();
 	</div>
 </div>
 <p>&nbsp;</p>
-<h2>phpinfo()</h2>
+<h1>phpinfo()</h1>
 <p>The phpinfo() function returns data about your PHP installation. This function will generate a complete, fully-formed web page, so start with a blank file, name it something like &quot;info.php&quot; and put this in it:</p>
 <pre class="prettyprint linenums">&lt;?php
 	phpinfo();
 ?&gt;
 </pre>
-<h2>Security</h2>
+<h1>Security</h1>
 <p><a href="https://www.owasp.org/index.php/ZAP" target="external">OWASP Zed Attack Proxy</a> can be used to test the security vulnerabilities of your web app.</p>
 <p><a href="http://phpsecurity.readthedocs.org/en/latest/index.html" target="external">Survive the Deep End: PHP Security</a> is a great resource for learning how to secure your site.</p>
 <!-- InstanceEndEditable -->

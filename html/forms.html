@@ -48,26 +48,26 @@ input:invalid {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Forms</h1>
-<h2>Form Elements</h2>
-<h3>Overview</h3>
+<div class="title">Forms</div>
+<h1>Form Elements</h1>
+<h2>Overview</h2>
 <p>For a list of form elements, refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/How_to_structure_an_HTML_form#HTML_widgets" target="external">MDN document</a>. <a href="http://www.html5rocks.com/en/tutorials/forms/html5forms/" rel="external">Making Forms Fabulous with HTML5</a> is another good article that talks specifically about HTML5 form elements.</p>
-<h3>Naming</h3>
+<h2>Naming</h2>
 <p>Forms and their child elements should not use input names or ids that conflict with properties of a form, such as <code>submit</code>, <code>length</code>, or <code>method</code>. Name conflicts can cause confusing failures. For a complete list of rules and to check your markup for these problems, see <a href="http://kangax.github.com/domlint/" rel="external">DOMLint</a>. So, do <em>not</em> do this: <code>&lt;input type=&quot;submit&quot; name=&quot;submit&quot; id=&quot;submit&quot;&gt;</code></p>
-<h3>Web Components</h3>
+<h2>Web Components</h2>
 <p>A new (gaining usage in 2015) spec for displaying custom elements in a browser could be a great way to display some of the more complicated input elements such as &lt;input type=&quot;color&quot;&gt; and &lt;input type=&quot;date&quot;&gt;. Learn more on the <a href="http://webcomponents.org/" target="external">Web Components</a> website. Some pre-built components can be found on the <a href="https://customelements.io/" target="external">https://customelements.io/</a> website.</p>
-<h3>Pattern Attribute</h3>
+<h2>Pattern Attribute</h2>
 <p>Several of the input types allow for a pattern attribute. You use it to specify a Javascript RegEx for validation. For example, to ensure a valid URL is entered, you can do this:</p>
 <p class="code">&lt;input id="url2" type="url" placeholder="http://www.domain.com"<br>
 pattern="(http|https|ftp)\:\/\/[a-zA-Z0-9\-\.\/]*"&gt;</p>
 <p>&nbsp;</p>
-<h2>User Interface Considerations</h2>
-<h3>Pseudo-classes</h3>
-<h4>:valid, :invalid</h4>
+<h1>User Interface Considerations</h1>
+<h2>Pseudo-classes</h2>
+<h3>:valid, :invalid</h3>
 <p>HTML5 introduced default validation for some elements. The brower will apply pseudo-classes for valid and invalid elements. So, you can highlight invalid elements in red, and good ones in green (for example).</p>
 <p><label>Email: <input type="email" id="email" required></label></p>
 <p><label>URL: <input type="url" id="url" required></label></p>
-<h4>:required, :optional</h4>
+<h3>:required, :optional</h3>
 <p>The <em>required</em> and <em>optional</em> pseudo-classes are applied to form elements based on whether or not the <code>required</code> attribute is present. You can then apply styling to those fields. For example:</p>
 <div class="requireEx">
 	<p><label>Full name: <input type="text" size="12" required></label></p>
@@ -83,12 +83,12 @@ input:optional {
 
 &lt;p&gt;&lt;label&gt;Full name: &lt;input type=&quot;text&quot; size=&quot;12&quot; <strong>required</strong>&gt;&lt;/label&gt;&lt;/p&gt;
 &lt;p&gt;&lt;label&gt;Weight: &lt;input type=&quot;text&quot; size=&quot;4&quot;&gt;&lt;/label&gt;&lt;/p&gt;</pre>
-<h3>Styling Input Elements in Safari</h3>
+<h2>Styling Input Elements in Safari</h2>
 <p>By default, Safari will use its own styling that you can&rsquo;t override, unless you turn off the default styling. For example, if you want to specify the width and height of checkboxes then use the CSS property:<br>
 <code>-webkit-appearance: none;</code></p>
-<h3>Tabindex</h3>
+<h2>Tabindex</h2>
 <p>Setting the <code>tabindex</code> attribute to <code>-1</code> will remove the control from the tabbing order, but you can still set the focus using JavaScript (<code>element.focus()</code>). Setting it to 0 will use the document order for tabbing, a -1 will not allow tabbing into the element.</p>
-<h3>Fieldset</h3>
+<h2>Fieldset</h2>
 <p>You can group related form controls together with the fieldset element. Common examples are to group a list of radio button together. For example:</p>
 <p>
 <fieldset style="width:15em; background-color:white; border-radius:6px; padding:1em; float:left; margin-right:2em; margin-bottom:2em;">
@@ -116,7 +116,7 @@ input:optional {
 &lt;/fieldset&gt;</pre>
 </div>
 <p style="clear:both;">If you have trouble styling the fieldset (say when using border-radius or box-shadow) try <a href="http://www.456bereastreet.com/archive/201302/fieldset_legend_border-radius_and_box-shadow/" rel="external">floating the fieldset</a>.</p>
-<h3>Formatting a List of Checkboxes or Radio Buttons</h3>
+<h2>Formatting a List of Checkboxes or Radio Buttons</h2>
 <p>By default, radio buttons have horrible alignment when the label text is long enought that it must wrap onto the second line.</p>
 <table class="dataTable" style="width:60%; min-width:16em">
 <thead>
@@ -161,7 +161,7 @@ fieldset input {
 		Again, some dummy text because I can’t think of anythink clever to say right now.&lt;/label&gt;
 &lt;/fieldset&gt;</pre>
 <p>The astute reader may wonder why I didn’t just use <code>text-indent: -30px; margin-left: 30px;</code> instead. Well, I wasn’t able to get it to work cross-browser and it would be a few pixels off. If anyone can get <code>text-indent</code> to work, I would love to hear about it.</p>
-<h3>Output</h3>
+<h2>Output</h2>
 <p>This element is used to store the output of a calculation. It formally defines a relationship between the fields used to get the data required to perform the calculation and an element to be used to display the results. It is also understood as a live region by some assistive technologies (which means that when the content of the <code>&lt;output&gt;</code> element changes, the assistive technology is aware of that change and can react to it).</p>
 <p> In this example the text to the right of the slider is displayed inside an output element.</p>
 <p><label for=size>Size: </label><input type="range" id="size" min="5" max="50" value="20"> <output id="sizeVal">20</output></p>
@@ -179,9 +179,9 @@ document.getElementById('size').addEventListener(&quot;change&quot;, function() 
 	document.getElementById('sizeVal').innerHTML = this.value;
 }, false);
 &lt;/script&gt;</pre>
-<h2>Detailed Info for Form Controls</h2>
+<h1>Detailed Info for Form Controls</h1>
 <div id="textbox">
-	<h3>TextBoxes</h3>
+	<h2>TextBoxes</h2>
 	<p>There are times when you want all the text to be selected in a textfield (<code>&lt;input type=&quot;text&quot;&gt;</code>) after you click it, or after validation. The best way to do that is fire the focus() and select() methods - in that order. For example:</p>
 	<pre class="prettyprint linenums">$('#myTextBox').on('click',function() {
  	this.focus();
@@ -189,8 +189,8 @@ document.getElementById('size').addEventListener(&quot;change&quot;, function() 
 });</pre>
 </div>
 <div id="checkbox">
-	<h3>Radio Buttons</h3>
-	<h4>Javascript Interaction</h4>
+	<h2>Radio Buttons</h2>
+	<h3>Javascript Interaction</h3>
 	<p>You must work with each individual button to determine anything about a Radio button group. You either need to loop over them (using straight Javascript), or select just the checked item (using jQuery).</p>
 <form name="frmAdminBegin" method="get" action="">
 			<fieldset>
@@ -200,9 +200,9 @@ document.getElementById('size').addEventListener(&quot;change&quot;, function() 
 			<p><input type="submit" name="begin" id="begin" value="Begin"></p>
 		</form>
 	<p>The jQuery method is: <code>$('input:radio[name=&quot;playAs&quot;]:checked').val();</code></p>
-	<h4>Server-side Interaction</h4>
+	<h3>Server-side Interaction</h3>
 	<p>The form will only send one name/value pair to the server. e.g. <code>playAs = $_POST['playAs']; //EXPRT</code></p>
-	<h3>Checkboxes</h3>
+	<h2>Checkboxes</h2>
 	<p>A checkbox is created with <code>&lt;input type=&quot;checkbox&quot;&gt;</code>.</p>
 	<p>When you need to determine (through JavaScript) whether or not it has been checked, you must look at the checked <em>property</em>, not the checked <em>attribute</em>. The attribute is used to set the <em>initial</em> value when the page loads.</p>
 	<p style="color:darkgreen">Right way (jQuery):</p>
@@ -229,7 +229,7 @@ for (var i=0; i&lt;chkboxes.length; i++) {
 	//necessarily has been checked by the user.
 });</pre>
 	<p>Note: Dynamically setting the <em>attribute</em>, will change the <em>property</em>.</p>
-	<h4>Processing in PHP</h4>
+	<h3>Processing in PHP</h3>
 	<p>If you have several related checkboxes, give them a name attribute with the characters<code> []</code> appended to it. For example, you HTML would look like this:</p>
 	<pre class="prettyprint linenums">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;animals[]&quot;&gt;Cat&lt;/label&gt;
 &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;animals[]&quot;&gt;Dog&lt;/label&gt;
@@ -243,7 +243,7 @@ $llama = $_POST['animals'][3];</pre>
 <p>This works because when you added the <code>[]</code> to the input element’s name, it became an array in PHP that can be iterated over.</p>
 </div>
 <div id="select">
-	<h3>Select Element</h3>
+	<h2>Select Element</h2>
 	<p>The Select element (<code>&lt;input type=&quot;select&quot;&gt;</code>) is rather strait-forward when using a hardcoded list, but you may find the <code>&lt;option&gt;</code> items are dynamically built from an external datasource. In that case, do not use innerHTML to build the list. Sure, that works fine with real browsers, but stupid, stupid Internet Explorer chokes on it. Use this method instead.</p>
 	<pre class="prettyprint linenums">
 var data = [
@@ -256,7 +256,7 @@ for (var i=0;i&lt;data.length;i++) {
 	newOption = new Option(data[i].fruit, data[i].upc); <span class="comment">/* text, value */</span>
 	selectElem.add(newOption,null); <span class="comment">/* the null means add to end of list */</span>
 }</pre>
-	<h4>Setting an Option to "Selected"</h4>
+	<h3>Setting an Option to "Selected"</h3>
 	<p>Use the selectedIndex property of the Select element, or loop through each of the options like this:</p>
 	<pre class="prettyprint linenums">$('#role option').each(function() {
 	 if (this.value == $td.data('role')) {
@@ -264,11 +264,11 @@ for (var i=0;i&lt;data.length;i++) {
 	 }
 });</pre>
 	
-	<h4>Reading the selected  item</h4>
+	<h3>Reading the selected  item</h3>
 	<p class="code">document.getElementById('mySelect').value; //works when not a multiple select</p>
 	<p>If multiple selections are allowed, then loop through them.</p>
-	<h2>Form Submission</h2>
-	<h3>Form’s onSubmit event</h3>
+	<h1>Form Submission</h1>
+	<h2>Form’s onSubmit event</h2>
 	<p>It is a good idea to validate your form before sending it off to the server, the question is “Where do I place the validation and submission code?”</p>
 	<p>You could place that in the <strong>Submit button’s onClick event</strong> or the <strong>form’s onSubmit event</strong>. The second option is the correct one. There will be problems for screen readers and keyboard navigation if you put your logic in the Submit button’s handler.</p>
 	<p>Do this:</p>
@@ -280,23 +280,23 @@ for (var i=0;i&lt;data.length;i++) {
 		e.preventDefault(); // Prevents the form submission
 	}
 });</pre>
-	<h4>AJAX and non-Javascript Form Handling</h4>
+	<h3>AJAX and non-Javascript Form Handling</h3>
 	<p>K. Burke <a href="http://kev.inburke.com/kevin/javascript-form-usability/" rel="external">describes very well</a> how it is possible to make your AJAX powered site still be friendly for people who have Javascript turned off. To do this, make the form <code>action</code> and <code>method</code> default to the same endpoint that you are POSTing to with Javascript. You are probably returning some kind of JSON object with an error or success message and then redirecting the user in Javascript. Just change your server endpoint to redirect if the request is not an AJAX request. You can do this because all browsers attach an <code>X-Requested-With: XMLHttpRequest</code> HTTP header to asynchronous Javascript requests.</p>
-	<h5>Changing Parameter Names</h5>
+	<h4>Changing Parameter Names</h4>
 	<p>Don't change the names of the submitted parameters in Javascript - just submit the same names that you had in your form. In jQuery this is easy, just call the serialize method on the form.</p>
 	<pre class="prettyprint linenums">var form = $(&quot;#form-id&quot;);
 $.post('endpoint', $(form).serialize(), function(response) {
 	// do something with the response.
 });</pre>
-	<h3>Sending an eMail</h3>
+	<h2>Sending an eMail</h2>
 	<p>Look at the code <a href="../php/contact.php">in this example</a> for one way you can email the results of a form using PHP.</p>
 	<h3 id="spry">SPRY Fields</h3>
 	<p>SPRY is a JavaScript library created by Adobe to make user interface elements smarter. In the case of form fields, such as textboxes, you can validate the input prior to sending the data to a server. In Dreamweaver, place a SPRY field on your page and then click the blue label above the field. You can now set the validation items for the field. You can choose to validate on &ldquo;blur&rdquo;, &ldquo;change&rdquo;, and &ldquo;submit&rdquo;. Blur is typically when you are exerting extreme control over the field; it almost always better to use the onChange event and onSubmit.</p>
-	<h3>SPRY Validation</h3>
+	<h2>SPRY Validation</h2>
 	<p>There are two aspects to validation - giving the user feedback when the data entered is bad, and preventing form submission when the data is bad. You don&rsquo;t need to do anything special to make the validation work, it&rsquo;s baked into the SPRY fields. However, if you need custom validation that SPRY doesn&rsquo;t provide (or example, if field A has been filled in, then fields B and C are required, otherwise they are not) then you will need to integrate that logic into Adobe&rsquo;s SPRY library - I did this once but can&rsquo;t remember how I did it. Damn it.</p>
-	<h3>Date Validation</h3>
+	<h2>Date Validation</h2>
 	<p>See the <a href="../javascript/dateValidation.html">Date Validation</a> page.</p>
-	<h3>HTML5 Form Controls</h3>
+	<h2>HTML5 Form Controls</h2>
 	<p>The previous two sections on SPRY are probably now a moot point given that HTML5 Form elements can handle basic validation. More information coming soon...</p>
 </div>
 <!-- InstanceEndEditable -->

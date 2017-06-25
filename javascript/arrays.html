@@ -17,13 +17,13 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1> Javascript Arrays</h1>
-<h2>Basic Usage</h2>
-<h3>Creating</h3>
+<div class="title"> Javascript Arrays</div>
+<h1>Basic Usage</h1>
+<h2>Creating</h2>
 <p>Shorthand method:</p>
 <p>var myArray = Array('apple', 'banana', 'carrot');</p>
-<h3>Length</h3>
-<h3>Iterating</h3>
+<h2>Length</h2>
+<h2>Iterating</h2>
 <p>You can use a standard for-loop:</p>
 <pre class="prettyprint linenums">var myArray = Array('apple', 'banana', 'carrot');
 for (var i = 0, j = myArray.length; i &lt; j; i++) {
@@ -36,9 +36,9 @@ function showFruit(fruit) {
 }
 myArray.forEach(showFruit);</pre>
 <p class="callout">Do <strong>not</strong> use the <code>for each ($item in $array) {...</code> construct to loop over an array.</p>
-<h2>Higher-Order Array Functions</h2>
+<h1>Higher-Order Array Functions</h1>
 <div class="callout pushRight" style="width:45%;">
-	<h4>Mozilla Developer Network Documentation</h4>
+	<h3>Mozilla Developer Network Documentation</h3>
 	<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype" rel="external">Array.prototype</a></p>
 	<p>Scroll down to the Iteration Methods section.</p>
 </div>
@@ -48,9 +48,9 @@ myArray.forEach(showFruit);</pre>
 	<li>outputs a function</li>
 </ul>
 <p>From a practical perspective, Javascript’s Array object has the following prototype functions that are higher-order (Mozilla calls these Iteration Methods).</p>
-<h3>Most common</h3>
-<h4>map()</h4>
-<h4>reduce()</h4>
+<h2>Most common</h2>
+<h3>map()</h3>
+<h3>reduce()</h3>
 <p>Uses an accumulator to get a single value.</p>
 <pre class="prettyprint linenums">var myArray = Array(
 	{age: 15, name: 'Samantha'},
@@ -67,8 +67,8 @@ function sumAge(previousValue, currentValue, index, array) {
 }
 var ageSummation = myArray.reduce(sumAge);
 console.log('Average age is ' + (ageSummation.age / myArray.length)); //39.6</pre>
-<h4>forEach()</h4>
-<h4>find()</h4>
+<h3>forEach()</h3>
+<h3>find()</h3>
 <p>&nbsp;</p>
 <!-- InstanceEndEditable -->
 <footer>

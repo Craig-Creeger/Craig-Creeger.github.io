@@ -15,31 +15,31 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Launching a New Page</h1>
-<h2>Hyperlinking</h2>
-<h3>Simple</h3>
+<div class="title">Launching a New Page</div>
+<h1>Hyperlinking</h1>
+<h2>Simple</h2>
 <pre class="prettyprint linenums">&lt;a href=&quot;newPage.html&quot;&gt;New Page&lt;/a&gt;</pre>
-<h3>URL with Query String</h3>
+<h2>URL with Query String</h2>
 <pre class="prettyprint linenums">
 &lt;!-- %20 = space, %24 = $, etc. See <a href="#codes">below</a> for complete list. --&gt;
 &lt;a href=&quot;newPage.html?param1=my%20string&amp;param2=%245.25&quot;&gt;New Page&lt;/a&gt;</pre>
-<h2>JavaScript</h2>
-<h3>Simple</h3>
+<h1>JavaScript</h1>
+<h2>Simple</h2>
 <pre class="prettyprint linenums">window.location.href = &quot;myPage.html&quot;</pre>
-<h3>URL with Query String</h3>
+<h2>URL with Query String</h2>
 <pre class="prettyprint linenums">
 var qryStr = &quot;?param=&quot; + encodeURIComponent(myVar);
 qryStr += &quot;&amp;param2=&quot; + encodeURIComponent(&quot;$5.25&quot;);
 window.location.href = &quot;myPage.html&quot; + qryStr;</pre>
-<h2>PHP</h2>
-<h3>Simple</h3>
+<h1>PHP</h1>
+<h2>Simple</h2>
 <pre class="prettyprint linenums">
 //Warning: This line will fail if you send (echo) anything prior to the
 //         header statement. Also, the full URL must be used. (http://)
 header(&quot;Location: http://www.mySite.com&quot;);</pre>
-<h3>URL with Query String</h3>
+<h2>URL with Query String</h2>
 <pre class="prettyprint linenums">  if (isset($_SERVER['QUERY_STRING'])) {<br>    $updateGoTo .= (strpos($updateGoTo, '?')) ? &quot;&amp;&quot; : &quot;?&quot;;<br>    $updateGoTo .= $_SERVER['QUERY_STRING'];<br>  }<br>  header(sprintf(&quot;Location: %s&quot;, $updateGoTo));</pre>
-<h2>URL Encoding</h2>
+<h1>URL Encoding</h1>
 <p>When linking to another page, PDF, image, etc., some characters are reserved and cannot be used in the name. The most common is a space. For example, you want to show a picture using an image tag such as <code>&lt;img src=&quot;images/Fuzzy&nbsp;Kitten.jpg&quot;&gt;</code></p>
 <p>Because there is a space in the filename, it should be <code>&lt;img src=&quot;images/Fuzzy%20Kitten.jpg&quot;&gt;</code></p>
 <p>This information is from the excellent description by Brian Wilson at <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm" rel="external">http://www.blooberry.com/indexdot/html/topics/urlencoding.htm</a></p>

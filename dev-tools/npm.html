@@ -17,24 +17,24 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>npm and yarn</h1>
+<div class="title">npm and yarn</div>
 <p class="callout">For Semantic Version is <a href="../tech/semver.html">described elsewhere.</a></p>
-<h2>yarn</h2>
-<h3>Quick Start</h3>
+<h1>yarn</h1>
+<h2>Quick Start</h2>
 <p>Documentation: <a href="https://yarnpkg.com/en/docs/" target="external">https://yarnpkg.com/en/docs/</a></p>
 <p><strong>yarn init</strong> Spin up a new repo.</p>
 <p><strong>yarn install</strong> Install all packages listed in the <code>package.json</code> file.</p>
 <p><strong>yarn add -D <em>packageName</em></strong> Downloads the package and save in <code>devDependencies</code></p>
 <p><strong>yarn remove -D <em>packageName</em></strong> Uninstalls the package and removes from <code>package.json</code> file.</p>
-<h2>npm - Node Package Manager</h2>
+<h1>npm - Node Package Manager</h1>
 <p><em>npm</em> makes it easy for JavaScript developers to share and reuse code, and it makes it easy to update the code that you’re sharing.</p>
-<h3>Documentation</h3>
+<h2>Documentation</h2>
 <p><a href="https://docs.npmjs.com/" rel="external">https://docs.npmjs.com/</a></p>
-<h3>Packages</h3>
+<h2>Packages</h2>
 <p>Packages are just a folder containing reusable code. It will contain a <code>package.json</code> file.</p>
-<h3>Commands</h3>
+<h2>Commands</h2>
 <p>There are <a href="https://docs.npmjs.com/" rel="external">a lot of npm commands</a>, but these are the most common a site developer will need.</p>
-<h4>Install</h4>
+<h3>Install</h3>
 <div class="callout">
 	<p><strong>Note:</strong> Before installing a package, it is a good idea to make sure npm itself is current. Issue:</p>
 	<p class="code">npm update -g npm</p>
@@ -45,25 +45,25 @@
 <p>Note that if any package is already installed and satisfies the SemVer rule in <code>package.json</code>, running npm install will not update it to the latest version, even if there is a newer one satisfying the same rule. In fact, no change is made to the package in this case, even if it was modified.</p>
 <p>Thus, to reliably reinstall the latest versions of all packages satisfying the semver rules in <code>package.json</code>, delete the node_modules folder and run npm install.</p>
 <p>When saving to the <code>package.json</code> file, npm will include the version number. You may want to double check that it specified it the way you want. Refer to the <a href="../tech/semver.html">SemVer syntax</a> if needed.</p>
-<h4>Update</h4>
-<h5>Local packages</h5>
+<h3>Update</h3>
+<h4>Local packages</h4>
 <p>Run <code>npm update</code> in the same directory as the <code>package.json</code> file.</p>
-<h5>Global packages</h5>
+<h4>Global packages</h4>
 <p>Run <code>npm update -g <em>packageName</em></code></p>
 <p>To find out which packages need to be updated, you can use <code>npm outdated -g --depth=0</code>.</p>
-<h4>Uninstall</h4>
-<h5>Local packages</h5>
+<h3>Uninstall</h3>
+<h4>Local packages</h4>
 <p>Run <code>npm uninstall <em>packageName</em></code></p>
-<h5>Global packages</h5>
+<h4>Global packages</h4>
 <p><code>npm uninstall -g packageName</code></p>
-<h4>Other Common Commands</h4>
+<h3>Other Common Commands</h3>
 <ul>
 	<li>outdated</li>
 	<li>cache clear</li>
 	<li>init</li>
 	<li> <code>npm list -g --depth=0</code> <em>//this will show all global packages installed on your machine with version numbers. </em></li>
 </ul>
-<h2>Spinning Up a New Site</h2>
+<h1>Spinning Up a New Site</h1>
 <p>You will need to do this if installing packages such as Grunt.</p>
 <ol>
 	<li><code>npm init</code><br>

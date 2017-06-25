@@ -17,10 +17,10 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>StandardJS</h1>
-<h2>Javascript Coding Standards</h2>
+<div class="title">StandardJS</div>
+<h1>Javascript Coding Standards</h1>
 <p>So that code is easier to read and understand, developers will naturally develop their own style of formatting coding. This is fine when you are the sole developer on a project, but becomes an issue where there are multiple developers. <a href="http://standardjs.com/rules.html" target="external">StandardJS</a> to the rescue.</p>
-<h3>Installation</h3>
+<h2>Installation</h2>
 <p class="code">npm install -g standard</p>
 <p>To check your project, do:</p>
 <p class="code">$ standard</p>
@@ -38,19 +38,19 @@
  }</pre>
 <p>Alternatively, you can specify your globals in an <code>.eslintrc</code> config file.</p>
 <p>You can also ignore files by placing them in a &quot;ignore&quot; key and then pass an array of paths or files. Refer to <a href="https://github.com/feross/standard#how-do-i-ignore-files" target="external">https://github.com/feross/standard#how-do-i-ignore-files</a></p>
-<h4>Per File Overrides</h4>
+<h3>Per File Overrides</h3>
 <p> Instead of defining globals in package.json, you could do it in each file. The first line of the file will be a comment taking the form:</p>
 <pre> 	/* global $ */</pre>
 <pre> 	/* eslint-env mocha */</pre>
 <p> Refer to the ESLint doco for more options.</p>
-<h3>Automatic Formatting</h3>
+<h2>Automatic Formatting</h2>
 <p> You will need to install standard-format</p>
 <p class="code">$ npm install -g standard-format</p>
 <p>Then to do a dry-run of the automatic formatting just issue</p>
 <p class="code"> $ standard-format</p>
 <p>To do it for real add the <strong>-w</strong> flag. i.e. <span class="code">$ standard-format -w</span></p>
 <p> To automatically do it on save (in Sublime Text), you will need to install a few Sublime packages. See the next section.</p>
-<h3>Linting and Automatic Formatting in Sublime Text</h3>
+<h2>Linting and Automatic Formatting in Sublime Text</h2>
 <p> First make sure you have `Package Control`, a nearly mandatory install for all users of Sublime Text, and then use it to install:</p>
 <ul>
 	<li>SublimeLinter</li>
@@ -58,7 +58,7 @@
 </ul>
 <p>Those two package will then get you real-time linting.</p>
 <p>Next, if you want automatic formatting on save, install (again, via Package Control) StandardFormat.</p>
-<h3>Overriding Standard</h3>
+<h2>Overriding Standard</h2>
 <p>Standard is built on top of ESlint, so you could install that and then just import the <a href="https://www.npmjs.com/package/eslint-config-standard" target="external">StandardJS Config file</a> and then tweak it.</p>
 <!-- InstanceEndEditable -->
 <footer>

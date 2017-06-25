@@ -17,8 +17,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Scrolling</h1>
-<h2>Capturing Scroll Event</h2>
+<div class="title">Scrolling</div>
+<h1>Capturing Scroll Event</h1>
 <p>Use the <code>addEventListener</code> method on the <code>window</code> object. Example:</p>
 <pre class="prettyprint linenums">window.addEventListener(&quot;scroll&quot;, function() {
 	 var msg = 'html.scrolltop is ' + document.getElementsByTagName('html')[0].scrollTop + '&lt;br&gt;';
@@ -26,7 +26,7 @@
 	 msg += 'pageYOffset is ' + window.pageYOffset + '&lt;br&gt;';
 	 document.getElementById('debug').innerHTML = msg;
 });</pre>
-<h2>Getting the Scroll Position</h2>
+<h1>Getting the Scroll Position</h1>
 <p>jQuery is useful to abstract away the browser differences, but if you want a pure Javascript way, and you don’t need to support IE8 or older, then this works:</p>
 <p class="code">var currentScrollAmount = window.pageYOffset</p>
 <p><a href="../layout/html-body.html" class="button">Demo</a></p>

@@ -17,19 +17,19 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Reading and Writing to MySQL</h1>
-<h2>Documentation</h2>
+<div class="title">Reading and Writing to MySQL</div>
+<h1>Documentation</h1>
 <p><a href="http://dev.mysql.com/doc/refman/5.6/en/sql-syntax.html" rel="external">MySQL</a></p>
 <p><a href="http://www.php.net/manual/en/" rel="external">PHP</a></p>
-<h3>Tutorials</h3>
+<h2>Tutorials</h2>
 <p><a href="http://phpmaster.com/avoid-the-original-mysql-extension-1/" rel="external">http://phpmaster.com/avoid-the-original-mysql-extension-1/</a></p>
 <p><a href="http://phpmaster.com/migrate-from-the-mysql-extension-to-pdo/" rel="external">http://phpmaster.com/migrate-from-the-mysql-extension-to-pdo/</a></p>
 <p><a href="http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/" rel="external">http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/</a></p>
 <p><a href="http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers" rel="external">http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers</a></p>
 <p><a href="http://www.dreamincode.net/forums/topic/214733-introduction-to-pdo/" rel="external">http://www.dreamincode.net/forums/topic/214733-introduction-to-pdo/</a></p>
-<h2>PDO</h2>
+<h1>PDO</h1>
 <p>It's quite amazing how long it has taken the web to catch-up to best practices adopted by client/server computing from 20 years ago&mdash;PDO is a perfect example. PDO is a data access interface that works with several databases, and it should be your first choice when creating a new PHP site.</p>
-<h3>Making a Database Connection</h3>
+<h2>Making a Database Connection</h2>
 <pre class="prettyprint linenums">define ('ENVIRONMENT', 'PxPro Dev'); //PxPro Server || PxPro Dev || Production
  	
 //Tweak these lines for your database server
@@ -83,7 +83,7 @@ function makeDbConnection() {
 		$delayedError .= print($e-&gt;getMessage());
 	}
 }</pre>
-<h3>PDO Data Access Using a Variable </h3>
+<h2>PDO Data Access Using a Variable </h2>
 <p>This works for both reads (Select) and writes (Insert/Update/Delete).</p>
 <pre>global $db;
 try {
@@ -99,7 +99,7 @@ try {
 	debug('Dept / load() / ' . $e-&gt;getMessage());
 	return false;
 }</pre>
-<h3>PDO Read Using Static Statement</h3>
+<h2>PDO Read Using Static Statement</h2>
 <p>This works for reading from the database.</p>
 <pre>try {
 	$stmt = <strong>$db-&gt;query</strong>(&quot;Select count(*) as aNumber from pages;&quot;);
@@ -116,7 +116,7 @@ try {
 } catch(PDOException $e) {
 	echo &quot;&lt;!-- Unable to query table pages: &quot; . $e-&gt;getMessage() . ' --&gt;' . PHP_EOL;
 }</pre>
-<h2>Formatting Values for Data Access</h2>
+<h1>Formatting Values for Data Access</h1>
 <div id="CollapsiblePanel1" class="CollapsiblePanel">
 	<div class="CollapsiblePanelTab" tabindex="0">Dreamweaver method; not recommended. Click to show...</div>
 	<div class="CollapsiblePanelContent">
@@ -166,13 +166,13 @@ $db-&gt;close();
 		<p>Honestly, I really don't like this method. There has got to be better way...</p>
 	</div>
 </div>
-<h2>Literals</h2>
+<h1>Literals</h1>
 <p>Literals need to be delimited by:</p>
 <p>Strings: single quotes (it is possible to use double quotes if ANSI_QUOTES is turned off). </p>
 <p>Numbers: Just type the number. Valid characters are 0-9 + &minus; e . (period).</p>
 <p>Dates: Date and time values can be represented in several formats, such as quoted strings or as numbers, depending on the exact type of the value and other factors. For example, in contexts where MySQL expects a date, it interprets any of <code>'2015-07-21'</code>, <code>'20150721'</code>, and <code>20150721</code> as a date. The time format is <code>'YYYY-MM-DD HH:MM:SS'</code>.</p>
 <p>You should not use a column alias (presumable table aliases are OK) in the Where clause in MySQL.</p>
-<h2>Basic MySQL DML Syntax</h2>
+<h1>Basic MySQL DML Syntax</h1>
 <pre class="prettyprint linenums"><strong>Select</strong> column1, column2
 From tableName
 Where column3 = 'a string value';
@@ -195,7 +195,7 @@ Set col1=123, col2='abc', col3='2012-03-28');
 
 <strong>Delete</strong> from tableName
 Where col1&lt;900;</pre>
-<h2>Basic MySQL DDL Syntax</h2>
+<h1>Basic MySQL DDL Syntax</h1>
 <pre class="prettyprint linenums">Create table myTableName (
 	col1 int not null AUTO_INCREMENT,
 	col2 char(3),
@@ -203,7 +203,7 @@ Where col1&lt;900;</pre>
 	col4 datetime,
 Constraint myTableNamePK Primary Key (col1)
 );</pre>
-<h2>Common Data Types</h2>
+<h1>Common Data Types</h1>
 <table cellspacing="0">
 	<tr>
 		<th scope="col">data type</th>

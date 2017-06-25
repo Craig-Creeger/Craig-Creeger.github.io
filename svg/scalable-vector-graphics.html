@@ -28,8 +28,8 @@ figure {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Scalable Vector Graphics (SVG)</h1>
-<h2>Definition</h2>
+<div class="title">Scalable Vector Graphics (SVG)</div>
+<h1>Definition</h1>
 <p><dfn title="Scalable Vector Graphics">Scalable Vector Graphics (<abbr title="Scalable Vector Graphics">SVG</abbr>) are mathematical formulas that represent a graphical image intended for display on a computer monitor or print output.</dfn> Depending on the image, the file size <em>could</em> be much smaller.</p>
 <figure style="width:300px"><img src="../assets/squareCircle.svg" width="300" height="300">
 	<figcaption>Placed as <code>&lt;img&gt;</code> with width and height set to 300px.</figcaption>
@@ -50,9 +50,9 @@ figure {
 <p>It is possible to interact with SVG through the use of JavaScript (see p. 149 of <span style="text-decoration:underline"><strong>HTML5:</strong> Designing Rich Internet Applications</span>), but at this point I’m not sure how powerful or realistic it is. Because IE8 doesn’t natively support SVG, I’m doing some experiments with the Raphael polyfill, which generates VML for IE and SVG for everyone else.</p>
 <p>SVG drawings are made up of one or more XML elements with attributes that describe the element, for example the fill color of a circle. It is possible to set-up Mouse listeners on the individual SVG elements. <strong>SVG is ideally suited for logos and other illustrations</strong>, especially when you want to take advantage of high pixel ratio (dpi) displays such as Apple’s Retina screens.</p>
 <p>For more information, check out <a href="http://www.w3.org/Graphics/SVG/" rel="external">SVG’s W3C Standards</a> page.</p>
-<h2>How to Create SVG Graphics with Adobe Illustrator</h2>
+<h1>How to Create SVG Graphics with Adobe Illustrator</h1>
 <p>You <em>could</em> code them by hand, but you would have more fun driving a nail through your head. Fire up Adobe Illustrator, create your image, and then do a &quot;Save As…&quot; SVG to make your image. Much easier. Don&rsquo;t have Illustrator? Try <a href="http://inkscape.org/index.php?lang=en" rel="external">Inkscape</a>.</p>
-<h3>Tips</h3>
+<h2>Tips</h2>
 <ul>
 	<li>Check out <a href="http://coding.smashingmagazine.com/2012/01/16/resolution-independence-with-svg/" rel="external">How to Create Scalable Icons</a> using SVG.</li>
 	<li>When using Filters, <em>only use the SVG filters</em>, otherwise your lovely illustration will be rasterized and you will lose all the benefits of creating an SVG file.</li>
@@ -62,9 +62,9 @@ figure {
 	<li>Apply transparency to objects, not layers.</li>
 	<li>Do the stuff in the box below.</li>
 </ul>
-<h3>Saving the SVG File</h3>
+<h2>Saving the SVG File</h2>
 <div class="callout">
-	<h4>Before Saving the Image, Clean up your artboard</h4>
+	<h3>Before Saving the Image, Clean up your artboard</h3>
 	<p>To crop the artboard tight around your illustration, select all your artwork and then choose the menu command Object / Artboards / Fit to Artwork Bounds.</p>
 	<p>Set the X and Y coordinates to (0, 0). Round the width and height values up to the closest whole number. This will prevent the <a href="#scrollbar">scrollbar issue</a>.</p>
 </div>
@@ -124,23 +124,23 @@ figure {
 </div>
 <p>This StackOverflow<a href="http://stackoverflow.com/questions/13236365/optimal-settings-for-exporting-svgs-for-the-web-from-illustrator" rel="external"> response also goes into detail</a> on the best settings. There was an interesting tidbit in the answer:</p>
 <blockquote>Note that linked bitmap images won't display if the SVG is displayed through the &lt;img&gt; tag, because img doesn't allow loading external resources. Furthermore: webkit has a bug that does not display bitmap images within svg files even if you embed them. In short: use a plain &lt;svg&gt; tag if you intend to embed or link bitmap images, don't use &lt;img&gt;.</blockquote>
-<h2>Finalizing the SVG File</h2>
+<h1>Finalizing the SVG File</h1>
 <p>If you are inlining the SVG into your web page, the SVG tag can look like this:</p>
 <p class="code">&lt;svg width=&quot;115&quot; height=&quot;190&quot; viewBox=&quot;0 0 115 190&quot;&gt;</p>
-<h3>Compressing</h3>
+<h2>Compressing</h2>
 <p>Once you are done with the manual tweaks, run it through SVGO to compress the code.</p>
 <p><a href="http://www.sitepoint.com/designers-guide-working-with-svg/" rel="external">The Designer's Guide to Working with SVG Pt.1</a> has more information on creating and tweaking SVG files.</p>
-<h2>SVG: Deep Dive</h2>
+<h1>SVG: Deep Dive</h1>
 <p>For an in-depth discussion of the specifics of the SVG format, check out the <a href="http://commons.oreilly.com/wiki/index.php/SVG_Essentials" rel="external">SVG Essentials/Coordinates</a> eBook from O’Reilly.</p>
-<h3>&lt;svg&gt; attributes</h3>
+<h2>&lt;svg&gt; attributes</h2>
 <p><em>Viewbox</em>: Specified by the <code>width</code> and <code>height</code> attributes. Space taken up on the screen.</p>
 <p><code>viewport</code>: Specifies the canvas size for the internal drawing routines. This is <strong>not</strong> the actual size shown to the user.</p>
 <p><code>preserveAspectRatio</code>: Comes into play when the aspect ratio of the viewbox and viewport do not match. This is NOT a cure for maintaining aspect ratio on the webpage. This will not be used if you are using a program like Adobe Illustrator to create your SVG (nor should you manually add it in later).</p>
-<h2>Placing on a Page</h2>
+<h1>Placing on a Page</h1>
 <p>First, SVG is not supported in IE8, but all is not lost; stick <a href="http://code.google.com/p/svgweb/" rel="external">SVGWeb</a> on your page and you should be fine. You may also need to define the mime-types on your web server. For Apache, put these two lines in your <code>.htaccess</code> file.</p>
 <p class="code">AddType image/svg+xml svg svgz</p>
 <p class="code"> AddEncoding gzip svgz</p>
-<h3>HTML options</h3>
+<h2>HTML options</h2>
 <pre class="prettyprint linenums">&lt;!-- 1. Using an image tag --&gt;
 &lt;img src=&quot;mySVG.svg&quot; width=&quot;100&quot; height=&quot;100&quot;&gt;
 
@@ -159,7 +159,7 @@ figure {
 </pre>
 <hr>
 <img src="PxPro-Logo-optimized.svg" width="182" height="50" class="pushRight">
-<h4>&lt;img&gt; tag</h4>
+<h3>&lt;img&gt; tag</h3>
 <p><strong>Summary:</strong> Good method for placing SVG on a page.</p>
 <table class="dataTable">
 	<thead>
@@ -189,7 +189,7 @@ figure {
 <hr>
 <object data="PxPro-Logo-optimized.svg" width="182" height="50" type="image/svg+xml" class="pushRight">
 </object>
-<h4>&lt;object&gt; tag</h4>
+<h3>&lt;object&gt; tag</h3>
 <p><strong>Summary:</strong> Do not use.</p>
 <table class="dataTable">
 	<thead>
@@ -211,7 +211,7 @@ figure {
 </table>
 <hr>
 <iframe src="PxPro-Logo-optimized.svg" width="182" height="50" class="pushRight" style="border:none;"></iframe>
-<h4>&lt;iframe&gt; tag</h4>
+<h3>&lt;iframe&gt; tag</h3>
 <p><strong>Summary:</strong> Do not use</p>
 <table class="dataTable">
 	<thead>
@@ -232,7 +232,7 @@ figure {
 	</tbody>
 </table>
 <hr>
-<h4>&lt;svg&gt; tag</h4>
+<h3>&lt;svg&gt; tag</h3>
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="144px" height="144px" xml:space="preserve" class="pushRight">
 	<rect x="16" y="16" transform="matrix(0.9479 -0.3185 0.3185 0.9479 -18.9959 26.5526)" fill="#3FA2FF" width="111" height="111"/>
 	<circle fill="#EF4136" cx="71" cy="71" r="65"/>
@@ -240,7 +240,7 @@ figure {
 <p><strong>Summary:</strong>Use if you want to style it using CSS or otherwise need access to its DOM. Because you are inlining the SVG into your page, you are eliminating an HTTP Request at the expense of reusability and readability.</p>
 <hr style="clear:both;">
 <div class="PxProLogo pushRight"></div>
-<h3>CSS Options</h3>
+<h2>CSS Options</h2>
 <p><strong>Summary:</strong> This is a good method for placing SVG on your page; go ahead and use it.</p>
 <pre class="prettyprint linenums">.PxProLogo {
 	background:url(PxPro-Logo-optimized.svg);
@@ -248,30 +248,30 @@ figure {
 	width:182px;
 	height:50px; 
 }</pre>
-<h2>Snap.svg</h2>
+<h1>Snap.svg</h1>
 <p><a href="http://snapsvg.io" rel="external">Snap.svg</a> is a brand new JavaScript library for working with SVG. Snap provides web developers with a clean, streamlined, intuitive, and powerful API for animating and manipulating both existing SVG content, and SVG content generated with Snap. </p>
 <p>Currently, the most popular library for working with SVG is Raphaël. One of the primary reasons Raphaël became the de facto standard is that it supports browsers all the way back to IE 6. However, supporting so many browsers means only being able to implement a common subset of SVG features. Snap was written entirely from scratch by the author of Raphaël (Dmitry Baranovskiy), and is designed specifically for modern browsers (IE9 and up, Safari, Chrome, Firefox, and Opera). Targeting more modern browsers means that Snap can support features like masking, clipping, patterns, full gradients, groups, and more. </p>
 <p>Another unique feature of Snap is its ability to work with existing SVG. That means your SVG content does not have to be generated with Snap for you to be able to use Snap to work with it (think &quot;jQuery or Zepto for SVG&quot;). That means you create SVG content in tools like Illustrator, Inkscape, or Sketch then animate or otherwise manipulate it using Snap. You can even work with strings of SVG (for example, SVG files loaded via Ajax) without having to actually render it first which means you can do things like query specific shapes out of an SVG file, essentially turning it into a resource container or sprite sheet. </p>
 <p>Finally, Snap supports animation. By providing a simple and intuitive JavaScript API for animation, Snap can help make your SVG content more interactive and engaging. Snap is 100% free and 100% open-source</p>
-<h2>Comparison to Canvas</h2>
+<h1>Comparison to Canvas</h1>
 <p><a href="../graphics/canvas.html">Canvas</a> is a relatively new element, while SVG has been around for some time. The difference is canvas was designed for programatic access and it <em>outputs</em> bitmap images (although you can develop with vectors), whereas SVG <em>outputs</em>  images from vector data (although it can work with bitmaps).</p>
 <p>Given that both Canvas and SVG draw images on the screen, it’s often not immediately clear why you should use one over the other. The two mediums have vastly different approaches. Canvas is an immediate mode API is much like drawing with crayons. You can clear or destroy part of the drawing but you can’t by default revert or alter a previous stroke. Canvas is also a raster bitmap, so it is subject to pixelation when images are scaled. SVG can serve multiple resolutions and pixel densities (dpi) with the same source file; it can also be scripted.</p>
-<h2>Articles</h2>
+<h1>Articles</h1>
 <p><a href="http://css-tricks.com/using-svg/" rel="external">Using SVG by Chris Coyier</a> (Start with this article)</p>
 <p><a href="http://www.html5rocks.com/en/tutorials/svg/mobile_fundamentals/" rel="external">http://www.html5rocks.com/en/tutorials/svg/mobile_fundamentals/</a></p>
 <p><a href="http://www.inserthtml.com/2013/01/svg-guide-part-1/" rel="external">http://www.inserthtml.com/2013/01/svg-guide-part-1/</a></p>
 <p>A List Apart has a great article explaining how to create an <a href="http://www.alistapart.com/articles/using-svg-for-flexible-scalable-and-fun-backgrounds-part-i" rel="external">SVG background</a>.</p>
-<h2>Animation and Tools</h2>
+<h1>Animation and Tools</h1>
 <p>Animation is tricky because of cross-browser bugs/inconsitencies. Use GSAP to make it easier. See <a href="http://css-tricks.com/svg-animation-on-css-transforms/" rel="external">SVG Animation and CSS Transforms</a> for more information.</p>
 <p>This Javascript library claims to help with <a href="http://www.svgjs.com/" rel="external">animating SVG</a>.</p>
 <p>Use <a href="http://petercollingridge.appspot.com/svg_optimiser" rel="external">SVG Optimizer</a> to compress the code.</p>
 <p>Use <a href="http://www.mobilefish.com/services/base64/base64.php" rel="external">Base64 Encoder</a> if you want to embed the SVG into your CSS.</p>
-<h2>Styling SVG and Aspect Ratios</h2>
+<h1>Styling SVG and Aspect Ratios</h1>
 <p>Check out <a href="http://blogs.adobe.com/webplatform/2013/01/08/svg-styling/" rel="external">this article from Adobe</a> to see how you can use CSS to style your SVG.</p>
 <p>For more styling and advanced ways to embed SVG on your page, see my <a href="svgAdvanced.html">Advanced SVG page</a>.</p>
-<h3>Using SVG in a CSS &quot;background-image&quot; property</h3>
+<h2>Using SVG in a CSS &quot;background-image&quot; property</h2>
 <p>Setting the background size correctly, coverage, and keeping the aspect ratio correct can be quite involved, thankfully it is all detailed out by Mozilla in their <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Scaling_of_SVG_backgrounds" rel="external">Scaling of SVG Backgrounds</a> article.</p>
-<h2>Fallback for IE8</h2>
+<h1>Fallback for IE8</h1>
 <p>Because IE8 can not display SVG, you need to create a fallback image such as a PNG to use instead of the SVG. If you have a lot of these to make, or just want it automated as part of the workflow, then the Grunt module “svg2png” is a good option.</p>
 <p>If you are using SVGs as inline images, the most robust fallback is to add an inline onerror event to the image tag like this:</p>
 <pre class="prettyprint linenums">&lt;img src="/img/image.svg" onerror="this.src='/img/image.png';this.onerror=null;"&gt;</pre>

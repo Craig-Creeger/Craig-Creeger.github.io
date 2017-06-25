@@ -1,12 +1,12 @@
 <div id="header">
-<h2>Chapter 1</h2>
-<h1>Basic Drawing</h1>
+<h1>Chapter 1</h1>
+<div class="title">Basic Drawing</div>
 </div>
 
 
 <div id="content">
 
-<h3><a id="overview">Overview</a></h3>
+<h2><a id="overview">Overview</a></h2>
 
 
 <p>Canvas is a 2D drawing API recently added to HTML 
@@ -20,7 +20,7 @@ for all devices, not just desktops.</p>
 <p>These screenshots give you just a taste of what is possible with Canvas.</p>
 
 <div id='gallery' class='gallery' style="width:480px;">
-	<h5>Apps made with HTML Canvas</h5>
+	<h4>Apps made with HTML Canvas</h4>
 	
 	<div id='slider' class='swipe'>
 	<ul>
@@ -37,7 +37,7 @@ for all devices, not just desktops.</p>
 
 
 
-<h3><a id="what_is_canvas">What is Canvas?</a></h3>
+<h2><a id="what_is_canvas">What is Canvas?</a></h2>
 
 <p>Canvas is a 2D drawing API.  Essentially the browser gives you a rectanglar area on the screen that you can draw into. You can draw lines, shapes, images, text; pretty much anything you want.   Canvas was originally created by Apple for its <span class='glossary' title='A feature of Mac OS X, since 10.4. Enables desktop widgets written in HTML, JavaScript, and CSS'>Dashboard</span> widgets, but it has since been adopted by every major browser vendor and is now part of the HTML 5 spec. Here's a quick example of what some Canvas code looks like:</p>
 
@@ -64,7 +64,7 @@ c.fillRect(100,100,400,300);
 
 <p>It's important to understand that Canvas is for drawing pixels. It doesn't have shapes or vectors. There are no objects to attach event handlers to. It just draws pixels to the screen.  As we shall see this is both a strength and a weakness. </p>
 
-<h3><a id="canvas_vs_svg_vs_dom">So where does it fit in with the rest of the web?</a></h3>
+<h2><a id="canvas_vs_svg_vs_dom">So where does it fit in with the rest of the web?</a></h2>
 
 <p>There are four ways to draw things on the web: Canvas, SVG, CSS, and direct DOM animation. Canvas differ from the other three:</p>
 
@@ -77,7 +77,7 @@ c.fillRect(100,100,400,300);
 <p><b>DOM animation</b>: The <span class='glossary' title='Document Object Model. The tree structure that makes up a webpage. Every thing in the page is represented by one or more elements in the tree, such as links, paragraphs, headers, and images.'>DOM</span>, or Document Object Model, defines an object for everything on the screen. DOM animation, either by using CSS or JavaScript to move objects around, can be smoother in some cases than doing it with Canvas, but it depends on your browser implementation.
 </p>
 
-<h3><a id='whichwhatwhen'>Which? What? When?</a></h3>
+<h2><a id='whichwhatwhen'>Which? What? When?</a></h2>
 
 <p>So when should you use Canvas over SVG, CSS or DOM elements?  Well, Canvas is lower level than those others so you can have more control over the drawing and use less memory, but at the cost of having to write more code.  Use SVG when you have existing shapes that you want to render to the screen, like a map that came out of Adobe Illustrator. Use CSS or DOM animation when you have large static areas that you wish to animate, or if you want to use 3D transforms.  For charts, graphs, dynamic diagrams, and of course video games, Canvas is a great choice.  And later on we will discuss a few libraries to let you do the more vector / object oriented stuff using Canvas.
 </p>
@@ -85,7 +85,7 @@ c.fillRect(100,100,400,300);
 <p>Before we go any further I want to clarify that when I'm talking about Canvas I mean the <b>2D</b> API.  There is also a 3D API in the works called WebGL.  I'm not going to cover that here because it is still being developed and the browser support is rather poor. Also, it's essentially OpenGL from JavaScript, making it lower level than Canvas and much harder to use.  When WebGL becomes more mature we will revisit it in later chapters.
 </p>
 
-<h3><a id="browser_support">Browser Support</a></h3>
+<h2><a id="browser_support">Browser Support</a></h2>
 
 <p>And lastly, before we dive into working with Canvas, let's talk about <b>where</b> you can use it.  Fortunately Canvas is now a stable API and most modern browsers support it to some extent. Even Internet Explorer supports it starting with IE 9, and its implementation is very good.
 </p>
@@ -116,7 +116,7 @@ c.fillRect(100,100,400,300);
 </p>
 
 
-<h3><a id="simple_drawing">Simple Drawing</a></h3>
+<h2><a id="simple_drawing">Simple Drawing</a></h2>
 
 <p>As I said before, Canvas is a simple 2D API. If you've done any coding work with Flash or Java 2D it should seem pretty familar. You get a reference to a graphics context, set some properties like the current fill or stroke color, then draw some shapes.  Here are a few of examples.
 </p>
@@ -179,7 +179,7 @@ jangle2.setup("simple_triangle");
 <p>In this example we set the current fill color, create a path, then fill and stroke it. Note that the context keeps track of the fill color and the stroke color separately. Also notice the different forms of specifying colors. <code>fillStyle</code> and <code>strokeStyle</code> can be any valid CSS color notation like hex, names, or <code>rgb()</code> functions.</p>
 
 
-<h3><a id="paths">Paths</a></h3>
+<h2><a id="paths">Paths</a></h2>
 
 <p>Canvas only directly supports the rectangle shape. To draw any other shape you must draw it yourself using a path. Paths are shapes created by a bunch of straight or curved line segments. In Canvas you must first define a path with <code>beginPath()</code>, then you can fill it, stroke it, or use it as a clip. You define each line segment with functions like <code>moveTo()</code>, <code>lineTo()</code>, and <code>bezierCurveTo()</code>. This example draws a shape with a move to, followed by a bezier curve segment, then some lines.  After creating the path it fills and strokes it.</p>
 
@@ -216,7 +216,7 @@ var jangle3 = new Jangle();
 </script>
 
 
-<h3><a id="coordinate_system">Coordinate System</a></h3> 
+<h2><a id="coordinate_system">Coordinate System</a></h2> 
 
 <p> A quick word on coordinate systems. Canvas has the origin in the upper left
 corner with the y axis going down. This is traditional for computer graphics,
@@ -232,7 +232,7 @@ or 4.</p>
 <p class='photo'><img src="images/coords.png"/></p>
 
 
-<h3><a id="images">Images</a></h3>
+<h2><a id="images">Images</a></h2>
 
 <p>Canvas can draw images with the <code>drawImage</code> function. </p>
 
@@ -289,7 +289,7 @@ source bounds or else the image will disappear. For example, if you drag the sou
 width past 46, then it will try to access pixels beyond the right edge of the
 image. Using a negative source x coordinate will do the same</p>
 
-<h3><a id="text">Text</a></h3>
+<h2><a id="text">Text</a></h2>
 
 <p>Canvas can draw text as well. The font attribute is the same as its CSS
 equivalent, so you can set the styleg, size, and font family. Note that the
@@ -320,7 +320,7 @@ tangle.setup("textdemo");
 
 
 
-<h3><a id="gradient_fills">Gradients</a></h3> 
+<h2><a id="gradient_fills">Gradients</a></h2> 
 
 <p>Canvas can also fill shapes with gradients instead of colors. Here's a linear
 gradient: </p>
@@ -403,7 +403,7 @@ tangle.setup("graddemo2");
 
 
 <div id="glossary_popup" class='shadow'>
-	<h4>foo</h4>
+	<h3>foo</h3>
 	<p>blah</p>
 </div>
 

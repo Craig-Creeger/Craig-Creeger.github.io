@@ -16,8 +16,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>React</h1>
-<h2>Resources for Learning</h2>
+<div class="title">React</div>
+<h1>Resources for Learning</h1>
 <ul>
     <li><a href="https://facebook.github.io/react/docs/getting-started.html"></a>Official Documentation</li>
     <li><a href="https://egghead.io/">Egghead tutorial - not very detailed but good starting point</a></li>
@@ -30,8 +30,8 @@
     <li><a href="http://mediatemple.net/blog/tips/a-quick-look-at-the-react-and-redux-devtools/">Dev tools in Chrome</a></li>
 </ul>
 
-<h2>ES6 Patterns</h2>
-<h3>Stateless Functional Components</h3>
+<h1>ES6 Patterns</h1>
+<h2>Stateless Functional Components</h2>
 <pre class="prettyprint linenums">
 import React from 'react'
 import PropTypes from 'prop-types';
@@ -58,7 +58,7 @@ export default UserName
     example you can see fullName is destructured from the props on line 3. Because <code>fullName</code>
     is inside curly braces, we know that it is getting destructured.</p>
 
-<h3>Standard Components</h3>
+<h2>Standard Components</h2>
 <pre class="prettyprint linenums">
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -86,7 +86,7 @@ Greeting.defaultProps = {
 
 export default Greeting;
 </pre>
-<h3>JSX Attributes to DOM Attributes</h3>
+<h2>JSX Attributes to DOM Attributes</h2>
 <p>JSX Attributes to get rendered to the DOM if they are a valid attribute. You can force non-standard attributes to render by putting a dash in the name; best practice is to use data-...</p>
 <pre class="prettyprint linenums">
 export default (...props) =&gt; (
@@ -101,15 +101,15 @@ export default (...props) =&gt; (
 <code>&lt;input type="checkbox" data-uniqueId="Dracula"&gt;</code></p>
 <p>The React component will still have a property called <code>monsterFood</code>.</p>
 
-<h3>Conditionals in JSX</h3>
+<h2>Conditionals in JSX</h2>
 <p>JSX does not support if statements, but you can use Javascript's ternary and boolean operators.</p>
-<h4>if/else</h4>
+<h3>if/else</h3>
 <p><code>&lt;p&gt;{style === 'IPA' ? 'Is bitter' : 'Is not bitter'}&lt;/p&gt;</code></p>
 
-<h4>render when true</h4>
+<h3>render when true</h3>
 <p><code>&lt;p&gt;{style === 'IPA' && 'Is bitter'}&lt;/p&gt;</code></p>
 
-<h4>render when false</h4>
+<h3>render when false</h3>
 <pre>let studentIsAgeOfMajority = false;
 &lt;p&gt;{!(studentIsAgeOfMajority) && 'Parent’s permission needed'}&lt;/p&gt;
 </pre>
@@ -119,11 +119,11 @@ let studentAge = 16;
 &lt;p&gt;{(studentAge &lt; 18) && 'Parent’s permission needed'}&lt;/p&gt;
 </pre>
 
-<h3>Events</h3>
+<h2>Events</h2>
 <p>To pass parameters to an event, <a href="https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md">see this post.</a></p>
 <p>Basically, the component the captures the event must have a private function to handle the event. You attach the private function to the, say, onClick event. The private function then calls the function passed down via props.</p>
 
-<h2>Refs</h2>
+<h1>Refs</h1>
 <p>Refs are kinda like specifying an ID on an element. You can then reach into the DOM
     (via ReactDOM.findDOMNode()) by the ref name. Example:</p>
 <pre>
@@ -149,8 +149,8 @@ doSomething () {
 </pre>
 <p>If I remember right, you can not put a ref on a component (vs. a standard DOM element).</p>
 
-<h2>Passing Data to Actions from an Event</h2>
-<h3>ES5 Syntax</h3>
+<h1>Passing Data to Actions from an Event</h1>
+<h2>ES5 Syntax</h2>
 <p>For one-off, quick-n-dirty solution you can use <code>.bind()</code> to pass one, or more, values.</p>
 <p><code>this.clickHandler.bind(this, val1, val2, val3)</code></p>
 
@@ -181,13 +181,13 @@ onItemClick: function(item, e) {
 <p>This could be all done in one line:</p>
 <p><code>return &lt;li onClick={this.onItemClick.bind(this, item)}&gt; ... &lt;/li&gt;</code></p>
 
-<h3>ES6 Syntax</h3>
+<h2>ES6 Syntax</h2>
 <p>The same thing can be done less verbosely with fat arrow functions.</p>
 <p><code>return &lt;li onClick={() =&gt; this.onItemClick(item)}&gt; ... &lt;/li&gt;</code></p>
 
-<h2>ES5 Patterns</h2>
+<h1>ES5 Patterns</h1>
 <p>If you must write native ES5 code, this style can be used.</p>
-<h3>Stateless Functional Components</h3>
+<h2>Stateless Functional Components</h2>
 <pre class="prettyprint linenums">
 function HelloWorld () {
   return (
@@ -196,7 +196,7 @@ function HelloWorld () {
 }
 </pre>
 
-<h3>Standard Components</h3>
+<h2>Standard Components</h2>
 <pre class="prettyprint linenums">
 var React = require('react')
 var ReactDOM = require('react-dom')

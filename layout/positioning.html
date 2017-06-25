@@ -52,8 +52,8 @@ article pre, article {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>CSS Positioning</h1>
-<h2>Positioning from an Edge</h2>
+<div class="title">CSS Positioning</div>
+<h1>Positioning from an Edge</h1>
 <article>
 	<pre>This crimson colored box is:
 	display:block;<br>	<strong style="color:white;">position:relative;</strong><br>	width:90%;<br>	height:300px;<br>	background-color:crimson;</pre>
@@ -71,7 +71,7 @@ article pre, article {
 </article>
 <p>&nbsp;</p>
 <p>As my comments hint at above, the critial bit is the block you want to position must be absolutely positioned within either a relative or absolutely positioned element.</p>
-<h2>Fixed Positioning</h2>
+<h1>Fixed Positioning</h1>
 <p>A <code>position:fixed</code> element will be taken out of the normal flow and it’s position is always relative to the viewport, unlike <code>position:absolute</code> that is relative to its (positioned) parent container. This is fine if your page is not in a centered column, but for many websites, you’ll find the fixed content is not where you want it. The code below gets around this limitation.</p>
 <p class="code">&lt;div id=&quot;circleBottom&quot;&gt;</p>
 <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;/div&gt;</p>
@@ -90,7 +90,7 @@ article pre, article {
 	height:78px;
 }</pre>
 	<p>You’ll notice that we are first positioning the object with an <code>absolute</code> container, which then holds the <code>fixed</code> element. The key here, is to NOT specify the position (left, top, etc.) on the <code>fixed</code> element, but rather on the absolutely positioned element.</p>
-	<h2>Fixing Background Image</h2>
+	<h1>Fixing Background Image</h1>
 	<p>If you use <code>background-attachment: fixed;</code> to prevent an element’s background image from scrolling, you may see severe jerky scrolling in the browser. iOS just ignores it because the performance is so poor. The solution is to do a <code>position:fixed</code> on an element and set its z-index so it looks like a background image. Also, <code>will-change: transform;</code> tells the browser to paint that element on its own layer. The details are described in <a href="https://fourword.fourkitchens.com/article/fix-scrolling-performance-css-will-change-property" target="external">https://fourword.fourkitchens.com/article/fix-scrolling-performance-css-will-change-property</a></p>
 <pre>.what-we-do-cards {
 	@include clearfix;
@@ -115,7 +115,7 @@ article pre, article {
 		z-index: -1;</strong>
 	}
 }</pre>
-	<h2>z-index</h2>
+	<h1>z-index</h1>
 	<p>When positioned elements overlapping each other you can specify which which one is on top (or bottom, or anywhere in between) via the CSS z-index property. Generally, those items with a higher z-index value are shown on top of those with a lower value. However, there are a few poorly understood rules that are <a href="http://philipwalton.com/articles/what-no-one-told-you-about-z-index/" rel="external">documented  well in a Philip Walton post</a>.</p>
 	<p>He states,</p>
 <blockquote>	<p>Groups of elements with a common parent that move forward or backward together in the stacking order make up what is known as a stacking context. A full understanding of stacking contexts is key to really grasping how z-index and the stacking order work.</p>

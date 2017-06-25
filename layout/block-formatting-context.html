@@ -17,8 +17,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Block Formatting Context</h1>
-<h2>Creating a New Formatting Context</h2>
+<div class="title">Block Formatting Context</div>
+<h1>Creating a New Formatting Context</h1>
 <ul>
 	<li>Floated Elements<br>
 	<code>float: left||right</code></li>
@@ -30,14 +30,14 @@
 	<code>overflow: auto||hidden||scroll </code></li>
 	<li>Flexboxes</li>
 </ul>
-<h2>Behaviors of New Contexts</h2>
+<h1>Behaviors of New Contexts</h1>
 <ul>
 	<li>Margins do not stick out.</li>
 	<li>Only boxes in the same context experience vertical margin collapsing.</li>
 	<li>They do not overlap floats.</li>
 	<li>They contain floats.</li>
 </ul>
-<h2>Exploiting the Behavior</h2>
+<h1>Exploiting the Behavior</h1>
 <p>This is one way to clear floats (vs. the <code>.clearfix</code> hack). In other words,  a new context contains floats.</p>
 <p>You can create a columnar layout (each block formatting context creates a column if there is enough horizontal space for it).</p>
 <p>&nbsp;</p>

@@ -2,13 +2,13 @@
 <body>
 
 <div id="header">
-<h2>Chapter 3</h2>
-<h1>Advanced Drawing and Events</h1>
+<h1>Chapter 3</h1>
+<div class="title">Advanced Drawing and Events</div>
 </div>
 
 <div id="content">
 
-<h3><a id="image_fills">Image Fills</a></h3>
+<h2><a id="image_fills">Image Fills</a></h2>
 
 <p>In <a href="chapter01.html">Chapter 1</a> we learned that Canvas can fill shapes with colors and gradients.  You can also fill shapes with images by defining a pattern. You can control how the pattern is repeated the same as you would with background images in CSS.</p>
 
@@ -73,7 +73,7 @@ img.src = './images/tile.png';
 <p>Note that filling with an image texture only works if the image has already been loaded, so be sure to do the drawing from the image's <code>onload</code> callback.</p>
 
 
-<h3><a id="opacity">Opacity</a></h3>
+<h2><a id="opacity">Opacity</a></h2>
 
 <p>The Canvas API lets you control the opacity of any drawing function with the <code>globalAlpha</code> property. This next demo draws two red squares overlapping with the background showing through by changing the globalAlpha 
 before each drawing operation.</p>
@@ -109,7 +109,7 @@ tangle.setup("opacitydemo");
 <p>This opacity setting works with all drawing operations. <b>Try changing the opacity values above to see the effect.</b> Be sure to set it back to 1.0 when you are done so that it won't affect later drawing.  The <code>globalAlpha</code> property must be a value between 0 and 1 or else it will be ignored (or may unexpected behavior on some platforms).</p>
 
 
-<h3><a id="transforms">Transforms</a></h3>
+<h2><a id="transforms">Transforms</a></h2>
 
 <p>In the bar chart chapter we drew the same rectangle over and over again just with different x and y coordinates. Rather than modifying those coordinates we could have used a translate function. Each time through the loop we can translate by an additional 100 pixels to move the next bar over to the right.
 </p>
@@ -190,7 +190,7 @@ tangle.setup("rotatedemo");
 
 <p>but that's a lot of annoying code to write. If you forget to undo it just once then you could be screwed and spend hours looking through your code for that one bug. (not that <i>I've</i> ever done that, of course!)  Instead Canvas provides a state saving API.</p>
 
-<h3><a id="statesaving">State Saving</a></h3>
+<h2><a id="statesaving">State Saving</a></h2>
 
 <p>The context2D object represents the current drawing state. In this book I
 always use the <code>ctx</code> variable to hold this context. The state
@@ -212,7 +212,7 @@ don't have to do the un-translation step.</p>
 
 
 
-<h3><a id="clipping">Clipping</a></h3>
+<h2><a id="clipping">Clipping</a></h2>
 
 <p>Sometimes you may want to draw just part of a shape. You can do this with the clip function. It takes the current shape and uses it as a mask for further drawing. This means that any drawing will only happen <i>inside</i> of the clip. Anything you draw <i>outside</i> of the clip will not be shown on screen. This can be useful for when you want to create a complex graphic by combining shapes, or when you want to update just a part of the screen for performance reasons.  Here's an example where we draw a bunch of squares clipped by a circle:
 </p>
@@ -291,7 +291,7 @@ triangle has a thick border, but the upper part has a thinner border. This is
 because the border is centered on the actual geometric edges of the triangle shape. The yellow covers up the inside border when it is clipped by the geometric triangle, but the outside border remains uncovered. </p>
 
 
-<h3><a id="events">Events</a></h3>
+<h2><a id="events">Events</a></h2>
 
 <p>Canvas doesn't define any new events. You can listen to the same mouse and
 touch events that you'd work with anywhere else. This is both good and bad.</p>

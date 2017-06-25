@@ -16,8 +16,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Drupal Concepts</h1>
-<h2>Where Is the Content Located?</h2>
+<div class="title">Drupal Concepts</div>
+<h1>Where Is the Content Located?</h1>
 <p>On inherited Drupal sites, it can be really challenging to find the source of some content that is displayed on a webpage. Try this:</p>
 <ol>
 	<li>Login as an Administrator</li>
@@ -33,27 +33,27 @@
 	</li>
 	<li>Grep the site/all/ folder. i.e. <code>grep -rI -e &lsquo;your phrase&rsquo; .</code></li>
 </ol>
-<h2>Page Structure</h2>
+<h1>Page Structure</h1>
 <p>A typical page is built using a template. Templates are nothing more than HTML with areas carved out for dynamically generated content. These reserved areas are called <em>Regions</em>.</p>
-<h3>Repeating Content</h3>
+<h2>Repeating Content</h2>
 <p>You can put <em>Blocks</em> inside of <em>Regions</em>. <em>Blocks</em> are static snippets of HTML code (e.g. privacy statement) or HTML code dynamically generated (e.g. current weather) by a <em>Module</em>.</p>
 <p>To summarize, <em>Regions</em> are empty spaces where you can put content. <em>Blocks</em> are content that is intended to appear on multiple pages.</p>
 <p>You can manage (control placement location and when to display) your blocks through the Administration/Structure/Block page (<code>http://example.com/admin/structure/block</code>).</p>
-<h4>Alternatives</h4>
+<h3>Alternatives</h3>
 <p>For simple sites, Drupal’s built-in functionality for managing Blocks works well, but for site’s with advanced needs, then a couple of alternatives might be better. Take a look at:</p>
 <p><a href="https://drupal.org/project/context" rel="external">Context Module</a>: Context allows you to manage contextual conditions and reactions for different portions of your site. You can think of each context as representing a “section” of your site. For each context, you can choose the conditions that trigger this context to be active and choose different aspects of Drupal that should react to this active context.</p>
 <p>Think of conditions as a set of rules that are checked during page load to see what context is active. Any reactions that are associated with active contexts are then fired.</p>
 <p><a href="https://drupal.org/project/panels" rel="external">Panels</a>: The Panels module allows a site administrator to create customized layouts for multiple uses. At its core it is a drag and drop content manager that lets you visually design a layout and place content within that layout. Integration with other systems allows you to create nodes that use this, landing pages that use this, and even override system pages such as taxonomy and the node page so that you can customize the layout of your site with very fine grained permissions.</p>
-<h3>Page Specific Content (node content)</h3>
+<h2>Page Specific Content (node content)</h2>
 <p>Most (all?) themes have a <em>Region</em> called “Content” and a <em>Block</em> described as “Main page content” that is automatically assigned to it. This is where the “meat” of your web page content goes. I’m not exactly sure if there is any significance to the “Content” <em>Region</em> and “Main page content” <em>Block</em>, but I did find this on a support forum:</p>
 <blockquote>The Main page content block is basically a given. It needs to appear on all pages and should always be assigned to the page content region to avoid issues.</blockquote>
-<h2>Dynamically Building a Page (Logic Flow)</h2>
-<h3>Render Arrays</h3>
+<h1>Dynamically Building a Page (Logic Flow)</h1>
+<h2>Render Arrays</h2>
 <p>The content on a page is first expressed as a <a href="https://drupal.org/node/930760" rel="external">Render Array</a>. Right before the page is displayed to the user that array of data is converted to HTML. They are similar to the Form API arrays, but they need to first be converted to a Render array by <code>drupal_get_form()</code>.</p>
-<h3>Overall Flow</h3>
+<h2>Overall Flow</h2>
 <p><a href="http://www.slideshare.net/ramakesavan/drupal-themingbehindthescenes-rev6" rel="external">This slidedeck</a> has some information, but I'm not sure how complete it is. You will need to do a lot of guessing as to what it means...</p>
 <p>The <a href="https://drupal.org/getting-started/before/overview" rel="external">Drupal Overview</a> page could be a good resource too.</p>
-<h2>Installing Drupal on a Local Development Machine</h2>
+<h1>Installing Drupal on a Local Development Machine</h1>
 <p>Increase the max_allowed_packet size (found in the [mysqld] section of</p>
 <h3 id="fileSecurity">File Security for the Web Server</h3>
 <p>See my notes in Evernote, but in a nutshell Drupal needs:</p>
@@ -64,7 +64,7 @@
 	<li>Write access to files in /sites/*/files</li>
 </ul>
 <p>Cake needs write access to app/tmp/ folder.</p>
-<h3>Database Security for the Drupal User</h3>
+<h2>Database Security for the Drupal User</h2>
 <p>When running in Production, your Drupal user will need these permissions: alter, create, create temporary tables, delete, drop, index, insert, select, and update.</p>
 <p><img src="img/permissions.png" width="801" height="505"></p>
 <h2 id="debugging">Debugging</h2>
@@ -91,14 +91,14 @@
 		<dd>Pretty print to Krumo in header</dd>
 	</div>
 </dl>
-<h3></h3>
+<h2></h2>
 <p>If you intend to keep debugging code in your production site, wrap it as follows:</p>
 <pre class="prettyprint linenums">if (module_exists('devel')) {
 	dpm('my debug message goes here');
 }</pre>
-<h3>Error Reporting</h3>
+<h2>Error Reporting</h2>
 <p>Some errors are only reported when all PHP error reporting is switched on. Without the error reporting on, you get the dreaded <strong><a href="https://drupal.org/node/158043" rel="nofollow">White Screen of Death</a></strong>.</p>
-<h4>Change settings in your dev site</h4>
+<h3>Change settings in your dev site</h3>
 <p>You can show all errors by adding a few lines to your local testing site's settings.php:</p>
 <pre class="prettyprint linenums">&lt;?php
 	error_reporting(E_ALL);
@@ -107,13 +107,13 @@
 	//Note:  Do not include the opening and closing PHP tags when you copy this code
 ?&gt;</pre>
 <p>In addition, navigate to Administration→ Configuration→ Development → logging and errors and select "All messages". (This sets $conf['error_level'] = 2; .)</p>
-<h4>Switch on strict PHP error reporting</h4>
+<h3>Switch on strict PHP error reporting</h3>
 <p>Or you can go through your development site's php.ini file, in the php folder, and switch all error reporting on. To do this, check through your php.ini file and set error reporting to E_ALL | E_STRICT. The documentation there is very thorough, and you may find a different setting that's better suited to your needs. <strong>Warning</strong>: as the PHP documentation states, this setting is only for development sites, not for production sites.</p>
-<h2>AJAX</h2>
+<h1>AJAX</h1>
 <p>The easiest way to do this if you just want to make sure that each participant's name field has something in it (without caring what that something is), you can do this just by adding the '#required' property to the name textfield in _participants_participant().</p>
 <p>IF you have more advanced validation requirements and the above is not what you need (eg. you want to make sure the contents actually resemble a name, and isn&rsquo;t say, a link, or a number) This can be accomplished by using the #element_validate property when building the 'name' textfield form element of the component in _participants_participant(). This property should contain an ARRAY of the function names it is supposed to call (like a callback) in order to validate the element. This must be an array; a scalar value will fail. If there&rsquo;s only one function you want to call, list that in array that contains a single string. These function names should be functions that have a parameter signature of: ($element, &amp;$form_state, $form), where $element is an array that will contain the calling element, $form_state will be the current state of the form (retrieved from POST) and $form will be the form API structure of the form. Within that validation function, you can use form_error or form_set_error in order to trigger a validation error on the form.  <a href="https://api.drupal.org/api/drupal/includes%21form.inc/function/form_set_error/7" target="_blank">https://api.drupal.org/api/drupal/includes%21form.inc/function/form_set_error/7</a> <a href="https://api.drupal.org/api/drupal/includes%21form.inc/function/form_error/7" target="_blank">https://api.drupal.org/api/drupal/includes%21form.inc/function/form_error/7</a></p>
 <p>For an example of using #element_validate, see here: <a href="http://befused.com/drupal/element-validate" target="_blank">http://befused.com/drupal/element-validate</a></p>
-<h2>Upgrading to Newer Version of Drupal</h2>
+<h1>Upgrading to Newer Version of Drupal</h1>
 <p>On your local install version, do this to upgrade Drupal using Drush:</p>
 <ol>
 	<li>Perform a Drush archival dump first.<code> $ drush archive-dump<br>
@@ -128,10 +128,10 @@
 	<li>Run /update.php if there were schema changes.</li>
 </ol>
 <p></p>
-<h2>Security</h2>
+<h1>Security</h1>
 <p>Users will be granted to an object once anything gives them access to it. Said another way, you do not have security to do anything else you have been granted access. This is a “white-list” type of system.</p>
 <p>When creating views or menus, you can use this to your advantage. Don't restrict access inside the view, rather let Drupal’s permission system take care of that.</p>
-<h2>Performance</h2>
+<h1>Performance</h1>
 <p>Turn off the &quot;Update Manager&quot; module to improve speed on the Production and Local environments. You will probably want to keep it enabled on Dev so at least something is checking for updates. Better yet, make this part of the roll-out procedures.</p>
 <p>The WinCache extension should be installed into PHP. Look in the PHP Extensions folder - the config should have that enabled.</p>
 <!-- InstanceEndEditable -->

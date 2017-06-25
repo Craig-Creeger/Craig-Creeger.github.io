@@ -2,13 +2,13 @@
 <body>
 
 <div id="header">
-<h2>Chapter 12</h2>
-<h1>Intro to WebAudio</h1>
+<h1>Chapter 12</h1>
+<div class="title">Intro to WebAudio</div>
 </div>
 
 <div id="content">
 
-<h3><a id='overview'>Overview</a></h3>
+<h2><a id='overview'>Overview</a></h2>
 
 <p>So far I have shown you 2d drawing, animation, and hardware accelerated 3d.
 When you build something with these technologies you may notice something is
@@ -20,7 +20,7 @@ href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">Web
 <p>Note that this API is <i>still in flux</i>, though it's a lot more stable than it used to be.  Use WebAudio for experimentation but not in production code, at least not without a fallback to Flash. Try <a href="http://www.schillmania.com/projects/soundmanager2/">SoundManager2</a> as a fallback solution.</p>
 
 
-<h3><a id='audiovswebaudio'>Audio Element vs WebAudio</a></h3>
+<h2><a id='audiovswebaudio'>Audio Element vs WebAudio</a></h2>
 
 <p>You may have heard of something called the <i>Audio element</i>. This is a
 new element added to HTML 5 that looks like this <code>&lt;audio
@@ -45,7 +45,7 @@ effects and visual processing.</p>
 
 [browser support?]
 
-<h3><a id='playback'>Simple playback</a></h3>
+<h2><a id='playback'>Simple playback</a></h2>
 
 <p>For graphics we use a graphics context. Audio is the same way. we need an
 audio context. Since the spec isn't a standard yet we have to use the
@@ -115,7 +115,7 @@ output, which usually means the speakers of the computer. The two nodes are
 connected with the <code>connect</code> function. Once connected we can play the
 sound by calling <code>noteOn(0)</code> on the source.</p>
 
-<h3><a id='nodes'>WebAudio Nodes</a></h3>
+<h2><a id='nodes'>WebAudio Nodes</a></h2>
 
 <p>So far we have seen just a source and destination node, but WebAudio has many
 other node kinds. To create a drum app you could create multiple source nodes,
@@ -136,7 +136,7 @@ using <code>AudioGainNode</code>s.</p>
 <li>Oscillator: for generating waveforms directly</li>
 </ul>
 
-<h3><a id='clips'>Sound Effects</a></h3>
+<h2><a id='clips'>Sound Effects</a></h2>
 
 <p>The regular HTML <code>audio</code> element can be used for sound effects but it's not very good at it.  You don't have much control over exactly how and when the audio is played. Some implementations won't even let you play more than one sound at a time.  This makes it okay for songs but almost useless for sound effects in a game. The WebAudio API, lets you schedule sound clips to play at precise times and even overlay them.</p>
 
@@ -172,7 +172,7 @@ function play() {
 
 <p>Try out the final version <a href='../canvasdeepdive-examples/WebAudio/FFT/effects.html'>here</a></p>
 
-<h3><a id='visualization'>Audio Visualization</a></h3>
+<h2><a id='visualization'>Audio Visualization</a></h2>
 
 <p>What fun is graphics if you can't tie it directly to your audio?!  I've always loved sound visualizations. If you have ever used WinAmp or the iTunes visualizer then you are familiar with this.</p>
 
@@ -251,7 +251,7 @@ please see <a
 href='http://en.wikipedia.org/wiki/Fast_Fourier_transform'>Wikipedia</a>.</p>
 
 
-<h3><a id='drawing'>Drawing the Frequencies</a></h3>
+<h2><a id='drawing'>Drawing the Frequencies</a></h2>
 
 <p>Now let's draw something. For this we will go back to what we learned in the
 animation chapter. Create a canvas, get the context, then call a drawing
@@ -302,7 +302,7 @@ function setupCanvas() {
 </div>
 
 
-<h3><a href='nextsteps'>Next Steps</a></h3>
+<h2><a href='nextsteps'>Next Steps</a></h2>
 
 
 <p>There is so much more you can do with WebAudio than what I've covered here.  First I suggest you go through the HTML5 Rocks tutorials:</p>

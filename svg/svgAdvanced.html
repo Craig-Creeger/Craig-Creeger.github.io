@@ -80,8 +80,8 @@ figure svg {
   
 </svg>
 
-<h1>Advanced SVG</h1>
-<h2>Applying Dynamic Properties to SVG</h2>
+<div class="title">Advanced SVG</div>
+<h1>Applying Dynamic Properties to SVG</h1>
 <p><svg viewBox="0 0 745 139" class="std400wide">
 	<g filter="url(#emboss)">
 		<use xlink:href="#pxPro"></use>
@@ -94,8 +94,8 @@ figure svg {
 <p>The above graphics are embedded on the page once (and hidden) but then added back in. The top graphic has a CSS:hover selector added to it. Notice the emboss filter added at run-time.</p>
 <p>It is possible to create a custom icon font from your vector graphics (such as SVG) through <a href="http://icomoon.io/app/#/select" rel="external">IcoMoon</a>.</p>
 <p>All this information came from: <a href="http://tympanus.net/codrops/2013/11/27/svg-icons-ftw/" rel="external">http://tympanus.net/codrops/2013/11/27/svg-icons-ftw/</a></p>
-<h2>Aspect Ratio</h2>
-<h3>Viewport and viewBox</h3>
+<h1>Aspect Ratio</h1>
+<h2>Viewport and viewBox</h2>
 <p>The viewport is the area you carve out on a webpage for the artwork to be displayed in. To set the Viewport, you tweak the width and height attributes of the SVG tag. e.g. <code>&lt;svg width=&quot;100&quot; height=&quot;200&quot;&gt;</code> alternatively, you can set it with CSS. e.g. <code>&lt;svg style=&quot;width:100%;&quot;&gt;</code></p>
 <p>In these, the viewport size is modified.</p>
 <figure><svg width="115" height="190" viewBox="0 0 115 190">
@@ -163,7 +163,7 @@ figure svg {
 	<figcaption>Growing the viewBox</figcaption>
 </figure>
 <hr>
-<h3>preserveAspectRatio</h3>
+<h2>preserveAspectRatio</h2>
 <p>The preserveAspectRatio attribute of the &lt;svg&gt; tag takes the mandatory &quot;align&quot; value and an optional &quot;meet or slice&quot; value (separated by a space). The first (align) value can be:</p>
 <ul>
 	<li>none - Do not preserve the aspect ratio (your artwork will become distorted if the viewport aspect ratio does not match the viewbox). The second value is not needed (in fact, it is ignored).</li>
@@ -218,15 +218,15 @@ figure svg {
 
 <p>Changing the width and height attributes affects the overall size on the screen. By default the viewBox will attempt to fit entirely within the viewport and it will scale proportionally.</p>
 <p>Changing the viewBox is like changing Illustrator’s Artboard. This has a more drastic effect on the appearance of the artwork.</p>
-<h3>Alternate Method</h3>
+<h2>Alternate Method</h2>
 <p>If the above fails, perhaps wrapping the SVG in<a href="../mobile/responsiveImages.html#aspectRatioWrap"> a container than maintains its aspect ratio</a> will be a better solution.</p>
 
-<h2>Responsive Sizing and Image Maps</h2>
+<h1>Responsive Sizing and Image Maps</h1>
 <p>It is possible to put an image map on a responsive image when one uses SVG. This process is <a href="http://demosthenes.info/blog/760/Create-A-Responsive-Imagemap-With-SVG" rel="external">described here</a>. </p>
 <p><span style="clear:both;">Codrops has more information about <a href="http://tympanus.net/codrops/2014/08/19/making-svgs-responsive-with-css/" rel="external">Responsive SVG</a>.</span></p>
 <p>I created a demo of <a href="responsiveSVG.html">dynamically sized graphics</a> here.</p>
-<h2> Tricks</h2>
-<h3>Combining the best of PNG and JPEG</h3>
+<h1> Tricks</h1>
+<h2>Combining the best of PNG and JPEG</h2>
 <p>If you have a large photograph that you want alpha transparency on,  you can do that using SVG. Basically you have to create an 8-bit PNG mask and lay it on top of the JPEG. This technique is <a href="http://peterhrynkow.com/how-to-compress-a-png-like-a-jpeg/" rel="external">described in detail here</a>.</p>
 <pre>&lt;svg preserveAspectRatio="xMinYMin" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 560 1388"&gt;
 	&lt;defs&gt;
@@ -236,7 +236,7 @@ figure svg {
 	&lt;/defs&gt;
 	&lt;image mask="url(#canTopMask)" id="canTop" width="560" height="1388" xlink:href="can-top.jpg"&gt;&lt;/image&gt;
 &lt;/svg&gt;</pre>
-<h2>Filters</h2>
+<h1>Filters</h1>
 <svg version="1.1" width="300px" height="300px" viewBox="8 408 415 415" class="pushRight">
 <filter  width="115%" height="115%" x="-5%" y="-5%" id="dropShadow">
 	<feOffset  dx="6" dy="6" in="SourceAlpha" result="offOut"></feOffset>
@@ -255,7 +255,7 @@ figure svg {
 <p>Smashing Magazine describes how SVG filters can be used to make display text.</p>
 <p><a href="http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/" rel="external">http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/</a></p>
 <p>Filters are also available in CSS, but there is some sharing with SVG. See <a href="https://css-tricks.com/color-filters-can-turn-your-gray-skies-blue/" rel="external">Color Filters Can Turn Your Gray Skys Blue</a>.</p>
-<h3>Drop Shadow</h3>
+<h2>Drop Shadow</h2>
 <p>Adobe Illustrator comes with some pretty crappy SVG Drop Shadows. A much better version is:</p>
 <pre class="prettyprint linenums">&lt;svg version=&quot;1.1&quot; width=&quot;300px&quot; height=&quot;300px&quot; viewBox=&quot;8 408 415 415&quot;&gt;
 &lt;filter  width=&quot;115%&quot; height=&quot;115%&quot; x=&quot;-5%&quot; y=&quot;-5%&quot; <strong>id=&quot;dropShadow&quot;</strong>&gt;
@@ -271,13 +271,13 @@ figure svg {
 	&lt;polygon <strong>filter=&quot;url(#dropShadow)&quot;</strong> fill=&quot;#FFFFFF&quot; points=&quot;305.5,526.5 301.4,525.8 224,512.9 208,432 207.3,436.1 194.4,513.5 113.5,529.5 117.6,530.2 
  195,543.1 211,624 211.7,619.9 224.6,542.5&quot; /&gt;
 &lt;/svg&gt;</pre>
-<h4>Explanation:</h4>
+<h3>Explanation:</h3>
 <p><em>filter</em> sets up the filter’s canvas compared to whatever the filter is applied to. </p>
 <p><em>feOffset</em> creates and moves the new object around on the stage. Tweak <code>dx</code> and <code>dy</code> to position the shadow. Since the <code>in</code> attribute specifies SourceAlpha, it will only copy the alpha channel, not all the colors. This effectively makes an all black copy—black is good for drop shadows, so yay.</p>
 <p><em>feGaussianBlur</em> makes that black copy blurry (to mimic a shadow). Tweak the <code>stdDeviation</code> to adjust bluriness.</p>
 <p><em>feFuncA</em> will tweak the alpha channel. Because the black, blurry copy is so dark, this is used to adjust the opacity. Tweak the second number in <code>tableValues</code> to adjust the opacity.</p>
 <p><em>feBlend</em> with a “normal” <code>mode</code> will simply stack the original graphic on top of the drop shadow object.</p>
-<h2>Accessibility</h2>
+<h1>Accessibility</h1>
 <p>The <a href="http://www.sitepoint.com/tips-accessible-svg" rel="external">Sitepoint article on SVG Accessibility</a> contains several tips directly related to accessibility, but also has some interesting comments related to SVG in general, such as:</p>
 <ul>
 	<li>If you inline SVG directly into your HTML, and you are using HTML5, then you do not need to namespace it. In other words, the SVG tag can be something like:<br>
@@ -288,9 +288,9 @@ figure svg {
 	<li>Hyperlinks are keyboard focusable. <code>&lt;a xlink:href="<a href="http://example.com/" target="_blank">http://example.com</a>"&gt;</code></li>
 </ul>
 <h2 id="svgButtons">Graphic Reuse and Sprite Sheet</h2>
-<h3>&lt;use&gt;</h3>
+<h2>&lt;use&gt;</h2>
 <p>SVG’s &lt;use&gt; tag allows you to reference just a part of some SVG defined elsewhere and draw just that part somewhere else. However, you must use inline SVG to dynamically use only certain pieces. If you want to use SVG as a CSS background-image or in an &lt;img&gt; tag, then you can exploit fragment identifiers. It is a bit like using intra-page anchors (# syntax).</p>
-<h3>Fragment Identifiers</h3>
+<h2>Fragment Identifiers</h2>
 <p>This information came from <a href="http://css-tricks.com/svg-fragment-identifiers-work/" target="external">How SVG Fragment Identifiers Work</a>. The concept here is to:</p>
 <ol>
 	<li>Define multiple viewboxes using the &lt;view&gt; element.<br>
@@ -307,7 +307,7 @@ figure svg {
 </pre>
 	</li>
 </ol>
-<h2>Hyperlinked SVG Buttons with Rollover Effect</h2>
+<h1>Hyperlinked SVG Buttons with Rollover Effect</h1>
 <p>It is super easy to make a stylized button when it is rectangular, but if you want an abstract shape then SVG provides a great solution.</p>
 <svg viewBox="0 0 528 260" style="width:50%;" id="starDemo">
 	<a id="Star1" xlink:href="#svgButtons">

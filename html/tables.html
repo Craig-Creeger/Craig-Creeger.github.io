@@ -66,11 +66,11 @@ tfoot td {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Tables</h1>
-<h2>Documentation</h2>
+<div class="title">Tables</div>
+<h1>Documentation</h1>
 <p><a href="http://developers.whatwg.org/tabular-data.html" title="HTML tables technical documentation" rel="external">http://developers.whatwg.org/tabular-data.html</a></p>
 <p>Check into the <span class="code">scope</span> attribute sometime…</p>
-<h2>Creating the Structure</h2>
+<h1>Creating the Structure</h1>
 <p>A table can have a header, body, footer, and caption.</p>
 <p>Structure rules:</p>
 <ol>
@@ -133,7 +133,7 @@ tfoot td {
 		</tr>
 	</tbody>
 </table>
-<h2>Styling Tables</h2>
+<h1>Styling Tables</h1>
 <p>There are a few weird things when attempting to make your table look beautiful.</p>
 <ol>
 	<li>The margin property only applies to <code>&lt;table&gt;</code>. Internal elements (<code>&lt;tr&gt;, &lt;td&gt;, &lt;th&gt;, &lt;col&gt;</code>, etc.) can not have margin.</li>
@@ -168,7 +168,7 @@ tfoot td {
     background-color:#09C;<br>
     color:#FFF;<br>
 }</p>
-<h3>Styling Columns</h3>
+<h2>Styling Columns</h2>
 <p>If you are only styling width, border, background or visibility, then you can target the CSS against &lt;col&gt; or &lt;colgroup&gt;. Any other CSS property must be applied to cells (<code>&lt;td&gt;</code>) using a selector such as <code>tr &gt; td + td { &hellip; }</code> or <code>tr td:first-child { &hellip; }</code> Refer to the <a href="../cssInfo/selectors.html">CSS Selectors</a> page for more information on this advanced selector.</p>
 <!-- InstanceEndEditable -->
 <footer>

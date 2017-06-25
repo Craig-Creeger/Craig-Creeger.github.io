@@ -15,15 +15,15 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Cool Stuff About JavaScript</h1>
+<div class="title">Cool Stuff About JavaScript</div>
 <p>This <a href="http://dublintech.blogspot.co.uk/2012/04/javascript-language-z-cheat-sheet.html" rel="external">“Javascript Language A to Z Cheat Sheet”</a> is a very good read.</p>
-<h2>Callbacks</h2>
+<h1>Callbacks</h1>
 <p>When creating your own library, it is often nice to give your users the ability to execute their own function at a predetermined time. This is done through a callback.</p>
 <p class="code">function libraryCode(userCallback) {</p>
 <p class="code">  <span class="comment">//do regular stuff, and then…</span></p>
 <p class="code">  userCallback(); <span class="comment">//execute their code</span></p>
 <p class="code">}</p>
-<h2>Closures</h2>
+<h1>Closures</h1>
 <p>The power of a  closure is in the fact that a variable (<code>count</code>, in this example) is kept alive even after the function has finished running (<code>var bob = counter(2);</code>). To create a closure, you need a function definition inside another function definition, and the inner function uses a variable in the outer function.</p>
 <p class="code">function counter(count) {<br>
   console.log(&quot;&gt;&gt; setting count to &quot; + count);<br>
@@ -37,7 +37,7 @@ var bob = counter(2);<br>
 console.log(bob.getCount()); //3<br>
 console.log(bob.getCount());​ //4</p>
 <p>Notice that the inner closure object is referencing variable <code>count</code> outside of it.</p>
-<h2>Constructor Functions (Custom) </h2>
+<h1>Constructor Functions (Custom) </h1>
 <p> When a function is invoked with the keyword <code>new</code>, it is referred to as a Constructor function. The <code>new</code> means that the new object will have a hidden link to value of the function's prototype member and the <code>this</code> keyword will be bound to the new object. </p>
 <p class="code"> function Pet(animal) {<br>
 	  this.animal = animal;<br>

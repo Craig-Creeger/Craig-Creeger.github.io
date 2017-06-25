@@ -17,25 +17,25 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Models and <em>ember-data</em></h1>
-<h2>Overview</h2>
+<div class="title">Models and <em>ember-data</em></div>
+<h1>Overview</h1>
 <p>The name of the FILE is the name of the model. For example, if the filename is <code>app/models/<strong>pets</strong>.js</code>, then the name of the model is &quot;pets&quot;.</p>
 <p>A model’s data is sent to a Controller or a Component, which will then usually get displayed in a template.</p>
 <p>A model’s data comes from an Adapter that is hooked to a Fixture or an <em>ember-data</em> Store.</p>
-<h2>Fixture Data</h2>
+<h1>Fixture Data</h1>
 <p>Using the <em>ember-data</em> module, you can create a static data store that is helpful during experiments and prototyping. You’ll need to:</p>
 <ol>
 	<li>Create a DS.FixtureAdapter for Ember to use.</li>
 	<li>Create a Model.</li>
 	<li>Tell your route where to find the data.</li>
 </ol>
-<h3>1. Create a DS. FixtureAdapter</h3>
+<h2>1. Create a DS. FixtureAdapter</h2>
 <p>Using Ember CLI, enter <code>ember generate adapter application</code></p>
 <p>It would have created the file <code>app/adapters/application.js</code>. Replace its content with:</p>
 <pre class="prettyprint linenums">import DS from 'ember-data';
 
 export default DS.FixtureAdapter.extend({});</pre>
-<h3>2. Create a Model </h3>
+<h2>2. Create a Model </h2>
 <p>Using Ember CLI, enter <code>ember generate model <em>modelName</em></code></p>
 <p>It would have created the file <code>app/models/<em>modelName</em>.js</code></p>
 <p>Now, you will need to first define the structure of the model (list of the fields and data type), and then reopen the class to enter the data. This can be done similar to this:</p>
@@ -75,7 +75,7 @@ export default DS.Model.extend({
 	}
 	]
 });</pre>
-<h3>3. Associate the data to your route</h3>
+<h2>3. Associate the data to your route</h2>
 <p>In your route, <code>app/routes/<em>modelName</em>.js</code>, you’ll need to specify where to find the data using <code>.find()</code> or a similar method. For example:</p>
 <pre class="prettyprint linenums">import Ember from 'ember';
  	

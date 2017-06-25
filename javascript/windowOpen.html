@@ -19,7 +19,7 @@
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
 <article>
-<h1>Opening a Page in a New Window</h1>
+<div class="title">Opening a Page in a New Window</div>
 <p>There is a Dreamweaver function that will do this for you (and maybe even a jQuery method), but the native Javascript function is so easy you may as well use it.</p>
 <p>If you want to remove browser chrome, you must open a new window (with parameters specified to remove the chrome) instead of trying to remove the chrome from your existing window. This is a security constraint imposed by browsers.</p>
 <p class="code">window.open('myPage.html',<wbr>'windowName',<wbr>'scrollbars=yes,<wbr>resizable=yes,<wbr>width=1054,<wbr>
@@ -44,7 +44,7 @@
 </ul>
 <p>Internet Explorer doesn't understand innerHeight and innerWidth, so also specify width and height if you are interested in controlling that.</p>
 <p>For best compatibility, do not put spaces after the commas in the third parameter.</p>
-<h2>Opening a New Page in the Same Window</h2>
+<h1>Opening a New Page in the Same Window</h1>
 <p>If you simply want to replace the contents of your existing window, then use the Location object:</p>
 <pre class="prettyprint linenums">location.href = 'dir/myPage.html';</pre>
 </article>

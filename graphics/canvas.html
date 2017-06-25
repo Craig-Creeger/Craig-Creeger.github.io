@@ -17,12 +17,12 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Canvas Element</h1>
-<h2>Resources</h2>
+<div class="title">Canvas Element</div>
+<h1>Resources</h1>
 <p>The <a href="canvas-deep-dive/chapter01.html" rel="external">HTML Canvas Deep Dive</a> book has been released as open-source. You can find the source on <a href="https://github.com/joshmarinacci/canvasdeepdive-book" rel="external">GitHub</a>.</p>
 <p><a href="http://www.sitepoint.com/html5-canvas-development-with-ai-canvas/" rel="external">Adobe Illustrator to Canvas</a> extension.</p>
-<h2>Concepts</h2>
-<h3>Immediate Mode drawing vs. Buffered (Path Drawing) Mode drawing</h3>
+<h1>Concepts</h1>
+<h2>Immediate Mode drawing vs. Buffered (Path Drawing) Mode drawing</h2>
 <p>Some drawing functions are executed immediately (<code>strokeRect(), fillRect(),  </code>), while others are buffered (<code>lineTo(), rect(), </code>) and drawn later using a function such as <code>fill()</code> or <code>stroke()</code>.</p>
 <pre class="prettyprint linenums">ctx.beginPath(); //Clears out the buffer
 for(var i=0; i &lt; 1000; i++) {
@@ -34,7 +34,7 @@ for(var i=0; i &lt; 1000; i++) {
 }
 ctx.stroke(); // draws the whole buffer at once</pre>
 <p>Buffering is quicker because the shapes are stored in the graphics processor and it allows for parallel processing.</p>
-<h3>Canvas Size</h3>
+<h2>Canvas Size</h2>
 <p>Resizing a canvas can be tricky if we don't know a few rules that might not be easily guessed:</p>
 	<ol>
 		<li>Changing the width or height property of a canvas in JavaScript erases its content and resets its context,</li>
@@ -70,8 +70,8 @@ function resizeCanvas() {
 	canvas.width = getViewport().width;
 	canvas.height = getViewport().height;
 }</pre>
-<h2>Utility Functions</h2>
-<h3>Line Drawing</h3>
+<h1>Utility Functions</h1>
+<h2>Line Drawing</h2>
 <pre class="prettyprint linenums">function drawLine(x1, y1, x2, y2, color, width) {
 	ctx.save();
 	// set color and lineWidth, if these parameters
@@ -87,7 +87,7 @@ function resizeCanvas() {
 	ctx.stroke();
 	ctx.restore();
 }</pre>
-<h3>Rounded Rectangle</h3>
+<h2>Rounded Rectangle</h2>
 <pre class="prettyprint linenums">function drawRoundedRect(ctx,x,y,width,height,radius,fill,stroke) {
 	ctx.save();
 	ctx.beginPath();
@@ -108,7 +108,7 @@ function resizeCanvas() {
 	}
 	ctx.restore();
 }</pre>
-<h2>Animating Particles on the Canvas</h2>
+<h1>Animating Particles on the Canvas</h1>
 <p>I have a <a href="bees/beeDemo.html">”Flying Bees” demo</a> that shows how to create many instances of, say a circle, and then animate them.</p>
 <!-- InstanceEndEditable -->
 <footer>

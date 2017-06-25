@@ -17,11 +17,11 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>jshint</h1>
+<div class="title">jshint</div>
 <p class="callout"><strong>Fuck me.</strong> Ok, so first there was JSLint, then supposedly JsHint was better, then ESLint. Who knows what to use now. Personally, I’m using StandardJS that uses ESLint under the hood. So, ignore the rest of the page, install <a href="standard.html">StandardJS</a>, and get on with your life.</p>
 <p><a href="http://jshint.com/about/" target="external">Jshint</a> is a code quality checker that is considered to be better than the original, jslint.</p>
 <p>It can be run about a million different ways; in your code editor, in the browser, on the web, in a build tool, etc. I like it in a code editor since that is where you will fix the problems anyway.</p>
-<h2>Configuration</h2>
+<h1>Configuration</h1>
 <p>You can place linting settings:</p>
 <ul>
 	<li>in the *.js file,</li>
@@ -29,9 +29,9 @@
 	<li>in a package.json file</li>
 </ul>
 <p>There are <a href="http://jshint.com/docs/options/" target="external">many settings available</a> to you, but a good starting point is listed below.</p>
-<h3>*.js file</h3>
+<h2>*.js file</h2>
 <pre>/*globals $, require */</pre>
-<h3>package.json</h3>
+<h2>package.json</h2>
 <pre>&quot;jshintConfig&quot;: {
 	&quot;curly&quot;: true,
 	&quot;forin&quot;: true,

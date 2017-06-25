@@ -26,8 +26,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Events</h1>
-<h2>Binding Events with Javascript</h2>
+<div class="title">Events</div>
+<h1>Binding Events with Javascript</h1>
 <p>There are four ways to respond to an event.</p>
 <ol>
 	<li>Element Attribute <em>e.g.</em> <span class="code">&lt;button id=&quot;myBtn&quot; onclick=&quot;doThis();&quot;&gt;</span></li>
@@ -37,9 +37,9 @@
 </ol>
 <p>Using the first method is quick and dirty, but doesn't follow unobtrusive Javascript and is less flexible. The second method is cross-browser and is good for  standard DOM events, however you can only attach one function to the element this way.</p>
 <p>The most flexible method, and only way if you are generating your own events, is to use a combination of methods 3 and 4 because Microsoft uses a non-standard way to bind events.</p>
-<h2>jQuery Events</h2>
+<h1>jQuery Events</h1>
 <p>The previous section talked about pure JavaScript for handling events; it&rsquo;s also possible to <a href="jQuery.html#events">bind events using jQuery</a>.</p>
-<h2>One-Time Events</h2>
+<h1>One-Time Events</h1>
 <p>Sometimes an event need only be called once in your page. For example, clicking a thumbnail which loads and plays a video file or clicking a &quot;more&quot; icon which retrieves and displays extra content via Ajax. However, you've probably defined an event handler which is called every time that action occurs. At best, it's a little inefficient and the browser is retaining unnecessary resources. At worst, your handler could do something unexpected or reload data which is already available. </p>
 <p>Fortunately, it's relatively easy to create one-time event handlers in JavaScript. The process: </p>
 <ol>
@@ -47,19 +47,19 @@
 	<li>When the element is clicked, the handler runs. </li>
 	<li>The handler is removed. Further clicks on that element will no longer call the function.</li>
 </ol>
-<h3>jQuery</h3>
+<h2>jQuery</h2>
 <p> Let's look at the simplest solution first. If you're using jQuery, there's a little-known one() event binding method which implements one-time events.</p>
 <p class="code">$(&quot;#myelement&quot;).one( &quot;click&quot;, function() { </p>
 <p class="code">&nbsp;&nbsp;alert(&quot;You'll only see this once!&quot;); </p>
 <p class="code">}); </p>
 <p>It’s used identically to other jQuery event methods. For more information, refer to <a href="http://api.jquery.com/one/">api.jquery.com/one/</a>.</p>
-<h3>Plain Javascript</h3>
+<h2>Plain Javascript</h2>
 <p>Refer to the <a href="http://www.sitepoint.com/create-one-time-events-javascript/" rel="external">original article that describes One-time events</a>.</p>
-<h2>Custom Events</h2>
+<h1>Custom Events</h1>
 <p>In the example above, all the events were getting bound to DOM elements, which are smart enough to know about standard mouse and keyboard events. If you want to place a listenener on one of your own objects, then you'll need to create a custom event handler.</p>
 <p><a href="http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/" rel="external">http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/</a></p>
 <p><a href="http://www.codeproject.com/Articles/13914/Observer-Design-Pattern-Using-JavaScript" rel="external">http://www.codeproject.com/Articles/13914/Observer-Design-Pattern-Using-JavaScript</a> Very in depth article on creating the Observer pattern.</p>
-<h3>Example</h3>
+<h2>Example</h2>
 <div class="callout"><div id="lcd">&nbsp;</div> <button id="updateBtn">Update</button></div>
 <p><button onClick="alert(model.curTime);">Show Last Time</button></p>
 <p>The HTML code that creates the above example is shown here.</p>
@@ -86,13 +86,13 @@
 	<li><a href="../js/common.js" rel="external"><code>common.js</code></a></li>
 	<li><a href="scripts/EventExample.js" rel="external"><code>EventExample.js</code></a></li>
 </ul>
-<h2>Deferreds and Promises</h2>
-<h3>Resources</h3>
+<h1>Deferreds and Promises</h1>
+<h2>Resources</h2>
 <p><a href="http://net.tutsplus.com/tutorials/javascript-ajax/wrangle-async-tasks-with-jquery-promises/" rel="external">Wrangle Async Tasks With JQuery Promises</a> tutorial</p>
 <p><a href="http://wiki.commonjs.org/wiki/Promises/A" rel="external">Promises/A specification</a></p>
 <p><a href="http://learn.jquery.com/code-organization/deferreds/" rel="external">jQuery Tutorial page</a></p>
 <p><a href="http://api.jquery.com/category/deferred-object/" rel="external">jQuery Deferred API</a></p>
-<h2>Event Capturing and Bubbling</h2>
+<h1>Event Capturing and Bubbling</h1>
 <p>DOM Elements are nested in each other. For example, the &lt;body&gt; can contain a &lt;div&gt; and that can contain a &lt;section&gt; and that can contain a &lt;h1&gt;.</p>
 <pre>&lt;body&gt;
 	&lt;div&gt;

@@ -15,21 +15,21 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Typical Website</h1>
-<h2>Checklist &mdash; or Step-by-Step Guide to Creating a WordPress Site</h2>
+<div class="title">Typical Website</div>
+<h1>Checklist &mdash; or Step-by-Step Guide to Creating a WordPress Site</h1>
 <p>From <a href="http://wp.smashingmagazine.com/2011/12/14/15-step-checklist-creating-perfect-wordpress-website/" rel="external">Smashing Magazine</a></p>
 <h2 id="pages">Pages</h2>
 <p>Create a home page. Create a page titled "Blog" but don't give it any content. Then fill-out this form.</p>
 <p><img src="setup.png" width="487" height="235"></p>
-<h2>Protection from Bad Guys</h2>
+<h1>Protection from Bad Guys</h1>
 <p>A solution some people use is a combination of <a href="https://www.cloudflare.com/" rel="external">CloudFlare</a>, <a href="http://bad-behavior.ioerror.us/" rel="external">Bad Behavior</a>, and Akismet or <a href="http://antispambee.com/" rel="external">Antispam Bee</a>. I will be trying just CloudFlare and Antispam Bee on Sophia's Spirit.</p>
-<h2>Header Image Size</h2>
+<h1>Header Image Size</h1>
 <p>If you want to change the default size of the header image, change these two lines in functions.php.</p>
 <pre class="prettyprint linenums"> define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyeleven_header_image_width', 1000 ) );
  define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyeleven_header_image_height', 288 ) );</pre>
-<h2>Sticky Posts</h2>
+<h1>Sticky Posts</h1>
 <p>Convert a regular post to a “sticky post” by doing a “quick edit” on it and then choosing sticky post; or do a regular (full) edit and then click the Visibility link to reveal the stick post option.</p>
-<h2>Moving Site to a Different Domain Name</h2>
+<h1>Moving Site to a Different Domain Name</h1>
 <p>The process for moving a WordPress site from one web hosting company to another can be achieved by simply moving all the PHP and image files,  the database, then a find/replace on the domain name. The detailed steps are listed here.</p>
 <ol>
 	<li>Backup all the site files. I am using Dreamweaver to copy all the files on the old site to my local machine.</li>

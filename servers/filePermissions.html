@@ -17,15 +17,15 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>OS X File Permissions and Flags</h1>
-<h2>Locked Files</h2>
+<div class="title">OS X File Permissions and Flags</div>
+<h1>Locked Files</h1>
 <p>A file is considered locked when that flag is set. To batch unlock files (common when copying files from a CD, or when Dreamweaver has locked the files when using Check-in/Check-out), issue the command: <code>chflags -R nouchg /path/to/folder</code></p>
 <p><code>nochg</code> means clear the &quot;user immutable flag&quot;, which apparently is a fancy way of saying &quot;locked&quot;. Use <code>chg</code> to set the file to locked.</p>
-<h2>Unix file permissions </h2>
+<h1>Unix file permissions </h1>
 <p>In Unix, each file belongs to a single user and a single group. Unix file permissions control the ability to perform three actions: read from a file, write to a file, and execute a file. For a given file, the permissions allow or deny each of these three actions for the user who owns the file, the group the file belongs to, and everyone else. That's a total of nine permissions: read, write, and execute for owner, group, and other. In the text-based interface of Unix, the actions are traditionally abbreviated by the letters &quot;r&quot;, &quot;w&quot;, and &quot;x.&quot; The file's owner and group are also displayed.</p>
-<h2>ACL Permissions</h2>
+<h1>ACL Permissions</h1>
 <p>Unix only allows one user, or group, defined to have permissions set on a file. To get around that limitation, ACL's come to the rescue. OS X let's these two co-exist by first applying standard Unix permissions, and then applying any ACL's that may exist.</p>
-<h3>More Info</h3>
+<h2>More Info</h2>
 <p>I have a .webarchive in my programming folder that describes this better. Also, check out the books from Safari Online.</p>
 <!-- InstanceEndEditable -->
 <footer>

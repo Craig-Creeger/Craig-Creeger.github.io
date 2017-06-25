@@ -15,8 +15,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Adding HTML5 Media</h1>
-<h2><a name="audio"></a>Audio</h2>
+<div class="title">Adding HTML5 Media</div>
+<h1><a name="audio"></a>Audio</h1>
 
 <p>HTML5 audio is created with the <code>&lt;audio&gt;</code> tag.</p>
 <pre class="prettyprint linenums">&lt;audio controls preload=&quot;none&quot;&gt;
@@ -29,9 +29,9 @@
 	<source src="../assets/audio/audio1.ogg" type="audio/ogg">
 </audio>
 <p style="margin-top:1.5em;">The <code>controls</code> attribute will display the browser's default audio controls. Include the <code>loop</code> attribute to make the audio play continuously. The browser will choose the first <code>&lt;source&gt;</code> file that it knows how to play. It is also possible to embed a Flash back-up inside the <code>&lt;audio&gt;</code> tag below the last <code>&lt;source&gt;</code> tag.</p>
-<h3>Converting Audio Formats</h3>
+<h2>Converting Audio Formats</h2>
 <p>Use the open-source program <em>Audacity</em> to create the various file formats.</p>
-<h2><a name="video"></a>Video</h2>
+<h1><a name="video"></a>Video</h1>
 <video controls preload="none" width="854" height="480">
 	<source type="video/mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4">
 </video>
@@ -83,7 +83,7 @@
 	&lt;source src=&quot;assets/ShortVideoTest.ogv&quot; type=&quot;video/ogg&quot;&gt;
 &lt;/video&gt;</pre>
 <p>Due to a bug in iOS, you should always place <code>mp4</code> first. Then it may be best to go <code>webm</code>, and <code>ogv</code>.</p>
-<h3>Common Attributes</h3>
+<h2>Common Attributes</h2>
 <ul>
 	<li>preload=&quot;none&quot;</li>
 	<li>controls</li>
@@ -93,7 +93,7 @@
 	<li>width, height</li>
 	<li>src=&quot;yourVideo.mp4&quot;</li>
 </ul>
-<h2>Custom Control Buttons</h2>
+<h1>Custom Control Buttons</h1>
 <p>The Audio and Video tags expose an API you can hook into for controlling the media if you do not want to use the brower’s native transport buttons. Use code similar to this:</p>
 <pre class="prettyprint linenums">var myAudio = document.getElementsByTagName('audio')[0];
  	
@@ -107,7 +107,7 @@ document.getElementById('btnRewind').onclick = function() {
 	myAudio.currentTime = 0;
 	myAudio.play();
 };</pre>
-<h2>Help, It's Not Working</h2>
+<h1>Help, It's Not Working</h1>
 <p><span style="color:red; font-weight:bold;">The most important thing to remember</span> is to make sure your server is serving video files with the correct MIME type in the Content-Type header. If not, videos might not work properly, even if they were working on a local copy of your site. In an Apache <code>httpd.conf</code> it's enough by adding these lines:</p>
 <pre class="prettyprint linenums">AddType video/ogg .ogv
 AddType video/mp4 .mp4
@@ -115,7 +115,7 @@ AddType video/webm .webm</pre>
 <p>Some web hosts, in trying to save bandwidth, gzip everything by default—including video files! In Firefox and Opera, seeking will not be possible or the video may not play at all if a video file is gzipped. If this is occurring to you please check your server / hosts and disable the gzipping of Ogg and other media files. You can switch off gzipping for video files in your .htaccess file by adding this line:</p>
 <pre class="prettyprint linenums">SetEnvIfNoCase Request_URI \.(og[gv]|mp4|m4v|webm)$ no-gzip dont-vary
 </pre>
-<h3><a name="convertVideo"></a>Converting  Video Formats</h3>
+<h2><a name="convertVideo"></a>Converting  Video Formats</h2>
 <p>You can use VLC to convert to OGV (theora) video, but sometimes the quality isn't very good. It is very fast however. Otherwise, try <a href="http://firefogg.org/" rel="external">Firefogg</a> with these settings:</p>
 <p class="code"> video bit rate=512</p>
 <p class="code"> vid quality=blank</p>
@@ -123,15 +123,15 @@ AddType video/webm .webm</pre>
 <p class="code"> mono</p>
 <p>Handbrake can also be used to make  conversions to h.264, but be sure to <a href="http://www.wfu.edu/~yipcw/atg/hd/h264/moovatom/" rel="external">check the &quot;web optimized&quot; checkbox to allow the video to load progressively</a>.</p>
 <div class="callout">
-	<h4>Progressive Download of Video Files</h4>
+	<h3>Progressive Download of Video Files</h3>
 	<p>There doesn’t ever seem to be a problem with OGG Video files, but h.264 videos have wasted me a lot of time. The videos can be encoded with file information at the beginning of the file, or at the end. If that information is at the end, then the entire video must be downloaded before it will begin playing. On the other hand, pushing that data (A separate “hint” track is used to include streaming information in the file.) to the beginning of the file will allow for progressive download.</p>
-	<h4>Definition of Terms</h4>
+	<h3>Definition of Terms</h3>
 	<p>This is also a good time to define <em>progressive</em> download and <em>streaming</em> video. The terms are often, in error, used interchangably. With streaming video, it is possible to jump to a specific location in the video and dynamically alter the bit-rate depending on the internet connection speed. It takes a dedicated video server and specialized software to offer true streaming video. Leave that to the pros.</p>
 	<p>For a small-business or hobbyist website, progressive downloading is what you want. The video will start at the beginning, and will start to play just as soon as there is enough frames in the buffer to allow smooth playback.</p>
 </div>
 <p><a href="http://www.getmiro.com/" rel="external">Miro</a> is a free video converter for the Mac but it is too simple to use; there are no settings for tweaking the conversion.</p>
 <p>There is a <a href="../assets/Adobe Video Tools.zip">F4V Post Processor and FLVCheck</a> tool from Adobe that might be able to fix some playback problems if you are having troubles with your F4V file.</p>
-<h2>Backwards Compatibility with Flash</h2>
+<h1>Backwards Compatibility with Flash</h1>
 <p>I have tried several solutions, but the easiest and most robust method is the <a href="mediaelement/demo/mediaelementPxPro.html">MediaElement</a> solution. Highly recommended.</p><!-- InstanceEndEditable -->
 <footer>
 		<hr>

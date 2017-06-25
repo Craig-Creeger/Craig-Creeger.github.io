@@ -5,8 +5,8 @@
 <body>
 
 <div id="header">
-<h2>Chapter 5</h2>
-<h1>Making a Game</h1>
+<h1>Chapter 5</h1>
+<div class="title">Making a Game</div>
 </div>
 
 <div id="content">
@@ -21,7 +21,7 @@
     <p><i>Simple rectangle graphics (click to play)</i></p>
 </div>
 
-<h3><a id="drawspaceship">Draw the spaceship with an Image Sprite</a></h3>
+<h2><a id="drawspaceship">Draw the spaceship with an Image Sprite</a></h2>
 
 <p>In the directory with this document and the game*.html files, create a new HTML file called mygame.html and copy game1.html into it.  This contains the initial version of the game you saw above.</p>
 
@@ -85,7 +85,7 @@ function loadResources() {
 
 
 
-<h3><a id="bulletsandbombs">Sprite Animation for Bullets and Bombs</a></h3>
+<h2><a id="bulletsandbombs">Sprite Animation for Bullets and Bombs</a></h2>
 
 <p>Now we need some sprites for the spaceship bullets and alien bombs. Again we will load up the images into variables. Update near the top of the code to look like this (the new code is in bold).</p>
 
@@ -205,7 +205,7 @@ function drawEnemyBullets(c) {
 
 
 
-<h3><a id="aliens">Procedural Graphics for Aliens</a></h3>
+<h2><a id="aliens">Procedural Graphics for Aliens</a></h2>
 <p>Let's change how we draw the aliens. Rather than using sprites we will do it procedurally, meaning all drawing will be done by the code rather than beforehand in a drawing program. Our goal is a green circle filled with a stream of little white orbs that float around in a loop. They look like this:</p>
 
 <p class='photo'><img src="images/new_alien.png"/></p>
@@ -296,7 +296,7 @@ function circlePath(c, x, y, r) {
     <p><i>Aliens with procedural animation (click to play)</i></p>
 </div>
 
-<h3><a id="explosions">Particle Simulator for Explosions</a></h3>
+<h2><a id="explosions">Particle Simulator for Explosions</a></h2>
 
 <p>Now let's finally add a real explosion using particles when the player dies. First we will move the player explosion into a separate function like this:</p>
 
@@ -363,7 +363,7 @@ function drawPlayerExplosion(c) {
     <p><i>Completed game (click to play)</i></p>
 </div>
 
-<h3>Conclusion</h3>
+<h2>Conclusion</h2>
 
 <p>This hands on lab chapter just barely touches what's possible with the HTML Canvas tag.  I encourage you to play around with this game sample more by adding a background, changing colors, adjusting animation speeds, and choosing new sprites.</p>
 

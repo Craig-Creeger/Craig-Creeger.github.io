@@ -21,17 +21,17 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Backbone.js </h1>
-<h2>Models</h2>
+<div class="title">Backbone.js </div>
+<h1>Models</h1>
 <p>Their purpose is to hold all the attributes of a logical piece of information.</p>
-<h3>Basic Interactions</h3>
+<h2>Basic Interactions</h2>
 <ul>
 	<li>To edit an attribute, call <code>.set({&quot;attr name&quot;: value});</code></li>
 	<li>To retrieve an attribute, call <code>.get(&quot;attr name&quot;);</code></li>
 	<li><code>save()</code> will call validate() if it is present and then sync to the database if it passes validation.</li>
 	<li><code>destroy()</code> will delete the model from the database and fire the &quot;destroy&quot; event.</li>
 </ul>
-<h3>Hints</h3>
+<h2>Hints</h2>
 <p><em>Computed Values:</em> Backbone really wants all of the attributes persisted to the database. If you have a read-only, computed attribute, then make it a function of the model. To pass the computed value to a view, you can merge the attributes with the function. For example,<code> _.extend({'duration': this.model.computedField()}, this.model.toJSON())</code></p>
 <p><em>Validation:</em> Validation can happen in a few locations:</p>
 <ul>
@@ -40,23 +40,23 @@
 	<li>On the server.</li>
 </ul>
 <p>The concept of optimistic changes to a collection makes Backbone validation problematic. If validation fails, the view is already updated with bad data, so you will then need to back-out those changes if the “invalid” event gets fired. This seems like a lot of back and forth and possibility for conflicts.It is probably best to perform validatation right before the save, which is the default behavior of Backbone (vs. manually validating during a <code>set({key:value},{validate:true})</code>).</p>
-<h2>Collections</h2>
+<h1>Collections</h1>
 <p>Collections are a list of models. You can fill a collection using fetch or reset. </p>
-<h3>Basic Interactions</h3>
+<h2>Basic Interactions</h2>
 <ul>
 	<li>set() will update a model in the collection</li>
 	<li>get() will return a model from the collection</li>
 	<li>fetch() retrieves the default models from the database and fills the collection</li>
 	<li>reset([models]) loads the passed models into the collection</li>
 </ul>
-<h3>Disconnected Collections</h3>
+<h2>Disconnected Collections</h2>
 <p>Most of the time the models will get loaded from the database via Collection.fetch() or some other means, but it is also possible to simply work with transient data that exists only in memory. Simply shove models into the collection when you create it. Ex:</p>
 <pre>var myCollection = new App.MyCollection([
 	{id: 1, name: 'alice'},
 	{id: 2, name: 'bob'},
 	{id: 3, name: 'craig'}
 ]);</pre>
-<h2>Views</h2>
+<h1>Views</h1>
 <p>Are responsible for DOM display and interaction. Data will be passed in. Keyboard and mouse events are tied to that DOM, and listeners are created to respond to other actions in the app.</p>
 <p>Your <strong>goal is to have views automatically update themselves</strong> when a model is created, updated, or destroyed. This is achieved by listening to events that get fired by the model attached to the view. For example: </p>
 <pre class="prettyprint linenums">app.MyView = Backbone.View.extend({
@@ -66,15 +66,15 @@
 		this.listenTo(this.model, 'destroy', this.remove);
 	},
 	...</pre>
-<h3>Basic Interactions</h3>
+<h2>Basic Interactions</h2>
 <ul>
 	<li><code>render()</code> The job of render is to shove some HTML into the view’s <code>el</code> (or <code>$el</code>) property             and then return the entire view. If you specify the el when you create the view, then you can render the view by simply calling <code>view.render()</code>. If you left el blank, then you will need to do: <code>$('#yourContainer').html(view.render().el);</code></li>
 </ul>
-<h2>Events</h2>
+<h1>Events</h1>
 <p>Most of your event hooks ups are going to happen inside a view (and most inside your main AppView).</p>
 <p>Use the .on() syntax when binding a callback to this object's events.</p>
 <p>Use the this.listenTo('otherObject', event, callback) syntax when working with a different object. </p>
-<h3>Built-In Events</h3>
+<h2>Built-In Events</h2>
 <table class="dataTable">
 	<thead>
 		<tr>
@@ -142,7 +142,7 @@
 	</tbody>
 </table>
 <p>&nbsp;</p>
-<h2>Learning Resources</h2>
+<h1>Learning Resources</h1>
 <p>There is a fair amount of documentation for Backbone, a lot of it complete crap. I wouldn&rsquo;t call these resources great, but they are best I&rsquo;ve come across so far:</p>
 <ol>
 	<li><a href="http://addyosmani.github.io/backbone-fundamentals/" target="external">Developing Backbone.js Applications</a> by Addy Osmani</li>
@@ -173,10 +173,10 @@
 	<li><a href="http://aaronhardy.com/javascript/javascript-architecture-backbone-js-events/" rel="external">Aaron Hardy</a></li>
 	<li><a href="https://speakerdeck.com/jcarouth/micro-framework-and-javascript-applications" rel="external">https://speakerdeck.com/jcarouth/micro-framework-and-javascript-applications</a></li>
 </ul>
-<h3>Technology Articles</h3>
+<h2>Technology Articles</h2>
 <p><a href="http://www.ibm.com/developerworks/webservices/library/ws-restful/" rel="external">RESTful Web Services</a> article from IBM DeveloperWorks.</p>
-<h2>REST Set-up with Slim/PHP/MySQL for Backbone</h2>
-<h3>MySQL</h3>
+<h1>REST Set-up with Slim/PHP/MySQL for Backbone</h1>
+<h2>MySQL</h2>
 <p>Obviously, you need your database up and running. The MAMP on OSX connection is:</p>
 <pre>function getConnection() {
   $dbhost=&quot;localhost&quot;;
@@ -189,9 +189,9 @@
 }</pre>
 <p>The above function is actually located in Slim&rsquo;s <code>index.php</code> page. Which is to say, make sure the correct connection info is specified in Slim&rsquo;s <code>index.php</code> page.</p>
 <p>Backbone makes the assumption that every table has a primary key column called &quot;id&quot;. You can tell it to use another similar type of column (auto-increment) with idAttribute.</p>
-<h3>Slim</h3>
+<h2>Slim</h2>
 <p>Put the Slim directory inside folder <code>api</code>. That same folder will contain Slim&rsquo;s <code>index.php</code> file and a .htaccess file. The .htaccess file is a critical bit of magic that allows Slim to work. It tells Apache to rewrite the URL to Slim&rsquo;s <code>index.php</code> if the file requested is not found (which, of course, is why those files had better not exist!).</p>
-<h3>Backbone</h3>
+<h2>Backbone</h2>
 <p>When setting the url and urlRoot properties, keep in mind that it is a relative address to the <code>api</code> folder from your application's HTML page. Also, include the name of the Slim route (in this case, <code>/airplane</code>). That same route must exist in Slim&rsquo;s <code>index.php</code> file and there should not be an actual directory/file called <code>airplane</code> inside the <code>api</code> folder because Apache's rewrite rule states &ldquo;if no file with that name exists, then call Slim&rsquo;s <code>index.php</code>&rdquo;. This is what we want; Slim&rsquo;s <code>index.php</code> should be processing <em>all</em> data requests.</p>
 <pre>App.Plane = Backbone.Model.extend({
  &nbsp;&nbsp;&nbsp;&nbsp;urlRoot : &quot;../api/airplane&quot;
@@ -202,9 +202,9 @@ App.Planes = Backbone.Collection.extend({
  &nbsp;&nbsp;&nbsp;&nbsp;url : &quot;../api/airplane&quot;
  });</pre>
 <p>Another way to think of this is, urlRoot and url are mapping data access functions to a physical location on the web server. If we were NOT using Slim (say you are writing your own REST interface from scratch) then you very well may have actual files located there. e.g. <code>http://myDomain.com/api/airplane/index.php</code></p>
-<h3>Backbone Routes vs. Slim Routes</h3>
+<h2>Backbone Routes vs. Slim Routes</h2>
 <p>These strings can look identical, therefore it is important (and confusing!) to understand that they are completely separate and serve different purposes.</p>
-<h4>Backbone Routes</h4>
+<h3>Backbone Routes</h3>
 <p>Backbone Routes are requested from the web server as a URL to your webpage (say, <span style="color:#060">http://myDomain.com/index.html</span>) plus a fragment identifier (say, <span style="color:darkred">#/plane/15</span>).</p>
 <p style="font-size:1.5em; padding-left:2em; color:#060">http://myDomain.com/index.html<span style="color:darkred">#/plane/15</span></p>
 <p>In Backbone, you would define the above route as:</p>
@@ -218,7 +218,7 @@ App.Planes = Backbone.Collection.extend({
 <p>Don't make this more complicated than it deserves - all you are doing is requesting your index page. Tthe page is loaded by your browser, your Javascript code starts running, and it will hit the line:</p>
 <pre>var app = new <span style="background-color:yellow">AppRouter</span>();</pre>
 <p>which then inspects the fragment identifier (<span style="color:darkred">#/model/15</span>), and finally kicks off the <span style="background-color:palegreen">function</span>().</p>
-<h4>Slim Routes</h4>
+<h3>Slim Routes</h3>
 <p>The reason I am using Slim in this project is because it's little trick of magic is to execute a PHP function you tell it to, depending on the URL requested by your users (or more likely, Backbone). For example, if Backbone requests from the webserver <code>http://myDomain.com/api/airplane/15</code>, Apache will, of course try to find the default file (index.html) at that location. Namely, <code>http://myDomain.com/api/airplane/15/index.html</code>. This file does not, and should not exist. Why? Because we are tricking Apache into responding with Slim&rsquo;s <code>index.php</code> file through the use of Apache's RewriteEngine.</p>
 <p>So, we are requesting (via  the HTTP <em>GET</em> method) <code>http://myDomain.com/api/airplane/15</code>. Instead, <code>http://myDomain.com/api/index.php</code> is called. That file contains and executes:</p>
 <pre class="prettyprint linenums">$app = new Slim();
@@ -238,7 +238,7 @@ function getSpecificAirplane($id) {
  	}
 }</pre>
 <p>When PHP hits <span style="background-color:papayawhip;"><code>$app-&gt;run();</code></span> it will inspect the URL that was actually called, try to find a match (line two above), and then call the appropriate function (getSpecificAirplane in this case).</p>
-<h2>Key properties of Backbone objects</h2>
+<h1>Key properties of Backbone objects</h1>
 <table class="dataTable">
 	<tr>
 		<td>Views</td>
@@ -297,7 +297,7 @@ function getSpecificAirplane($id) {
 		<td>Convenience to create a new instance of a model within a collection. Equivalent to instantiating a model with a hash of attributes, saving the model to the server, and adding the model to the set after being successfully created.</td>
 	</tr>
 </table>
-<h2>Common Patterns</h2>
+<h1>Common Patterns</h1>
 <p>Views listen to their model&rsquo;s &ldquo;change&rdquo; event, then re-render themselves.</p>
 <p>Views listen to changes in their editable fields, and then call the save method on the model. i.e. </p>
 <pre>app.MyView = Backbone.View.extend({

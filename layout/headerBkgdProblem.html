@@ -15,20 +15,20 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Header and Footer Background Problems</h1>
+<div class="title">Header and Footer Background Problems</div>
 <p><img src="../img/headerProblem.png" width="350" height="146" alt="header example" style="float:right; margin:0 0 1em 1em;">You may find the header or footer background color doesn’t reach as far as it should. For example, in this screenshot the white background (of the <code>&lt;header&gt;</code> element) should extend all the way to the top of the page.</p>
-<h3>Problem code</h3>
+<h2>Problem code</h2>
 <p><code>&lt;header&gt;<br>
 	 	&lt;p&gt;&lt;img src=&quot;images/globeLogo.jpg&quot;&gt;&lt;/p&gt;<br>
 	&lt;/header&gt;</code></p>
 <p>The reason this appears to not be working is because there is (by default) top and bottom margin on <code>&lt;p&gt;</code> tags. So, the gap at the top of the screen is there intentionally—that is the margin doing its job of spacing block-level elements away from each other.</p>
-<h3>Solution 1—Convert the margin to padding.</h3>
+<h2>Solution 1—Convert the margin to padding.</h2>
 <p> This is done be removing the 1em margin from the &lt;p&gt; tag and creating a 1em top padding on the containing element.</p>
 <p><code>&lt;header style=&quot;padding-top:1em&quot;&gt;<br>
 	 	&lt;p style=&quot;margin-top:0&quot;&gt;<br>
 	    	&lt;img src=&quot;images/globeLogo.jpg&quot;&gt;&lt;/p&gt;<br>
 	&lt;/header&gt;</code></p>
-<h3>Solution 2—Set overflow:auto</h3>
+<h2>Solution 2—Set overflow:auto</h2>
 <p>This is now my preferred method. Set the <code>overflow</code> property to anything other than <code>visible</code>. This will make the block extend itself to contain its childrens’ margins and any floated items.</p>
 <p><code>&lt;header style=&quot;overflow:auto;&quot;&gt;&nbsp;&nbsp;<span style="color:darkgreen;">&lt;!-- or overflow:hidden --&gt;</span><br>
  	&lt;p&gt;&lt;img src=&quot;images/globeLogo.jpg&quot;&gt;&lt;/p&gt;<br>

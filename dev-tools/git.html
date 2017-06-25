@@ -18,9 +18,9 @@
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!--
 InstanceBeginEditable name="content" -->
-<h1>Git</h1>
+<div class="title">Git</div>
 
-<h2>Resources for Learning</h2>
+<h1>Resources for Learning</h1>
 <p><a href="http://alistapart.com/article/git-the-safety-net-for-your-projects"
 target="external">http://alistapart.com/article/git-the-safety-net-for-your-projects</a></p>
 <p><a href="https://www.atlassian.com/git/" target="external">https://www.atlassian.com/git/</a></p>
@@ -28,14 +28,14 @@ target="external">http://alistapart.com/article/git-the-safety-net-for-your-proj
 freaking awesome. That said, once you get used to the CLI, using your terminal is going to be the
 fast most of the time.</p>
 
-<h2>Concepts</h2>
+<h1>Concepts</h1>
 <ul>
 	<li>You commit <em>changesets</em>.</li>
 	<li>Each commit has a parent commit.</li>
 	<li>All repos are equal—there is no central master. (Although in practice one is often designated the main repo.)</li>
 </ul>
 
-<h2>Configuration</h2>
+<h1>Configuration</h1>
 <table class="dataTable">
 	<thead>
 		<tr>
@@ -64,24 +64,24 @@ fast most of the time.</p>
 </table>
 <p>User Level is where you will typically be interacting with.</p>
 <p class="callout pushRight" style="width: 55%;">Caution: I have aliased Sublime Text, and have it in my path, which is why this works. If you have trouble, you can also do the alias, which is the first line.</p>
-<h3>Default editor</h3>
+<h2>Default editor</h2>
 <p>To set the default editor to Sublime, do this:</p>
 <pre class="prettyprint linenums">ln -s /Applications/Sublime Text.app/Contents/SharedSupport/bin/subl /usr/local/bin
 git config --global core.editor 'sublime --wait'</pre>
 
-<h2>Basic Commands</h2>
-<h3>git init [directory]</h3>
+<h1>Basic Commands</h1>
+<h2>git init [directory]</h2>
 <p>Creates a new repo in your current directory (or in the directory specified by the optional [directory] parameter.)</p>
 <p><em>Edge Case:</em> If you are creating a repo that you intend to be the “central” repo, use the --bare flag. That will not give the repo a “working directory” effectively makes it impossible to edit and commit directly in that repo.</p>
-<h3>git clone <em>repo</em> [directory]</h3>
+<h2>git clone <em>repo</em> [directory]</h2>
 <p>Makes a copy of the given repository. Git will create a new folder using the name of the project. Optionally, you can specify the name of the directory (this will not create a new sub-folder within it, so this is good if you want to use a different name than the original folder name).</p>
-<h3>git status</h3>
+<h2>git status</h2>
 <p>Show files that are modified or staged.</p>
-<h3>git add -A</h3>
+<h2>git add -A</h2>
 <p>Add all modified files to the stage. This is usually done right before you want to commit.</p>
-<h3>git commit</h3>
+<h2>git commit</h2>
 <p>Saves all files in the stage to the repo.</p>
-<h3>git commit --append</h3>
+<h2>git commit --append</h2>
 <p>Allows you to fix-up the last commit (only do this if you have not pushed to a remote server). You can add/remove files from the commit, or simply change the commit message.</p>
 <!-- InstanceEndEditable -->
 <footer>

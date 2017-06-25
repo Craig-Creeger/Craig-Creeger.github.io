@@ -51,11 +51,11 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Basic Principles of Typographic Design</h1>
-<h2><span style="margin-left:-.5em;">“</span>Practical Typography” by Matthew Butterick</h2>
+<div class="title">Basic Principles of Typographic Design</div>
+<h1><span style="margin-left:-.5em;">“</span>Practical Typography” by Matthew Butterick</h1>
 <p>This online book on typography is fantastic. At the <em>very least</em>, you should read the <a href="http://practicaltypography.com/typography-in-ten-minutes.html" rel="external">Typography in Ten Minutes</a> chapter.</p>
 <p><a href="http://practicaltypography.com/index.html" rel="external">http://practicaltypography.com/index.html</a></p>
-<h2>General Font Information</h2>
+<h1>General Font Information</h1>
 <div class="callout">
 	<h3 style="margin-top:0">Terms</h3>
 	<p><dfn title="font">A <em>font</em> is a specific style and weight of a typeface.</dfn> On the web, font can be used interchangably with <em>typeface</em>.</p>
@@ -67,7 +67,7 @@
 p { font-size: 1em; }
 h1 { font-size: 1.5em; }</pre>
 <p><code>rem</code> is a relative unit, but it&rsquo;s always relative to a fixed base value, which is the font size of the root element of the document (in HTML, that's always the <code>html</code> element).</p>
-<h3>Specifying a Typeface</h3>
+<h2>Specifying a Typeface</h2>
 <p>To choose a font, use CSS the property <code>font-family</code>. Example:</p>
 <pre class="prettyprint linenums">&lt;style&gt;
 	p {
@@ -102,7 +102,7 @@ h1 { font-size: 1.5em; }</pre>
 		<p><a href="http://ethos.bl.uk/OrderDetails.do?did=1&uin=uk.bl.ethos.301973" rel="external">Ole Lund&rsquo;s 1999 Ph.D. dissertation</a> posited a counterclaim that sans serif fonts are no less readable than serif typefaces. I learned of this through a <a href="http://asserttrue.blogspot.se/2013/01/the-serif-readability-myth.html" rel="external">blog post</a>, but this blog didn't touch on other factors that can make a huge difference; namely line length, contrast, leading, tracking, kerning, justification, size, and weight.</p>
 		<p style="line-height:.9;font-size:smaller;width:50%;text-align:justify;">For example, you can screw up the readability if the leading is incorrectly set for the specific typeface you choose. For me, the argument is not sans serif v. serif, but rather choose a font with high legibility and then ensure all the other factors are correct. You would not want to read this paragraph much longer, right? :-)</p>
 		<p>Read &ldquo;<a href="http://blog.usabilla.com/web-designers-need-to-remember-typography-influences-usability/" rel="external">Web Designers Need To Remember Typography Influences Usability</a>&rdquo; for some more basic information about choosing and setting web type.</p>
-<h2>Legibility</h2>
+<h1>Legibility</h1>
 <p>Are the <strong><em>individual characters</em></strong> easily made out? In other words, how difficult is it to determine what each letter is? Highly legible letters are:</p>
 <ul>
 	<li>Big enough to see (font size on the web is often debated; for full size monitors about an arms length away, I like to use 16px.)</li>
@@ -111,7 +111,7 @@ h1 { font-size: 1.5em; }</pre>
 </ul>
 <p><span class="legible">Z</span>: This “Z” is very legible.</p>
 <p><span class="illegible">z</span>: This "Z" is very illegible.</p>
-<h2>Display Text</h2>
+<h1>Display Text</h1>
 <p>Large text such as headers and titles (pretty much anything that is not a paragraph of text) is called “display text”. It is fun to play with because you are not limited to the readability rules listed above and you may not even have to follow the legibility rules either.</p>
 <p>Example of various techniques being used to create engaging display text.</p>
 <div>
@@ -121,7 +121,7 @@ h1 { font-size: 1.5em; }</pre>
 	<p class="displayTags">Good Web Design is Fun for All</p>
 	<p class="display">Inc.</p>
 </div>
-<h2>CSS Shorthand <em>font</em> Property</h2>
+<h1>CSS Shorthand <em>font</em> Property</h1>
 <p>Font information can be specified using a shorthand method, but I find it confusing and not worth using. If you must use the shorthand, <a href="../assets/css-font-shorthand-cheat-sheet.pdf" rel="external">use this guide</a>.</p>
 <p>&nbsp;</p>
 <!-- InstanceEndEditable -->

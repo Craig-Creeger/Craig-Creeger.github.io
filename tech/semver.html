@@ -17,8 +17,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Semantic Versioning (SemVer)</h1>
-<h2>Definition</h2>
+<div class="title">Semantic Versioning (SemVer)</div>
+<h1>Definition</h1>
 <p><a href="http://semver.org" target="external">Sementic Versioning</a> is an unofficial standard used to describe changes to your software versions. It uses a tuple of numbers where the first is the Major version, the second is Minor, and the final is the Patch version.</p>
 <p>For example, using jQuery 2.1.8.</p>
 <p>2 = Major version<br>
@@ -26,7 +26,7 @@
 	8 = Patch version
 </p>
 <div class="callout">
-	<h1>Summary</h1>
+	<div class="title">Summary</div>
 	<p>Given a version number MAJOR.MINOR.PATCH, increment the: </p>
 	<ol>
 		<li>MAJOR version when you make incompatible API changes, </li>
@@ -35,22 +35,22 @@
 	</ol>
 	<p>Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.</p>
 </div>
-<h2>Usage with npm and Bower</h2>
+<h1>Usage with npm and Bower</h1>
 <p>npm’s <code>package.json</code> and Bower’s <code>bower.json</code> files often include dependencies to the project. When including external packages you can specify an exact version, a range, greater than, etc.</p>
 <p>The primitive operators are: &gt;, &gt;= , &lt;, &lt;=, and =. Boolean logic operators are: space = And, || = Or.</p>
 <p>Advanced syntax operators are: ~, ^, –, and x. Each of these can actually be written using the primitive operators, but provide for a shortened syntax.</p>
 <p><em>In the examples below, remember that a space is a boolean AND.</em></p>
-<h3>~ range</h3>
+<h2>~ range</h2>
 <p><code>~1.2.3</code> same as <code>&gt;=1.2.3 &lt;1.3.0</code></p>
 <p><code>~1.2</code> same as <code>&gt;=1.2.0 &lt;2.0.0</code></p>
 <p class="callout">Assuming library authors follow SymVer rules correctly, this is the most useful syntax (specifying Major and Minor tuples with the tilde). Example: {&quot;jQuery&quot;: &quot;~1.9&quot;}<br>
 Use any version of jQuery greater than or equal 1.9.0 <strong>and</strong> less than the 2.x version. </p>
-<h3>^ range</h3>
+<h2>^ range</h2>
 <p>Allows changes that do not modify the left-most non-zero digit in the [major, minor, patch] tuple. Do not use — this is more clearly expressed using the primitives syntax.</p>
-<h3>– range</h3>
+<h2>– range</h2>
 <p>Inclusive range between two versions. If there are missing tuples, they will be replaced with zeros.</p>
 <p><code>1.2 - 2.4.3</code> same as <code>&gt;=1.2.0 &lt;=2.4.3</code></p>
-<h3>x range</h3>
+<h2>x range</h2>
 <p>You can use x, X, or * as a wildcard character.</p>
 <p><code>1.2.x</code> same as <code>&gt;=1.2.0 &lt;1.3.0</code></p>
 <p>&nbsp;</p>

@@ -17,28 +17,28 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>How to Mimic a Native App</h1>
+<div class="title">How to Mimic a Native App</div>
 <p class="callout"><a href="http://matt.might.net/articles/how-to-native-iphone-ipad-apps-in-javascript/" rel="external">HOWTO: Create native-looking iPhone/iPad applications from HTML, CSS and JavaScript</a> by Matt Might is fantastic. This this first.</p>
 <p>Read  <a href="http://www.mobify.com/blog/beginners-guide-to-perceived-performance/" rel="external">A Beginner's Guide to Perceived Performance: 4 Ways to Make Your Mobile Site Feel Like a Native App</a>. Below is a summary from that article.</p>
-<h2>Speed Improvements</h2>
+<h1>Speed Improvements</h1>
 <p>Native apps are very fast and have smooth animations. There are a few things you can do to make your website feel quicker and more app-like.</p>
-<h3>Fast Buttons</h3>
+<h2>Fast Buttons</h2>
 <p>Links experience a 300ms delay (to make sure it is not a double-tap). To change that behavior, you need to</p>
 <ol>
 	<li><p>Add the <code>touchstart</code> event to all your links (which will trigger the CSS :active state).</p><p class="code">document.addEventListener("touchstart", function(){}, true);</p> <p>You may, if you wish, style the button and/or remove the default gray tap highlight.</p><p class="code">-webkit-tap-highlight-color:rgba(0, 0, 0, 0);</p></li>
 	<li>
 		<p>To really make it do something quicker (step 1 is just eye candy) you need to respond to the <code>touchend</code> event instead of the <code>click</code> event. This is not quite so simple—read about <a href="https://developers.google.com/mobile/articles/fast_buttons" rel="external">Google’s FastButton</a> or the <a href="https://github.com/ftlabs/fastclick" rel="external">fastclick code</a>.</p></li>
 </ol>
-<h3>Momentum Scrolling</h3>
+<h2>Momentum Scrolling</h2>
 <p>This is where scrollable containers can have smooth and momentum scrolling available. </p>
 <p class="code">-webkit-overflow-scrolling: touch;</p>
 <p> There is one issue with this property, however. It will disable the ability to tap the status bar on the top of your iPhone to scroll back to the top of the page. This bug has been around for a while, and it doesn’t seem to be fixed even in the latest version of Mobile Safari on iOS 7.</p>
 <p>One way to get around this is to create a class that adds <code>overflow-scrolling: touch</code> to the container and then use JavaScript to only apply that class when that container is visible.</p>
-<h3>Fast Animations</h3>
+<h2>Fast Animations</h2>
 <p>We are talking about CSS Transitions and Animations. Check out the <a href="https://github.com/h5bp/Effeckt.css" rel="external">Effeckt.css</a> work.</p>
-<h3>Natural Gestures</h3>
+<h2>Natural Gestures</h2>
 <p>Hey man, let’s enable the use of swipes and pinch-zooms if it makes sense. Pull-to-refresh can be accomplished with <a href="http://usehook.com/" rel="external">Hook</a>.</p>
-<h2>Visual Elements</h2>
+<h1>Visual Elements</h1>
 <p>To remove the browser’s address bar, the site must be launched from a home screen icon. Make sure you create <a href="../graphics/favicon.html">Apple icons</a>.</p>
 <!-- InstanceEndEditable -->
 <footer>

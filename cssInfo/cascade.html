@@ -15,10 +15,10 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>CSS Cascade</h1>
-<h2>Inheritance</h2>
+<div class="title">CSS Cascade</div>
+<h1>Inheritance</h1>
 <p>Things like color, cursor, font properties, letter-spacing, line-height, list-style, text-align, text-indent, and visibility are inherited from the parent element. For example, if the font-size for a &lt;p&gt; is 12px and there is an &lt;a&gt; link in that paragraph, then it also will appear as 12px. Things like border, padding,  margin, and a whole lot more, are <strong>not</strong> inherited.</p>
-<h2>Cascade</h2>
+<h1>Cascade</h1>
 <p>The following text is from the W3C specification. The first line must be read slowly because it is the key to understanding how the page is styled. As we write CSS, we are specifying a <em>Selector</em> and then <em>Property/Value</em> pairs. The browser, however, applies <em>Values</em> to an <strong>element</strong> identified in the <em>Selector</em>.</p>
 <div class="callout"><p>To find the value for an element/property combination, user agents must apply the following sorting order:</p>
 	<ol>
@@ -47,7 +47,7 @@
 	<li>If there is still a tie, then the rule that appears last (i.e. closest to the target element) wins.</li>
 </ol>
 <p>The above list is an over-simplification and it is not entirely correct. For more information, check out the <a href="http://www.w3.org/TR/CSS2/cascade.html#cascade" rel="external">specification</a>.</p>
-<h2>Specificity</h2>
+<h1>Specificity</h1>
 <p>Each CSS property is given a specificity (how powerful the value is) when the browser styles the web page. There are four &quot;levels&quot; of power when determining the final specificity. Think of it like magic levels.</p>
 <ol>
 	<li>Style attributes (e.g. &lt;p style=&quot;color:red&quot;&gt;) is Dumbledore.</li>

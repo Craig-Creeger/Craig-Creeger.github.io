@@ -23,8 +23,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Centering Vertically</h1>
-<h2>Da Bomb!!! <span style="font-size:smaller;">(Provided you don't care about IE8)</span></h2>
+<div class="title">Centering Vertically</div>
+<h1>Da Bomb!!! <span style="font-size:smaller;">(Provided you don't care about IE8)</span></h1>
 <p>Use this method if you do not need to support IE8, since this method uses CSS Transform. This works when the size of the element is unknown.</p>
 <p>The cool trick about this method is the way percentages are used within the <code>transform</code> property. Most CSS percentages are calculated using the containing (parent) element, but for <code>transform</code> the final value is calculated based on the current element. So, when the element is moved using <span class="prettyprint linenums"><code>transform:translate(-50%, -50%); </code></span> the element is move left half its width and up half its height.</p>
 <pre class="prettyprint linenums">.centeredMiddle {
@@ -45,8 +45,8 @@
 &lt;/div&gt;
 </pre>
 <p><a href="centeringVerticallyTranslate.html" class="button">View Demo</a></p>
-<h2>Known Size</h2>
-<h3>Option 1: Brute-force</h3>
+<h1>Known Size</h1>
+<h2>Option 1: Brute-force</h2>
 <p>Unfortunately, vertical centering in CSS is a lot more difficult than horizontal centering. If you know the exact height of your div (that is, you set it yourself), you can use absolute positioning to get it done.</p>
 <pre class="prettyprint linenums">div {
 	position: absolute;
@@ -55,22 +55,22 @@
 	margin-top: -100px; /* half of div's height */
 	height: 200px;
 }</pre>
-<h3>Option 2: More Elegant - no math needed</h3>
+<h2>Option 2: More Elegant - no math needed</h2>
 <p><a href="http://coding.smashingmagazine.com/2013/08/09/absolute-horizontal-vertical-centering-css/" rel="external">http://coding.smashingmagazine.com/2013/08/09/absolute-horizontal-vertical-centering-css/</a></p>
 <pre class="prettyprint linenums">.Absolute-Center {
 	margin: auto;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
 }</pre>
-<h2>Unknown Size</h2>
+<h1>Unknown Size</h1>
 <p>If you don't know the height, there are a few options (try the first one first):</p>
-<h3>Vertical-Align Using Ghost Element</h3>
+<h2>Vertical-Align Using Ghost Element</h2>
 <p>A psuedo element is created which sets the height of the container. See <a href="centeringVerticallyGhost.html">this example</a>.</p>
-<h3>HTML Tables</h3>
+<h2>HTML Tables</h2>
 <p>As painful as it is to say, using a table and the <code>vertical-align</code> property of table cells can get it done. If you'd like to explore other methods, the <a href="http://blog.themeforest.net/tutorials/vertical-centering-with-css/" rel="external">ThemeForest blog</a> has a nice roundup of different methods.</p>
-<h3>CSS Tables</h3>
+<h2>CSS Tables</h2>
 <p><a href="http://james.gameover.com/index.php/2009/vertically-centring-in-css-without-hacks-and-multi-line-enabled/" rel="external">This article</a> explains how <code>display:table-cell</code> can do the trick.</p>
-<h3>Here is another method using Flexbox.</h3>
+<h2>Here is another method using Flexbox.</h2>
 <pre class="prettyprint linenums">/**
 	* Vertical centering with Flexbox + margin fallback
 	* Lea Verou &amp; David Storey

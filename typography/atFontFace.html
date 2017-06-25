@@ -22,12 +22,12 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Web Fonts with @font-face</h1>
-<h2>Life Beyond Verdana and Georgia...</h2>
+<div class="title">Web Fonts with @font-face</div>
+<h1>Life Beyond Verdana and Georgia...</h1>
 <p>In the old-days, we used web-safe fonts&mdash;a limited set of fonts that are installed on all computers. We can now use a greater selection of fonts through the use of the CCS <a href="http://www.w3.org/TR/css3-fonts/#font-face-rule" rel="external">@font-face <span style="font-size:smaller">[W3C Specification]</span></a> rule.</p>
 <p>There are several locations on the web where you can download, or link to, free fonts for use on your website. The 3 big ones right now are Google, Adobe, and Font Squirrel. Instructions for using each of them are described below.</p>
 <hr>
-<h3>Google Fonts Workflow</h3>
+<h2>Google Fonts Workflow</h2>
 <p>This is far easier than the Font Squirrel workflow, but there are more fonts to choose from on Font Squirrel.</p>
 <ol>
 	<li>
@@ -51,7 +51,7 @@
 	<li>Follow step 2 and 3 instructions on the Adobe Edge page.</li>
 </ol>
 <hr>
-<h3>Font Squirrel Workflow</h3>
+<h2>Font Squirrel Workflow</h2>
 <ol>
 	<li>Find a font you like from <a href="http://www.fontsquirrel.com/" rel="external">Font Squirrel</a>. I look for fonts that include a Normal, Bold, Italic, and Bold Italic variations. Ensure that it is also licensed for use on the web.</li>
 	<li>For this example, I will choose <a href="http://www.fontsquirrel.com/fonts/Caviar-Dreams" rel="external">Caviar Dreams</a>.</li>
@@ -160,7 +160,7 @@
 	<p class="code">h1 { font-family:CaviarDreams; font-weight:bold; font-style:italic; }</p>
 	<h4 class="caviar" style="font-weight:bold; font-style:italic; font-size:1.5em;">I Am a Sample Header Using Caviar</h4>
 </div>
-<h2>Problems</h2>
+<h1>Problems</h1>
 <p>When testing locally, Firefox may not display the @font-face fonts. This is due to only allowing relative paths from the same server or something like that. Anyway, test Firefox off a server before you give up.</p>
 <h3 id="variants">Dealing with Font Variations</h3>
 <p>Steps <a href="#mod">5 and 6</a> of the Font Squirrel worksflow were inspired by these articles:</p>
@@ -170,7 +170,7 @@
 	<li><a href="http://www.metaltoad.com/blog/how-use-font-face-avoid-faux-italic-and-bold-browser-styles" rel="external">http://www.metaltoad.com/blog/how-use-font-face-avoid-faux-italic-and-bold-browser-styles</a></li>
 	<li><a href="http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/" rel="external">http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/</a></li>
 </ul>
-<h3>Flash of Unstyled Text</h3>
+<h2>Flash of Unstyled Text</h2>
 <p>See the article <a href="http://ianfeather.co.uk/web-fonts-and-the-critical-path/" rel="external">Web Fonts and the Critical Path</a> for an interesting discussion of Flash of Unstyled Text (FOUT).</p>
 <!-- InstanceEndEditable -->
 <footer>

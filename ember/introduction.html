@@ -16,38 +16,38 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>EmberJS</h1>
-<h2>Learning Resources</h2>
-<h3>Official Docs</h3>
+<div class="title">EmberJS</div>
+<h1>Learning Resources</h1>
+<h2>Official Docs</h2>
 <p><a href="http://guides.emberjs.com/" rel="external">EmberJS Guides</a></p>
 <p><a href="http://emberjs.com/api" rel="external">EmberJS API</a></p>
 <p><a href="http://www.ember-cli.com/#overview" rel="external">Ember CLI</a></p>
-<h3>Lists</h3>
+<h2>Lists</h2>
 <p><a href="http://www.programwitherik.com/top-5-best-resources-for-ember-js/" rel="external">Top 5 Best Resources for EmberJS</a></p>
 <p><a href="http://emberwatch.com/tutorials.html" rel="external">EmberWatch Tutorials</a></p>
-<h3>Tutorials</h3>
+<h2>Tutorials</h2>
 <p><a href="http://www.thetechcofounder.com/getting-started-with-ember-js-using-ember-cli/" rel="external">getting-started-with-ember-js-using-ember-cli</a></p>
 <p><a href="http://www.sitepoint.com/getting-started-with-ember-and-ember-cli/" target="external">http://www.sitepoint.com/getting-started-with-ember-and-ember-cli/</a></p>
-<h3>Books in my iBooks Library</h3>
+<h2>Books in my iBooks Library</h2>
 <p class="callout pushRight" style="width:40%;">The PacktPub books have code files than can be downloaded from the website.</p>
 <p><em>Ember.js Web Development with Ember CLI</em> from PacktPub</p>
 <p><a href="https://www.packtpub.com/web-development/mastering-emberjs" target="external"><em>Mastering Ember.js</em></a> from PacktPub.</p>
 <p><em>Ember CLI 101</em> from leanpub.com.</p>
 <p><em>Ember.js Guides</em> from leanpub.com.</p>
 <p><em>Ember.js Guides Plus</em> from leanpub.com.</p>
-<h2>Core Concepts</h2>
+<h1>Core Concepts</h1>
 <p>These are features of Ember’s objects. See the <em>Ember.js Web Development with Ember CLI</em> book for more information.</p>
-<h3>Mixins</h3>
+<h2>Mixins</h2>
 <p>Reusable code that can be shared amongst your other modules (classes).</p>
-<h3>Computed Properties</h3>
+<h2>Computed Properties</h2>
 <p>A Method that returns a value.</p>
-<h3>Getters and Setters</h3>
+<h2>Getters and Setters</h2>
 <p>Use to access properties of an Ember class.</p>
-<h3>Observers</h3>
+<h2>Observers</h2>
 <p>Code that is triggered by an event (when a property’s value changes).</p>
-<h3>Binding</h3>
+<h2>Binding</h2>
 <p>When the value of an object’s property actually comes from a <strong>different</strong> object.</p>
-<h2>Routing</h2>
+<h1>Routing</h1>
 <p>A <em>route</em> is a url path and what should be done when that URI is requested. The route will specify two things:</p>
 <ul>
 	<li>The template to use.</li>
@@ -56,28 +56,28 @@
 <p>A <em>resource</em> is a group of routes. i.e. <code>user/, user/1, user/1/edit, user/1/delete</code>, etc.</p>
 <p><code>/app/router.js</code> holds your Router Map, which is used to determine which Route to use.</p>
 <p>Because one of Route’s jobs is to get your data, that is where you will place additional logic (say filtering the data source). Put it in <code>app/routes/<em><strong>path</strong></em>.js</code></p>
-<h2>Ember Magical Bits</h2>
-<h3>ES6 Modules (import/export)</h3>
+<h1>Ember Magical Bits</h1>
+<h2>ES6 Modules (import/export)</h2>
 <p>First, a bit of history. Asynchronous module definition (<strong>AMD</strong>) is a standard by which Javascript code is encapsulated and can have dependencies. This code can then be asynchronously loaded at run time. This was developed because Javascript doesn’t have a clean way to write classes nor manage dependencies. <strong><a href="http://requirejs.org/" rel="external">RequireJS</a></strong> is one implementation (and loader) of AMD modules.</p>
 <p>The next version of Javascript (ECMAScript 6) attempts to resolve this through a new Module specification. By default anything you declare in a file in a ES6 project is not available outside that file. You have to use the <code>export</code> keyword to explicitly make it available. This bears repeating: If you attempt to create a global variable using:</p>
 <p class="code">var foo = 'bar';</p>
 <p>it will be available to the code inside the same <code>*.js</code> file, but not anywhere else.</p>
 <p>This is new technology, and it is not available in browsers yet. However we can use it today with the use of a transpiler that converts ES6 syntax into plain Javascript.</p>
-<h3>jQuery</h3>
+<h2>jQuery</h2>
 <p>Ember uses jQuery. If you need to call jQuery then use this syntax to access Ember’s jQuery instance:</p>
 <p><code>Ember.$('<em>your selector</em>').<em>method()</em>;</code></p>
-<h3>The URL</h3>
+<h2>The URL</h2>
 <p>Ember will use HTML5 Pushstate for browsers that support it. This let’s you stay on the same page, but change the URL when accessing a different route. Users will be able to bookmark a deep link and get back to the same spot. They only problem here is those routes do not physically exist on your server so you’ll need to use rewrite rules, a fallback resource, or similar function of the web server.</p>
 <p>If the browser doesn’t support Pushstate, then hashes are used on the URL (I think).</p>
 <details>
 	<summary>Rewrite Rules for Apache and Nginx</summary>
 	<div>
-		<h2><a href="http://readystate4.com/2012/05/17/nginx-and-apache-rewrite-to-support-html5-pushstate/" rel="bookmark" title="Permanent Link to Nginx and Apache rewrites to support HTML5 Pushstate in pure Backbone.js (or other JS MV*) Application.">Nginx and Apache rewrites to support HTML5 Pushstate in pure Backbone.js (or other JS MV*) Application.</a></h2>
-		<h3>Posted on May 17th, 2012 in <a href="http://readystate4.com/category/apache/" title="View all posts in Apache" rel="category tag">Apache</a>, <a href="http://readystate4.com/category/backbone/" title="View all posts in backbone" rel="category tag">backbone</a>, <a href="http://readystate4.com/category/nginx/" title="View all posts in nginx" rel="category tag">nginx</a> | <a href="http://readystate4.com/2012/05/17/nginx-and-apache-rewrite-to-support-html5-pushstate/#comments" title="Comment on Nginx and Apache rewrites to support HTML5 Pushstate in pure Backbone.js (or other JS MV*) Application.">4 Comments »</a></h3>
+		<h1><a href="http://readystate4.com/2012/05/17/nginx-and-apache-rewrite-to-support-html5-pushstate/" rel="bookmark" title="Permanent Link to Nginx and Apache rewrites to support HTML5 Pushstate in pure Backbone.js (or other JS MV*) Application.">Nginx and Apache rewrites to support HTML5 Pushstate in pure Backbone.js (or other JS MV*) Application.</a></h1>
+		<h2>Posted on May 17th, 2012 in <a href="http://readystate4.com/category/apache/" title="View all posts in Apache" rel="category tag">Apache</a>, <a href="http://readystate4.com/category/backbone/" title="View all posts in backbone" rel="category tag">backbone</a>, <a href="http://readystate4.com/category/nginx/" title="View all posts in nginx" rel="category tag">nginx</a> | <a href="http://readystate4.com/2012/05/17/nginx-and-apache-rewrite-to-support-html5-pushstate/#comments" title="Comment on Nginx and Apache rewrites to support HTML5 Pushstate in pure Backbone.js (or other JS MV*) Application.">4 Comments »</a></h2>
 	</div>
 	<div>
 		<p>HTML5 pushstate is awesome. It enables you to change the URL of your site dynamically without refreshing the page (goodbye hashes!). Libraries like <a href="http://backbonejs.org/">Backbone</a> have great support for this. Unfortunately if a user bookmarks or refresh a page on an app that&rsquo;s using HTML5 pushstate, it makes a request to the server for that deep linked content. Here are the rewrites for Nginx and Apache to internally redirect that call to the same html file. Browser thinks its a unique page but it&rsquo;s the same.</p>
-		<h3>Apache</h3>
+		<h2>Apache</h2>
 		<p>In your vhost :</p>
 		<div>
 			<div>
@@ -101,7 +101,7 @@ RewriteRule ^(.*)$ index.html [L]</pre>
 				</div>
 			</div>
 		</div>
-		<h3>Nginx</h3>
+		<h2>Nginx</h2>
 		<div>
 			<div>
 				<pre class="prettyprint linenums">rewrite ^(.+)$ /index.html last;</pre>
@@ -122,7 +122,7 @@ notFound: function(path) {
 		</div>
 	</div>
 	<ul>
-		<h3>4 Responses</h3>
+		<h2>4 Responses</h2>
 		<li id="comment-2835"><a href="http://deserialized.com/" rel="external nofollow">Bryan Migliorisi</a>
 			<div>
 				<p>If you are using any modern MVC framework, it should be trivial to simply map all requests to the correct controller\action. I&rsquo;m doing this on a Rails project right now and I like it because it places the logic in the app instead of in the server and leaves less to worry about when deploying.</p>
@@ -147,7 +147,7 @@ notFound: function(path) {
 		</li>
 	</ul>
 </details>
-<h3>Passing Data to Templates</h3>
+<h2>Passing Data to Templates</h2>
 <p>Ember component templates have a corresponding component module (Javascript file). So, if you need to pass a variable to the template, set it in the module first like this:</p>
 <pre>import Ember from 'ember';
 
@@ -174,11 +174,11 @@ export default Ember.Component.extend({
 		&lt;label {{action &quot;editTodo&quot; on=&quot;doubleClick&quot;}}&gt;{{todo.title}}&lt;/label&gt;&lt;button {{action &quot;deleteTodo&quot; todo}} class=&quot;destroy&quot;&gt;&lt;/button&gt;
 	{{/if}}
 &lt;/li&gt;</pre>
-<h2>Database Connectivity</h2>
+<h1>Database Connectivity</h1>
 <p>Normally your data is stored in a database, but it is possible to use a local data store. Ember calls this Fixture Data.</p>
 <p>First create an adapter (see above).</p>
 <div class="callout">
-	<h3>You don't need Ember data</h3>
+	<h2>You don't need Ember data</h2>
 	<p>Here&rsquo;s something you might not know about Ember.js: It doesn&rsquo;t come default with a data library. It may sound a little strange that a <strong>model</strong>-view-controller framework doesn&rsquo;t come prepackaged with what a Rails developer would think of as <em>model</em>. In fact, a lot of the early complaints leveled at Ember (in the days when Ember Data was undergoing significant, break-your-application changes, like, <em>all the time</em>) was that if Data wasn&rsquo;t ready, what was the point of using Ember at all? </p>
 	<pre>App.UserRoute = Ember.Route.extend({
 model: function(params) {
@@ -198,14 +198,14 @@ model: function(params) {
 	<p>Ember needs data, sure, but it doesn&rsquo;t need Ember Data.</p>
 </div>
 <p>&nbsp;</p>
-<h2>Components</h2>
+<h1>Components</h1>
 <p class="callout">Still trying to figure this out, but I think Components have replaced both Controllers and Views.</p>
-<h2>Controllers</h2>
+<h1>Controllers</h1>
 <p>I've not talked about controllers becasue they are being depreceated from Ember so why would you want to learn about them? In short controllers were used to decorate a template, show the temporary state of elements (component) on the page. Temporary state is the state of a element on the page that you don't want to be saved permenantly in your model, for example if we are editing a todo, we'd show an &lt;input&gt;box rather than a &lt;label&gt;. We most probably wouldn't want to save the editing state on our model so that it's premanantly available, therefore it's temporary and that decoration is handled by a controller. In the future of Ember, templates should be a collections of components (elements), and <strong>components</strong> will look after their own decoration/temporary state so a controller becomes redundant in most cases. Please forget all about controllers.</p>
-<h2>Views</h2>
+<h1>Views</h1>
 <p style="font-size:larger; font-weight:bold; text-align:center; padding-left:15%; padding-right:15%;">Views have been replaced with Components in most cases now. Keep that in mind when reading on...</p>
 <div class="callout">
-	<h3>Where does it go: view or controller?</h3>
+	<h2>Where does it go: view or controller?</h2>
 	<p>Okay, so if Ember has Views, but doesn&rsquo;t use them to display anything, what exactly do they do? My misunderstanding of Ember Views stuck around longer than almost anything else in the framework, and I&rsquo;m still untangling things I did wrong because of it. Views are very easy to use for things they aren&rsquo;t meant for. Specifically, it&rsquo;s easy to start putting things in the View that really belong in the Controller, and vice versa.</p>
 	<p>Luckily, the &ldquo;What are Views?&rdquo; question is pretty easy to answer. There are two things you might use them for:</p>
 	<ol>
@@ -231,10 +231,10 @@ App.UserController = Ember.ObjectController.extend({
 });</pre>
 	<p>See that actions property in the UserController? Any methods you define in there can be called by the View with send.</p>
 	<p>Ember won&rsquo;t stop you from putting a lot of logic into that click event that really belongs elsewhere, but you&rsquo;ll save yourself a lot of headaches if you let the Controller handle it.</p>
-	<h3>Updating Fields</h3>
+	<h2>Updating Fields</h2>
 	<p>Do not directly update fields on the page; instead you should bind that field to the controller (or model?) and then update that instead.</p>
 </div>
-<h2>Content Security Policy (CSP)</h2>
+<h1>Content Security Policy (CSP)</h1>
 <p>The relatively new CSP functionality does not want you to put inline styles on the DOM because it can be a security hole. If you can not change the source code to use, say, classes instead, then add a <em>contentSecurityPolicy</em> property to the <code>/config/environment.js</code> file.</p>
 <pre class="prettyprint linenums">module.exports = function(environment) {
 	var ENV = {

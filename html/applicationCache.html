@@ -34,12 +34,12 @@ window.applicationCache.addEventListener('error', logEvent, false);
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Application Cache</h1>
-<h2>Definition</h2>
+<div class="title">Application Cache</div>
+<h1>Definition</h1>
 <p>The Application Cache is an HTML5 feature that allows you to cache a part or all of your website locally. This allows, say mobile users, the ability to use your site even if their wireless connection quits.</p>
 <h3 id="filesystem">File System API</h3>
 <p>The File System API might be a better choice for you depending on your needs and goals. There is even a <a href="https://github.com/ebidel/idb.filesystem.js" rel="external">file system polyfill</a> for older browsers.</p>
-<h2>Tutorial</h2>
+<h1>Tutorial</h1>
 <p class="callout">Note: I wrote this back in 2012 or so; therefore this information is a bit old. You’ve been warned...</p>
 <p>See Apple’s <a href="../assets/SafariJSDatabaseGuide.pdf">tutorial on Web Applications</a>.</p>
 <p><a href="http://html5doctor.com/go-offline-with-application-cache/" rel="external">HTML5Doctor has a great article</a> on the App Cache.</p>
@@ -86,11 +86,11 @@ window.applicationCache.addEventListener('error', logEvent, false);
 <p><code>FALLBACK:</code><br>
 	An optional section specifying fallback pages if a resource is inaccessible. The first URI is the resource, the second is the fallback. Both URIs must be relative and from the same origin as the manifest file. Wildcards may be used.</p>
 <p>Note: These sections can be listed in any order and each section can appear more than one in a single manifest.</p>
-<h2>Testing</h2>
+<h1>Testing</h1>
 <p>In Safari, check the error console or look in the Application Cache section under the Resources tab. You can also put this JavaScript code on your page to check when/if events are firing.</p>
 <pre class="prettyprint linenums">function logEvent(event) {<br>    console.log(event.type);<br>}<br>window.applicationCache.addEventListener('checking', logEvent, false);<br>window.applicationCache.addEventListener('noupdate', logEvent, false);<br>window.applicationCache.addEventListener('downloading', logEvent, false);<br>window.applicationCache.addEventListener('cached', logEvent, false);<br>window.applicationCache.addEventListener('updateready', logEvent, false);<br>window.applicationCache.addEventListener('obsolete', logEvent, false);<br>window.applicationCache.addEventListener('error', logEvent, false);</pre>
 <p>Change the timestamp/version comment after each modification to ensure the cache is rebuilt. <span class="todo">Also, I should look into whether or not it is possible to force reloading the cache with the swapCache() function when a GET query is added to the page (e.g. </span><span class="code">myPage.html?swap=true</span><span class="todo">)</span></p>
-<h2>Pitfalls to avoid when using .appcache</h2>
+<h1>Pitfalls to avoid when using .appcache</h1>
 <p><strong>PITFALL #1 : When a file is available in the cache and on the remote HTTP server, it will always be retrieved from the cache!</strong> You can force the cache to update itself by modifying the manifest.appcache file, or via programmatic methods.</p>
 <p><strong>PITFALL #2: If one file cannot be retrieved and cached, zero files will be updated in the cache.</strong> There is not "partial update" possible. A best practice is to always validate you manifest file using a tool such as:</p>
 <ul>

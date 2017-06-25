@@ -17,19 +17,19 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Drupal Forms</h1>
-<h2>Form API</h2>
+<div class="title">Drupal Forms</div>
+<h1>Form API</h1>
 <p>As a general note on working with Forms in Drupal that will be helpful in regard to the information below: if you have submitted a form, in the submit handler for the form, the element that submitted the form will be contained in $form_state[&lsquo;triggering_element&rsquo;]. If you want the exact path of keys/parents that contained this element (ie. it has parent elements containing it, like a fieldset, etc), that is contained in $form_state[&lsquo;triggering_element&rsquo;][&lsquo;#parents&rsquo;]. This is applicable whether you are dealing with Form API code or Webform code (as webform turns webform nodes into Form API structures)</p>
 <p>The general reference to the Drupal form system (relevant to information below, and to webform building its components) is here: <a href="https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/7" target="_blank">https://api.drupal.org/api/drupal/developer!topics!forms_api_reference.html/7</a></p>
-<h3>Validation</h3>
+<h2>Validation</h2>
 <p>The easiest way to do this if you just want to make sure that each participant's name field has something in it (without caring what that something is), you can do this just by adding the '#required' property to the name textfield in _participants_participant().</p>
 <p>If you have more advanced validation requirements and the above is not what you need (eg. you want to make sure the contents actually resemble a name, and isn&rsquo;t say, a link, or a number) This can be accomplished by using the #element_validate property when building the 'name' textfield form element of the component in _participants_participant(). This property should contain an ARRAY of the function names it is supposed to call (like a callback) in order to validate the element. This must be an array; a scalar value will fail. If there&rsquo;s only one function you want to call, list that in array that contains a single string. These function names should be functions that have a parameter signature of: ($element, &amp;$form_state, $form), where $element is an array that will contain the calling element, $form_state will be the current state of the form (retrieved from POST) and $form will be the form API structure of the form. Within that validation function, you can use form_error or form_set_error in order to trigger a validation error on the form.  <a href="https://api.drupal.org/api/drupal/includes%21form.inc/function/form_set_error/7" target="_blank">https://api.drupal.org/api/drupal/includes%21form.inc/function/form_set_error/7</a> <a href="https://api.drupal.org/api/drupal/includes%21form.inc/function/form_error/7" target="_blank">https://api.drupal.org/api/drupal/includes%21form.inc/function/form_error/7</a></p>
 <p>For an example of using #element_validate, see here: <a href="http://befused.com/drupal/element-validate" target="_blank">http://befused.com/drupal/element-validate</a></p>
-<h3>Drupal Form-Related Functions</h3>
-<h5><code>system_settings_form()</code></h5>
+<h2>Drupal Form-Related Functions</h2>
+<h4><code>system_settings_form()</code></h4>
 <p>Sets up a form to save information automatically.</p>
 <p>This function adds a submit handler and a submit button to a form array. The submit function saves all the data in the form, using <a href="https://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/variable_set/7" title="Sets a persistent variable.">variable_set</a>(), to variables named the same as the keys in the form array. Note that this means you should normally prefix your form array keys with your module name, so that they are unique when passed into <a href="https://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/variable_set/7" title="Sets a persistent variable.">variable_set</a>().</p>
-<h3>&nbsp;</h3><!-- InstanceEndEditable -->
+<h2>&nbsp;</h2><!-- InstanceEndEditable -->
 <footer>
 		<hr>
 		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="https://craig-creeger.github.io/">Table of Contents</a>

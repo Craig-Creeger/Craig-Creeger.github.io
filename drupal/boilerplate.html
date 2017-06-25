@@ -17,10 +17,10 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Drupal Module Boilerplate</h1>
-<h2>Core Set-up</h2>
+<div class="title">Drupal Module Boilerplate</div>
+<h1>Core Set-up</h1>
 <p>Welcome to the land of large configuration arrays. This page is a quick reference for when you need to write a new module.</p>
-<h3><em>module</em>.info</h3>
+<h2><em>module</em>.info</h2>
 <pre class="prettyprint linenums">;Comments are prefixed with a semi-colon
 ;If you want a new line in a value, then wrap with double-quotes.
 ;Clear cache after changing this file.
@@ -36,7 +36,7 @@ files[] = <em>module</em>.module
 files[] = <em>module</em>.install
 
 dependencies[] = <em>machineName</em></pre>
-<h3><em>module</em>.install</h3>
+<h2><em>module</em>.install</h2>
 <pre class="prettyprint linenums">&lt;?php
 /**
 * @file
@@ -80,7 +80,7 @@ function <em>module</em>_schema() {
 	);
 	return $schema;
 }</pre>
-<h3><em>module</em>.module file</h3>
+<h2><em>module</em>.module file</h2>
 <p>Most hooks will reside in your *.module file. Here are some common ones.</p>
 <pre class="prettyprint linenums">&lt;?php
 /**
@@ -113,7 +113,7 @@ function <em>module</em>_permission() {
 	);
 	return $newPermissions;
 }</pre>
-<h2>Entities</h2>
+<h1>Entities</h1>
 <p>When defining a new Entity, you will need all the information listed above, plus the following hooks (to be defined in your <code>*.module</code> file.</p>
 <pre class="prettyprint linenums">/**
  * Implements hook_entity_info().

@@ -15,10 +15,10 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Hyphenation</h1>
-<h2>Definition</h2>
+<div class="title">Hyphenation</div>
+<h1>Definition</h1>
 <p>Hyphenation is breaking a word at the end of a line with a hyphen (a.k.a. dash). Hyphens are also used in a compound adjective. e.g. &ldquo;She has lovely blue-green eyes.&rdquo;</p>
-<h3>Dashes</h3>
+<h2>Dashes</h2>
 <p>Other similar characters are the em dash&mdash;, en dash&ndash;, and minus&minus;. </p>
 <p>Since I&rsquo;m on the topic, <em>en dashes</em> are used in place of the word &ldquo;to&rdquo; or in a compound adjective where one of the items is two words. </p>
 <p><em>Em dashes</em> are used to set off a phrase that has a lot of commas in it, or for an abrupt change in thought. For example: &ldquo;I will be taking the New York&ndash;Berlin flight from 1&ndash;9:00 p.m. The conference covers neurological impulses of rats&mdash;if I could only apply it to real life...&rdquo;</p>
@@ -55,7 +55,7 @@
 	</tr>
 </tbody>
 </table>
-<h2>CSS3 Method</h2>
+<h1>CSS3 Method</h1>
 <pre class="prettyprint linenums">&lt;html lang=&quot;en&quot;&gt;
 &hellip;
 p {
@@ -67,16 +67,16 @@ p {
 }</pre>
 <p>Note that <code>text-align: justify</code> is not necessary, but it is typically when you would use hyphenation. Specifying the language is kinda of a good idea so it knows which dictionary to use for hyphenation. :-)</p>
 <p>When justifying the text, you can tell the browser where to break by using the CSS <a href="http://www.w3.org/TR/css3-text/#text-justify" rel="external">text-justify</a> property. Ex: <code>text-justify: auto;</code> Honestly, just skip this property for English speaking websites because the default is auto, which is the correct one to use.</p>
-<h2>Brute-force Method</h2>
+<h1>Brute-force Method</h1>
 <p>Since not all browsers support automatic hyphenation, you can put a <code>&amp;shy;</code> at every possible break point in every word. Yeah, this is a drag, but worth it at times. Use an online tool to help out, such as <a href="http://www.plazoo.com/en/tools.asp" rel="external">hypho-o</a>.</p>
-<h3>Suggesting line break opportunities</h3>
-<h4>Soft Hypen</h4>
+<h2>Suggesting line break opportunities</h2>
+<h3>Soft Hypen</h3>
 <p class="code">Hex Code = &amp;#xAD; / Decimal Code = &amp;#173; / HTML Entity = &amp;shy;</p>
 <p>An invisible, &quot;soft&quot; hyphen. This character is not rendered visibly; instead, it suggests a place where the browser might choose to break the word if necessary. In HTML, you can use <code>&amp;shy;</code> to insert a soft hyphen.</p>
-<h4>Zero-width Space</h4>
+<h3>Zero-width Space</h3>
 <p class="code">Hex Code = &amp;#x200b; / Decimal Code = &amp;#8203 / HTML Entity = <em>none</em></p>
 <p>This is used in conjunction with a standard hyphen. Example: <code>&lt;p&gt;The room features semi-<wbr>&amp;#8203;<wbr>circular seating.&lt;/p&gt;</code> This practice is not necessary for modern browsers so I&rsquo;m guessing it must be a hack for IE. The bottom line is don't use it unless you absolutely must.</p>
-<h4><a name="nbhyphen"></a>Non-breaking Hyphen</h4>
+<h3><a name="nbhyphen"></a>Non-breaking Hyphen</h3>
 <p class="code">Hex Code = &amp;#x2011; / Decimal Code = &amp;#8209; / HTML Entity = <em>none</em></p>
 <p>This is character is displayed as a standard hyphen, but the browser will not split the word if it is at the end of a line. Example: <code>&lt;p&gt;I work at A&amp;#x2011;<wbr>B&amp;#x2011;<wbr>
 	C Corp.&lt;/p&gt;</code>  will display: <span style="font-weight:bold; font-family:Georgia, 'Times New Roman', Times, serif">I work at A&#x2011;B&#x2011;C Corp.</span> Adjust the width of your browser window and you&rsquo;ll notice that A-B-C won&rsquo;t get split apart.</p>

@@ -17,8 +17,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Drush</h1>
-<h2>Common Commands</h2>
+<div class="title">Drush</div>
+<h1>Common Commands</h1>
 <p>Official <a href="http://drush.ws/" rel="external">Drush documentation</a></p>
 <dl class="functions">
 <dt>drush help</dt>
@@ -46,14 +46,14 @@
 <dt>drush en <em>project</em></dt>
 <dd>Enables an extension (module or theme). This is often used on conjunction with <code>drush dl <em>project</em></code></dd>
 </dl>
-<h3>Reinstall a Module</h3>
+<h2>Reinstall a Module</h2>
 <p>If you have devel enabled, then you can use this command:</p>
 <p><code>drush dre <em>project</em></code></p>
 <p>Otherwise, run these three commands:</p>
 <p><code>drush pm-disable <em>project</em></code></p>
 <p><code>drush pm-uninstall <em>project</em></code></p>
 <p><code>drush pm-enable <em>project</em></code></p>
-<h2>Upgrading to Newer Version of Drupal</h2>
+<h1>Upgrading to Newer Version of Drupal</h1>
 <p>On your local install version, do this to upgrade Drupal using Drush:</p>
 <ol>
 	<li>Perform a Drush archival dump first. <code>$ drush archive-dump</code>

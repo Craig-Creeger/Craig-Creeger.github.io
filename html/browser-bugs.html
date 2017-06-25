@@ -15,8 +15,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Browser Bugs</h1>
-<h2>Webkit</h2>
+<div class="title">Browser Bugs</div>
+<h1>Webkit</h1>
 <p>There are times when Webkit browsers won’t paint the screen correctly (you will probably find elements located in the wrong position; this has happened to me before when using FooterStick.) There are a few hacks to force the browser to repaint/reflow the page. The hack that ended up working for me was to:</p>
 <ol>
 	<li>Wait a little bit</li>
@@ -42,20 +42,20 @@
 			break;
 	}
 }</pre>
-<h2>Firefox</h2>
-<h3>Responsive Images</h3>
+<h1>Firefox</h1>
+<h2>Responsive Images</h2>
 <p class="callout pushRight">Side note:<br>
 I’m not exactly sure if this would be considered a bug or not. It kinda seems like Firefox’s layout engine is behaving correctly, and Webkit is a bit loosey goosey. Whatever, you still need to make it work on all browsers...</p>
 <p> I like to use the CSS property <code>max-width: 100%</code> on images to make them fit their container. There are times, however when it doesn’t work in Firefox. The key is to make sure the <em>immediate</em> parent element has a defined size. So, if the parent is a block or inline-block, then set a width. If the parent is a table cell, then you may to change the layout rule with:</p>
 <pre>table {
 	table-layout: fixed;
 }</pre>
-<h2>Internet Explorer</h2>
-<h3>Telling to Be Modern</h3>
+<h1>Internet Explorer</h1>
+<h2>Telling to Be Modern</h2>
 <p>IE users can have the compatibility mode checked which may display your modern site to display poorly. Tell IE to use compliant behavior with the head tag:</p>
 <pre class="prettyprint linenums">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;</pre>
 <p>This should be placed as high as possible in the page; along with other meta tags is fine. IE=edge means to use the latest (Trident) rendering engine. chrome=1 means to use Google Chrome Frame  if it is installed.</p>
-<h3>Box Model Hack</h3>
+<h2>Box Model Hack</h2>
 <p>The easiest way to avoid box sizing problems is to use CSS property <code>box-sizing: border-box;</code> as show here.</p>
 <pre class="prettyprint linenums">/* apply a natural box layout model to all elements */
 * {
@@ -66,13 +66,13 @@ I’m not exactly sure if this would be considered a bug or not. It kinda seems 
 <p>If you must (or want to) use the default box-sizing value, then my prefered method for making box sizes consistent across browsers is to put put a &lt;div&gt; in a &lt;div&gt;. The outer div should have no margins or padding, and it will specify the width. Apply the margins/padding to the inner div.</p>
 <h3 id="mq">Media Queries</h3>
 <p>IE8 and earlier do not understand CSS media queries. More information is on the <a href="../mobile/mediaQueries.html#ie8">Media Query page</a>.</p>
-<h3>Rounded Corners</h3>
+<h2>Rounded Corners</h2>
 <p>IE9 and up supports the CSS <code>border-radius</code> property. You may need to include this to get it to work:</p>
 <pre class="prettyprint linenums">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=9&quot;&gt;</pre>
-<h3>has-layout</h3>
+<h2>has-layout</h2>
 <p>Applying <code>zoom: 1;</code> to every element is a way to force elements to gain the proprietary hasLayout property in IE browsers. This can fix a number of (truly) weird bugs in IE.<br>
 Read more about it <a href="http://www.satzansatz.de/cssd/onhavinglayout.html" rel="external">here</a>.</p>
-<h3>min-height Property</h3>
+<h2>min-height Property</h2>
 <p>If IE is not obeying the min- or max-height properties, then you will have to use the height property instead. This may have to be done with conditional comments such as:</p>
 <pre><a name="condComment"></a>&lt;body&gt;
 <span style="color:black; font-style:italic; font-weight:bold;">&lt;!--[if IE]&gt;</span>
@@ -90,7 +90,7 @@ Read more about it <a href="http://www.satzansatz.de/cssd/onhavinglayout.html" r
 &lt;/div&gt;
 <span style="color:black; font-style:italic; font-weight:bold;">&lt;![endif]--&gt;</span>
 &lt;/body&gt;</pre>
-<h3>Conditional Comments</h3>
+<h2>Conditional Comments</h2>
 <p>Internet Explorer has a proprietary way of reading comments. You can target certain sections of HTML to <em><strong>not</strong></em> be a comment by using the special syntax shown <a href="#condComment">above</a>.</p>
 <p>&lt;p class=&quot;accent&quot;&gt;<br>
 	&lt;!--[if IE]&gt;<br>
@@ -124,14 +124,14 @@ Read more about it <a href="http://www.satzansatz.de/cssd/onhavinglayout.html" r
 	According to the conditional comment this is not IE&lt;br /&gt;<br>
 	&lt;!-- &lt;![endif]--&gt;<br>
 &lt;/p&gt;</p>
-<h3>Iterating Over an Array</h3>
+<h2>Iterating Over an Array</h2>
 <p>IE8 and lower doesn’t pay attention to the enumerable property for arrays, so when looping through all the elements there is a right way and wrong way to do it.</p>
-<h4>Right Way</h4>
+<h3>Right Way</h3>
 <p class="code">for (var i=0;i&lt;myArray.length;i++) {<br>
   alert(myArray[i]);<br>
 }</p>
 <p>Frankly, when iterating over an Array (vs. object) this is the better approach regardless of the browser or version because you can be guaranteed of the index position this way.</p>
-<h4>Wrong Way (Although this works fine in real browsers)</h4>
+<h3>Wrong Way (Although this works fine in real browsers)</h3>
 <p class="code">for  (var i in myArray) {<br>
 	  alert(myArray[i]);<br>
 	} </p>

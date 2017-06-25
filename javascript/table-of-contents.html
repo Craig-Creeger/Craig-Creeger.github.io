@@ -36,11 +36,11 @@ nav a {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Create a Dynamic Table of Contents (TOC)</h1>
-<h2>JavaScript/jQuery Generated TOC</h2>
-<h3>Purpose</h3>
+<div class="title">Create a Dynamic Table of Contents (TOC)</div>
+<h1>JavaScript/jQuery Generated TOC</h1>
+<h2>Purpose</h2>
 <p>For long pages with a lot of content, it may be desirable to have a TOC somewhere on your page. It is far easier to have the TOC dynamically built when the page is loaded by the browser, and the code to do that is suprisingly simple.</p>
-<h3>JavaScript Code</h3>
+<h2>JavaScript Code</h2>
 <p>This code will scan through header tags &lt;h1&gt; through &lt;h3&gt; (you can change that on line 6) and will generate a list of links from them.</p>
 <pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
 $(document).ready(function() {
@@ -70,7 +70,7 @@ $(document).ready(function() {
 		$('#toc').html('&lt;ul&gt;' + toc + '&lt;/ul&gt;');
 	});
 &lt;/script&gt;</pre>
-<h2>Example</h2>
+<h1>Example</h1>
 <p>The following block was dynamically created when this page loaded into your browser.</p>
 <div class="callout">
 	<p class="title">Table of Contents</p>

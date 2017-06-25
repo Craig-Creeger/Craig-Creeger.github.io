@@ -17,12 +17,12 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Writing Drupal Modules</h1>
-<h2>Set-up and Common Code</h2>
-<h3>*.info file</h3>
-<h3>*.module file</h3>
-<h3>Help Pages</h3>
-<h4>Standard/Basic</h4>
+<div class="title">Writing Drupal Modules</div>
+<h1>Set-up and Common Code</h1>
+<h2>*.info file</h2>
+<h2>*.module file</h2>
+<h2>Help Pages</h2>
+<h3>Standard/Basic</h3>
 <p>You can create your own custom help page by putting this inside <code><em>yourModule</em>.module</code></p>
 <pre class="prettyprint linenums">/**
  * Implements hook_help().
@@ -36,11 +36,11 @@ function yodesa_help($path, $arg) {
 		}
 	}
 }</pre>
-<h4>Advanced Help</h4>
+<h3>Advanced Help</h3>
 <p><code>advanced_help</code> is a Contributed Module that can display help files using the same theme as your site. It also is much more useful when you have a lot of documentation because you can set-up a hierarchy of pages and write the documentation is regular HTML. After installing Advanced Help, be sure to set the permissions so you can view the help files.</p>
-<h5>Quick and Dirty Option</h5>
+<h4>Quick and Dirty Option</h4>
 <p>Just shove a README.txt or README.md file in the root of your module.</p>
-<h5>Full Capabilities Option</h5>
+<h4>Full Capabilities Option</h4>
 <p>To create an Advanced Help page:</p>
 <ol>
 	<li>Create a folder in your module called “help”.</li>
@@ -61,7 +61,7 @@ weight = 2</pre>
 	</li>
 	<li>Build out your help files. These should be HTML snippets, not a fully formed page. In other words, do not use the <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, or <code>&lt;body&gt;</code> tags.</li>
 </ol>
-<h3>Permissions</h3>
+<h2>Permissions</h2>
 <p>This hook can supply permissions that the module defines, so that they can be selected on the user permissions page and used to grant or restrict access to actions the module performs.</p>
 <pre class="prettyprint linenums">/**
  * Implements hook_permission()
@@ -76,18 +76,18 @@ function yodesa_permission() {
 }</pre>
 <h2 id="whereToPlace">Where to Put Your Main Logic</h2>
 <p>For me, the trickiest part of learning Drupal is where to put your code so it is 1) called, and 2) called at the right time. That is what the hook system is for.</p>
-<h3>Called on every html page</h3>
+<h2>Called on every html page</h2>
 <p class="code">function <em>myModule</em>_preprocess_html() {</p>
-<h3>Called on every page that uses template <code>page.tpl.php</code> (regardless of current theme)</h3>
+<h2>Called on every page that uses template <code>page.tpl.php</code> (regardless of current theme)</h2>
 <p>If you want a piece of code to run, regardless of the current theme, then it must be inside a module. Most (all?) themes use a template file called page.tpl.php so you can create a function in your module’s <em><code>myModule</code></em><code>.module</code> file named:</p>
 <p><code>function <em>myModule</em>_preprocess_page() {</code></p>
-<h3>Called on every page that uses template <code>page.tpl.php</code> (specific theme)</h3>
+<h2>Called on every page that uses template <code>page.tpl.php</code> (specific theme)</h2>
 <p>Similar to above, but place this function definition in your theme’s <code>template.php</code> file:</p>
 <p><code>function <em>myTheme</em>_preprocess_page() {</code></p>
 <p>Note: I have not actually tested this.</p>
-<h2>API</h2>
+<h1>API</h1>
 <p>In the function names below where you see the italicized word hook, that will need to be replaced with your module or theme’s name (generally). If there are dashes in the name, then convert those to underscores. For example, if your module name is “<code>guido-rocks</code>” and you are implementing <em><code>hook</code></em><code>_menu()</code>, then you should define it as <code>guido_rocks_menu()</code>.</p>
-<h3>Common Hooks</h3>
+<h2>Common Hooks</h2>
 <dl class="functions">
 <dt>hook_node_info()</dt>
 <dd>Creates a new Content type</dd>
@@ -99,7 +99,7 @@ function yodesa_permission() {
 <dd>Add new permission checkboxes to the admin/people/permissions page</dd>
 <dt>&nbsp;</dt>
 </dl>
-<h3><em>hook</em>_menu()</h3>
+<h2><em>hook</em>_menu()</h2>
 <p>Implementing the <em><code>hook</code></em><code>_menu()</code> is the primary way (in Drupal 7; this changed in Drupal 8) to:</p>
 <ul>
 	<li> associate functionality with a URL (callback mapping, think of this as a router)</li>
@@ -126,9 +126,9 @@ function yodesa_menu() {
 
 	return $items;
 }</pre>
-<h3><em>hook</em>_theme()</h3>
+<h2><em>hook</em>_theme()</h2>
 <p>This function will tell Drupal about the association between a Render Array (set of data) and theme implementation (how to generated the final HTML).</p>
-<h3>Common Drupal Functions</h3>
+<h2>Common Drupal Functions</h2>
 <p><code>url()</code> Makes a safe URL</p>
 <p><code>base_path()</code> Returns the base location of the Drupal install. It will always include the trailing slash. In most cases, this function will always return just a “/” because most installs have Drupal installed to a top level directory of the webroot. Note: Do not combine with path_to_theme() because that function apparently already takes into account the base.</p>
 <p><code>path_to_theme()</code> Returns the directory of the current theme. Example:</p>

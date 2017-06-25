@@ -35,12 +35,12 @@ li:nth-child(odd):not(:last-child) {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>CSS Selectors</h1>
+<div class="title">CSS Selectors</div>
 <article id="descendant">
-	<h2>Descendant</h2>
+	<h1>Descendant</h1>
 	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"><img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
 		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
-		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<h2>This is an <code>&lt;h3&gt;</code> header.</h2>
 		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
 	</section>
 	<p>Select elements that are anywhere within the parent element.</p>
@@ -49,10 +49,10 @@ li:nth-child(odd):not(:last-child) {
 		}</p>
 </article>
 <article id="children">
-	<h2>Children</h2>
+	<h1>Children</h1>
 	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"> <img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
 		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
-		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<h2>This is an <code>&lt;h3&gt;</code> header.</h2>
 		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
 	</section>
 	<p>Select elements that are only one level below the parent element.</p>
@@ -62,10 +62,10 @@ li:nth-child(odd):not(:last-child) {
 	<p>Because the second image is a grandchild of the section, it does not the the dotted border.</p>
 </article>
 <article id="sibling">
-	<h2>Adjacent Sibling</h2>
+	<h1>Adjacent Sibling</h1>
 	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"> <img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
 		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
-		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<h2>This is an <code>&lt;h3&gt;</code> header.</h2>
 		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
 		<p>This is another paragraph.</p>
 	</section>
@@ -76,10 +76,10 @@ li:nth-child(odd):not(:last-child) {
 	<p>You&rsquo;ll notice that the first paragraph does not have the dotted border because it does not have an <code>&lt;h3&gt;</code> sibling before it.</p>
 </article>
 <article id="general">
-	<h2>General Sibling</h2>
+	<h1>General Sibling</h1>
 	<section style="float:right; margin-left:1em; width:50%; background-color:antiqueWhite"> <img src="../img/PxIcon36x36.png" style="float:right; margin-left:1em;">
 		<p>The contents shown here are inside a <code>&lt;section&gt;</code> tag.</p>
-		<h3>This is an <code>&lt;h3&gt;</code> header.</h3>
+		<h2>This is an <code>&lt;h3&gt;</code> header.</h2>
 		<p>This is a <code>&lt;p&gt;</code> paragraph. This is an image <img src="../img/PxIcon36x36.png" width="36" height="36"> within the paragraph.</p>
 		<p>This is another paragraph.</p>
 	</section>
@@ -89,22 +89,22 @@ li:nth-child(odd):not(:last-child) {
 		}</p>
 	<p>All paragraphs following the h3 are targeted.</p>
 </article>
-<h2>Class and Id</h2>
+<h1>Class and Id</h1>
 <p>.className</p>
 <p>#idName</p>
-<h2>Pseudo Selectors</h2>
+<h1>Pseudo Selectors</h1>
 <p>These selectors target elements that have a particular characteristic.</p>
-<h3>Pseudoclasses</h3>
-<h4>Anchor</h4>
+<h2>Pseudoclasses</h2>
+<h3>Anchor</h3>
 <p>These <em>can</em> apply to elements other than anchors.</p>
 <p>:link, :visited, :hover, :active</p>
-<h4>Other</h4>
-<h5>:disabled, :enabled</h5>
-<h5>:focus</h5>
-<h5>:checked &mdash; A form element that is checked.</h5>
-<h5>:selection &mdash; User highlighted text.</h5>
-<h5>:lang</h5>
-<h5>:nth-child(<em>n</em>), :nth-last-child(<em>n</em>)</h5>
+<h3>Other</h3>
+<h4>:disabled, :enabled</h4>
+<h4>:focus</h4>
+<h4>:checked &mdash; A form element that is checked.</h4>
+<h4>:selection &mdash; User highlighted text.</h4>
+<h4>:lang</h4>
+<h4>:nth-child(<em>n</em>), :nth-last-child(<em>n</em>)</h4>
 <p>Would you care if I blow your mind now? Check this out:</p>
 <pre class="prettyprint linenums">li { color: #00F; }
 li:nth-child(odd):not(:last-child) { color: #F00; }</pre>
@@ -116,32 +116,32 @@ li:nth-child(odd):not(:last-child) { color: #F00; }</pre>
 	<li>line 5</li>
 </ul>
 <p>This will alternate the coloring of every other row, but force the last row to always be blue.</p>
-<h5>:first-child, :last-child, :only-child</h5>
+<h4>:first-child, :last-child, :only-child</h4>
 <p><em>Examples:</em> p:first-child means select the first paragraph that is a child.<br>
 	:first-child means select the first anything that is subordinate to another element.<br>
 	div :first-child means select the first anything that appears anywhere inside a div (could be multiple hits).<br>
 	<strong>div&gt;:first-child</strong> means target the first thing following a div. This one is actually pretty neat and I can see using it in several places.</p>
-<h5>:nth-last-of-type(<em>n</em>), :last-of-type, :first-of-type, :only-of-type</h5>
-<h5>:empty An element that has no children</h5>
-<h5>:root</h5>
-<h5>:not(<em>x</em>)</h5>
-<h5>:target</h5>
+<h4>:nth-last-of-type(<em>n</em>), :last-of-type, :first-of-type, :only-of-type</h4>
+<h4>:empty An element that has no children</h4>
+<h4>:root</h4>
+<h4>:not(<em>x</em>)</h4>
+<h4>:target</h4>
 <h3 id="pseudoElements">Pseudo-elements</h3>
-<h5>:first-line</h5>
-<h5>:first-letter</h5>
-<h5>:before and :after</h5>
+<h4>:first-line</h4>
+<h4>:first-letter</h4>
+<h4>:before and :after</h4>
 <p>Smashing magazine has a <a href="http://coding.smashingmagazine.com/2011/07/13/learning-to-use-the-before-and-after-pseudo-elements-in-css/" rel="external">great description of <code>:before</code> and <code>:after</code></a>.</p>
-<h2>Attribute Selectors</h2>
+<h1>Attribute Selectors</h1>
 <p>These are used to target elements based on their attributes.</p>
-<h3>Has the attribute: p[id]</h3>
+<h2>Has the attribute: p[id]</h2>
 <p>Matches <code>&lt;p id&gt;</code>, <code>&lt;p id=&quot;this-one&quot;&gt;</code></p>
-<h3>Exact match: p[id<strong>=</strong>&quot;thisOne&quot;]</h3>
+<h2>Exact match: p[id<strong>=</strong>&quot;thisOne&quot;]</h2>
 <p>Matches <code>&lt;p id=&quot;thisOne&quot;&gt;</code></p>
-<h3>Contains: p[id<strong>~</strong>=&quot;this&quot;]</h3>
+<h2>Contains: p[id<strong>~</strong>=&quot;this&quot;]</h2>
 <p>Matches <code>&lt;p id=&quot;this&quot;&gt;</code>, <code>&lt;p id=&quot;thisOne&quot;&gt;</code>, and <code>&lt;p id=&quot;and-this&quot;&gt;</code></p>
-<h3>Prefix: p[id|=&quot;this&quot;]</h3>
+<h2>Prefix: p[id|=&quot;this&quot;]</h2>
 <p>Matches <code>&lt;p id=&quot;this&quot;&gt;</code>, <code>&lt;p id=&quot;this-one&quot;&gt;</code>, and <code>&lt;p id=&quot;this-two&quot;&gt;</code> </p>
-<h2>Cheat Sheet</h2>
+<h1>Cheat Sheet</h1>
 <p>See the last page of the the <a href="../assets/css3-cheat-sheet.pdf" rel="external">CSS3 Cheat Sheet</a> for a summary of these selectors.</p>
 <!-- InstanceEndEditable -->
 <footer>

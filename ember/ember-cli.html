@@ -17,28 +17,28 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Ember CLI</h1>
-<h2>Init and Server</h2>
+<div class="title">Ember CLI</div>
+<h1>Init and Server</h1>
 <p>The CLI will bootstrap a new project for you. Plus other stuff I suppose.</p>
-<h3>Create a new project (and folder with the same name)</h3>
+<h2>Create a new project (and folder with the same name)</h2>
 <p class="code">ember new <em>yourProjectName</em></p>
-<h3>Start the Ember web server</h3>
+<h2>Start the Ember web server</h2>
 <p>Navigate (cd) to your project’s folder and enter <code>ember serve</code>.</p>
-<h2>Generate Commands</h2>
+<h1>Generate Commands</h1>
 <div class="callout">
 	<p>Sometimes when using <code>ember generate</code> it will respond with the cryptic phrase <code>Yndh</code>.</p>
 	<p><strong>Yndh</strong> stands for Yes, no, diff, help.</p>
 </div>
-<h3>Templates</h3>
+<h2>Templates</h2>
 <p>Templates should probably be plural (e.g. <code>ember generate template todos</code>).</p>
 <p class="code">ember generate template <em>objectName</em></p>
-<h3>Models</h3>
+<h2>Models</h2>
 <p>Models should probably be singular (e.g. <code>ember generate model todo</code>).</p>
 <p class="code">ember generate model <em>objectName</em></p>
-<h3>Adapters</h3>
+<h2>Adapters</h2>
 <p>These are ways to get at your data store.</p>
 <p class="code">ember generate adapter application</p>
-<h3>Resources</h3>
+<h2>Resources</h2>
 <p>This will create a route (in the <code>router.js</code> file), a model (with the same name), and a template file. It does not generate a resource in the router.js file; you are going to have to manually create the resource.</p>
 <p class="code">ember generate resource <em>objectName</em></p>
 <p>A typical resource in the <code>router.js</code> file looks like this:</p>
@@ -56,19 +56,19 @@ Router.map(function() {
 });
 
 export default Router;</pre>
-<h3>Routes</h3>
+<h2>Routes</h2>
 <p class="code">ember generate route <em>objectName</em></p>
 <p>If you want to create a route inside of a resource, then include the resource’s path. e.g.:</p>
 <p class="code">ember generate route <em>resource/objectName</em></p>
-<h3>Components</h3>
+<h2>Components</h2>
 <p>Components have to have a hyphen in the name, this is so they don't clash with future html components that may be released.</p>
 <p class="code">ember generate component <em>objectName</em></p>
-<h2>Adding Other Files</h2>
-<h3>Public folder</h3>
+<h1>Adding Other Files</h1>
+<h2>Public folder</h2>
 <p>You may need to add pre-build items to your site (for example, your company’s header and footer). This may be comprised of JS, CSS, images, etc. If they don’t need to be compiled, then place it in the “public” folder which will simply do a straight copy to the “dist” folder when the site is built by Broccoli. They will not go through the Broccoli asset pipeline.</p>
-<h3>Vendor folder</h3>
+<h2>Vendor folder</h2>
 <p>This is used in a similar fashion as the “public” folder, except the files are to copied anywhere by default; you must explicitly add these to the <code>Brocfile.js</code> file. Items in this folder should be libraries that can not be installed via <em>npm</em> or <em>bower</em>. When Broccoli compiles theses items they will get added to <code>/dist/assets/vendor.js</code> and<code> /dist/assets/vendor.css</code>.</p>
-<h2>Broccoli – Asset Compilation</h2>
+<h1>Broccoli – Asset Compilation</h1>
 <p>Broccoli, similar to Grunt, will run tasks to compile and concatentate Javascript ES6 files and CSS Preprocessors (SASS, LESS). As of ember-cli 0.2.7, Broccoli prefers to deal with individual files (vs adding a whole directory) in the <code>Brocfile.js</code> file.</p>
 <!-- InstanceEndEditable -->
 <footer>

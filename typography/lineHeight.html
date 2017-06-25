@@ -27,10 +27,10 @@ table p {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Line Height, Leading, and Baseline</h1>
-<h2>Line Clamping and ellipsis</h2>
+<div class="title">Line Height, Leading, and Baseline</div>
+<h1>Line Clamping and ellipsis</h1>
 <p>This is done when you need to fit text within a small amount of space. Easy way is to set the container to a fixed height and then do <code>overflow: hidden;</code>. There is a library that can automatically add ellipsis and also make the longer text available for screen-readers. See <a href="https://github.com/dollarshaveclub/shave">Shave</a>.</p>
-<h2>Leading</h2>
+<h1>Leading</h1>
 <p>In traditional typography, leading is the amount of space between lines of text. On the web, we use the CSS property <code>line-height</code> to adjust the leading. In the first column below,  the line-height has been set to 0.5, which is causing the text to overlap. </p>
 <table width="100%" cellspacing="0">
 	<tr>
@@ -43,7 +43,7 @@ table p {
 	</tr>
 </table>
 <p>&nbsp;</p>
-<h2>CSS Property line-height</h2>
+<h1>CSS Property line-height</h1>
 <p>You can use the standard units for specifying the <code>line-height</code>, such as:</p>
 <p class="code">p {</p>
 <p class="code">&nbsp;&nbsp;&nbsp;font-size:14px;</p>
@@ -51,9 +51,9 @@ table p {
 <p class="code">}</p>
 <p>In this example, the height of the font is 14px and there is a 2px leading (16-14=2). You’ll notice that we can’t directly specify the leading, instead it is derived from the line height and font size.</p>
 <p>Keep in mind, individual lines of text can have a larger line height than what you specify in order to contain all the content. For example, in the first column above there is a 50px tall graphic place inline with the text. For that line, the height is 50px.</p>
-<h2>Using Unitless line-height</h2>
+<h1>Using Unitless line-height</h1>
 <p><a href="http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/" rel="external">Eric Meyer explains</a> that it is better to not include a unit when specifying the line height. The line&rsquo;s overall height is a ratio when a unit is <strong>not</strong> specified for <code>line-height</code>. For example, if you font-size is 24px and you want 5px leading, the line height will be 1.2083=(24+5)/24</p>
-<h2>Baseline</h2>
+<h1>Baseline</h1>
 <p>The baseline is the invisible line that all characters sit on. The baseline will be positioned such that the line's text will be centered vertically within the line height (as demonstrated by LINE TWO). All the examples below have their <code>line-height</code> set to 4.</p>
 <div id="baseline">
 <p style="background-color:gainsboro">LINE ONE abcdefghijklm <span style="font-size:smaller;color:#333;">smaller</span> <span style="font-size:larger; color: indigo;">larger</span><img src="img/px50.jpg" width="100" height="50" style="vertical-align:middle"><span style="font-size: smaller;">vertical-align:middle</span></p>

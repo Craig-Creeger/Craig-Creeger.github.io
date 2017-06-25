@@ -36,8 +36,8 @@ aside {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>A Beginner&rsquo;s Guide to Web Page Layout</h1>
-<h2>HTML v. Body tag</h2>
+<div class="title">A Beginner&rsquo;s Guide to Web Page Layout</div>
+<h1>HTML v. Body tag</h1>
 <ul>
 	<li>The <code>html</code> and <code>body</code> elements are distinct block-level entities, in a parent/child relationship. </li>
 	<li>The <code>html</code> element’s height and width are controlled by the browser window. </li>
@@ -45,7 +45,7 @@ aside {
 	<li>The <code>body</code> element is (by default) <code>position:static</code>, which means that positioned children of it are positioned relative to the <code>html</code> element’s coordinate system. </li>
 	<li>In almost all modern browsers, the built-in offset from the edge of the page is applied through a margin on the <code>body</code> element, not padding on the <code>html</code> element.</li>
 </ul>
-<h2>Centering All Content on the Page</h2>
+<h1>Centering All Content on the Page</h1>
 <p>Centered content is one thing shared by nearly every webpage. For a demo, see my <a href="centerExample.html">Centered Layout Example</a>. The code necessary to do this is very simple: </p>
 <ol>
 	<li>Apply a width (either fixed or a percentage) to the <code>&lt;body&gt;</code> tag</li>
@@ -54,7 +54,7 @@ aside {
 <pre class="prettyprint linenums">&lt;body style=&quot;width:960px; margin:0 auto;&quot;&gt;
 	&lt;p&gt;Your header, content, and footer go between the body tags.&lt;/p&gt;
 &lt;/body&gt;</pre>
-<h2>Fake Tabs</h2>
+<h1>Fake Tabs</h1>
 <p>Especially on forms, you will find that you need to align textboxes and their labels, for example:</p>
 <p>
 	<label for="txt1">Street Address</label>
@@ -78,8 +78,8 @@ aside {
 <p>If you need to create 3 or more columns, you can still use the float trick, but it may be easier to use an HTML table instead.</p>
 <h2 id="images">Images</h2>
 <p>There are two ways to place an image on a webpage, the HTML <code>&lt;img&gt;</code> tag and the CSS <code>background-image</code> property. Which method you choose is <em>usually</em> answered by the question, &ldquo;Will text, or any other HTML element, appear on top of the image?&rdquo;. If you answer is &ldquo;yes&rdquo;, then use CSS. On the other other hand, if your image will not be obstructed with anything, then use the <code>&lt;img&gt;</code> tag.</p>
-<h2>Positioning Text</h2>
-<h3>Use Padding</h3>
+<h1>Positioning Text</h1>
+<h2>Use Padding</h2>
 <p>If I&rsquo;m trying to adjust the location of a line of text, or any other HTML element, the first thing to try is the CSS <code>padding</code> property. OK, great, but <em>which</em> element should you apply the padding to? Let's look at a couple of examples.</p>
 <p>This pararagraph, and the previous one, have no special formatting applied to them other than the standard margin. Now let's say the next paragraph should be indented and spaced further away from it's adjacent paragraphs.</p>
 <p style="padding:3em;">This one is spaced differently.</p>
@@ -101,13 +101,13 @@ aside {
 &lt;/div&gt;</pre>
 <p>The important difference in this example is the content is <strong>inside a container</strong> (the <code>&lt;div&gt;</code> with the speech bubble graphic) and the <strong>padding is applied to the container</strong>.</p>
 <hr>
-<h3>The Exception to the Rule</h3>
+<h2>The Exception to the Rule</h2>
 <p style="float:left; margin:0 3em 1em inherit; background-color:lemonChiffon; padding:1em; width:30%;">This is a left floated element and the text to the right has been pushed away with the CSS <code>margin</code> property.</p>
 <p style="padding-top:1em;">When dealing with floats, the margin property works better. Place the margin on the floated element to keep surrounding content away from it.</p>
 <p>The code used in this example is:</p>
 <pre style="clear:left;" class="prettyprint linenums">&lt;p style=&quot;float:left; margin-right:3em; margin-bottom:1em; width:30%;&quot;&gt;This is a left floated element and the text to the right has been pushed away with the CSS &lt;code&gt;margin&lt;/code&gt; property.&lt;/p&gt;
 &lt;p&gt;When dealing with floats, the margin property works better. Place the margin on the floated element to keep surrounding content away from it.&lt;/p&gt;</pre>
-<h2>Sidebar Layouts</h2>
+<h1>Sidebar Layouts</h1>
 <div id="main">
 	<div id="mainUsable">
 		<p>This layout behaves similarly to a two column table (with the exception of the background colors or images).</p>
@@ -148,7 +148,7 @@ aside {
 	<p>The "faux" column hack would be to place a background image on #main so that it appears like this sidebar has a different color (but in reality you would make it transparent).</p>
 </aside>
 <p style="clear:both;">&nbsp;</p>
-<h2>The Typical Home Page</h2>
+<h1>The Typical Home Page</h1>
 <p>This great graphic comes from <a href="http://blog.kissmetrics.com/landing-page-blueprint/" rel="external">Kissmetrics</a>.</p>
 <p><a href="../assets/ultimate-web-design-guide-infographic.jpg"><img src="../assets/ultimate-web-design-guide-infographic.jpg" alt="" width="500" height="2824"></a></p>
 <!-- InstanceEndEditable -->

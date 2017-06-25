@@ -69,19 +69,19 @@ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIH
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Gradients</h1>
-<h2>Definition</h2>
+<div class="title">Gradients</div>
+<h1>Definition</h1>
 <p>A (color) gradient is a transition from one color to another. There can be multiple color stops and varying shades of opacity along the way.</p>
-<h2>Graphic Gradients</h2>
+<h1>Graphic Gradients</h1>
 <p>You can create gradients easily in Photoshop, Illustrator, and Flash.</p>
-<h2>On-line CSS Generators</h2>
+<h1>On-line CSS Generators</h1>
 <p>For the web, I would always try to create the gradient in CSS first and use a Graphic Gradient only as a last resort. Why?</p>
 <ol>
 	<li>Pages will load quicker using CSS gradients because there is no JPEG to download.</li>
 	<li>The gradient can dynamically change its size. Make this page very narrow to see the following gradients get taller. <span style="font-size:smaller; color:DimGray;">Yes, it is possible to stretch a JPEG dynamically, but not necessarily as smoothly when done in pure CSS.</span></li>
 </ol>
 <p>Use the <a href="http://www.colorzilla.com/gradient-editor/" rel="external">Ultimate CSS Gradient Generator</a> to write your CSS code.</p>
-<h3>Examples of CSS Gradients</h3>
+<h2>Examples of CSS Gradients</h2>
 <article class="box">
 	<section class="simple base flex1">
 		<p>This is a simple gradient.</p>
@@ -91,9 +91,9 @@ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIH
 		<p>This is an example of a more complicated gradient. Notice there is alpha transparency in the top half of the gradient. Sweet.</p>
 	</section>
 </article>
-<h2>Background Gradient</h2>
+<h1>Background Gradient</h1>
 <p>If you want to use a gradient on a page background, it's not quite as simple as applying it to your <code>html</code> selector in CSS because the gradient will only extend to the bottom of your content or viewport, whichever is shorter, and then start repeating. </p>
-<h3>Gradient Matching Height of the Content (<code>&lt;body&gt;</code>)</h3>
+<h2>Gradient Matching Height of the Content (<code>&lt;body&gt;</code>)</h2>
 <p>The solution is to force the HTML be be at least as large as the viewport with the min-height property as in:</p>
 <pre>html {
  min-height:100%;
@@ -107,7 +107,7 @@ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIH
  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77130b', endColorstr='#290200',GradientType=0 );
 }</pre>
 <p>If you content will always be longer than the viewport, then you could place the gradient on the <code>#container</code> or some other content container.</p>
-<h3>Gradient Fixed to Height of Browser Window (<code>&lt;html&gt;</code>)</h3>
+<h2>Gradient Fixed to Height of Browser Window (<code>&lt;html&gt;</code>)</h2>
 <p>In this case, the gradient will not scroll with (tall) content. (Except on the iPad, where it will behave like the previous example.)</p>
 <pre class="prettyprint linenums">html {
 	font-family:Verdana, Geneva, sans-serif;

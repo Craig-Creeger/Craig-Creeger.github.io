@@ -53,10 +53,10 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Justify Grid</h1>
-<h2>Overview</h2>
+<div class="title">Justify Grid</div>
+<h1>Overview</h1>
 <p>The Justify Grid exploits the CSS property text-align: justify; to evenly space columns across the page. <strong>I really like this method!!</strong></p>
-<h3>Pros:</h3>
+<h2>Pros:</h2>
 <ul>
 	<li>No need to calculate gutters</li>
 	<li>The left-most and right-most columns are vertically aligned with the surrounding content. This is a huge win.</li>
@@ -65,12 +65,12 @@
 	<li>Minimal CSS, minimal HTML.</li>
 	<li>Works fine with responsive images.</li>
 </ul>
-<h3>Cons:</h3>
+<h2>Cons:</h2>
 <ul>
 	<li>The width of the column gutters varies depending on the width of the screen. This is usually a minor issue.</li>
 	<li>You may need to add dummy placeholders (thereby junking up your markup) so the last “row” displays nicely.</li>
 </ul>
-<h2>Example</h2>
+<h1>Example</h1>
 <div class="grid">
 	<div class="column">
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum scelerisque ligula ut condimentum. Fusce et dui nibh. Ut consequat felis ac nisl blandit, vel viverra lacus consectetur. Mauris porta ante vel mauris ornare venenatis. Donec ac pellentesque nibh, quis auctor nunc. Suspendisse nec ipsum nec purus malesuada hendrerit. Duis a mollis augue. Ut pulvinar felis sed arcu cursus ultricies. In commodo dui dui, eget ultrices mi efficitur et. Vestibulum lobortis imperdiet erat. Maecenas eu arcu nulla.</p>
@@ -96,7 +96,7 @@
 	<div class="column placeholder">
 	</div>
 </div>
-<h2>The Code</h2>
+<h1>The Code</h1>
 <pre class="prettyprint linenums">&lt;style type=&quot;text/css&quot;&gt;
  .grid {
  	text-align:justify;

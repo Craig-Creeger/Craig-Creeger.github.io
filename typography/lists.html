@@ -50,16 +50,16 @@ ul.listFix, ol.listFix {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Lists</h1>
-<h2>Basic Construction</h2>
-<h3>Unordered Lists</h3>
+<div class="title">Lists</div>
+<h1>Basic Construction</h1>
+<h2>Unordered Lists</h2>
 <pre class="prettyprint linenums">&lt;ul&gt;
 	&lt;li&gt;OS X&lt;/li&gt;
 	&lt;li&gt;Windows&lt;/li&gt;
 	&lt;li&gt;Linux&lt;/li&gt;
 &lt;/ul&gt;</pre>
 <p>Apply the <code>list-style-type</code> property to the <code>&lt;ul&gt;</code> tag to change the type of list. Valid values are: <code>disc, circle, square,  decimal, lower-roman, upper-roman, lower-alpha, upper-alpha</code>, and <code>none</code>.</p>
-<h3>Ordered Lists</h3>
+<h2>Ordered Lists</h2>
 <pre class="prettyprint linenums">&lt;ol&gt;
 	&lt;li&gt;January&lt;/li&gt;
 	&lt;li&gt;February&lt;/li&gt;
@@ -78,13 +78,13 @@ ul.listFix, ol.listFix {
 	&lt;li&gt;May&lt;/li&gt;
 	&lt;li&gt;June&lt;/li&gt;
 &lt;/ol&gt;</pre>
-<h4>First Quarter</h4>
+<h3>First Quarter</h3>
 <ol>
 	<li>January</li>
 	<li>February</li>
 	<li>March</li>
 </ol>
-<h4>Second Quarter</h4>
+<h3>Second Quarter</h3>
 <ol>
 	<li value="4">April</li>
 	<li>May</li>
@@ -103,13 +103,13 @@ ul.listFix, ol.listFix {
 	&lt;li&gt;May&lt;/li&gt;
 	&lt;li&gt;June&lt;/li&gt;
 &lt;/ol&gt;</pre>
-<h4>First Quarter</h4>
+<h3>First Quarter</h3>
 <ol>
 	<li>January</li>
 	<li>February</li>
 	<li>March</li>
 </ol>
-<h4>Second Quarter</h4>
+<h3>Second Quarter</h3>
 <ol start=4>
 	<li value="4">April</li>
 	<li>May</li>
@@ -138,9 +138,9 @@ ul.listFix, ol.listFix {
 	&lt;/li&gt;
 	&lt;li&gt;Pretzels&lt;/li&gt;
 &lt;/ul&gt;</pre>
-<h2>Advanced Formatting</h2>
+<h1>Advanced Formatting</h1>
 <p><a href="http://www.alistapart.com/articles/taminglists/" rel="external">A List Apart</a> has a great article on formatting lists.</p>
-<h3>Horizontal Positioning</h3>
+<h2>Horizontal Positioning</h2>
 <p>The most common thing you may need to do is adjust the margins and padding to move your list from its default location. Browsers have different default methods for indenting the list; either padding-left or margin-left depending on the browser.</p>
 <section class="clearfix">
 	<div class="floatBox">
@@ -181,13 +181,13 @@ ul.listFix, ol.listFix {
 	margin-right:2.5em;
 }</pre>
 </section>
-<h2>Markers</h2>
+<h1>Markers</h1>
 <p>You can place the markers outside or inside the list using CSS property list-marker-position. For example:</p>
 <ul style="background-color:#6C9; width:300px">
 	<li>This list has the markers positioned outside the normal flow. This is the</li>
 	<li> default (standard) way of doing things.</li>
 </ul>
-<h3>list-marker-position</h3>
+<h2>list-marker-position</h2>
 <p>You can use the <code>list-marker-position</code> property to set the bullets or numbers inside the normal flow, however <em><strong>I have never come across a situation yet where <code>list-marker-position:inside</code> is the best solution</strong></em>. Go with &quot;<a href="#solution">the Solution</a>&quot; above instead.</p>
 <ul style="background-color:#6C9; width:400px">
 	<li style="list-style-position:inside">This list has the markers positioned inside the normal flow.</li>

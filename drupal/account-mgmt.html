@@ -17,10 +17,10 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Drupal Account Management</h1>
-<h2>Viewing Your Users</h2>
+<div class="title">Drupal Account Management</div>
+<h1>Viewing Your Users</h1>
 <p>The default page to view all people (http://yoursite.dev/admin/people) in your Drupal site leaves quite a bit to be desired. For a much better interface, install contributed module <a href="https://www.drupal.org/project/admin_views" rel="external">Administration Views</a> (admin_views). It will also give you a better page for looking at your content nodes (http://yoursite.dev/admin/content).</p>
-<h2>Creating Accounts</h2>
+<h1>Creating Accounts</h1>
 <p>Using a out-of-the-box install of Drupal, you can specify who can create accounts on your site. Options are:</p>
 <ul>
 	<li>Visitors</li>
@@ -29,13 +29,13 @@
 </ul>
 <p>You can also force visitors to confirm sign-up via an email (a good idea), however this comes at the cost of not being able to directly create and account and be logged in.</p>
 <p>After requesting a replacement password, or just signing up for a new account, the user will be required to enter a new password. If they don’t, they will have temporary access to the site as an “authenticated” user (until the next Cron, I think.) To force users to immediately change their password after requesting a one-time password, use the Password Policy module as described below.</p>
-<h3>Passwords</h3>
+<h2>Passwords</h2>
 <p>Out-of-the-box, Drupal will suggest to the user that they make strong passwords with specific recommendations, but they are not enforced. To force strong passwords use a contributed module such as <strong><em>Password Policy (password_policy)</em></strong>. You can also force a password change after requesting to get a password reset.</p>
 <p>You will need to create a policy that defines the rules for how to construct a password, which roles it applies to, and optionally when passwords expires.</p>
 <p>As of April 2015, there is a 2.0-alpha4 release, and their 1.1 release. Both seems to work fine, but there are actually more options in the 1.1 release right now; probably best to stick with that one until 2.0 comes out of <em>alpha</em>.</p>
-<h3>Blocking Bogus (New) Accounts</h3>
+<h2>Blocking Bogus (New) Accounts</h2>
 <p>The <em><strong>Spambot (spambot)</strong></em> module will check against a blacklist of abusive accounts.</p>
-<h3>More Features and Options for Logging In</h3>
+<h2>More Features and Options for Logging In</h2>
 <p>The <strong><em>LoginToboggan (logintoboggan)</em></strong> module has several options:</p>
 <ul>
 	<li>Allows you to login using your email address (killer feature!)</li>
@@ -45,7 +45,7 @@
 	<li>and more...</li>
 </ul>
 <p>&nbsp;</p>
-<h2>Detecting and Blocking Login Attempts</h2>
+<h1>Detecting and Blocking Login Attempts</h1>
 <p>It seems to me that the best way to avoid bots is to move the default location of the login screen, which is <code>/user</code> and <code>/user/login</code>.</p>
 <p>Drupal allows you to manually block an IP address. To automate that process the <strong><em>Login Security (login_security)</em> </strong>module allows you to set some rules for automatically blocking IP addresses.</p>
 <p>&nbsp;</p>

@@ -17,35 +17,35 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Drupal Text Formats and Filters</h1>
-<h2>Concepts</h2>
-<h3>Definition</h3>
+<div class="title">Drupal Text Formats and Filters</div>
+<h1>Concepts</h1>
+<h2>Definition</h2>
 <p>Text Formats are applied to text fields, and are way to group and configure a set of Filters. Permissions are assigned to the Text Format. Filters will dynamically rewrite the souce code at display time (usually they are restricting the HTML or otherwise making it safer).</p>
-<h3>Input and Output</h3>
+<h2>Input and Output</h2>
 <p>Whatever a user enters into a text field is exactly what gets stored in the database (although Drupal will make it SQL safe). Therefore, filters are applied at output (page display) time.</p>
-<h3>Best Practices</h3>
+<h2>Best Practices</h2>
 <p>Give your visitors and editors as little leeway as possible.</p>
-<h2>Filters</h2>
-<h3>Drupal Core Filters</h3>
+<h1>Filters</h1>
+<h2>Drupal Core Filters</h2>
 <p>There are some core filters that come with Drupal:</p>
 <p>
 <div class="callout pushRight" style="width:40%;">The first two filters listed here are mutually exclusive. If you try to use both at the same time, “Display any HTML as plain text” will win.</div>
 </p>
-<h4>Limit Allowed HTML Tags</h4>
+<h3>Limit Allowed HTML Tags</h3>
 <p>This lets you create a white-list of HTML tags.</p>
-<h4>Display any HTML as plain text</h4>
+<h3>Display any HTML as plain text</h3>
 <p>Converts HTML special characters to their entity equivalents.</p>
-<h4>Convert line breaks into HTML</h4>
+<h3>Convert line breaks into HTML</h3>
 <p>Any newline characters typed into the text field will be rendered as either a <code>&lt;p&gt;</code> or <code>&lt;br&gt;</code>.</p>
-<h4>Convert URLs into links</h4>
+<h3>Convert URLs into links</h3>
 <p>For anonymous users or people entering comments this should be shut off (to prevent clickable spam links).</p>
 <p>For content editors this is a nice time saver, however it is probably a good idea to combine it with “Limit allowed HTML tags” if you need to add the <code>rel=&quot;nofollow&quot;</code> attribute.</p>
-<h4>Correct faulty and chopped off HTML</h4>
+<h3>Correct faulty and chopped off HTML</h3>
 <p>Does what it says.</p>
-<h3>Other Common Filters</h3>
-<h4>Convert Media tags to markup</h4>
+<h2>Other Common Filters</h2>
+<h3>Convert Media tags to markup</h3>
 <p>This is installed as part of the CKEditor (ckeditor) module. You will need to enable this filter if you want to use the WYSIWYG editor to insert <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> tags (I think).</p>
-<h2>Text Formats</h2>
+<h1>Text Formats</h1>
 <p>When configuring Text Formats, I tend to consider the typical user types, the WYSIWIG editor, and Filters. This is what I used for one website:</p>
 <table class="dataTable">
 	<thead>
@@ -86,7 +86,7 @@
 		</tr>
 	</tbody>
 </table>
-<h3>Deleting (disabling) a Text Format</h3>
+<h2>Deleting (disabling) a Text Format</h2>
 <p>Core Drupal handles the removal of Text Formats in a very rudimentary way. There is a link to “disable” a text format. Clicking this will:</p>
 <ul>
 	<li>Remove that Text Format from the list of available formats.</li>
@@ -95,7 +95,7 @@
 <p>If you have hundreds of nodes using a text format that you want to get rid of, then an automated solution is in order. You will need to know the table name for your fields and then run some SQL:</p>
 <pre class="prettyprint linenums">UPDATE field_revision_foo SET field_foo_format = 'new_format';
 UPDATE field_data_foo SET field_foo_format = 'new_format';</pre>
-<h4>Re-enabling a Disabled Text Format</h4>
+<h3>Re-enabling a Disabled Text Format</h3>
 <p>When you disable a Text Format (as the name implies) you are not actually deleting it. To get it back, find the machine name for your filter using:</p>
 <p class="code">Select * from filter_format;</p>
 <p>Then re-enable using a SQL statement similar to this:</p>

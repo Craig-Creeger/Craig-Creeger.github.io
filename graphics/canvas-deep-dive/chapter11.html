@@ -2,13 +2,13 @@
 <body>
 
 <div id="header">
-<h2>Chapter 11</h2>
-<h1>WebGL Hands On with ThreeJS: 3D Car</h1>
+<h1>Chapter 11</h1>
+<div class="title">WebGL Hands On with ThreeJS: 3D Car</div>
 </div>
 
 <div id="content">
 
-<h3><a id='cube'>Building A Sky</a></h3>
+<h2><a id='cube'>Building A Sky</a></h2>
 
 <p>For our hands on, we will create a new scene: a car that drives around on a large grassy plain under a starry sky.  This is adapted from a series of great blog posts by Jerome, who also created the template builder and tQuery, which is like JQuery, but for ThreeJS. (<a href='http://learningthreejs.com/blog/2012/05/21/sport-car-in-webgl/'>original series</a>.)</p>
 
@@ -64,7 +64,7 @@ scene.add(light);</code></pre>
 
 <p><img src="images/gl_sky.png"></p>
 
-<h3><a id='ground'>Adding a Ground Plane</a></h3>
+<h2><a id='ground'>Adding a Ground Plane</a></h2>
 
 <p>Now we want a ground plane. First you need to load the grass image (<a href='http://www.tutorialsforblender3d.com/Textures/Grass/Grass_1.html'>original source</a>) as a texture. (The grass image is also included in the example code.) Set it to repeat in the x and y directions. The repeat values should be the same as the size of the texture, and usually should be a power of two (ex: 256).</p>
 
@@ -97,7 +97,7 @@ scene.add(ground);</code></pre>
 
 <p><img src='images/gl_grass.png'/></p>
 
-<h3><a id='car'>Adding a Car Model</a></h3>
+<h2><a id='car'>Adding a Car Model</a></h2>
 
 <p>To replace the torus with a car we will load an external model, in this case
 a very detailed model of a Bugatti Veyron created by <a
@@ -125,7 +125,7 @@ new THREE.BinaryLoader().load('./VeyronNoUv_bin.js', function(geometry) {
 <p><img src='images/gl_car.png'></p>
 
 
-<h3><a id='keyboard'>Keyboard Control</a></h3>
+<h2><a id='keyboard'>Keyboard Control</a></h2>
 
 <p>Of course a car just sitting there is no fun. And it's too far away. Let's make it move.  Currently the <code>cameraControl</code> object is moving the camera around. Remove that and create a new <code>KeyboardState</code> object where the <code>cameraControl</code> object was initialized. You will need to import <code>vendor/threex/THREEx.KeyboardState.js</code> at the top of your page.</p>
 
@@ -172,7 +172,7 @@ if(keyboard.pressed("down")) {
 }</code></pre>
 
 
-<h3><a id='next'>Next Steps</a></h3>
+<h2><a id='next'>Next Steps</a></h2>
 
 <p>That's it for this hands on. If you wish to continue working with this example, here are a few things you might want to add.</p>
 

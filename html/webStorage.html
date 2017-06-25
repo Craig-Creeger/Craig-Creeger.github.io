@@ -20,12 +20,12 @@ window.sessionStorage.egg = "eggplant";
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Web Storage</h1>
-<h2>Intro Articles</h2>
+<div class="title">Web Storage</div>
+<h1>Intro Articles</h1>
 <p>See Apple’s <a href="../assets/SafariJSDatabaseGuide.pdf">tutorial on Web Applications</a>.</p>
 <p>From <a href="http://html5doctor.com/storing-data-the-simple-html5-way-and-a-few-tricks-you-might-not-have-known/" rel="external">HTML5Doctor</a> and one from <a href="http://www.webdirections.org/blog/webstorage-persistent-client-side-data-storage/" rel="external">WebDirections</a>.</p>
 <p>Also, take a quick look at the <a href="applicationCache.html#filesystem">Filesystem API</a>.</p>
-<h2>Description</h2>
+<h1>Description</h1>
 <p>The API for localStorage and sessionStorage is exactly the same, and distills down to the following methods:</p>
 <div class="halfWidthBox">
 	<p>If Web Storage is working, you will see two identical columns of text below.
@@ -51,7 +51,7 @@ window.sessionStorage.egg = "eggplant";
 	</div>
 </div>
 <div class="halfWidthBox" style="margin-top:1em;">
-<h3>Another example</h3>
+<h2>Another example</h2>
 <p>Clicking a checkbox will immediately save that value to the database. After closing your browser and coming back to this page, you should see your previously saved values.</p>
 <form name="formToDo" method="post" action="" onsubmit="return false;">
 	<p>
@@ -80,7 +80,7 @@ window.sessionStorage.egg = "eggplant";
 	.clear() - empties out all contents<br>
 	.key(index)<br>
 	.length</p>
-<h3>Storing Data</h3>
+<h2>Storing Data</h2>
 <p>Call the .setItem() method &mdash; for example:</p>
 <p class="code">if (window<wbr>.sessionStorage) { //we use sessionStorage</p>
 <p class="code">    window<wbr>.sessionStorage<wbr>.setItem(<wbr>&quot;fullName&quot;,<wbr>&quot;Craig Creeger&quot;);</p>
@@ -90,7 +90,7 @@ window.sessionStorage.egg = "eggplant";
 <p class="code">}</p>
 <p>There is also a shortcut method for calling setItem(). Simply create and set a property on the sessionStorage object. This will automatically call setItem() behind the scenes. For example:</p>
    <p class="code">window.sessionStorage.fullName = "Craig Creeger";</p>
-   <h3>Retrieving Data</h3>
+   <h2>Retrieving Data</h2>
    <p>This is done in a similar manner as storing the data.</p>
    <p class="code">var myName = window.sessionStorage.getItem(&quot;fullName&quot;);</p>
    <p>    or</p>
@@ -102,12 +102,12 @@ if (myName!=null) {
 } else {
   myName = &quot;default value&quot;;
 }</pre>
-   <h3>Delete a Key/Value Pair</h3>
+   <h2>Delete a Key/Value Pair</h2>
    <p class="code">window.sessionStorage.removeItem(&quot;fullName&quot;);</p>
    <p>    or</p>
    <p class="code">delete window.sessionStorage.fullName;</p>
-   <h2>Gotchas, Tips and Tricks</h2>
-   <h3>sessionStorage and localStorage store all data as strings</h3>
+   <h1>Gotchas, Tips and Tricks</h1>
+   <h2>sessionStorage and localStorage store all data as strings</h2>
    <p>As mentioned earlier, the values stored in local and session storage are strings, which has a number of implications for developers.</p>
    <p>In particular, when we store boolean values, integers, floating point numbers, dates, objects and other non-​​string values, we need to convert to and from a string when writing to and reading from storage.</p>
 <p>There’s also a more subtle side effect of storing values as strings. JavaScript strings are UTF-​​16 encoded, which means each character is 2 bytes (in UTF-​​8 characters are one byte). This effectively halves the available storage space.</p>
@@ -124,15 +124,15 @@ if (myName!=null) {
 <p class="code">// later that evening…<br>
 	var html5docs = <strong>JSON.parse</strong>(localStorage.doctors);<br>
 alert('There be ' + html5docs.length + ' doctors in the house');</p>
-<h3>Private Browsing</h3>
+<h2>Private Browsing</h2>
 <p>Many browsers now have private (or ‘incognito’) browsing modes, where no history or other details are stored between sessions. In this situation, what happens with sessionStorage and localStorage varies widely by browser.</p>
 <p>Safari returns null for any item set using localStorage.setItem either before or during the private browsing session. In essence, neither sessionStorage nor localStorage are available in private browsing mode.</p>
 <p>Chrome and Opera return items set previous to private (&quot;incognito&quot;) browsing commencing, but once private browsing commences, treat localStorage like sessionStorage (only items set on the localStorage by that session will be returned) but like localStorage for other private windows and tabs.</p>
 <p>Firefox, like Chrome will not retrieve items set on localStorage prior to a private session starting, but in private browsing treats localStorage like sessionStorage for non-private windows and tabs, but like localStorage for other private windows and tabs.</p>
-<h3>Getters and Setters</h3>
+<h2>Getters and Setters</h2>
 <p>In addition to using getItem and setItem we can use a key directly to get and set an item in sessionStorage and localStorage, like so (where the key is &quot;keyName&quot;):</p>
 <p>var itemValue = window.localStorage.keyName;</p>
-<h3>localStorage and sessionStorage Limits</h3>
+<h2>localStorage and sessionStorage Limits</h2>
 <p>The webStorage specification recommends browsers implement a 5MB limit on the amount of data localStorage or sessionStorage can save for a given domain. If you try to exceed the limit that various browsers have in place (for some browsers users can change this allowance) setItem throws an error. There's no way of asking localStorage for the amount of space remaining, so it's best to set item values with a try and catch for any error:</p>
    <p>try {<br>
    	window.localStorage.setItem(key, value);<br>
@@ -143,7 +143,7 @@ alert('There be ' + html5docs.length + ' doctors in the house');</p>
    	If the available space for this localStorage is exceeded, the exception object will have the name &quot;QUOTA_EXCEEDED_ERR&quot; and a code of 22.</p>
    <p>As mentioned, in JavaScript strings are UTF-16 encoded, which means they are 2 bytes. So, when saving the string &ldquo;John&rdquo;, we are actually using 8 bytes, not 4. Which means instead of 5MB of storage space per storage area, we effectively have 2.5MB.</p>
 <p>If the storage needs of your application are likely to exceed 5MB, then web databases are likely to be a better solution. However, the situation with web databases is complicated, with two different standards, one, webSQL widely supported but deprecated, and the other IndexedDB, currently supported only in Firefox, Chrome and IE10.</p>
-   <h3>Storage Events</h3>
+   <h2>Storage Events</h2>
    <p>We can add an event listener to the window for storage events so that when a storage object has been changed then we can be notified and respond to those changes.</p>
 <!-- InstanceEndEditable -->
 <footer>

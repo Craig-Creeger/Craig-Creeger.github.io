@@ -17,16 +17,16 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Node.js</h1>
+<div class="title">Node.js</div>
 
-<h2>Definition</h2>
+<h1>Definition</h1>
 <p>Node is a great tool for local development, and can be a great production webserver. If you want
 to use it for local development as a webserver, be sure to checkout <a href="http://expressjs.com"
 target="external">Express</a>.
 <p>Read this  to get an <a href="http://www.nodebeginner.org" rel="external">overview of
 Node</a>.</p>
 
-<h2>Node Version Switching with <strong>nvm</strong></h2>
+<h1>Node Version Switching with <strong>nvm</strong></h1>
 
 <p>check to see what version you are using by doing:<br>
 <code>$ nvm current</code></p>
@@ -37,11 +37,11 @@ Node</a>.</p>
 <p>Then your path will be similar to:<br>
 <code>/Users/a6001374/.nvm/versions/node/v5.6.0/bin/node</code></p>
 
-<h3>List Local and Remote Versions</h3>
+<h2>List Local and Remote Versions</h2>
 <pre><code>$ nvm ls
 $ nvm ls-remote</code></pre>
  
-<h3>Installing a Version</h3>
+<h2>Installing a Version</h2>
 <p>Check to see what versions are available.<br>
 <code>$ nvm ls-remote</code></p>
 
@@ -54,21 +54,21 @@ $ nvm ls-remote</code></pre>
 <code>$ nvm alias default 6.0.0</code></p>
 
 
-<h3>Switching Versions</h3>
+<h2>Switching Versions</h2>
 <p>You can install and switch to different versions using the command:</p>
 <pre>$ nvm use 4.2.1
 $ nvm alias default 4.2.1</pre>
 
 <p class="callout">If you are switching to a new (updated) version of Node, then be aware all of your globally installed packages will be gone since they are tied to specific versions.</p>
 
-<h3>Uninstalling a Version</h3>
+<h2>Uninstalling a Version</h2>
 <p><code>$ nvm uninstall 4.2.1</code></p>
 
-<h3>Updating npm</h3>
+<h2>Updating npm</h2>
 <p><code>npm install npm@latest -g</code></p>
 
-<h2>Express Server</h2>
-<h3>Debugging Middleware</h3>
+<h1>Express Server</h1>
+<h2>Debugging Middleware</h2>
 <p>When writing middleware function for you routes you may find this debugging code usefull.</p>
 <pre class="prettyprint linenums">/**
  * This can be used during development to inspect the values of req and res. To use, place this

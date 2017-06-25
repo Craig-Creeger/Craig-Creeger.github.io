@@ -17,14 +17,14 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Grunt</h1>
-<h2>Doco</h2>
+<div class="title">Grunt</div>
+<h1>Doco</h1>
 <p><a href="http://gruntjs.com/" target="external">http://gruntjs.com/</a></p>
-<h2>Installation</h2>
+<h1>Installation</h1>
 <p class="code">npm install -g grunt-cli</p>
 <p>This will put the <code>grunt</code> command in your system path, allowing it to be run from any directory.</p>
 <p>Note that installing <code>grunt-cli</code> does not install the Grunt task runner! The job of the Grunt CLI is simple: run the version of Grunt which has been installed next to a Gruntfile. This allows multiple versions of Grunt to be installed on the same machine simultaneously.</p>
-<h2>Spinning Up a New Site</h2>
+<h1>Spinning Up a New Site</h1>
 <p>You will need to do this if installing packages such as Grunt.</p>
 <ol>
 	<li>Install the <code>grunt-cli</code> globally if that has not already been done.</li>
@@ -74,9 +74,9 @@
 		</ol>
 	</li>
 </ol>
-<h2>Grunt Plugins</h2>
+<h1>Grunt Plugins</h1>
 <p>When searching for plugins, use the search on the <a href="http://gruntjs.com/plugins" target="external">Grunt page</a>, not the npm search page.</p>
-<h3>grunt-contrib-concat</h3>
+<h2>grunt-contrib-concat</h2>
 <p>With the code below, we have two jobs defined (<em>dist</em> and <em>prod</em>). It will build to <strong>dev</strong> and to <strong>prod</strong>. Also, if the options property is defined inside the jobs, then those options only apply to that job.</p>
 <pre class="prettyprint linenums">concat: {
 	options: {
@@ -92,8 +92,8 @@
 	}
 }</pre>
 <p>grunt.loadNpmTasks('grunt-contrib-concat');</p>
-<h3>grunt-contrib-uglify</h3>
-<h3>grunt-contrib-sass</h3>
+<h2>grunt-contrib-uglify</h2>
+<h2>grunt-contrib-sass</h2>
 <pre class="prettyprint linenums">sass: {
 	options: {
 		style: 'compact'
@@ -103,7 +103,7 @@
 	}	<em></em>
 }</pre>
 <p>grunt.loadNpmTasks('grunt-contrib-sass');</p>
-<h3>grunt-contrib-watch</h3>
+<h2>grunt-contrib-watch</h2>
 <pre class="prettyprint linenums">watch: {
 	options: {
 		spawn: false, //makes it run faster
@@ -117,7 +117,7 @@
 	}<em></em>
 }</pre>
 <p>grunt.loadNpmTasks('grunt-contrib-watch'); </p>
-<h3>grunt-contrib-connect</h3>
+<h2>grunt-contrib-connect</h2>
 <p>This plugin assists with Watch’s LiveReload feature.</p>
 <pre class="prettyprint linenums">connect: {
 	server: {
@@ -130,7 +130,7 @@
 	}
 }</pre>
 <p>grunt.loadNpmTasks('grunt-contrib-connect); </p>
-<h3>grunt-wiredep</h3>
+<h2>grunt-wiredep</h2>
 <p>This plugin assists with Watch’s LiveReload feature.</p>
 <pre class="prettyprint linenums">wiredep: {
 	task: {
@@ -148,7 +148,7 @@
 	&lt;!-- bower:js --&gt;
 	&lt;!-- endbower --&gt;
 &lt;/body&gt;</pre>
-<h3>CSS Plugins</h3>
+<h2>CSS Plugins</h2>
 <p><em>Grunt Recess</em> to enforce a style guide</p>
 <p><em>Grunt CSS Lint</em> to improve speed</p>
 <p><em>Grunt PostCSS</em> to minify, autoprefix, fallbacks for rem, and more</p>

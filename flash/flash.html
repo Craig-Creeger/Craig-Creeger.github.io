@@ -16,13 +16,13 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-	<h1>Flash Integration</h1>
-	<h2><a name="embedding"></a>Flash Security Settings</h2>
+	<div class="title">Flash Integration</div>
+	<h1><a name="embedding"></a>Flash Security Settings</h1>
 	<p>To edit the Flash Security settings for your computer, click the link below. Yes, it's a bit weird that a website will make changes to your local machine, but that’s the way it works.</p>
 <p><a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html" rel="external">http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html</a></p>
 	<p>The most common use I have found for this tool is when you are testing a SWF locally in Safari (this trick won’t work for Firefox) and you  see a bunch of icons instead of the video. Adobe’s official statement is you must view videos from a server when you have embedded an FLV using Dreamweaver, which uses the FLVPlayer_Progressive swf to play your video.</p>
 	<p>When using the above too, simply add your local folder to the list of trusted areas.</p>
-	<h2>Embedding Using SWFObject</h2>
+	<h1>Embedding Using SWFObject</h1>
 <p>The standard Dreamweaver way of embedding Flash doesn't always work, especially when trying to communicate with JavaScript as in this example. In fact, Adobe now recommends using SWFObject to embed SWF's.</p>
 <p>There are two methods of placing a SWF on your page with SwfObject: Static or Dynamic publishing. The method that I always use is Dynamic publishing.</p>
 <p>You can either copy <code>swfobject.js</code> <a href="http://code.google.com/p/swfobject/" rel="external">from Google</a> and put it on your site, or reference a copy from the CDN as shown on line five. The last line of the script will actually place the Flash (swf) file onto the page dynamically. You need to tell it the name and location of the SWF file (temperatureDial.swf in this example) the name of the DOM element that the swf will be placed into (tempGauge), the width and height (550 x 400), version of Flash Player, and finally any variables, Flash operating parameters, and DOM attributes.</p>
@@ -43,7 +43,7 @@
 <pre class="prettyprint linenums">	swfobject.embedSWF(&quot;temperatureDial.swf&quot;, &quot;tempGauge&quot;, &quot;550&quot;, &quot;400&quot;, &quot;9.0.0&quot;, &quot;expressInstall.swf&quot;, flashvars, params, attributes);
 &lt;/script&gt;
 	</pre>
-<h2><a name="communication"></a>JavaScript Communication</h2>
+<h1><a name="communication"></a>JavaScript Communication</h1>
 	<p>The most general purpose way to get Flash and JavaScript to talk to each other is with the Flash class &quot;ExternalInterface&quot;. An example of the ActionScript 3.0 code you need to place in your *.as file is:</p>
 	<pre style="margin-bottom:0">import flash.external.ExternalInterface;
 

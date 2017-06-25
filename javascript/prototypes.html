@@ -23,8 +23,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Prototypes</h1>
-<h2>Overview</h2>
+<div class="title">Prototypes</div>
+<h1>Overview</h1>
 <p>Prototypes are how JavaScript provides inheritance. See the <a href="inheritance.html#sources">Inheritance page</a> for good articles on Inheritance and Prototypes in JavaScript.</p>
 <table width="100%" cellspacing="0">
 	<tr valign="top">
@@ -78,13 +78,13 @@
 	</tr>
 </table>
 <p>Prototype is a property of functions, not objects. Therefore Cat.prototype is valid (returns an Object), but maria.prototype is not (returns undefined). If you want the prototype of an instance (like maria) then you need to use one of these three ways:</p>
-<h3>W3C standard <span style="font-weight:normal">(fails in IE&lt;=8 and Opera)</span>:</h3>
+<h2>W3C standard <span style="font-weight:normal">(fails in IE&lt;=8 and Opera)</span>:</h2>
 <p class="code">Object.getPrototypeOf(maria);</p>
-<h3>Non-standard <span style="font-weight:normal">(but supported by most browsers except IE)</span>:</h3>
+<h2>Non-standard <span style="font-weight:normal">(but supported by most browsers except IE)</span>:</h2>
 <p class="code">maria.__proto__;</p>
-<h3>Fallback <span style="font-weight:normal">(but only if constructor.prototype has not been replaced and fails with Object.create)</span></h3>
+<h2>Fallback <span style="font-weight:normal">(but only if constructor.prototype has not been replaced and fails with Object.create)</span></h2>
 <p class="code">maria.constructor.prototype;</p>
-<h2>Full Example</h2>
+<h1>Full Example</h1>
 <p>Look at the source code for this page, and inspect the console, to fully understand what is going on.</p>
 <!-- InstanceEndEditable -->
 <footer>

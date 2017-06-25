@@ -41,16 +41,16 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Media Queries</h1>
+<div class="title">Media Queries</div>
 <h2 id="ie8">IE8 Support with a Polyfill</h2>
 <p>IE8 doesn’t understand Media Queries. Fortunately, some clever individual wrote <a href="http://code.google.com/p/css3-mediaqueries-js/" rel="external">css3-mediaqueries.js</a> Make sure you include that code on every page that will be using <code>@media</code>. <em>Caution: Depending on the complexity of your CSS, this could make your browser crawl slowly - do some testing...</em></p>
 <p>If you’d prefer to dynamically load the <em>css3-mediaqueries</em> library, you could use the <code>Modernizr.load()</code> function. You can read more about <a href="../frameworks/codeLibraries.html#testingMQ">Modernizr and how it handles Media Queries</a>.</p>
 <p>Another polyfill, <a href="https://github.com/scottjehl/Respond" rel="external">Respond.js</a>, is available from Github or as an <a href="http://www.initializr.com/" rel="external">Initializr</a> build option.</p>
-<h2>Making sense of the Rule</h2>
+<h1>Making sense of the Rule</h1>
 <p>Perhaps it’s just me, but I always struggle when trying to make sense of the min- and max-width selectors. For example, when does this selector get applied? <code>@media only screen and (min-width: 768px)</code> The answer is, when the screen width is &gt;= 768px.</p>
 <p>When you see <code>min-width</code>, say to yourself, &ldquo;Use this rule when the width is greater than or equal to...&rdquo;</p>
 <p>When you see <code>max-width</code>, say to yourself, &ldquo;Use this rule when the width is less than or equal to...&rdquo;</p>
-<h2>For Print</h2>
+<h1>For Print</h1>
 <p>You can use a different CSS Style Sheet when a web page is printed. Common reasons for this would be the lay the page out differently, use a different font, and hide elements.</p>
 <pre class="prettyprint linenums">&lt;style type=&quot;text/css&quot;&gt;
 @media only print {
@@ -63,7 +63,7 @@
 	}
 }
 &lt;/style&gt;</pre>
-<h2>For Screen</h2>
+<h1>For Screen</h1>
 <p class="demo">This is one of the key methods for building a Responsive website.</p>
 <pre class="prettyprint linenums">/* These should be listed in order; either narrowest to widest, or the other way around. */
 .demo {	background-color:aquamarine; }

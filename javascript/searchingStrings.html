@@ -17,54 +17,54 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>String Handling</h1>
-<h2>Javascript String Object</h2>
-<h3>Searching</h3>
+<div class="title">String Handling</div>
+<h1>Javascript String Object</h1>
+<h2>Searching</h2>
 <p>Searching a string for the occurance of another string is a very common need. For example, does an email address contain the &quot;@&quot; symbol?</p>
 <p>You can do this various ways using the String object.</p>
-<h4>For methods that use RegEx, the flags are:</h4>
+<h3>For methods that use RegEx, the flags are:</h3>
 <p>g – Global match – Whether to test the regular expression against all possible matches in a string, or only against the first.<br>
 i – Ignore case<br>
 m – Multi-line; ^ and $ work over all lines, not just the input string (in other words, it will be sensitive to \n characters).<br>
 y – Sticky</p>
-<h4>indexOf()</h4>
+<h3>indexOf()</h3>
 <pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
 	var email = &quot;larry@stooges.com&quot;;
 	var pos = email.indexOf(&quot;@&quot;); //pos=5 (zero-based)
 &lt;/script&gt;</pre>
-<h4>match()</h4>
+<h3>match()</h3>
 <pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
 	var email = &quot;larry@stooges.com&quot;;
 	var posArray = email.match(/@/g); //[0]=&quot;@&quot;, [1]=&quot;@&quot;
 &lt;/script&gt;</pre>
 <p><code>match()</code> will return an array of matched strings if the global flag is used (in this example, it is the g following the last slash).</p>
-<h4>search()</h4>
+<h3>search()</h3>
 <pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
 	var email = &quot;larry@stooges.com&quot;;
 	var pos = email.search(/@/); //pos=5 (zero-based)
 &lt;/script&gt;</pre>
 <p>This is similar to indexOf(), except a Regular Expression is used to find the &quot;sought&quot; string. <code>.search()</code> returns a -1 if the string is not found.</p>
-<h4>&nbsp;</h4>
-<h3>Substrings</h3>
-<h4>String.substring(start,end)</h4>
+<h3>&nbsp;</h3>
+<h2>Substrings</h2>
+<h3>String.substring(start,end)</h3>
 <p>When specifying the start and end values, think of them as the spaces <em>between</em> the characters. If we want just the word “ipsum” specify the start and end values that <em><strong>wrap</strong></em> the word — 6 and 11.</p>
 <p class="code" style="font-size:2em; letter-spacing:6px; position:relative; left:-0.4em; white-space:pre">      ↓    ↓</p>
 <p class="code" style="font-size:2em; letter-spacing:6px;">Lorem ipsum dolor sit amet</p>
 <p class="code" style="font-size:2em; letter-spacing:6px; position:relative; left:-0.4em;">012345678901234567890123456</p>
 <pre class="prettyprint linenums">var myString = String(&quot;Lorum ipsum dolor sit amet&quot;);
 var ipsum = myString.substring(6, 11);</pre>
-<h4>String.substr(start, length)</h4>
+<h3>String.substr(start, length)</h3>
 <p>This is similar to the previous example, but instead of an end (index) value, you specify the length that you want extracted out of the string. So, if you just want “ipsum” you would specify:</p>
 <pre class="prettyprint linenums">var myString = String(&quot;Lorum ipsum dolor sit amet&quot;);
 var ipsum = myString.substr(6, 5);</pre>
-<h2>Javascript RegExp Object</h2>
+<h1>Javascript RegExp Object</h1>
 <p>It is possible to bypass the String object and go straight to RegExp. This example will find a query parameter in a URL.</p>
 <pre class="prettyprint linenums">function getParameterByName(name) {
 	var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
 	return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }</pre>
 <p>The <a href="../php/regex.html">Regular Expressions page</a> contains more information about the syntax of RegEx. </p>
-<h2>Character Replacement</h2>
+<h1>Character Replacement</h1>
 <p>Let's say you need to replace one string with another. You could use the String object's <code>.replace()</code> method but you will need to write a RegEx statment to use it. An alternate way is to create the following custom function that uses plain text arguments, so it is a bit easier to use.</p>
 <pre class="prettyprint linenums">String.prototype.replaceAll = function(str1, str2, ignore)  {
 	//str1 = original string, str2 = replacement value, ignore = case

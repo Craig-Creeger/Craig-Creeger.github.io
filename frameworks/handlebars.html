@@ -16,7 +16,7 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Handlebars Experiments</h1>
+<div class="title">Handlebars Experiments</div>
 <p>This three part article is the best documentation I have found for <a href="http://handlebarsjs.com/" rel="external">Handlebars <span style="font-size:smaller;">(official docs and download)</span></a>.</p>
 <p><a href="http://blog.teamtreehouse.com/getting-started-with-handlebars-js" rel="external">Part I</a>, <a href="http://blog.teamtreehouse.com/handlebars-js-part-2-partials-and-helpers" rel="external">Part II</a>, <a href="http://blog.teamtreehouse.com/handlebars-js-part-3-tips-and-tricks" rel="external">Part III</a></p>
 <p>More articles:</p>
@@ -37,7 +37,7 @@
 <div id="CollapsiblePanel1" class="CollapsiblePanel">
 	<div class="CollapsiblePanelTab" tabindex="0">Click here to show information about Blocks</div>
 	<div class="CollapsiblePanelContent">
-		<h2>BLOCKS</h2>
+		<h1>BLOCKS</h1>
 <p>Sometimes it's helpful to focus your work on a particular expression within a template. That's where blocks come in. Blocks are represented in Handlebars with the pound (#) symbol followed by an expression. Blocks end with a closing mustache, {{/expression}}.</p>
 <p>If the expression given evaluates to an Array, Handlebars will iterate over each item in the Array, setting the current context to that item. Here's an example:</p>
 <p>	var data = { people: [<br>
@@ -82,7 +82,7 @@
 <div id="CollapsiblePanel2" class="CollapsiblePanel">
 	<div class="CollapsiblePanelTab" tabindex="0">The Debug Helper</div>
 	<div class="CollapsiblePanelContent">
-		<h2>THE DEBUG HELPER</h2>
+		<h1>THE DEBUG HELPER</h1>
 		<p>It can be easy at times to get confused about where you are in the stack in a Handlebars.js template. I usually keep a debug helper around to help me figure that out.</p>
 		<p>			Handlebars.registerHelper(&quot;debug&quot;, function(optionalValue) {<br>
 			console.log(&quot;Current Context&quot;);<br>

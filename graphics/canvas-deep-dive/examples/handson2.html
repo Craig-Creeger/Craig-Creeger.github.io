@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<h1>HTML Canvas Deep Dive: Hands On Lab 2</h1>
+<div class="title">HTML Canvas Deep Dive: Hands On Lab 2</div>
 
 <p>If you are having issues with chrome loading images or other files directly from disk, try adding this to the commmand line:
 <b>--allow-file-access-from-files  --disable-web-security</b><br/>
@@ -23,7 +23,7 @@ On mac this would be<br/>
 <i>Game version 1: simple rectangle graphics (click to play)</i></a></p>
 
 
-<h2>Draw the spaceship with an Image Sprite</h2>
+<h1>Draw the spaceship with an Image Sprite</h1>
 
 <p>In the directory with this document and the game*.html files, create a new HTML file called mygame.html and copy game1.html into it.  This contains the initial version of the game you saw above.</p>
 
@@ -81,7 +81,7 @@ function loadResources() {
 
 
 
-<h2>Sprite Animation for Bullets and Bombs</h2>
+<h1>Sprite Animation for Bullets and Bombs</h1>
 
 <p>Now we need some sprites for the spaceship bullets and alien bombs. Again we will load up the images into variables. Update near the top of the code to look like this (the new code is in bold).
 
@@ -193,7 +193,7 @@ function drawEnemyBullets(c) {
 
 
 
-<h2>Procedural Graphics for Aliens</h2>
+<h1>Procedural Graphics for Aliens</h1>
 <p>Let's change how we draw the aliens. Rather than using sprites we will do it procedurally, meaning all drawing will be done by the code rather than beforehand in a drawing program. Our goal is a green circle filled with a stream of little white orbs that float around in a loop. They look like this:</p>
 
 <img src="screenshots/new_alien.png"/>
@@ -281,7 +281,7 @@ function circlePath(c, x, y, r) {
 <p><a href="game4.html"><img src="screenshots/v4.png"/><br/>
 <i>Game version 4: simple rectangle graphics (click to play)</i></a></p>
 
-<h2>Particle Simulator for Explosions</h2>
+<h1>Particle Simulator for Explosions</h1>
 
 <p>Now let's finally add a real explosion using particles when the player dies. First we will move the player explosion into a separate function like this:</p>
 
@@ -345,7 +345,7 @@ function drawPlayerExplosion(c) {
 <p><a href="game5.html"><img src="screenshots/v5.png"/><br/>
 <i>Game version 5: simple rectangle graphics (click to play)</i></a></p>
 
-<h2>Conclusion</h2>
+<h1>Conclusion</h1>
 
 <p>This hands on lab just barely touches what's possible with the HTML Canvas tag.  I encourage you to play around with this game sample more by adding a background, changing colors, adjusting animation speeds, and choosing new sprites.</p>
 

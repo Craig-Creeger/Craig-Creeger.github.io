@@ -15,21 +15,21 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>jQuery</h1>
-<h2>Adding to Your Page</h2>
+<div class="title">jQuery</div>
+<h1>Adding to Your Page</h1>
 <pre class="prettyprint linenums">&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;window.jQuery || document.write('&lt;script src=&quot;../scripts/jquery.js&quot;&gt;&lt;\/script&gt;')&lt;/script&gt;</pre>
 <p>While this method is a bit more complicated than simply serving jQuery from your server, you gain speed and bandwidth by using Google's CDN. The first line attempts to load the jQuery library. If it fails, then the second line will grab it off your server.</p>
-<h3>Counter argument</h3>
+<h2>Counter argument</h2>
 <p>I read over and over that the above method is the best way to add jQuery because your users will be able to load a cached copy off their own machine instead of having to download it. However, also read someone stating that the caching doesn’t work. What I can say for certainty, Dreamweaver loads a page slower when using the CDN method shown above. So, during development I include it using:</p>
 <pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot; src=&quot;../scripts/jquery.js&quot;&gt;&lt;/script&gt;</pre>
 <p>and then, if I think of it, switch it the CDN style for Production rollout.</p>
-<h2>What is jQuery?</h2>
+<h1>What is jQuery?</h1>
 <p>It is a JavaScript library that makes it easy to work with DOM elements on your web page.</p>
 <p>Starting with version 2.0, it will not longer support IE8 and older. Instead, use 1.9 if you need to support those old browsers.</p>
 <p>Pretty much everything you do starts with selecting the DOM element you want to work with, and then do something with it. The selection takes the form:</p>
 <p class="code">$('<em> css selector </em>').method();</p>
-<h3>Javascript Equivalent</h3>
+<h2>Javascript Equivalent</h2>
 <p>Instead of using jQuery to do the DOM selection, you may find it easier to use straight Javascript instead.</p>
 <p>jQuery permits DOM node selection using CSS selector syntax, e.g. </p>
 <p class="code">// find all paragraphs with the class &quot;summary&quot; in the article with ID &quot;first&quot; </p>
@@ -45,27 +45,27 @@
 <p>The getElementsByTagName and getElementsByClassName methods can also be applied to single nodes to limit the result to descendants only, e.g. </p>
 <p class="code">var n = document.getElementById(&quot;first&quot;); </p>
 <p class="code">var p = n.getElementsByTagName(&quot;p&quot;);</p>
-<h2>Plug-ins</h2>
+<h1>Plug-ins</h1>
 <p><a href="http://www.moretechtips.net/2011/12/22-most-popular-jquery-plugins-of-2011.html" rel="external">22 Most Popular jQuery Plug-ins of 2011</a></p>
 <h2 id="events">Event Handler Attachment</h2>
 <p>Over the years, jQuery created several ways to attach events to DOM objects such as .live(), .delegate(), .click(), and .bind(). <em>Since version 1.7, the <strong>.on()</strong> function can handle all your needs.</em></p>
 <p>There are two primary ways of attaching events, <strong>direct</strong> (the element must already exist on the page when .on() is called) and <strong>delegated</strong> (for any current or future elements).</p>
 <p><button>TEST</button></p>
-<h3>Direct Attachment</h3>
+<h2>Direct Attachment</h2>
 <p class="code">$('table td').on('click', function() { //do this });</p>
 <p>If there are 4,000 cells in the table, then there will be 4,000 attachments made. That may be an unacceptable performance hit in which case the next method would be better.</p>
-<h3>Delegated Attachment</h3>
+<h2>Delegated Attachment</h2>
 <p class="code">$('table').on('click', <strong>'td',</strong> function() { //do this });</p>
 <p>When a selector is provided, the event handler is referred to as delegated. The handler is not called when the event occurs directly on the bound element, but only for descendants (inner elements) that match the selector.</p>
-<h2>Optimization Tricks</h2>
-<h3>Chaining Multiple Methods</h3>
+<h1>Optimization Tricks</h1>
+<h2>Chaining Multiple Methods</h2>
 <p>While doing common operations, you don't need to call the element every time you want to manipulate it. If you're doing several manipulations in a row, use chaining, so jQuery won't need to get the element twice.</p>
 <p>Instead of this:</p>
 <pre class="prettyprint linenums">$(&quot;#mydiv&quot;).hide();
 $(&quot;#mydiv&quot;).css(&quot;padding-left&quot;, &quot;50px&quot;);</pre>
 <p> Use this:</p>
 <pre class="prettyprint linenums">$(&quot;#mydiv&quot;).hide().css(&quot;padding-left&quot;, &quot;50px&quot;);</pre>
-<h3> Cache Your jQuery Objects</h3>
+<h2> Cache Your jQuery Objects</h2>
 <p>This is one of the most important performance tips. If you'll call an element at least twice, you should cache it. Caching is just saving the jQuery selector in a variable, so when you need to call it again you'll just reference the variable and jQuery won't need to search the whole DOM tree again to find your element.</p>
 <pre class="prettyprint linenums">/* you can use it this way because almost every jQuery function returns
  	the element, so $mydiv will be equal to $(&quot;#mydiv&quot;); also it's good to

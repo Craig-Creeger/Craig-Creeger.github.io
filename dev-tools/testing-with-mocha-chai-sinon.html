@@ -17,10 +17,10 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Automated Javascript Testing</h1>
-<h2>Mocha</h2>
+<div class="title">Automated Javascript Testing</div>
+<h1>Mocha</h1>
 <p>This is a testing framework. In other words, it is responsible for coordinating, defining, and running the tests. There are two main functions: <code>describe()</code> and <code>it()</code>.</p>
-<h3>Example</h3>
+<h2>Example</h2>
 <pre class="prettyprint linenums">describe('Suite of tests for the isEven() function.', function() {
 	it('Return value should always be a boolean.', function() {
 		<em>//The assertion and an actual call to isEven() goes here</em>
@@ -29,7 +29,7 @@
 		<em>//The assertion and an actual call to isEven() goes here</em>
 	});
 });</pre>
-<h2>Chai</h2>
+<h1>Chai</h1>
 <p>Mocha’s default assertion library is Node’s Assert. For more functionality, Chai is a very popular option. The main function is <code>expect()</code>. Expanding on the previous code block above, it looks like this:</p>
 <pre class="prettyprint linenums"><strong>function isEven(nbr) {
 	return !(nbr % 2);
@@ -62,7 +62,7 @@ describe('Suite of tests for the isEven() function.', function() {
 </ul>
 <p>There are a <a href="http://chaijs.com/api/bdd/" target="external">bunch of comparisons</a> available to you. In the above example I used <code>a()</code> and <code>true</code>. Other common comparisons are:</p>
 <p>.not, .null, .exist, .empty, .equal()</p>
-<h2>Sinon</h2>
+<h1>Sinon</h1>
 <p>When testing simple, self-contained functions Sinon would not be required, but here in the real-world your application no doubt depends on external API’s, browser API’s, DOM, Ajax, etc. I think that most of the time you use this for edge code (interfaces with other systems); we will see after I use it more.</p>
 <p>Sinon come with it’s own assertion library, so for these tests you use Sinon instead of Chai; however there is a <a href="https://github.com/domenic/sinon-chai" target="external">sinon-chai</a> plugin available.</p>
 <p>You can create three different levels of inspection, each building on the previous level. At the base, there are Spies.</p>

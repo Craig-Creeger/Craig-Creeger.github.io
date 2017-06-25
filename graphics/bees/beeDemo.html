@@ -57,7 +57,7 @@ footer {
 <header>
 	<canvas></canvas>
 	<div id="titleBox">
-		<h1>Animated Headers</h1>
+		<div class="title">Animated Headers</div>
 		<p>This demonstration page was inspired by the <a href="http://tympanus.net/codrops/2014/09/23/animated-background-headers/" rel="external">demos on Codrops</a>.</p>
 		<p>Scroll down to see the “Main” content of the page.		</p>
 		<p class="msg"></p>
@@ -65,7 +65,7 @@ footer {
 </header>
 <section style="background-color:white;">
 	<article>
-		<h1>OMG — What is Going on Here?</h1>
+		<div class="title">OMG — What is Going on Here?</div>
 		<p id="circleCount"></p>
 		<p>First, from a graphic design perspective, you will notice that the page opens “full screen” with an animated photograph. That top section is considered the &lt;header&gt; of the page. The size is controlled by making the height 100% (which only works if you make all the containing objects also 100%, in this case &lt;html&gt; and &lt;body&gt;). The background-size property is then set to “cover”.</p>
 		<p>Scrolling down you see the main body of the page. If you scroll so the header is no longer visible, the animation stops running in the background. The animation is handled via the &lt;canvas&gt; element. Canvas works by clearing the screen and then re-drawing it 60 times per second — the viewer is given the illusion of movement.</p>
@@ -73,13 +73,13 @@ footer {
 </section>
 <section style="background-color:papayaWhip;">
 	<article>
-		<h1>Programming the &lt;canvas&gt; element</h1>
+		<div class="title">Programming the &lt;canvas&gt; element</div>
 		<p id="circleCount"></p>
-		<h2>Overview</h2>
+		<h1>Overview</h1>
 		<p>As you noticed, the little circles fly around like insects or bees.</p>
 		<p>There are two (nearly) constantly running loops. The first one, which is required, is the “requestAnimationFrame” loop. See function <code>animate()</code>. The second loop is only used by this particular animation because the bees change direction as they fly around, this is what I’m calling legs of the journey. These two loops are not explicity in sync with each other (maybe they are, but I didn’t do anything special to sync them.)</p>
 		<p>I created a class, “Bee” to hold the instance information for each bee — the basic data needed to draw or create each bee, such as x and y position, size, and opacity.</p>
-		<h2>Canvas</h2>
+		<h1>Canvas</h1>
 		<p>The actual &lt;canvas&gt; related code is actually very minimal. The dimensions of the canvas is set when the page is first intialized (via <code>initHeader();</code>) and everytime the size of the screen is changed.</p>
 		<p class="msg"></p>
 	</article>

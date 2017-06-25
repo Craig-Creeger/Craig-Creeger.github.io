@@ -17,9 +17,9 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- TemplateBeginEditable name="content" -->
-<h1>Header1</h1>
-<h2>Header2</h2>
-<h3>Header3</h3>
+<div class="title">Header1</div>
+<h1>Header2</h1>
+<h2>Header3</h2>
 <p>Standard Paragraph</p>
 <pre class="prettyprint linenums">&lt;script type=&quot;text/javascript&quot;&gt;
 	//example code highlighting

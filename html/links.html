@@ -17,23 +17,23 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Links</h1>
-<h2>Intrapage Anchors</h2>
+<div class="title">Links</div>
+<h1>Intrapage Anchors</h1>
 <p>If you want to link to another location on the same web page, it is typically done with an anchor-link pair.</p>
 <p><code>&lt;a name=&quot;pageTop&quot;&gt;&lt;/a&gt;</code>
 </p>
 <p>Further down on the page there would be:</p>
 <p><code>&lt;p&gt;Return to &lt;a href=&quot;#pageTop&quot;&gt;top of page.&lt;/a&gt;&lt;/p&gt;</code>
 </p>
-<h3>Obscure Trick</h3>
+<h2>Obscure Trick</h2>
 <p>The # symbol in the <code>href</code> attribute tells the link to jump to a location on the same page. It works with more than just an anchor tag like <code>&lt;a name=&quot;pageTop&gt;&lt;/a&gt;</code>. You can link to any <code>id</code> or <code>name</code> attribute. To see this in action, take a look at the <a href="tags.html#PEBKAC">definition example</a>.</p>
-<h2>Target and Rel Attributes</h2>
+<h1>Target and Rel Attributes</h1>
 <p>The <code>target</code> attribute is used to tell the browser how to open a link (and to give information about the link when using  old-school frames.) Practically speaking, if you wanted to open a page, typically those outside of your website, you&rsquo;d write something like:</p>
 <p class="code">&lt;a href=&quot;http://othersite.com&quot; target=&quot;_blank&quot;&gt;</p>
 <p>Many designers  consider it rude to force pages to open in a new window&mdash;that decision is best left to the user. A better approach is to mark that link as an external page via the <code>rel</code> attribute. For example:</p>
 <p class="code">&lt;a href=&quot;http://othersite.com&quot; rel=&quot;external&quot;&gt;</p>
 <p>If your client insists (the customer is always right!) on external pages opening in a new window, then use the following technique.</p>
-<h3>Unobtrusive JavaScript to Open Links in New Window</h3>
+<h2>Unobtrusive JavaScript to Open Links in New Window</h2>
 <p>Start by creating a link that will work even without JavaScript, such as:</p>
 <p class="code">&lt;a href=&quot;../index.html&quot; rel=&quot;external&quot;&gt;Home Page&lt;/a&gt;</p>
 <p>Then, to change the standard action, you can modify the behavior as:</p>
@@ -73,21 +73,21 @@
 		<p>This works because events can be trapped anywhere along the DOM chain. So, this routine listens on the <code>body</code> element, but looks for <code>&lt;a rel=&quot;external&quot;&gt;</code>.</p>
 	</div>
 </div>
-<h4>A jQuery version of the above</h4>
+<h3>A jQuery version of the above</h3>
 <p>Open <a href="../index.html" rel="external">Table of Contents</a> with initial width set to 800px.</p>
 <pre class="prettyprint linenums">$('a[rel=&quot;external&quot;]').on('click',function(e) {
 	e.preventDefault();
 	window.open($(this).attr('href'),'external','scrollbars=yes,resizable=yes,width=800');
 });</pre>
-<h2>Hiding Your eMail Address and Phone Number</h2>
+<h1>Hiding Your eMail Address and Phone Number</h1>
 <p>The technique that is the most secure, is also the worst for your users, which is making an image of the email address or phone number. The following technique should defeat some spam bots (at least until they get smart enough to convert the following codes).</p>
-<h3>Option 1: Use character entities</h3>
+<h2>Option 1: Use character entities</h2>
 <p>Ohlone College has a <a href="http://www.ohlone.edu/org/webcenter/emailencoder.html" rel="external">nice online tool</a> to convert plain text into encoded text. The great thing about this technique is you can style your text like normal, there is no degration in the quality of the text, and your users can still click to use it, right-click it, or copy-and-paste the text. It will take, for example, <code>&lt;a href=<wbr>&quot;bob@hisDomain.com&quot;&gt;</code> and convert it to <code>&lt;a href=&quot;mailto:<wbr>&amp;#098;<wbr>&amp;#111;<wbr>&amp;#098;<wbr>&amp;#064;<wbr>&amp;#104;<wbr>&amp;#105;<wbr>&amp;#115;<wbr>&amp;#100;<wbr>&amp;#111;<wbr>&amp;#109;<wbr>&amp;#097;<wbr>&amp;#105;<wbr>&amp;#110;<wbr>&amp;#046;<wbr>&amp;#099;<wbr>&amp;#111;<wbr>&amp;#109;&quot;&gt;</code></p>
 <p>This is a converted link &mdash;&gt;. For more information, send an email to <a href="mailto:&#098;&#111;&#098;&#064;&#104;&#105;&#115;&#100;&#111;&#109;&#097;&#105;&#110;&#046;&#099;&#111;&#109;">&#098;&#111;&#098;&#064;&#104;&#105;&#115;&#100;&#111;&#109;&#097;&#105;&#110;&#046;&#099;&#111;&#109;</a></p>
 <hr>
 <p>Use this same technique for telephone links. For example, <code>&lt;a href=&quot;tel:651-555-1234&quot;&gt;</code> becomes <code>&lt;a href=&quot;tel:<wbr>&amp;#054;<wbr>&amp;#053;<wbr>&amp;#049;<wbr>&amp;#045;<wbr>&amp;#053;<wbr>&amp;#053;<wbr>&amp;#053;<wbr>&amp;#045;<wbr>&amp;#049;<wbr>&amp;#050;<wbr>&amp;#051;<wbr>&amp;#052;&quot;&gt;</code></p>
 <p>This is a converted link &mdash;&gt; For more information, call Bob at <a href="tel:&#054;&#053;&#049;&#045;&#053;&#053;&#053;&#045;&#049;&#050;&#051;&#052;">651-555-1234</a>.</p>
-<h3>Option 2: Use obfusicated JavaScript</h3>
+<h2>Option 2: Use obfusicated JavaScript</h2>
 <p>This would be very secure, but you your users must have JavaScript enabled (generally not an issue).</p>
 <pre>function launchMail(domain, ext, usr) {
 	if (ext == &quot;c&quot;) ext = &quot;com&quot;; 

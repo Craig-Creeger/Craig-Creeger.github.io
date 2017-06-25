@@ -2,14 +2,14 @@
 <body>
 
 <div id="header">
-<h2>Chapter 10</h2>
-<h1>3D Graphics with WebGL and ThreeJS</h1>
+<h1>Chapter 10</h1>
+<div class="title">3D Graphics with WebGL and ThreeJS</div>
 </div>
 
 
 <div id="content">
 
-<h3><a id='overview'>Overview</a></h3>
+<h2><a id='overview'>Overview</a></h2>
 
 <p>WebGL is 3D for the web. And as the name implies, it is related to OpenGL,
 the industry standard API for hardware accelerated 3D graphics. 3D is a lot more
@@ -56,7 +56,7 @@ open source project called <a
 href="http://mrdoob.github.com/three.js/">ThreeJS</a>. It greatly simplifies
 building interactive 3D apps and comes with its own set of reusable shaders. That is what I'm going to teach you today: ThreeJS.</p>
 
-<h3><a id="examples">Examples</a></h3>
+<h2><a id="examples">Examples</a></h2>
 
 <p>First a few examples.</p>
 
@@ -82,7 +82,7 @@ visualizations of audio with 3D.</p>
 
 <p>All of these were created with Three.JS and WebGL</p>
 
-<h3><a id='browsersupport'>Browser Support</a></h3>
+<h2><a id='browsersupport'>Browser Support</a></h2>
 
 <p>Before we dive in, a word on browser support. Opera, FireFox and all of the
 desktop WebKit based browsers support WebGL. Typically they map down to the native
@@ -102,7 +102,7 @@ better over the next year or so. WebGL will be a part of the future web
 standards and has some big names behind it, so now is a good time to get
 started.</p>
 
-<h3><a id='template'>A ThreeJS Template</a></h3>
+<h2><a id='template'>A ThreeJS Template</a></h2>
 
 <p>ThreeJS is an open source library created by creative coder extraordinaire, <a href="http://mrdoob.com/">Mr. Doob</a>. His real name is Ricardo Cabello, but if you search for Mr. Doob you will find his cool graphics hacks going back at least a decade.  ThreeJS is a library that sits on top of WebGL. It automates the annoying things so you can focus on your app.  To make it even easier to work with Jerome Etienne, has created a <a href="http://jeromeetienne.github.com/threejsboilerplatebuilder/">boiler plate builder</a> that will give you a headstart. It fills in all of the common things like the camera, mouse input, and rendering, so that you can start with a working ThreeJS application. The template builder has several options, but for these projects you can just leave the defaults.</p>
 
@@ -230,7 +230,7 @@ function render() {
 <p><img src='images/webgl_boilerplate.png'/></p>
 
 
-<h3><a id='customizing'>Customizing the Template</a></h3>
+<h2><a id='customizing'>Customizing the Template</a></h2>
 
 <p>Now let's customize it a bit. Every object in the scene is capable of basic scale, rotate, and position transformations. Let's rotate the torus with <code>mesh.rotation.y = Math.PI/2</code>.  Note that rotations are in radians, not degrees.  Math.PI/2 is 90 degrees.  </p>
 
@@ -269,7 +269,7 @@ new THREE.JSONLoader().load('teapot.js', function(geometry) {
 cameraControls.update();
 teapot.rotation.y += 0.01;</code></pre>
 
-<h3><a id='shadereffects'>Shader Effects</a></h3>
+<h2><a id='shadereffects'>Shader Effects</a></h2>
 
 <p>Finally, we will add some post-processing effects. They are called <i>post-processing</i> because they happen after the main rendering phase. These parts of the ThreeJS API are somewhat experimental and not documented well, but I'm going to show them to you anyway because they are very powerful. Post-processing requires adding more scripts to our page. We'll need <code>ShaderExtras.js</code>, <code>RenderPass.js</code>, <code>BloomPass.js</code>, <code>ShaderPass.js</code>, <code>EffectComposer.js</code>, <code>DotScreenPass.js</code>, and <code>MaskPass.js</code>.</p>
 
@@ -365,7 +365,7 @@ href='../canvasdeepdive-examples/WebGL/effects.html'>run</a>)</p>
 
 ].join("\n")</code></pre>
 
-<h3><a id='moredetails'>A Few More Details</a></h3>
+<h2><a id='moredetails'>A Few More Details</a></h2>
 
 <p>Much like OpenGL, WebGL doesn't support text directly. Instead, you must draw text using a 2D canvas, then add it as a texture onto a plane. (see <a href='http://webglfactory.blogspot.com/2011/06/render-text-with-canvas-2d.html'>WebGL Factor's explanation</a>.)</p>
 

@@ -21,9 +21,9 @@
 <body>
     <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a>
     <!-- InstanceBeginEditable name="content" -->
-    <h1>Webpack</h1>
+    <div class="title">Webpack</div>
     
-    <h2>Overview</h2>
+    <h1>Overview</h1>
     <p><a href="http://webpack.github.io" target="external">Webpack</a> can often replace Grunt or Gulp because it can transpile Javascript and CSS, and intelligently concatenate files together. It supports various module systems such as AMD, CommonJS, ES6, and Angular.</p>
     <p>Some resources for learning Webpack:</p>
     <ul>
@@ -32,13 +32,13 @@
         <li><a href="https://github.com/petehunt/webpack-howto" target="external">Webpack How-To Guide</a></li>
     </ul>
     
-    <h2>Config File</h2>
+    <h1>Config File</h1>
     <p>There are some important top-level objects in the config file that you should understand.</p>
-    <h3>Entry and Output <small>(required elements)</small></h3>
+    <h2>Entry and Output <small>(required elements)</small></h2>
     <p>These are the only required keys in the config file. Entry specifies a javascript file that is your top-level module. In other words, there are no other modules that include (import) it. The entry file is, by convention, often named index.js or main.js.</p>
     <p>Output holds informtion about how to construct the bundled file. Remember, the primary purpose of Webpack is to take multiple files (the entry point and all its dependencies) and concatenate all of them into one Javascript file that can be put on a webpack via a <code>&lt;script&gt;</code> tag.</p>
 
-    <h2>Optimization and Analysis</h2>
+    <h1>Optimization and Analysis</h1>
     <p>Use these tools to ensure the final bundle is constructed as you expect.</p>
     <ul>
         <li><a href="https://chrisbateman.github.io/webpack-visualizer/" target="external">https://chrisbateman.github.io/webpack-visualizer/</a></li>

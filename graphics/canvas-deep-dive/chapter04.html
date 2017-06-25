@@ -5,14 +5,14 @@
 <body>
 
 <div id="header">
-<h2>Chapter 4</h2>
-<h1>Animation</h1>
+<h1>Chapter 4</h1>
+<div class="title">Animation</div>
 </div>
 
 <div id="content">
 
 
-<h3><a id="settimeout">Animating with requestAnimationFrame</a></h3>
+<h2><a id="settimeout">Animating with requestAnimationFrame</a></h2>
 
 <p>Now that we know how to draw lots of cool things, lets animate them. The
 first thing to know about animation is that it's just drawing the same thing
@@ -65,7 +65,7 @@ window.requestAnimFrame(drawIt);
 </div>
 
 
-<h3><a id="clearbackground">Clearing the background</a></h3>
+<h2><a id="clearbackground">Clearing the background</a></h2>
 
 <p>Now you'll notice a problem. Our rectangle does go across the screen, updating by five pixels every 100 millesconds (or 10FPS), but the old rectangle is still there. It looks like the rectangle is just getting longer and longer.  Remember that the canvas is just a pixel buffer. If you set some pixels they will stay there until you change them. So lets clear the canvas on each frame before we draw the rectangle.
 </p>
@@ -89,7 +89,7 @@ window.requestAnimFrame(drawIt);</code></pre>
     <p><i>drawing rectangle with background clearing (click to run)</i></p>
 </div>
 
-<h3><a id="particlesimulator">Particle Simulator</a></h3>
+<h2><a id="particlesimulator">Particle Simulator</a></h2>
 
 <p>So that's really all there is to animation. Drawing something over and over again.  Lets try something a bit more complicated: a particle simulator.  We want to have some particles fall down the screen like snow.  To do that we will implement the classic particle simulator algorithm:
 </p>
@@ -199,10 +199,10 @@ bit of carefully chosen randomness.</p>
 
 
 
-<h3><a id="spriteanimation">Sprite Animation</a></h3>
+<h2><a id="spriteanimation">Sprite Animation</a></h2>
 
 
-<h4>What is a Sprite?</h4>
+<h3>What is a Sprite?</h3>
 
 <p>The final major kind of animation is sprite animation.  So what is a sprite?</p>  
 
@@ -214,7 +214,7 @@ character in different poses. This is what gives you different frames of
 animation. This is the classic flip-book style of animation: simply flip through
 different drawings over and over.</p>
 
-<h4>Why and When to use Sprites?</h4>
+<h3>Why and When to use Sprites?</h3>
 
 <p>Sprites are good for a few of things.</p>
 
@@ -228,7 +228,7 @@ different drawings over and over.</p>
 <li>Finally, sprites are great for working with animation that comes out of a drawing tool such as photoshop. the code simply flips between images but it doesn't care what is in the image. This means your artist could easily update the graphics and animation without touching the code. Just drop in a new sprite sheet and you are set.</li>
 </ul>
 
-<h4>Drawing Sprites</h4>
+<h3>Drawing Sprites</h3>
 
 <p>Sprites are easy to draw using the <code>drawImage</code> function.  This function can draw and stretch a portion of an image by specifying different source and destination coordinates.  For example, suppose we have this sprite sheet and we just want to draw the sprite in the center (5th from the left).</p>
 
@@ -242,7 +242,7 @@ different drawings over and over.</p>
      0,0,13,13,  // destination coordinates (x,y,w,h)
     );</code></pre>
 
-<h4>Sprite Animation</h4>
+<h3>Sprite Animation</h3>
 
 <p>As you can see in the full sprite sheet, this is really the same object drawn in different frames of an animation, so now let's flip through the different sprites to make it be animated. We'll do this by keeping track of the current frame using a tick counter.</p>
 

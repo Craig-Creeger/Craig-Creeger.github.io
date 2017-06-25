@@ -17,12 +17,12 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>ES2015 Introduction</h1>
-<h2>Learning the Details</h2>
+<div class="title">ES2015 Introduction</div>
+<h1>Learning the Details</h1>
 <p>The <a href="https://hacks.mozilla.org/category/es6-in-depth/" target="external">Mozilla In-Depth Series</a> might be the best place to learn the right way to do ES2015.</p>
 <p>Dr. Alex R. also has a paid book and free version on LeanPub called <a href="http://exploringjs.com/es6/" target="external">Exploring ES6</a>.</p>
-<h2>Destructuring</h2>
-<h3>for variable assignment</h3>
+<h1>Destructuring</h1>
+<h2>for variable assignment</h2>
 <p>Use this to extract data out of an array or object. The destructoring operator is used 
 	on the left side of the equal sign. You must know the order of your input array
 	or names of the keys in the input object to be able to use destructuring.</p>
@@ -32,7 +32,7 @@
 console.log(a); // 1
 console.log(b); // 2
 console.log(rest); // [3, 4, 5]</pre>
-<h3>for passing anonymously (spread)</h3>
+<h2>for passing anonymously (spread)</h2>
 <p>The spread operator can be used when <strong>calling</strong> a function:<br>
 <code>let greeting = formatGreeting(...user);</code></p>
 <p>Notice the spread operator is <em>not</em> wrapped in curly braces or square brackets.</p>
@@ -40,13 +40,13 @@ console.log(rest); // [3, 4, 5]</pre>
 <code>let trucks = ['f-150', 'ram'];</code><br>
 <code>let cars = ['acura', 'buick', 'cadillac', ...trucks];</code></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">The Spread operator</a> works similarly to destructuring by expanding iterable into individual pieces.</p>
-<h3>Rest operator</h3>
+<h2>Rest operator</h2>
 <p>Rest is the opposite of Spread. It will condense multiple values into an array or object.</p>
-<h2>Default Function Argument Values</h2>
+<h1>Default Function Argument Values</h1>
 <pre>function (color = 'red') {
 	console.log(color); //red
 }</pre>
-<h2>Arrow Functions</h2>
+<h1>Arrow Functions</h1>
 <p>Arrow functions (also call fat-arrow functions) are always anonymous. Classic anonymous functions are typically written similar to this:</p>
 <pre>function foo() {
 	setTimeout(function() {
@@ -62,7 +62,7 @@ foo.call({id: 123}); //returns an error because &quot;this&quot; does not have a
 }
 foo.call({id: 123}); //displays 123</pre>
 <p>The reason it works with arrow functions the <code>this</code> property is not created or set. So, when <code>this.id</code> was referenced Javascript couldn’t find <code>this</code>. It then does what it always does when a variable is not found; it looks looks up the chain to see if the parent has <code>this</code> defined.</p>
-<h2>Classes</h2>
+<h1>Classes</h1>
 <p>Example:</p>
 <pre class="prettyprint linenums">class Polygon {
 	constructor(width, height) {
@@ -90,7 +90,7 @@ console.log(Polygon.isLandscape(6,3)); //true</pre>
 	<li><code>constructor</code> is a special function called when the class is instantiated.</li>
 	<li>Static methods are allowed.</li>
 </ul>
-<h2>Modules</h2>
+<h1>Modules</h1>
 <h3 id="leanpub-auto-es5-module-systems">ES5 module systems</h3>
 <p>It is impressive how well ES5 module systems work without explicit support from the language. The two most important (and unfortunately incompatible) standards are:</p>
 <ul>
@@ -127,7 +127,7 @@ console.log(Polygon.isLandscape(6,3)); //true</pre>
 	<li>Declarative syntax (for importing and exporting)</li>
 	<li>Programmatic loader API: to configure how modules are loaded and to conditionally load modules</li>
 </ul>
-<h4>Exporting A Single Default</h4>
+<h3>Exporting A Single Default</h3>
 <p>The following ECMAScript 6 module &ldquo;is&rdquo; a single function:</p>
 <div>
 	<pre class="prettyprint linenums">//------ myFunc.js ------ 
@@ -148,7 +148,7 @@ export default class Animal { ··· } //You can name the class if it needs to b
 import MyClass from 'MyClass'; 
 let inst = new MyClass();</pre>
 </div>
-<h4>Multiple Named Exports</h4>
+<h3>Multiple Named Exports</h3>
 <p>A module can export multiple things by prefixing their declarations with the keyword export. These exports are distinguished by their names and are called <em>named exports</em>.</p>
 <div>
 	<pre class="prettyprint linenums">//------ lib.js ------ 

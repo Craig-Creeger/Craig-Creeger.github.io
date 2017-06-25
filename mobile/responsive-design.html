@@ -17,13 +17,13 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Responsive Design</h1>
-<h2>Definition</h2>
+<div class="title">Responsive Design</div>
+<h1>Definition</h1>
 <p>Responsive  Design is a technique where the contents of a web page change depending on the device size and/or viewport width.  <a href="http://www.html5rocks.com/en/mobile/responsivedesign/" rel="external">HTML5 Rocks</a> has a great description of the process.  <a href="http://www.alistapart.com/articles/responsive-web-design/" rel="external">Ethan Marcotte&rsquo;s A List Apart article</a> is a very good read, too.</p>
-<h3>Mobile-first vs. Desktop-first Development</h3>
+<h2>Mobile-first vs. Desktop-first Development</h2>
 <p>If your primary target audience is mobile users, then you should certainly construct your CSS so the &ldquo;default&rdquo; styling is for mobile. However, one of my websites was not compatible with either <code>Respond.js</code> nor <code>css3-mediaqueries.js</code>, so I had to create it as a desktop-first site so that it would display on IE8.</p>
-<h2>Techniques</h2>
-<h3>Fluid Layouts</h3>
+<h1>Techniques</h1>
+<h2>Fluid Layouts</h2>
 <p>A fluid layout is one where all the content flows to fill the whole width of the screen AND a horizontal scrollbar is not generated when the browser width gets narrow. This is is the core of creating a Responsive Design.  Here are a few  guidelines:</p>
 <ul>
 	<li>Do  not set absolute widths, such as pixels or ems, on elements; relative units such as percentages are OK.</li>
@@ -31,19 +31,19 @@
 	<li>Do not use tables to layout the page. <em>Note: I will occasionally break this rule to create simple columns, but when I do this I limit the table to one row (<code>&lt;tr&gt;</code>) and the table and cells are sized using percentages.</em></li>
 	<li>Use AP Divs (<code>position: absolute;</code>) only as a last resort and its containing element should not be the <code>&lt;html&gt;</code> tag (rather it should be something defined as <em>fixed</em>, <em>absolute</em>, or <em>relative</em>.)</li>
 </ul>
-<h3>Set the Viewport Size</h3>
+<h2>Set the Viewport Size</h2>
 <p>Phone-sized browsers usually have a viewport larger than the actual (physical) size of the screen. In other words, if the actual width is 320 pixels, the mobile browser may report that the width is 700 pixels. The web page is the shrunk (scaled) down so everything is very tiny so that the user must now scroll and zoom-in on the content they wish to see.</p>
 <p>This <code>head</code> tag will tell iOS <span style="font-size:smaller;">(and perhaps other?)</span> devices to size the browser window (viewport) to fit the physical screen.</p>
 <pre class="prettyprint linenums">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes, shrink-to-fit=no&quot;&gt;</pre>
-<h3>Media Queries</h3>
+<h2>Media Queries</h2>
 <p><a href="mediaQueries.html">Media Queries</a> are a CSS technique to (generally) show or hide content, or otherwise format the page, depending on the size of the viewport (screen).</p>
-<h3>window.matchMedia(mediaQueryString)</h3>
+<h2>window.matchMedia(mediaQueryString)</h2>
 <p>This is the Javascript equivalent of CSS’s @media. Check out <a href="http://caniuse.com/#search=matchmedia" rel="external">caniuse</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window.matchMedia" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/Window.matchMedia</a></p>
-<h3>Responsive Images</h3>
+<h2>Responsive Images</h2>
 <p>Text naturally wants to flow within its container; images, on the other hand, will naturally want to stay their original pixel dimensions. You can change images to get smaller as the width of the browser window gets smaller. The key bit of CSS that allows images to shrink is:</p>
 <p class="code">img { max-width:100%; }</p>
 <p>I have written a description of <a href="responsiveImages.html">how to make responsive images</a>.</p>
-<h2>Mobile HTML5 Tricks</h2>
+<h1>Mobile HTML5 Tricks</h1>
 <p>There is a ton of good information in the 
 <a href="http://www.creativebloq.com/html5/12-html5-tricks-mobile-81412803" rel="external">12 HTML5 tricks for Mobile</a> article.</p>
 
@@ -65,13 +65,13 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
 		}, false);
 	}
 }</pre>
-<h2>Building a Mobile Menu</h2>
+<h1>Building a Mobile Menu</h1>
 <p>Graphical menus often don’t work for mobile sites; one technique is to hide the menu and then dynamically building a <code>select</code> menu using JavaScript. This is a technique that was used for an eLearning site I worked on.</p>
 <p><a href="../layout/dynamicallyBuildingMobileMenu.pdf">PDF Document</a></p>
-<h2>jQuery</h2>
+<h1>jQuery</h1>
 <p><a href="http://www.jqmgallery.com/jquery-mobile-tutorials/" rel="external">jQuery Mobile Tutorials</a></p>
-<h2>iOS Icons</h2>
-<h3>Web Clip Icons</h3>
+<h1>iOS Icons</h1>
+<h2>Web Clip Icons</h2>
 <p>See Apple <a href="http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html" rel="external">doco here</a>.</p>
 <p>This feature is enabled by supplying a <code>&lt;link rel=&quot;apple-touch-icon&quot; ...&gt;</code> in the <code>&lt;head&gt;</code> section of documents served by the web site.</p>
 <p>iOS Note: The Web Clip feature is available in iOS 1.1.3 and later. The apple-touch-icon-precomposed.png filename is available in iOS 2.0 and later. Support for multiple icons for different device resolutions is available in iOS 4.2 and later.</p>
@@ -112,7 +112,7 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
 	<li> Reflective shine</li>
 </ul>
 <p>Note: You can prevent the addition of all effects by naming your icon apple-touch-icon-precomposed.png (this is available in iOS 2 and later).</p>
-<h4>Summary</h4>
+<h3>Summary</h3>
 <p>iTunesArtwork – Icon for iTunes AdHoc distribution (512×512)<br>
 	Icon@2x.png – Home screen icon for iPhone 4 (114×114)<br>
 	Icon-72.png – Home screen icon for iPad (72×72)<br>

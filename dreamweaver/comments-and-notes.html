@@ -17,8 +17,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Comments and Notes</h1>
-<h2>Programmer Comments</h2>
+<div class="title">Comments and Notes</div>
+<h1>Programmer Comments</h1>
 <p><img src="../img/comments.jpg" alt="Dreamweaver code toolbar" width="342" height="549" class="pushLeft">Writing code is hard, slow, laborious, and error-prone. Also, what makes perfect sense when you are writing it, can become confusing one year later when you are asked to make one small change. There is no such thing as writing too many comments.</p>
 <p>I&rsquo;ve actually run into a programmer who said that his code didn&rsquo;t need comments because his code is self-documenting &mdash; people like that are &fnof;&mu;&ccedil;&alefsym;&iota;&ntilde;9 idiots.</p>
 <p>Dreamweaver has a couple of buttons in the Code or Split view toolbar. The process for creating a comment using the Dreamweaver button is as follows:</p>
@@ -35,17 +35,17 @@
 </ol>
 <h3 style="clear:left">Types of Comments</h3>
 <p>Of course, we can&rsquo;t make this easy and use just one type of comment. The syntax for a comment varies depending on where in the code you need it.</p>
-<h4>HTML Comments</h4>
+<h3>HTML Comments</h3>
 <p>Possibly the ugliest style of comments I've come across so far. These are a &quot;wrapping&quot; style comment that begin with <code>&lt;!--</code> and end with <code>--&gt;</code>. For example,</p>
 <pre class="prettyprint linenums">&lt;!-- The next line is a paragraph. --&gt;
 &lt;p&gt;This is a paragraph.&lt;/p&gt;</pre>
 <p>These comments appear amoungst your HTML code; in other words, anywhere on a web page that is NOT inside a <code>&lt;style&gt;</code> tag or <code>&lt;script&gt;</code> tag.</p>
 <p>To make your life easy, put a space after the opening tag and a space right before the closing tag. It's not required, but it looks nice and and is easier to remember than the official rules.</p>
 <div class="callout">
-	<h5>HTML Comment Syntax</h5>
+	<h4>HTML Comment Syntax</h4>
 		<p>Comments must start with the four character sequence U+003C LESS-THAN SIGN, U+0021 EXCLAMATION MARK, U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS (&lt;!--). Following this sequence, the comment may have text, with the additional restriction that the text must not start with a single U+003E GREATER-THAN SIGN character (&gt;), nor start with a U+002D HYPHEN-MINUS character (-) followed by a U+003E GREATER-THAN SIGN (&gt;) character, nor contain two consecutive U+002D HYPHEN-MINUS characters (--), nor end with a U+002D HYPHEN-MINUS character (-). Finally, the comment must be ended by the three character sequence U+002D HYPHEN-MINUS, U+002D HYPHEN-MINUS, U+003E GREATER-THAN SIGN (--&gt;).</p>
 	</div>
-<h4>JavaScript Comments</h4>
+<h3>JavaScript Comments</h3>
 <p>JavaScript allows both single-line and block (wrapping) style comments. To comment out a single line of code, prefix the line with <code>//</code>. Block comments start with a <code>/*</code> and end with <code>*/</code>. Example:</p>
 <pre class="prettyprint linenums">if (a&gt;b) {
 	//a is larger than b (this is a comment)
@@ -57,13 +57,13 @@
 	smaller = a;
 }</pre>
 <p>These comments appear inside <code>&lt;script&gt;</code> tags in a web page, or in an exteral <code>*.js</code> file.</p>
-<h4>CSS Comments</h4>
+<h3>CSS Comments</h3>
 <p>CSS comments are only block (wrapping) style comments; they start with a <code>/*</code> and end with <code>*/</code>. Example:</p>
 <pre class="prettyprint linenums">section {
 	color:#873A0F; /* Rich brown, oh yeah, this is a comment */
 }</pre>
 <p>These comments appear inside <code>&lt;style&gt;</code> tags in a web page, or in an exteral <code>*.css</code> file.</p>
-<h2>Design Notes</h2>
+<h1>Design Notes</h1>
 <p>Dreamweaver gives you an additional way to write comments to yourself. Honestly, I have yet to find a good use for this feature for the sites I've been building &ndash; turn it off unless you really need it. The workflow features baked into the Design Notes could work well if you are on a team of developers. To enable the Design Notes, you&rsquo;ll find that option under Site/<wbr>Manage sites&hellip;/<wbr>Advanced Settings.</p>
 <!-- InstanceEndEditable -->
 <footer>

@@ -15,8 +15,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Executing a Script When Closing a Page</h1>
-<h2>Window Events: <em>onbeforeunload</em> and <em>onunload</em></h2>
+<div class="title">Executing a Script When Closing a Page</div>
+<h1>Window Events: <em>onbeforeunload</em> and <em>onunload</em></h1>
 <p>These two events are non-standard events, although they are supported by all major browsers.</p>
 <pre class="prettyprint linenums">window.onbeforeunload = function() {<br>	return &quot;Can't you stay a little longer, dude?&quot;;<br>};<br>window.onunload = function() {<br>	alert (&quot;goodbye. onunload event&quot;);<br>};<br></pre>
 <p>You'll notice that in Firefox your custom message is not displayed.</p>

@@ -15,13 +15,13 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Including Content from Another Page</h1>
-<h2>HTML Method</h2>
+<div class="title">Including Content from Another Page</div>
+<h1>HTML Method</h1>
 <p>The simplest way to include external content on your page is through the use of  <span class="code">&lt;object data=&quot;…&quot;&gt;</span> or <span class="code">&lt;iframe src=&quot;…&quot;&gt;</span>, but those only work if you want a fixed dimension box for the content to appear. If that is what you want, then I would first try the <code>&lt;iframe&gt;</code> element. On the other hand, if you want the content to appear truly inline with the rest of the content, then AJAX wil come to the rescue (see below).</p>
-<h2>Demo</h2>
+<h1>Demo</h1>
 <section id="ajaxContainer">
 </section>
-<h2>AJAX Method</h2>
+<h1>AJAX Method</h1>
 <p>The jQuery-based JavaScript you need is:</p>
 <pre class="prettyprint linenums">jQuery.ajax({
 	url: 'ajaxContent.html',

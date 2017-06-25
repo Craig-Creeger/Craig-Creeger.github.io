@@ -17,8 +17,8 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>setTimeout and setInterval</h1>
-<h2>Usage</h2>
+<div class="title">setTimeout and setInterval</div>
+<h1>Usage</h1>
 <p>These function are simple enough to understand — pass it a function, and a duration. After the duration has elapsed the passed function will be called once (if using setTimeout) or repeatedly (if using setInterval). Example:</p>
 <pre class="prettyprint linenums">var blinkInterval = window.setInterval(blink, 2000); //calls blink every two seconds
 
@@ -31,8 +31,8 @@ function killBlinky() {
 }</pre>
 <p>It is possible to cancel the blinking by calling <code>clearInterval</code>.</p>
 <p>Very frequently you will find that you want to pass a parameter or context to the called function; now it gets interesting. Read on...</p>
-<h2>Passing Context</h2>
-<h3>Old School Method—Use a Closure</h3>
+<h1>Passing Context</h1>
+<h2>Old School Method—Use a Closure</h2>
 <p>Mozilla <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval#The_this_problem" target="external">describes this well</a>. Basically, when these timer functions call your custom function, the context is set at the document root level. In the example below, <code>self</code> was created so that a closure would be created around it when the anonymous function inside <code>setInterval</code> is declared. If you tried to reference the Person methods directly (e.g. <code>this.incrementReminder();</code> ) then you would get the error message “this.incrementReminder is not a function” because <strong><code>this</code></strong> refers to the window object, not a Person instance.</p>
 <pre class="prettyprint linenums">var Person = function(fullName) {
 	this.fullName = fullName;
@@ -61,7 +61,7 @@ console.log(String(nancy));
 
 craig.beginReminders(2);
 nancy.beginReminders(5);</pre>
-<h3>Binding Context Method</h3>
+<h2>Binding Context Method</h2>
 <p>Using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind#With_setTimeout" target="external"><code>Function.prototype.bind()</code></a> is a rather elegent way to handle the problem. Using the example above, replace <code>Person.prototype.beginReminders</code> with this:</p>
 <pre class="prettyprint linenums">Person.prototype.beginReminders = function(seconds) {
 	window.setInterval((function() {
@@ -69,7 +69,7 @@ nancy.beginReminders(5);</pre>
 		console.log(String(this));
 	}).bind(this), seconds * 1000);
 };</pre>
-<h3>New School Method—ES6 Arrow Functions</h3>
+<h2>New School Method—ES6 Arrow Functions</h2>
 <p>If you are using ES6 syntax, then use:</p>
 <pre class="prettyprint linenums">Person.prototype.beginReminders = function(seconds) {
 	window.setInterval(() =&gt; {

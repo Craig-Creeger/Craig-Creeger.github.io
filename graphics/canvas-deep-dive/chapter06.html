@@ -2,8 +2,8 @@
 <body>
 
 <div id="header">
-<h2>Chapter 6</h2>
-<h1>Pixel Buffers and Other Effects</h1>
+<h1>Chapter 6</h1>
+<div class="title">Pixel Buffers and Other Effects</div>
 </div>
 
 <div id="content">
@@ -11,7 +11,7 @@
 <p>Everything we have done so far has been using images or shapes. It's been fairly high level. However, canvas also gives you direct access to the pixels if you want it.  You can get the pixels for an entire canvas or just a portion, manipulate those pixels, then set them back. This lets you do all sorts of interesting effects.
 </p>
 
-<h3><a id="generativetextures">Generative Textures</a></h3>
+<h2><a id="generativetextures">Generative Textures</a></h2>
 
 <p>Let's suppose we'd like to generate a checkerboard texture. This texture will be 300 x 200 pixels.
 </p>
@@ -54,7 +54,7 @@ c.putImageData(data,0,0);
 <p class='photo'><img src="images/checkerboard.png"/></p>
 
 
-<h3><a id="addnoise">Add Noise</a></h3>
+<h2><a id="addnoise">Add Noise</a></h2>
 
 <p>Now lets modify this to make it feel a bit more rough. Lets add a bit of noise by randomizing making some of the pixels a slightly different color.
 </p>
@@ -70,7 +70,7 @@ c.putImageData(data,0,0);
 
 <p>There. That dirties it up a bit.</p>
 
-<h3><a id="photoinversion">Photo Inversion</a></h3>
+<h2><a id="photoinversion">Photo Inversion</a></h2>
 
 <p>So that's generating new images with pixel buffers. We can also manipulate existing Canvas data. This means almost any sort of Photoshop filter or adjustment could be done with canvas.  For example, suppose you want to invert an image.  Inverting is a simple equation. A pixel is composed of RGBA component values, each from 0 to 255.  To invert we just subtract each component from 255.  Here's what that looks like: 
 </p>
@@ -103,7 +103,7 @@ img.src = &quot;baby_original.png&quot;;
 <p class='photo'><img src="images/baby_inverted.png"/></p>
 
 
-<h3><a id="desaturation">Desaturation</a></h3>
+<h2><a id="desaturation">Desaturation</a></h2>
 
 <p>Here's another example. It's essentially the same code, just a different equation.  This one will turn a color image into black and white.
 </p>
@@ -131,7 +131,7 @@ img.src = &quot;baby_original.png&quot;;
 
 
 
-<h3><a id="compositemodes">Composite Modes</a></h3>
+<h2><a id="compositemodes">Composite Modes</a></h2>
 
 <p>Canvas also supports composite modes. These are similar to some of the blend modes you will find in Photoshop.  Every time you draw a shape each pixel will be compared to the existing pixel, then it will calculate the final pixel based on some equation.  Normally we are using <code>SrcOver</code>, meaning the source pixel (the one you are drawing) will be drawn <b>over</b> the destination pixel.  If your source pixel is partly transparent then the two will be mixed in proportion to the transparency.  SrcOver is just one of many blend modes, however.  Here's an example of using the <code>lighter</code> mode when drawing overlapping circles. <code>lighter</code> will <i>add</i> the two pixels together, with a maxium value of white.
 </p>
@@ -153,7 +153,7 @@ for(var i=0; i&lt;50; i++) {
 
 <p class='photo'><img src="images/lighter_blendmode.png"/></p>
 
-<h3><a id="shadows">Shadow Effects</a></h3>
+<h2><a id="shadows">Shadow Effects</a></h2>
 
 <p>Canvas also supports shadows, similiar to CSS. You can set the color, offset and blur radius of the shadow to simulate different effects. This is an example of doing a white glow behind some green text.</p>
 
@@ -172,7 +172,7 @@ c.fillText(&quot;ALIEN&quot;,30,200);</code></pre>
 <p class='photo'><img src="images/shadow_text.png"/></p>
 
 <!--
-<h3><a id="buffers">Drawing to Offscreen Buffers</a></h3>
+<h2><a id="buffers">Drawing to Offscreen Buffers</a></h2>
 -->
 
 </div>

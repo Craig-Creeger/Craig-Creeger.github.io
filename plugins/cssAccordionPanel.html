@@ -205,7 +205,7 @@ function expandPanel(panelIndex) {
 </head>
 
 <body>
-<h1>Pure CSS Accordion Panel</h1>
+<div class="title">Pure CSS Accordion Panel</div>
 <p> This is a demonstration of a vertical accordion panel using pure CSS, plus  automatical sizing the content panes if Javascript is available.</p>
 <p style="padding-left:2em;"><em>Hey man, I thought this was suppose to be <strong>pure</strong> CSS, what gives?</em></p>
 <p>Look, it is the best of both worlds. You want <strong>just</strong> CSS? Fine. Remove all the Javascript code - the accordion will still work great. The only limitation is the height of all the panels will have to be manually determined.</p>
@@ -216,7 +216,7 @@ function expandPanel(panelIndex) {
 		<div class="heightTall">
 			<table class="layoutTable" style="margin-bottom:1em;">
 				<tr>
-					<td><h1>Features:</h1>
+					<td><div class="title">Features:</div>
 						<ul>
 							<li>Standards-compliant HTML markup</li>
 							<li>Animated sliding action</li>
@@ -229,14 +229,14 @@ function expandPanel(panelIndex) {
 							<li>Can link into another panel and have it automatically expand. For example, the <a href="#rescue" onClick="expandPanel(2);">Javascript to the Rescue</a> panel below. (sorta, the panel expands now, but I still need to get the link to scroll to that section on the page.)</li>
 						</ul></td>
 					<td style="width:2em;">&nbsp;</td>
-					<td><h1>Limitations:</h1>
+					<td><div class="title">Limitations:</div>
 						<ul>
 							<li>Vertical sliding action only</li>
 							<li>Works only for modern browsers (I think; not much testing has been done.)</li>
 						</ul></td>
 				</tr>
 			</table>
-			<h2>Browser Compatibility</h2>
+			<h1>Browser Compatibility</h1>
 			<p>For IE8, the Accordion panels do not work, but the fallback is to simply always show the content. In other words, all the panels will be expanded if using IE8. I have not done much testing, but it does work with these:</p>
 			<ul>
 				<li>Chrome 37</li>

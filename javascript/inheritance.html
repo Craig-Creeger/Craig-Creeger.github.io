@@ -15,12 +15,12 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>Inheritance in JavaScript</h1>
+<div class="title">Inheritance in JavaScript</div>
 <h2 id="sources">Sources for Information</h2>
 <p><a href="http://javascriptweblog.wordpress.com/2010/06/07/understanding-javascript-prototypes/" rel="external">Great, great Q&amp;A</a> on prototypes (and therefore inheritance). READ THIS FIRST!</p>
 <p>Very long and <a href="http://dmitrysoshnikov.com/ecmascript/chapter-7-2-oop-ecmascript-implementation/" rel="external">in-depth article</a> on OOP in JavaScript including data types, constructors, prototypes, inheritance, and properties.</p>
 <p>This StackOverflow answer has a very good description of<a href="http://stackoverflow.com/questions/1595611/how-to-properly-create-a-custom-object-in-javascript" rel="external"> Prototype inheritance and Closure inheritance</a>.</p>
-<h2>Defining a Sub-Class</h2>
+<h1>Defining a Sub-Class</h1>
 <p>The standard paradigm, is to use the prototype chain to implement the inheritance of methods from a super class. Any methods defined on the sub-class will supersede those defined on the super-class.</p>
 <pre class="prettyprint linenums">function A() {                     // Define super class
 	this.x = 1;
@@ -50,7 +50,7 @@ b.DoIt();
 document.write(b.x + ', ' + b.y); //2, 3</pre>
 
  	<p>Something to keep in mind is that each time a sub-class is defined, we explicitly call the constructor of the super-class in order to insert it into our prototype chain. So it is important to ensure that no undesirable side-effects will occur when this call is made. Conversely, if the super-class constructor should be called for each instance of every sub-class, code must be explicitly added to the sub-class's constructor to make this call (as is done in the above example).</p>
- 	<h3>Example</h3>
+ 	<h2>Example</h2>
  	<p>For a working example (similar to the above code), check out the <a href="prototypes.html">Prototypes page</a>.</p>
  	<p>Here's another example:</p>
  	<pre class="prettyprint linenums">var Pet = function(name) {

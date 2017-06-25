@@ -21,8 +21,8 @@ th {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>White Space</h1>
-<h2>Standard Handling</h2>
+<div class="title">White Space</div>
+<h1>Standard Handling</h1>
 <p>Spaces, tabs, and new lines (white space) in the source code are collapsed down to a single space. As an example:</p>
 <pre>&lt;p&gt;   This is     <em>[tab]</em>		a test
 
@@ -33,19 +33,19 @@ imonial.&lt;/p&gt;</pre>
 
 imonial.</span></p>
 <p>You can see that the new lines were converted to a single space. If you don&rsquo;t want white space to collapse you can use the <code>&lt;pre&gt;</code> tag. With CSS3, we have a lot more options for controlling line breaks and spaces. <a href="#white-space">See below</a>...</p>
-<h2><a name="wbr"></a>New line with &lt;wbr&gt; (word break)</h2>
+<h1><a name="wbr"></a>New line with &lt;wbr&gt; (word break)</h1>
 <p>The <code>&lt;wbr&gt;</code> tag will give the browser a hint where it can break a very long set of words with no spaces in it. By adding <code>&lt;wbr&gt;</code> you can define logical areas where the text can start a new line.</p>
 <p class="code">window.open('myPage.html',<wbr>'windowName',<wbr>'scrollbars=yes,<wbr>resizable=yes,<wbr>width=1054,<wbr>height=783');</p>
 <p>The above line uses the code:</p>
 <p class="code">window.open('myPage.html',&lt;wbr&gt;<wbr>'windowName',&lt;wbr&gt;<wbr>'scrollbars=yes,&lt;wbr&gt;<wbr>resizable=yes,&lt;wbr&gt;<wbr>width=1054,&lt;wbr&gt;<wbr>height=783');</p>
 <p><em><strong>Warning:</strong></em> IE8 will ignore <code>&lt;wbr&gt;</code> when running in standards-mode. The work around is to use a <a href="../typography/advanced-typography.html#zwsp">zero-width space</a> instead.</p>
-<h2>Non-breaking Spaces with &amp;nbsp;</h2>
+<h1>Non-breaking Spaces with &amp;nbsp;</h1>
 <p>Multiple white space characters (spaces and line breaks) will normally collapse down to a single space. If you would like multiple spaces, for example two spaces between sentences, then use <code>&amp;nbsp;</code> in your code. <em>The easiest way to get it is with the keyboard shortcut:</em> <code>Command&nbsp;Shift&nbsp;Space</code>.</p>
 <blockquote>
 	<p>Go there. &nbsp;Now.</p>
 <pre class="prettyprint linenums">&lt;p&gt;Go there. &amp;nbsp;Now.&lt;/p&gt;</pre>
 </blockquote>
-<h2>CSS Properties</h2>
+<h1>CSS Properties</h1>
 <p>Stephen Morley has done a great job of explaining this topic.</p>
 <p><a href="http://code.stephenmorley.org/html-and-css/white-space-handling/" rel="external">http://code.stephenmorley.org/html-and-css/white-space-handling/</a></p>
 <p id="white-space">The CSS2 properties/values related to white space are:</p>

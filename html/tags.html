@@ -20,9 +20,9 @@ dt {
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>HTML Tags</h1>
+<div class="title">HTML Tags</div>
 <p style="text-align:right"><a name="firstLine"></a>Don’t become a <a href="#PEBKAC"><acronym title="Problem Exists Between Keyboard And Chair">PEBKAC</acronym></a>.</p>
-<h2>Sectioning Tags</h2>
+<h1>Sectioning Tags</h1>
 <dl>
 <dt>&lt;main&gt;</dt>
 <dd>
@@ -41,7 +41,7 @@ dt {
 <dt>&lt;header&gt;</dt>
 <dt>&lt;footer&gt;</dt>
 </dl>
-<h2>Under-appreciated Tags</h2>
+<h1>Under-appreciated Tags</h1>
 <dl>
 	<dt>&lt;abbr title=&quot;expanded term&quot;&gt;</dt>
 	<dd>Used to expand an abbreviation. Note: As of HTML5, the <code>&lt;acronym&gt;</code> has been deprecated; use <code>&lt;abbr&gt;</code> instead. See <a href="#PEBKAC">below</a> for an example. </dd>
@@ -72,10 +72,10 @@ dt {
 	</del>&lt;ins&gt; is rendered with an underline (a really poor default if you ask me). <ins>This is an example.</ins><br>
 	<em>Note: &lt;strike&gt; has been obsoleted.</em></dd>
 </dl>
-<h2>Meter and Progress Bar</h2>
+<h1>Meter and Progress Bar</h1>
 <p>The &lt;progress&gt; element may seem very similar to the &lt;meter&gt; element — which was also introduced in HTML5 — but it can be seen as a more specific kind of &lt;meter&gt; element that's only used to measure progress of a task. It's worth bearing this in mind when deciding which one to use.</p>
 <p>Great article on <a href="http://html5doctor.com/the-progress-element/" rel="external">using and styling the Progress Bar</a>.</p>
-<h2>Summary and Details</h2>
+<h1>Summary and Details</h1>
 <p>These HTML5 tags are used to show/hide extra information.</p>
 <details>
 <summary>Show More...</summary>
@@ -87,7 +87,7 @@ dt {
 &lt;p&gt;The source code for this looks like:&lt;/p&gt;
 &lt;/details&gt;</pre>
 </details>
-<h2><a name="dl"></a>Definition Lists</h2>
+<h1><a name="dl"></a>Definition Lists</h1>
 <p>The required markup for a definition list begins with an opening <code>&lt;dl&gt;</code> tag. Under that will be pairs of <code>&lt;dt&gt;</code> (terms) and <code>&lt;dd&gt;</code> (definitions) tags. For example:</p>
 <dl id="fruitList">
 	<dt><dfn id="Apple">Apple</dfn></dt>
@@ -101,7 +101,7 @@ dt {
 	  &lt;dt&gt;Banana&lt;/dt&gt;<br>
 	    &lt;dd&gt;Another tasty fruit, or dangerous slip hazard in cartoons.&lt;/dd&gt;<br>
 &lt;/dl&gt;</code> </p>
-<h3>Definition Element <code>&lt;dfn&gt;</code></h3>
+<h2>Definition Element <code>&lt;dfn&gt;</code></h2>
 <p>Related, but serving a different purpose is the <code>&lt;dfn&gt;</code> tag. It is used to mark the location of where a term is being defined. For example:</p>
 <blockquote>After getting called over to Kay’s computer for the fifth time in the same day, the IT guy determined that her problem was a classic case of <abbr title="Problem Exists Between Keyboard And Chair">PEBKAC</abbr>. He didn’t have the heart to tell her that <dfn id="PEBKAC" title="PEBKAC"><abbr title="Problem Exists Between Keyboard And Chair">PEBKAC</abbr></dfn> stood for &ldquo;problem exists between keyboard and chair.&rdquo;</blockquote>
 <p>The markup for this example is:</p>

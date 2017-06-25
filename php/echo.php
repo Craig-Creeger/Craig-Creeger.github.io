@@ -17,7 +17,7 @@
 
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
-<h1>PHP Echo Results</h1>
+<div class="title">PHP Echo Results</div>
 <pre>
 <?php
     /* These lines format the output as HTML comments and call dump_array repeatedly */
@@ -50,7 +50,7 @@
     }
 ?>
 </pre>
-<h3>Back to <a href="echoTest.html">test page</a></h3>
+<h2>Back to <a href="echoTest.html">test page</a></h2>
 <!-- InstanceEndEditable -->
 <footer>
 		<hr>

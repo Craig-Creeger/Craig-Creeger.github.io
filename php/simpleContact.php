@@ -61,13 +61,13 @@ input[type="text"] {
 </head>
 
 <body>
-<h1>Contact Us</h1>
+<div class="title">Contact Us</div>
 <?php
 if($statusMessage):
 	echo $statusMessage;
 else: ?>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" name="contact">
-		<h2>Contact Information</h2>
+		<h1>Contact Information</h1>
 		<p> <label for="fullName">Full Name:</label> <input type="text" name="fullName" id="fullName" value="Samantha Claussen"> </p>
 		<p> <label for="phone">Phone:</label> <input type="text" name="phone" id="phone" value="(651) 555-1234"> </p>
 		<p> <label for="email">Email:</label> <input type="text" name="email" id="email" value="sam@pixelpro.biz"> </p>
