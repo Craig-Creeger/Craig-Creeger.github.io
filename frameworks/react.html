@@ -149,6 +149,47 @@ doSomething () {
 </pre>
 <p>If I remember right, you can not put a ref on a component (vs. a standard DOM element).</p>
 
+
+<h1>Lifecycle Hooks</h1>
+
+<h2>Initialization</h2>
+<ol>
+  <li><strong>getDefaultProps</strong></li>
+  <li><strong>getInitialState</strong></li>
+  <li><strong>componentWillMount</strong><br>
+  You may set state, but it will not trigger a re-render.</li>
+  <li><em>render()</em></li>
+  <li><strong>componentDidMount</strong><br>
+  Perform DOM interaction here.</li>
+</ol>
+
+<h2>State Changes</h2>
+<ol>
+  <li><strong>shouldComponentUpdate</strong> (nextProps, nextState)<br>
+  This function must return a boolean value.</li>
+  <li><strong>componentWillUpdate</strong> (nextProps, nextState)<br>
+  Always called before render(), but not for the initial render. Do <strong>not</strong> call
+  <code>setState()</code> here.</li>
+  <li><em>render()</em></li>
+  <li><strong>componentDidUpdate</strong> (prevProps, prevState)<br>
+  You can perform DOM manipulations here.</li>
+</ol>
+
+<h2>Prop Changes</h2>
+<ol>
+  <li><strong>componentWillReceiveProps</strong> (nextProps)<br>
+  This is a good place to call <code>setState()</code>.</li>
+  <li><strong>shouldComponentUpdate</strong> (nextProps, nextState)<br>
+  This function must return a boolean value.</li>
+  <li><strong>componentWillUpdate</strong> (nextProps, nextState)<br>
+  Always called before render(), but not for the initial render. Do <strong>not</strong> call
+  <code>setState()</code> here.</li>
+  <li><em>render()</em></li>
+  <li><strong>componentDidUpdate</strong> (prevProps, prevState)<br>
+  You can perform DOM manipulations here.</li>
+</ol>
+
+
 <h1>Passing Data to Actions from an Event</h1>
 <h2>ES5 Syntax</h2>
 <p>For one-off, quick-n-dirty solution you can use <code>.bind()</code> to pass one, or more, values.</p>
