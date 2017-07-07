@@ -30,6 +30,10 @@
     <li><a href="http://mediatemple.net/blog/tips/a-quick-look-at-the-react-and-redux-devtools/">Dev tools in Chrome</a></li>
 </ul>
 
+<h1>Leveling Up Your Game</h1>
+<ul>
+  <li><a href="https://medium.com/dailyjs/techniques-for-decomposing-react-components-e8a1081ef5da" target="external">Decomposing React Components (describes how to make a Higher-Order React component.)</a></li>
+</ul>
 <h1>ES6 Patterns</h1>
 <h2>Stateless Functional Components</h2>
 <pre class="prettyprint linenums">
@@ -157,7 +161,11 @@ doSomething () {
   <li><strong>getDefaultProps</strong></li>
   <li><strong>getInitialState</strong></li>
   <li><strong>componentWillMount</strong><br>
-  You may set state, but it will not trigger a re-render.</li>
+  You may set state, but it will not trigger a re-render.
+  <p>This is a great place to hook-up event listeners. e.g.</p>
+  <pre>componentDidMount() {
+  ReactDOM.findDOMNode(this).addEventListener('click', this.onClick);
+}</pre></li>
   <li><em>render()</em></li>
   <li><strong>componentDidMount</strong><br>
   Perform DOM interaction here.</li>
