@@ -90,6 +90,7 @@ Greeting.defaultProps = {
 
 export default Greeting;
 </pre>
+
 <h2>JSX Attributes to DOM Attributes</h2>
 <p>JSX Attributes to get rendered to the DOM if they are a valid attribute. You can force non-standard attributes to render by putting a dash in the name; best practice is to use data-...</p>
 <pre class="prettyprint linenums">
@@ -128,6 +129,8 @@ let studentAge = 16;
 <p>Basically, the component the captures the event must have a private function to handle the event. You attach the private function to the, say, onClick event. The private function then calls the function passed down via props.</p>
 
 <h1>Refs</h1>
+<p class="callout">This “string”-style ref is not recommended anymore. Use the next syntax
+  instead.</p>
 <p>Refs are kinda like specifying an ID on an element. You can then reach into the DOM
     (via ReactDOM.findDOMNode()) by the ref name. Example:</p>
 <pre>
@@ -151,7 +154,6 @@ doSomething () {
   let elem = this.yourElemnt
 }
 </pre>
-<p>If I remember right, you can not put a ref on a component (vs. a standard DOM element).</p>
 
 
 <h1>Lifecycle Hooks</h1>
