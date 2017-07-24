@@ -37,6 +37,27 @@ some of the complexity. My recommendation:</p>
 <p><a href="https://css-tricks.com/using-fetch/">Using Fetch</a> from CSS-Tricks does a great job
 of explaining how to use Fetch in a production environment.</p>
 
+<p>I have had great success when fetching like this:</p>
+<pre class="prettyprint linenums">export function getAccountInfo (userId) {
+	const httpRequest = {};
+	httpRequest.credentials = 'include';
+	httpRequest.headers = { Accept: 'application/json' };
+
+	return fetch(`/account/${userId}`, httpRequest)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('The response from /account/:userId was not OK.');
+			}
+			return response.json(); // This is a Promise.
+		})
+		.catch(error => {
+			console.log( // eslint-disable-line
+				`Could not fetch /account/:userId because ${error.message}`
+			);
+		});
+}
+</pre>
+
 <h1>XMLHttpRequest</h1>
 <img src="ajax/ajax001.jpg">
 <img src="ajax/ajax002.jpg">
