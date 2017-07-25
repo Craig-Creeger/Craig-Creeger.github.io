@@ -58,80 +58,85 @@
 	<p><code>import * as hydrate from 'sc-hydrate-sku';</code></p>
 	<p>You can mock out that entire library by doing something like this:</p>
 	<pre class="prettyprint linenums">jest.mock('sc-hydrate-sku', () => {
-  return jest.fn((skus) => {
-    return new Promise((resolve, reject) => {
-      process.nextTick(() => {
-        return resolve([
+		return jest.fn((skus) => {
+			return new Promise((resolve, reject) => {
+				process.nextTick(() => {
+					return resolve([
           {
-            skuId: '3208505',
+						skuId: '3208505',
             media: { primaryImage: { altText: 'this is a image', path: '/cats/image' } }
           },
           {
-            skuId: '4707100',
+						skuId: '4707100',
             media: { primaryImage: { altText: 'this is a image 2', path: '/cats/image' } }
           }
-        ]);
-      });
-    });
-  });
-});
+					]);
+				});
+			});
+		});
+	});
 </pre>
 
-	<p>Here is a simpler example when you just want to prevent a method from doing its normal job.</p>
-	<pre class="prettyprint linenums">jest.mock('./helpers/dataHelpers', () => ({
-  fetchData: jest.fn()
+<p>Here is a simpler example when you just want to prevent a method from doing its normal job.</p>
+<pre class="prettyprint linenums">jest.mock('./helpers/dataHelpers', () => ({
+	fetchData: jest.fn()
 }));</pre>
 
-	<h3>Overloading an Existing Function</h3>
-	<p>This example mocks out the native Fetch API. This is useful when you want to test interaction with an external API.</p>
-	<pre class="prettyprint linenums">	describe('getGSPPlans', () => {
-  it('should return undefined due to an error being thrown', () => {
-    global.fetch = jest.fn().mockImplementation((url, data) => {
-      const p = new Promise((resolve, reject) => {
-        resolve({
-          ok: false,
+<h3>Overloading an Existing Function</h3>
+<p>This example mocks out the native Fetch API. This is useful when you want to test interaction with an external API.</p>
+<pre class="prettyprint linenums">	describe('getGSPPlans', () => {
+	it('should return undefined due to an error being thrown', () => {
+		global.fetch = jest.fn().mockImplementation((url, data) => {
+			const p = new Promise((resolve, reject) => {
+				resolve({
+					ok: false,
           headers: { get: () => 'application/json' },
           json: () =>
-            new Promise((resolve, reject) => {
-              resolve(noPlans);
-            })
+					new Promise((resolve, reject) => {
+						resolve(noPlans);
+					})
         });
       });
       return p;
     });
     return getGSPPlans('s').then(data => {
-      expect(data).toEqual(undefined);
+			expect(data).toEqual(undefined);
     });
   });
-
+	
   it('should return an empty array due to no gsp plans', () => {
-    global.fetch = jest.fn().mockImplementation((url, data) => {
-      const p = new Promise((resolve, reject) => {
-        resolve({
-          ok: true,
+		global.fetch = jest.fn().mockImplementation((url, data) => {
+			const p = new Promise((resolve, reject) => {
+				resolve({
+					ok: true,
           headers: { get: () => 'application/json' },
           json: () =>
-            new Promise((resolve, reject) => {
-              resolve(noPlans);
-            })
+					new Promise((resolve, reject) => {
+						resolve(noPlans);
+					})
         });
       });
       return p;
     });
     return getGSPPlans('s').then(data => {
-      expect(data).toEqual([]);
+			expect(data).toEqual([]);
     });
   });
 });</pre>
-	<!-- InstanceEndEditable -->
-	<footer>
-		<hr>
-		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="https://craig-creeger.github.io/">Table of Contents</a>
-		</p>
-		<p style="text-align:right; font-size:smaller;">Last updated on
-			<!-- #BeginDate format:Am1 -->July 25, 2017
-			<!-- #EndDate -->
-		</p>
+
+
+<h1>Enzyme</h1>
+<p><a href="http://airbnb.io/enzyme/docs/api/index.html" target="external">The Enzyme library</a> is useful for testing React components.</p>
+<div class="callout"><em>Quick tip:</em> To help get your bearings when selecting elements in your tests, you can log an HTML-like string representation of the component under test to the console by calling <code>console.log(wrapper.debug());</code></div>
+<!-- InstanceEndEditable -->
+<footer>
+	<hr>
+	<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="https://craig-creeger.github.io/">Table of Contents</a>
+	</p>
+	<p style="text-align:right; font-size:smaller;">Last updated on
+		<!-- #BeginDate format:Am1 -->July 25, 2017
+		<!-- #EndDate -->
+	</p>
 		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
 		<p><span id="copyrightDate">2017</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
 	</footer>
