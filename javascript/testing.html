@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<!-- InstanceBeginEditable name="doctitle" -->
+	<title>Testing Javascript Code</title>
+	<!-- InstanceEndEditable -->
+	<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+	<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+	<!-- InstanceBeginEditable name="head" -->
+	<style type="text/css">
+
+	</style>
+	<!-- InstanceEndEditable -->
+</head>
+
+<body>
+	<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a>
+	<!-- InstanceBeginEditable name="content" -->
+	<div class="title">Testing Javascript Code</div>
+	<h1>Jest</h1>
+
+	<h2>Test Structure</h2>
+	<p>This testing tool is one of the best available right now and the documentation is pretty good
+	(although you may really have to dig to find the right page.) It provides these test structure
+	methods:</p>
+	<ul>
+		<li><code>describe('description', () => { <em>test suite</em> })</code> This is used to group tests together.</li>
+		<li><code>it('description', () => { <em>unit test code</em> })</code> This is used to declare your test. (<code>test()</code> is an alias.)</li>
+		<li>
+			<code>beforeEach(() => {});</code><br />
+			<code>afterEach(() => {});</code><br />
+			<code>beforeAll(() => {});</code><br />
+			<code>afterAll(() => {});</code>
+		</li>
+		<li>Plus other lesser used methods.</li>
+	</ul>
+
+	<h2>Test Assertions</h2>
+	<p>Jest has its own assertion library built right in, which means you can use these common assertions (Jest calls them “matchers”).</p>
+	<ul>
+		<li>.toBe() — A simple strict equality (===) checker.<br>
+			<code>expect('weinerDog').toBe('weinerDog');</code></li>
+		<li>.toEqual() — A deep comparison checker against <strong>objects</strong>.<br>
+			<code>expect({ fish: 'catfish' }).toEqual({ fish: 'catfish' });</code></li>
+		<li>.not — A chain method to invert the comparison.<br>
+			<code>expect(age).not.toBe(0);</code></li>
+		<li>There are many, many other matchers. Check the <a href="https://facebook.github.io/jest/docs/expect.html" target="external">API page.</a></li>
+	</ul>
+
+	<h2>Mocks</h2>
+	<h3>Whole Module Mock</h3>
+	<p>Let’s say the module you are testing does this:</p>
+	<p><code>import * as hydrate from 'sc-hydrate-sku';</code></p>
+	<p>You can mock out that entire library by doing something like this:</p>
+	<pre class="prettyprint linenums">jest.mock('sc-hydrate-sku', () => {
+  return jest.fn((skus) => {
+    return new Promise((resolve, reject) => {
+      process.nextTick(() => {
+        return resolve([
+          {
+            skuId: '3208505',
+            media: { primaryImage: { altText: 'this is a image', path: '/cats/image' } }
+          },
+          {
+            skuId: '4707100',
+            media: { primaryImage: { altText: 'this is a image 2', path: '/cats/image' } }
+          }
+        ]);
+      });
+    });
+  });
+});
+</pre>
+
+	<p>Here is a simpler example when you just want to prevent a method from doing its normal job.</p>
+	<pre class="prettyprint linenums">jest.mock('./helpers/dataHelpers', () => ({
+  fetchData: jest.fn()
+}));</pre>
+
+	<h3>Overloading an Existing Function</h3>
+	<p>This example mocks out the native Fetch API. This is useful when you want to test interaction with an external API.</p>
+	<pre class="prettyprint linenums">	describe('getGSPPlans', () => {
+  it('should return undefined due to an error being thrown', () => {
+    global.fetch = jest.fn().mockImplementation((url, data) => {
+      const p = new Promise((resolve, reject) => {
+        resolve({
+          ok: false,
+          headers: { get: () => 'application/json' },
+          json: () =>
+            new Promise((resolve, reject) => {
+              resolve(noPlans);
+            })
+        });
+      });
+      return p;
+    });
+    return getGSPPlans('s').then(data => {
+      expect(data).toEqual(undefined);
+    });
+  });
+
+  it('should return an empty array due to no gsp plans', () => {
+    global.fetch = jest.fn().mockImplementation((url, data) => {
+      const p = new Promise((resolve, reject) => {
+        resolve({
+          ok: true,
+          headers: { get: () => 'application/json' },
+          json: () =>
+            new Promise((resolve, reject) => {
+              resolve(noPlans);
+            })
+        });
+      });
+      return p;
+    });
+    return getGSPPlans('s').then(data => {
+      expect(data).toEqual([]);
+    });
+  });
+});</pre>
+	<!-- InstanceEndEditable -->
+	<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="https://craig-creeger.github.io/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on
+			<!-- #BeginDate format:Am1 -->July 25, 2017
+			<!-- #EndDate -->
+		</p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2017</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+	</footer>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+	<!-- InstanceBeginEditable name="footerScripts" -->
+	<!-- InstanceEndEditable -->
+	<script type="text/javascript">
+		$(function() { //shortcut for $(document).ready();
+			prettyPrint();
+
+			//Update the Copyright Date in the footer to be the current year.
+			var crDate = document.getElementById('copyrightDate');
+			var today = new Date();
+			crDate.innerHTML = today.getFullYear();
+		});
+	</script>
+</body>
+<!-- InstanceEnd -->
+
+</html>
