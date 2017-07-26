@@ -133,6 +133,13 @@
 <h1>Enzyme</h1>
 <p><a href="http://airbnb.io/enzyme/docs/api/index.html" target="external">The Enzyme library</a> is useful for testing React components.</p>
 <div class="callout"><em>Quick tip:</em> To help get your bearings when selecting elements in your tests, you can log an HTML-like string representation of the component under test to the console by calling <code>console.log(wrapper.debug());</code></div>
+
+<h2>Common React Assertions</h2>
+
+<h3>Did component render anything?</h3>
+<pre class="prettyprint linenums">const wrapper = shallow(&lt;RewardsPaneContainer /&gt;);
+expect(wrapper.find(RewardsPane).length).toEqual(1);
+</pre>
 <!-- InstanceEndEditable -->
 <footer>
 	<hr>
