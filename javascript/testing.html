@@ -49,6 +49,11 @@
 			<code>expect({ fish: 'catfish' }).toEqual({ fish: 'catfish' });</code></li>
 		<li>.not — A chain method to invert the comparison.<br>
 			<code>expect(age).not.toBe(0);</code></li>
+		<li>expect.stringContaining — Use to search for a substring within a longer string.<br>
+			<pre>it('renders the user’s name', () => {
+  const wrapper = shallow(<Greeting firstName="Guido" />);
+  expect(wrapper.text()).toEqual(expect.stringContaining('Guido'));
+});</pre>
 		<li>There are many, many other matchers. Check the <a href="https://facebook.github.io/jest/docs/expect.html" target="external">API page.</a></li>
 	</ul>
 
