@@ -140,6 +140,13 @@
 <pre class="prettyprint linenums">const wrapper = shallow(&lt;RewardsPaneContainer /&gt;);
 expect(wrapper.find(RewardsPane).length).toEqual(1);
 </pre>
+
+<h3>Testing a Component’s method</h3>
+<p>When testing a React component that has been extended from “Component” (e.g. <code>class MyComp extends Component { ...</code>) you may find that you need to test a custom method. In that case, get it from the instance.</p>
+<pre class="prettyprint linenums">const wrapper = shallow(&lt;RewardsPaneContainer /&gt;);
+const cookieValue = wrapper.instance().getUTCookieValue();
+expect(cookieValue).toEqual(undefined);</pre>
+
 <!-- InstanceEndEditable -->
 <footer>
 	<hr>
