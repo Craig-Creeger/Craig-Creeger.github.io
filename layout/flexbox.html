@@ -34,15 +34,15 @@
 
 	<dt>flex-direction</dt>
 	<dd>Specifies direction of primary axis.<br>
-	<code>row | row-reverse | column | column-reverse</code></dd>
+	<code><strong>row</strong> | row-reverse | column | column-reverse</code></dd>
 
 	<dt>flex-wrap</dt>
 	<dd>Whether flex items should squish on a single line, or wrap.<br>
-	<code>nowrap | wrap | wrap-reverse</code></dd>
+	<code><strong>nowrap</strong> | wrap | wrap-reverse</code></dd>
 
-	<dt>content-justify</dt>
+	<dt>justify-content</dt>
 	<dd>Specifies justification of items in primary axis.<br>
-	<code>flex-start | flex-end | center | space-between | space-around</code></dd>
+	<code><strong>flex-start</strong> | flex-end | center | space-between | space-around</code></dd>
 </dl>
 
 <h1>Examples</h1>
@@ -77,6 +77,17 @@
 		<p>Much longer text in this box. You will notice how the size of this box is taking up more
 			space than the first box. It is behaving similarly to a table.</p>
 	</div>
+</div>
+
+<h2>Distributing Items</h2>
+<pre>.flexContainer {
+  display: flex;
+  justify-content: space-between;
+}</pre>
+<div class="flex" style="justify-content: space-between;">
+	<div class="flexItem">Box 1</div>
+	<div class="flexItem">Box 2</div>
+	<div class="flexItem">Box 3</div>
 </div>
 <!-- InstanceEndEditable -->
 <footer>
