@@ -19,6 +19,7 @@
 .flexItem {
 	border: thin solid dimgray;
 	background-color: white;
+	box-sizing: border-box;
 }
 </style>
 <!-- InstanceEndEditable -->
@@ -66,6 +67,7 @@
 	flex-basis: 250px;
 	flex-shrink: 0;
 }
+
 </pre>
 <div class="flex">
 	<div class="flexItem" style="flex-basis: 160px; flex-shrink: 0;">
@@ -83,12 +85,28 @@
 <pre>.flexContainer {
   display: flex;
   justify-content: space-between;
-}</pre>
+}
+
+</pre>
 <div class="flex" style="justify-content: space-between;">
 	<div class="flexItem">Box 1</div>
 	<div class="flexItem">Box 2</div>
 	<div class="flexItem">Box 3</div>
 </div>
+
+<h2>Wrapping Content for Responsive Sites</h2>
+<p>Boxes will try to fit on a single line, but will wrap as the browser window get narrower.</p>
+<pre>.flex { flex-wrap: wrap; }
+.flexItem { width: 50%; min-width: 350px; }
+
+</pre>
+<div class="flex" style="flex-wrap: wrap">
+	<div class="flexItem" style="width: 50%; min-width: 350px;">Box 1 Making Every Pixel Count</div>
+	<div class="flexItem" style="width: 50%; min-width: 350px;">Box 2 Making Every Pixel Count</div>
+	<div class="flexItem" style="width: 50%; min-width: 350px;">Box 3 Making Every Pixel Count</div>
+	<div class="flexItem" style="width: 50%; min-width: 350px;">Box 4 Making Every Pixel Count</div>
+</div>
+
 <!-- InstanceEndEditable -->
 <footer>
 		<hr>
