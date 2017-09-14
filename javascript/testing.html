@@ -89,7 +89,7 @@
 
 <h3>Overloading an Existing Function</h3>
 <p>This example mocks out the native Fetch API. This is useful when you want to test interaction with an external API.</p>
-<pre class="prettyprint linenums">	describe('getGSPPlans', () => {
+<pre class="prettyprint linenums">describe('getGSPPlans', () => {
 	it('should return undefined due to an error being thrown', () => {
 		global.fetch = jest.fn().mockImplementation((url, data) => {
 			const p = new Promise((resolve, reject) => {
@@ -98,7 +98,9 @@
           headers: { get: () => 'application/json' },
           json: () =>
 					new Promise((resolve, reject) => {
-						resolve(noPlans);
+						resolve({
+							yourResponse: 'data goes here'
+						});
 					})
         });
       });
@@ -108,27 +110,28 @@
 			expect(data).toEqual(undefined);
     });
   });
-	
-  it('should return an empty array due to no gsp plans', () => {
-		global.fetch = jest.fn().mockImplementation((url, data) => {
-			const p = new Promise((resolve, reject) => {
-				resolve({
-					ok: true,
-          headers: { get: () => 'application/json' },
-          json: () =>
-					new Promise((resolve, reject) => {
-						resolve(noPlans);
-					})
-        });
-      });
-      return p;
-    });
-    return getGSPPlans('s').then(data => {
-			expect(data).toEqual([]);
-    });
-  });
 });</pre>
 
+<h3>Mocking isomorphic-fetch with fetch-mock</h3>
+<p>Fetch is part of browsers. Jest runs in Node, which does not have <code>fetch</code>, therefore it is common to polyfill Node with <code>isomorphic-fetch</code>. The easiest way to mock out fetch in that scenario is to use another package called <code>fetch-mock</code>.</p>
+<pre class="prettyprint linenums">import fetchMock from 'fetch-mock';
+	
+describe('YourModule', () => {
+	it('Asynchronously fetches data', done => {
+		fetchMock.get('/api/titles', {
+			sample: 'data'
+		});
+
+		const yourMod = new YourModule();
+		yourMod.getData().then(returnedData => {
+			expect(returnedData).toEqual({
+				sample: 'data'
+			});
+			done();
+		});
+	});
+});
+</pre>
 
 <h1>Enzyme</h1>
 <p><a href="http://airbnb.io/enzyme/docs/api/index.html" target="external">The Enzyme library</a> is useful for testing React components.</p>
