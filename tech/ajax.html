@@ -38,22 +38,30 @@ some of the complexity. My recommendation:</p>
 of explaining how to use Fetch in a production environment.</p>
 
 <p>I have had great success when fetching like this:</p>
-<pre class="prettyprint linenums">export function getAccountInfo (userId) {
-	const httpRequest = {};
-	httpRequest.credentials = 'include';
-	httpRequest.headers = { Accept: 'application/json' };
+<pre class="prettyprint linenums">export function fetchData (userId) {
+	const httpRequest = {
+		method: 'GET',
+		credentials: 'include',
+		headers: { Accept: 'application/json' }
+	};
 
-	return fetch(`/account/${userId}`, httpRequest)
+	return fetch(`/api/customer/${userId}`, httpRequest)
 		.then(response => {
 			if (!response.ok) {
-				throw new Error('The response from /account/:userId was not OK.');
+				throw new Error('The response was not OK.');
 			}
 			return response.json(); // This is a Promise.
 		})
 		.catch(error => {
+			// Note: “error” will e a TypeError.
+			// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError
 			console.log( // eslint-disable-line
-				`Could not fetch /account/:userId because ${error.message}`
+				`Could not fetch /api/customer/${userId} because ${error.message}`
 			);
+			return ''; // Hide error by resolving (successfully)
+			// Alternatively, you could remove this .catch() entirely or do:
+			// return Promise.reject('Custom error message')
+			// if you want to return a rejected Promise.
 		});
 }
 </pre>
