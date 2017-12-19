@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html lang="en"><!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ES2015 Modules</title>
+<!-- InstanceEndEditable -->
+<link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css">
+<link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css">
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+</style>
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+<a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
+<div class="title">ES2015 Modules</div>
+
+<h1>Modules</h1>
+<h3 id="leanpub-auto-es5-module-systems">ES5 module systems</h3>
+<p>It is impressive how well ES5 module systems work without explicit support from the language. The two most important (and unfortunately incompatible) standards are:</p>
+<ul>
+	<li><strong>CommonJS Modules:</strong> The dominant implementation of this standard is <a href="http://nodejs.org/api/modules.html">in Node.js</a> (Node.js modules have a few features that go beyond CommonJS). Characteristics:
+		<ul>
+			<li>Compact syntax</li>
+			<li>Designed for synchronous loading</li>
+			<li>Main use: server</li>
+		</ul>
+	</li>
+	<li><strong>Asynchronous Module Definition (AMD):</strong> The most popular implementation of this standard is <a href="http://requirejs.org/">RequireJS</a>. Characteristics:
+		<ul>
+			<li>Slightly more complicated syntax, enabling AMD to work without eval() (or a compilation step).</li>
+			<li>Designed for asynchronous loading</li>
+			<li>Main use: browsers</li>
+		</ul>
+	</li>
+</ul>
+<p>The above is but a simplified explanation of the current state of affairs. If you want more in-depth material, take a look at &ldquo;<a href="http://addyosmani.com/writing-modular-js/">Writing Modular JavaScript With AMD, CommonJS &amp; ES Harmony</a>&rdquo; by Addy Osmani.</p>
+<h3 id="leanpub-auto-ecmascript-6-modules">ECMAScript 6 modules</h3>
+<p>The goal for ECMAScript 6 modules was to create a format that both users of CommonJS and of AMD are happy with:</p>
+<ul>
+	<li>Similar to CommonJS, they have a compact syntax, a preference for single exports and support for cyclic dependencies.</li>
+	<li>Similar to AMD, they have direct support for asynchronous loading and configurable module loading.</li>
+</ul>
+<p>Being built into the language allows ES6 modules to go beyond CommonJS and AMD (details are explained later):</p>
+<ul>
+	<li>Their syntax is even more compact than CommonJS&rsquo;s.</li>
+	<li>Their structure can be statically analyzed (for static checking, optimization, etc.).</li>
+	<li>Their support for cyclic dependencies is better than CommonJS&rsquo;s.</li>
+</ul>
+<p>The ES6 module standard has two parts:</p>
+<ul>
+	<li>Declarative syntax (for importing and exporting)</li>
+	<li>Programmatic loader API: to configure how modules are loaded and to conditionally load modules</li>
+</ul>
+<h3>Exporting A Single Default</h3>
+<p>The following ECMAScript 6 module &ldquo;is&rdquo; a single function:</p>
+<div>
+	<pre class="prettyprint linenums">//------ myFunc.js ------ 
+export default function () { ··· } // no semicolon!  
+export default function Animal() { ··· } // You can name the function if it needs to be used within this module.
+
+//------ main1.js ------ 
+import myFunc from 'myFunc'; 
+myFunc();</pre>
+</div>
+<p>An ECMAScript 6 module whose default export is a class looks as follows:</p>
+<div>
+	<pre class="prettyprint linenums">//------ MyClass.js ------ 
+export default class { ··· } // no semicolon!
+export default class Animal { ··· } //You can name the class if it needs to be used within this module.
+
+//------ main2.js ------ 
+import MyClass from 'MyClass'; 
+let inst = new MyClass();</pre>
+</div>
+<h3>Multiple Named Exports</h3>
+<p>A module can export multiple things by prefixing their declarations with the keyword export. These exports are distinguished by their names and are called <em>named exports</em>.</p>
+<div>
+	<pre class="prettyprint linenums">//------ lib.js ------ 
+export const sqrt = Math.sqrt; 
+export function square(x) {
+     return x * x; 
+} 
+export function diag(x, y) {
+     return sqrt(square(x) + square(y));
+}
+
+//------ main.js ------ 
+import { square, diag } from 'lib'; 
+console.log(square(11)); // 121 
+console.log(diag(4, 3)); // 5</pre>
+</div>
+<p>There are other ways to specify named exports (which are explained later), but I find this one quite convenient: simply write your code as if there were no outside world, then label everything that you want to export with a keyword.</p>
+<p>If you want to, you can also import the whole module and refer to its named exports via property notation:</p>
+<div>
+	<pre class="prettyprint linenums">//------ main.js ------ 
+import * as lib from 'lib'; 
+console.log(lib.square(11)); // 121 
+console.log(lib.diag(4, 3)); // 5</pre>
+</div>
+
+
+<h1>Dynamic Imports Using Webpack</h1>
+
+<p>The killer feature of dynamic imports is the ability to:</p>
+<ol>
+	<li>Load scripts asynchronously at run-time in the browser.</li>
+	<li>Improve the first-paint time so that the site appears faster.</li>
+</ol>
+
+<p>Yes, you could do this using AMD (require.js) or rolling your own script loader, but this could be
+	a very good technique depending on your needs. You need to configure your tooling to handle this
+	non-standard syntax, however. First, install these packages:
+</p>
+<ul>
+	<li><code>babel-plugin-syntax-dynamic-import</code><br />
+		This will prevent Babel from throwing errors
+		when it sees the <code>import()</code> function. It does not do a transform because Webpack
+		already knows how to handle dynamic imports natively.</li>
+	<li><code>babel-eslint</code><br />
+		This will monkeypatch ESLint so that the linter doesn’t choke on
+		syntax that it doesn’t understand. You will need to tell ESLint to use this parser and then
+		configure it.</li>
+</ul>
+<p>Now edit your <code>.babelrc</code> file to include:</p>
+<pre class="prettyprint linenums">"plugins": ["syntax-dynamic-import"]</pre>
+<p>Next, edit the <code>.eslintrc.json</code> file.</p>
+<pre class="prettyprint linenums">"parser": "babel-eslint",
+"parserOptions": {
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true,
+			"jsx": true
+		},
+	"sourceType": "module",
+	"allowImportExportEverywhere": true
+},
+</pre>
+<h2>Using <code>import()</code> to load modules dynamically</h2>
+<p>The <code>import()</code> function is used to load modules (scripts) asynchronously in the
+browser. It is not required, but when pulling a module dynamically, I like to use named exports.
+For example,</p>
+<h3>components/gold.js</h3>
+<pre class="prettyprint linenums">import React from 'react'
+import PropTypes from 'prop-types'
+
+// This is kind of a weird syntax, but dynamic imports won’t automatically import the `default`
+// member. So you either need to use it as Gold.default, or when written like this you can
+// destructure it as: { Gold }
+export function Gold (props) {
+	return (
+		&lt;div&gt;
+			&lt;h1&gt;Congratulations&lt;/h1&gt;
+			&lt;p&gt;You just won {props.coins} coins!&lt;/p&gt;
+		&lt;/div&gt;
+	)
+}
+
+Gold.propTypes = {
+	coins: PropTypes.number.isRequired
+}
+</pre>
+
+
+<p>Then, you import the module by doing this:</p>
+<h3>app.js</h3>
+<pre class="prettyprint linenums">import React from 'react'
+import './app.scss'
+
+class App extends React.Component {
+	constructor (props) {
+		super(props)
+		this.state = {
+			luckyWinner: null
+		}
+	}
+
+	componentDidMount () {
+		const coins = parseInt(Math.random() * 100)
+		if (coins &gt; 35) {
+			import(/* webpackChunkName: "Gold" */ './components/gold').then(({ Gold }) =&gt; {
+				this.setState({
+					luckyWinner: &lt;Gold coins={coins} /&gt;
+				})
+			})
+		}
+	}
+
+	render () {
+		return (
+			&lt;div&gt;
+				{this.state.luckyWinner}
+			&lt;/div&gt;
+		)
+	}
+}
+
+export default App
+</pre>
+<!-- InstanceEndEditable -->
+<footer>
+		<hr>
+		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="https://craig-creeger.github.io/">Table of Contents</a>
+		</p>
+		<p style="text-align:right; font-size:smaller;">Last updated on 
+			<!-- #BeginDate format:Am1 -->October 28, 2015<!-- #EndDate --></p>
+		<p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+		<p><span id="copyrightDate">2015</span> &mdash; All rights reserved. <a href="http://pixelpro.biz/" title="Pixel Pro Web Design">Pixel Pro, Inc.</a></p>
+</footer>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/prettify/prettify.js"></script>
+<!-- InstanceBeginEditable name="footerScripts" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+$(function() { //shortcut for $(document).ready();
+	prettyPrint();
+	
+	//Update the Copyright Date in the footer to be the current year.
+	var crDate = document.getElementById('copyrightDate');
+	var today = new Date();
+	crDate.innerHTML = today.getFullYear();
+});
+</script>
+</body>
+<!-- InstanceEnd --></html>
