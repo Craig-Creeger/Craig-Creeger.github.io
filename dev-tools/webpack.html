@@ -35,8 +35,52 @@
     <h1>Config File</h1>
     <p>There are some important top-level objects in the config file that you should understand.</p>
     <h2>Entry and Output <small>(required elements)</small></h2>
-    <p>These are the only required keys in the config file. Entry specifies a javascript file that is your top-level module. In other words, there are no other modules that include (import) it. The entry file is, by convention, often named index.js or main.js.</p>
-    <p>Output holds informtion about how to construct the bundled file. Remember, the primary purpose of Webpack is to take multiple files (the entry point and all its dependencies) and concatenate all of them into one Javascript file that can be put on a webpack via a <code>&lt;script&gt;</code> tag.</p>
+    <p>These are the only required keys in the config file. Entry specifies a javascript file that 
+        is your top-level module. In other words, there are no other modules that include (import) 
+        it. The entry file is, by convention, often named index.js or main.js.</p>
+    <p>Output holds informtion about how to construct the bundled file. Remember, the primary 
+        purpose of Webpack is to take multiple files (the entry point and all its dependencies) and 
+        concatenate all of them into one Javascript file that can be put on a webpack via a 
+        <code>&lt;script&gt;</code> tag.</p>
+
+    <h1>Output Cheatsheet</h1>
+    <p>This is a summary of how Webpack will create the bundle depending on your 
+        <code>libraryTarget</code> and <code>externals</code> definition.</p>
+    <p>The following table assumes you have configured your externals as:</p>
+    <pre class="prettyprint linenums">externals: {
+    jquery: {
+        var: '$',
+        commonjs: 'jquery',
+        commonjs2: 'jquery',
+        amd: 'jquery'
+    }
+}</pre>
+    <p>Line two is how you reference the library in your code. e.g.</p>
+    <pre>import $ from 'jquery';</pre>
+    <table class="dataTable">
+        <tr>
+            <th>libraryTarget</th>
+            <th>How you should make externals available.<br>
+            How Webpack requests the module.</th>
+            <th>library</th>
+        </tr>
+        <tr>
+            <td>var</td>
+            <td>&lt;script&gt; tag<br>module.exports = jQuery
+            </td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Take aways: When specifying the <code>library</code> name key, all it does is assigns your
+    bundle to that name. This is not-applicable when the `libraryTarget` is `commonjs2` because that
+    module system doesn’t use names.</p>
+
+    <h2>Module Resolution</h2>
+    <p>Webpack can natively consume CommonJS, CommonJS2, and ES6 (Harmony) modules directly. It can
+        even mix-and-match modules systems. That is, you can <code>import</code> a CommonJS module
+        and <code>require()</code> an ES6 module. That is certainly not recommended because it is
+        just plain confusing to do so.
+    </p>
 
     <h1>Optimization and Analysis</h1>
     <p>The bottom of the <a href="https://webpack.js.org/guides/code-splitting/" target="external">
