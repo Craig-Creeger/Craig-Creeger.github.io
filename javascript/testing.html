@@ -61,7 +61,7 @@
 	<h3>Whole Module Mock</h3>
 	<p>Let’s say the module you are testing does this:</p>
 	<p><code>import * as hydrate from 'sc-hydrate-sku';</code></p>
-	<p>You can mock out that entire library by doing something like this:</p>
+	<p>You can mock out that entire library and create a mock implementation by doing something like this:</p>
 	<pre class="prettyprint linenums">jest.mock('sc-hydrate-sku', () => {
 		return jest.fn((skus) => {
 			return new Promise((resolve, reject) => {
@@ -86,6 +86,40 @@
 <pre class="prettyprint linenums">jest.mock('./helpers/dataHelpers', () => ({
 	fetchData: jest.fn()
 }));</pre>
+
+<p>or even...</p>
+<pre class="prettyprint linenums">jest.mock('./helpers/dataHelpers');</pre>
+
+<p>Here is another example that checks to see if a method has been called. The really cool thing
+	about this is we are mocking a function (hydrate) that is used inside our target module
+	(./index.js).
+</p>
+<pre class="prettyprint linenums">
+import { hydrate } from 'react-dom';
+jest.mock('react-dom'); // This will auto-mock all of the methods.
+
+import { init } from './index';
+
+describe('index.js', () => {
+	beforeEach(() => {
+		hydrate.mockClear();
+	});
+
+	describe('init', () => {
+		it('should call hydrate', () => {
+			init({ key: 'value'});
+			expect(hydrate).toHaveBeenCalled();
+		});
+
+		it('should call hydrate without state', () => {
+			init();
+			expect(hydrate).toHaveBeenCalled();
+		});
+	});
+});
+</pre>
+
+
 
 <h3>Overloading an Existing Function</h3>
 <p>This example mocks out the native Fetch API. This is useful when you want to test interaction with an external API.</p>
