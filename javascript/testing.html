@@ -121,6 +121,21 @@ describe('index.js', () => {
 
 
 
+
+<h3>Mocking a function on Window</h3>
+<p>Use this method when the function you are mocking is on the <code>window</code> object (it is
+probably an external dependency).</p>
+<pre class="prettyprint linenums">describe('app', () => {
+	beforeEach(() => {
+		const evtMngr = function () {};
+		evtMngr.prototype.on = function () { return this; };
+		evtMngr.prototype.trigger = function () { return this; };
+		window.EventManager = new evtMngr();
+	});
+})
+</pre>
+
+
 <h3>Overloading an Existing Function</h3>
 <p>This example mocks out the native Fetch API. This is useful when you want to test interaction with an external API.</p>
 <pre class="prettyprint linenums">describe('getGSPPlans', () => {
