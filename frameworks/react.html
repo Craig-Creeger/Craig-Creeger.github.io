@@ -129,29 +129,20 @@ let studentAge = 16;
 <p>Basically, the component the captures the event must have a private function to handle the event. You attach the private function to the, say, onClick event. The private function then calls the function passed down via props.</p>
 
 <h1>Refs</h1>
-<p class="callout">This “string”-style ref is not recommended anymore. Use the next syntax
-  instead.</p>
 <p>Refs are kinda like specifying an ID on an element. You can then reach into the DOM
     (via ReactDOM.findDOMNode()) by the ref name. Example:</p>
 <pre>
-render () {
-  return &lt;div ref="wrapper"&gt;Fun stuff&lt;/div&gt;
-}
-doSomething () {
-  let elem = this.refs.wrapper
-}
-</pre>
+class RandomSpinner extends React.Component {
+  constructor(props) {
+    super(props);
+    this.refCompass = React.createRef();
+  }
 
-<p>You could also set a variable to the DOM element in this manner:</p>
-<pre>
-render () {
-  return (
-    &lt;div ref={(comp) =&gt; {
-      this.yourElement = comp
-     }}&gt;Fun Stuff&lt;/div&gt;
-}
-doSomething () {
-  let elem = this.yourElemnt
+  onSpin = () =&gt; {
+    this.refCompass.current.blur();
+  }
+  
+  render () {... }
 }
 </pre>
 
@@ -261,6 +252,47 @@ var HelloWorld = React.createClass({ // The createClass function actually create
   }
 });
 ReactDOM.render(&lt;HelloWorld /&gt;, document.getElementById('app'));
+</pre>
+
+
+<h1>Error Boundaries</h1>
+<p>The biggest gotcha is pulling out the error text into a location where you can use it.</p>
+<pre class="prettyprint linenums">
+import React from "react";
+
+export default class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true, error: error.name + " " + error.message };
+  }
+
+  componentDidCatch(error, info) {
+    // Use this to log errors.
+    this.error = error.name + " " + error.message;
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        &lt;React.Fragment&gt;
+          &lt;h1&gt;
+            Something went wrong.{" "}
+            &lt;span role="img" aria-label="Sad face" style={{ fontSize: "2em" }}&gt;
+              😞
+            &lt;/span&gt;
+          &lt;/h1&gt;
+          &lt;p&gt;Error: {this.state.error}&lt;/p&gt;
+        &lt;/React.Fragment&gt;
+      );
+    }
+    return this.props.children;
+  }
+}
 </pre>
 <!-- InstanceEndEditable -->
 <footer>
