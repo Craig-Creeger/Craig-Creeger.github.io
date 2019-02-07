@@ -34,6 +34,16 @@
 <ul>
   <li><a href="https://medium.com/dailyjs/techniques-for-decomposing-react-components-e8a1081ef5da" target="external">Decomposing React Components (describes how to make a Higher-Order React component.)</a></li>
 </ul>
+
+<h1>Forcing a Re-render</h1>
+<ul>
+  <li><strong>Change the key</strong><br>
+    Anytime the React attribute <code>key</code> changes, React will <em>create a new</em> component (note: it does not actually re-render or update).</li>
+  <li>Change the state</li>
+  <li><code>this.forceUpdate();</code></li>
+</ul>
+
+
 <h1>ES6 Patterns</h1>
 <h2>Stateless Functional Components</h2>
 <pre class="prettyprint linenums">
