@@ -12,11 +12,11 @@
 <!-- InstanceBeginEditable name="head" -->
 <style>
 :root {
-	--colorPrimary: #53C;
+	--colorPrimary: rgb(173, 164, 209);
 	--colorSecondary: #057055;
 	--colorAlternate: #c9f578;
 	--standardBorder: thin solid black;
-	--standardRadius: 10px;
+	--standardRadius: 30px;
 	--alternateBorder: thick dashed darkred;
 }
 .boxContainer {
@@ -29,6 +29,8 @@
 	width: 150px;
 	height: 100px;
 	box-sizing: border-box;
+	text-align: center;
+	line-height: 90px;
 }
 .boxContainer > div:nth-child(1) {
 	background-color: var(--colorPrimary);
@@ -37,6 +39,7 @@
 }
 .boxContainer > div:nth-child(2) {
 	background-color: var(--colorSecondary);
+	border-radius: var(--standardRadius);
 }
 .boxContainer > div:nth-child(3) {
 	background-color: var(--colorAlternate);
@@ -54,10 +57,10 @@
 <div class="title">CSS Custom Properties (Variables)</div>
 <p>Examples</p>
 <div class="boxContainer">
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+	<div>Box 1</div>
+	<div>Box 2</div>
+	<div>Box 3</div>
+	<div>Box 4</div>
 </div>
 <!-- InstanceEndEditable -->
 <footer>
