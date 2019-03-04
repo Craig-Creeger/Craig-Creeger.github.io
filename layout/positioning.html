@@ -115,26 +115,13 @@ article pre, article {
 		z-index: -1;</strong>
 	}
 }</pre>
-	<h1>z-index</h1>
+	<h1>z-index and Stacking Context</h1>
+	<p class="callout">Note: Do not confuse Stacking context with <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context">Block Formatting Context</a>.</p>
 	<p>When positioned elements overlapping each other you can specify which which one is on top (or bottom, or anywhere in between) via the CSS z-index property. Generally, those items with a higher z-index value are shown on top of those with a lower value. However, there are a few poorly understood rules that are <a href="http://philipwalton.com/articles/what-no-one-told-you-about-z-index/" rel="external">documented  well in a Philip Walton post</a>.</p>
-	<p>He states,</p>
-<blockquote>	<p>Groups of elements with a common parent that move forward or backward together in the stacking order make up what is known as a stacking context. A full understanding of stacking contexts is key to really grasping how z-index and the stacking order work.</p>
-	<p>Every stacking context has a single HTML element as its root element. When a new stacking context is formed on an element, that stacking context confines all of its child elements to a particular place in the stacking order. That means that if an element is contained in a stacking context at the bottom of the stacking order, there is no way to get it to appear in front of another element in a different stacking context that is higher in the stacking order, even with a z-index of a billion!</p>
-<p>New stacking contexts can be formed on an element in one of three ways:</p>
-<ul>
-	<li>When an element is the root element of a document (the &lt;html&gt; element)</li>
-	<li> When an element has a position value other than static and a z-index value other than auto</li>
-	<li> When an element has an opacity value less than 1</li>
-</ul>
-<p>Here are the basic rules to determine stacking order within a single stacking context (from back to front):</p>
-<ol>
-	<li>The stacking context's root element</li>
-		<li> Positioned elements (and their children) with negative z-index values (higher values in front of lower ones, otherwise ordered by appearance in the HTML)</li>
-	<li> Non-positioned elements (ordered by appearance in the HTML)</li>
-	<li> Positioned elements (and their children) with a z-index value of auto (ordered by appearance in the HTML)</li>
-	<li> Positioned elements (and their children) with positive z-index values (higher values in front of lower ones, otherwise ordered by appearance in the HTML)</li>
-</ol>
-</blockquote><!-- InstanceEndEditable -->
+	<h2>How to get a new Stacking Context</h2>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">The Stacking Context</a></p>
+	
+	<!-- InstanceEndEditable -->
 <footer>
 		<hr>
 		<p style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"><a href="https://craig-creeger.github.io/">Table of Contents</a>
