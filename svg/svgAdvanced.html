@@ -236,8 +236,15 @@ figure svg {
 	&lt;/defs&gt;
 	&lt;image mask="url(#canTopMask)" id="canTop" width="560" height="1388" xlink:href="can-top.jpg"&gt;&lt;/image&gt;
 &lt;/svg&gt;</pre>
+
+
 <h1>Filters</h1>
-<svg version="1.1" width="300px" height="300px" viewBox="8 408 415 415" class="pushRight">
+<p>Smashing Magazine describes how SVG filters can be used to make display text.</p>
+<p><a href="http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/" rel="external">http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/</a></p>
+<p>Filters are also available in CSS, but there is some sharing with SVG. See <a href="https://css-tricks.com/color-filters-can-turn-your-gray-skies-blue/" rel="external">Color Filters Can Turn Your Gray Skys Blue</a>.</p>
+
+
+<svg version="1.1" width="100px" height="100px" viewBox="8 408 415 415" class="pushRight">
 <filter  width="115%" height="115%" x="-5%" y="-5%" id="dropShadow">
 	<feOffset  dx="6" dy="6" in="SourceAlpha" result="offOut"></feOffset>
 	<feGaussianBlur  in="offOut" stdDeviation="5" result="blurOut"></feGaussianBlur>
@@ -252,25 +259,20 @@ figure svg {
 <polygon filter="url(#dropShadow)" fill="#FFFFFF" points="305.5,526.5 301.4,525.8 224,512.9 208,432 207.3,436.1 194.4,513.5 113.5,529.5 117.6,530.2 
 	195,543.1 211,624 211.7,619.9 224.6,542.5 "/>
 </svg>
-<p>Smashing Magazine describes how SVG filters can be used to make display text.</p>
-<p><a href="http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/" rel="external">http://www.smashingmagazine.com/2015/05/26/why-the-svg-filter-is-awesome/</a></p>
-<p>Filters are also available in CSS, but there is some sharing with SVG. See <a href="https://css-tricks.com/color-filters-can-turn-your-gray-skies-blue/" rel="external">Color Filters Can Turn Your Gray Skys Blue</a>.</p>
+
 <h2>Drop Shadow</h2>
-<p>Adobe Illustrator comes with some pretty crappy SVG Drop Shadows. A much better version is:</p>
-<pre class="prettyprint linenums">&lt;svg version=&quot;1.1&quot; width=&quot;300px&quot; height=&quot;300px&quot; viewBox=&quot;8 408 415 415&quot;&gt;
-&lt;filter  width=&quot;115%&quot; height=&quot;115%&quot; x=&quot;-5%&quot; y=&quot;-5%&quot; <strong>id=&quot;dropShadow&quot;</strong>&gt;
-	&lt;feOffset  dx=&quot;6&quot; dy=&quot;6&quot; in=&quot;SourceAlpha&quot; result=&quot;offOut&quot; /&gt;
-	&lt;feGaussianBlur  in=&quot;offOut&quot; stdDeviation=&quot;5&quot; result=&quot;blurOut&quot; /&gt;
-	&lt;feComponentTransfer  in=&quot;blurOut&quot; result=&quot;lightenOut&quot;&gt;
-		&lt;feFuncA type=&quot;table&quot; tableValues=&quot;0 0.4&quot; /&gt;
-	&lt;/feComponentTransfer&gt;
-	&lt;feBlend mode=&quot;normal&quot; in=&quot;SourceGraphic&quot; in2=&quot;lightenOut&quot; /&gt;
+<p>Drop shadows can be achieved using a <code>filter</code>.</p>
+<pre class="prettyprint linenums">&lt;filter width="125%" height="125%" x="-12.5%" y="-12.5%" <strong>id="dropShadow"</strong>&gt;
+  &lt;feOffset dx="6" dy="6" in="SourceAlpha" result="offOut" /&gt;
+  &lt;feGaussianBlur in="offOut" stdDeviation="6" result="blurOut" /&gt;
+  &lt;feComponentTransfer in="blurOut" result="lightenOut"&gt;
+    &lt;feFuncA type="table" tableValues="0 0.4" /&gt;
+  &lt;/feComponentTransfer&gt;
+  &lt;feBlend in="SourceGraphic" in2="lightenOut" /&gt;
 &lt;/filter&gt;
 
-	&lt;circle fill=&quot;#2FA7D1&quot; cx=&quot;208&quot; cy=&quot;608&quot; r=&quot;200&quot; <strong>filter=&quot;url(#dropShadow)&quot;</strong> /&gt;
-	&lt;polygon <strong>filter=&quot;url(#dropShadow)&quot;</strong> fill=&quot;#FFFFFF&quot; points=&quot;305.5,526.5 301.4,525.8 224,512.9 208,432 207.3,436.1 194.4,513.5 113.5,529.5 117.6,530.2 
- 195,543.1 211,624 211.7,619.9 224.6,542.5&quot; /&gt;
-&lt;/svg&gt;</pre>
+&lt;circle fill="#2FA7D1" cx="208" cy="608" r="200" <strong>filter="url(#dropShadow)"</strong> /&gt;
+</pre>
 <h3>Explanation:</h3>
 <p><em>filter</em> sets up the filter’s canvas compared to whatever the filter is applied to. </p>
 <p><em>feOffset</em> creates and moves the new object around on the stage. Tweak <code>dx</code> and <code>dy</code> to position the shadow. Since the <code>in</code> attribute specifies SourceAlpha, it will only copy the alpha channel, not all the colors. This effectively makes an all black copy—black is good for drop shadows, so yay.</p>
@@ -287,9 +289,13 @@ figure svg {
 	<li>The &lt;text&gt; tag is very accessible and is the preferred method for displaying text from an accessible standpoint.</li>
 	<li>Hyperlinks are keyboard focusable. <code>&lt;a xlink:href="<a href="http://example.com/" target="_blank">http://example.com</a>"&gt;</code></li>
 </ul>
+
+
 <h2 id="svgButtons">Graphic Reuse and Sprite Sheet</h2>
 <h2>&lt;use&gt;</h2>
 <p>SVG’s &lt;use&gt; tag allows you to reference just a part of some SVG defined elsewhere and draw just that part somewhere else. However, you must use inline SVG to dynamically use only certain pieces. If you want to use SVG as a CSS background-image or in an &lt;img&gt; tag, then you can exploit fragment identifiers. It is a bit like using intra-page anchors (# syntax).</p>
+
+
 <h2>Fragment Identifiers</h2>
 <p>This information came from <a href="http://css-tricks.com/svg-fragment-identifiers-work/" target="external">How SVG Fragment Identifiers Work</a>. The concept here is to:</p>
 <ol>
@@ -307,6 +313,9 @@ figure svg {
 </pre>
 	</li>
 </ol>
+
+
+
 <h1>Hyperlinked SVG Buttons with Rollover Effect</h1>
 <p>It is super easy to make a stylized button when it is rectangular, but if you want an abstract shape then SVG provides a great solution.</p>
 <svg viewBox="0 0 528 260" style="width:50%;" id="starDemo">
