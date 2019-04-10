@@ -44,6 +44,34 @@
 </ul>
 
 
+<h1>Conditional Attributes</h1>
+<p>For just a single attribute, the easiest is to set it to <code>null</code> to prevent it from rendering. For some attributes, React is smart enough that you can use <code>false</code> instead of <code>null</code>.</p>
+<pre class="prettyprint linenums">&lt;button disabled={isDisabled ? true : null}&gt;Launch Missle&lt;/button&gt;</pre>
+
+<h2>Spread Operator Solution</h2>
+<p>
+  When you have several attributes, this is a nice way to do it. Build an object how you like:
+</p>
+
+<pre class="prettyprint linenums">var inputProps = {
+  value: 'foo',
+  onChange: this.handleChange
+};
+
+if (condition) inputProps.disabled = true;
+</pre>
+
+<p>Render with spread, optionally passing other props also. Notice how the order below makes a difference.</p>
+
+<pre class="prettyprint linenums">
+  &lt;input 
+      value="this is overridden by inputProps" 
+      {...inputProps} 
+      onChange={overridesInputProps}
+   /&gt;
+</pre>
+
+
 <h1>ES6 Patterns</h1>
 <h2>Stateless Functional Components</h2>
 <pre class="prettyprint linenums">
