@@ -163,7 +163,9 @@
     </aside>
     <!-- You need a wrapper element with only one and only one child element for this to work. -->
     <div data-sticky="[[0, 80], [913, 160]]">
-      <div class="stickyStyles"><button>Call to Action</button></div>
+      <div class="stickyStyles">
+        <button onclick="handleCTA()">Call to Action</button>
+      </div>
       <div class="stickyGhost"></div>
     </div>
     <main>
@@ -325,11 +327,38 @@
     <script type="text/javascript" src="../js/prettify/prettify.js"></script>
     <!-- InstanceBeginEditable name="footerScripts" -->
     <script>
+      function debounce(fn) {
+        // Debounce info - https://gomakethings.com/debouncing-your-javascript-events/
+        // Setup a timer
+        var timeout;
+
+        // Return a function to run debounced
+        return function() {
+          // Setup the arguments
+          var context = this;
+          var args = arguments;
+
+          // If there's a timer, cancel it
+          if (timeout) {
+            window.cancelAnimationFrame(timeout);
+          }
+
+          // Setup the new requestAnimationFrame()
+          timeout = window.requestAnimationFrame(function() {
+            fn.apply(context, args);
+          });
+        };
+      }
+
       // Set-up the scroll and resize handlers. In this example, I have only one stickable element. Add additional listeners
       // if you have more stickable elements; or, even better, refactor this to pass in an array of elements.
       var domStickable = document.querySelector("[data-sticky]");
-      window.addEventListener("resize", handleSticky(domStickable, true));
-      document.addEventListener("scroll", handleSticky(domStickable));
+      window.addEventListener(
+        "resize",
+        debounce(handleSticky(domStickable, true)),
+        false
+      );
+      document.addEventListener("scroll", debounce(handleSticky(domStickable)), false);
 
       // Controls what happens when an event gets fired.
       function handleSticky(elem, forceStyle) {
@@ -337,8 +366,6 @@
           stickToTop(elem, forceStyle);
         };
       }
-
-      // Debounce info - https://gomakethings.com/debouncing-your-javascript-events/
 
       /**
        * This will stick elements at a fixed position from the top of the viewport when
@@ -378,16 +405,17 @@
         if (currentState === "stuck" && !forceStyle) return;
         elem.style.position = "fixed";
         elem.style.top = String(top) + "px";
-        document.getElementsByClassName('stickyGhost')[0].style.height = String(computedHeight) + 'px';
-    }
-    
-    function unstickElem(wrapperElem, forceStyle) {
+        document.getElementsByClassName("stickyGhost")[0].style.height =
+          String(computedHeight) + "px";
+      }
+
+      function unstickElem(wrapperElem, forceStyle) {
         var elem = wrapperElem.children[0];
         var currentState = getCurrentStickiness(elem);
         if (currentState === "unstuck" && !forceStyle) return;
         elem.style.position = "static";
         elem.style.top = "auto";
-        document.getElementsByClassName('stickyGhost')[0].style.height = 0;
+        document.getElementsByClassName("stickyGhost")[0].style.height = 0;
       }
 
       function getCurrentStickiness(elem) {
