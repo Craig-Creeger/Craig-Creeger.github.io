@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- InstanceBegin template="/Templates/StandardContent.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Sticky Element</title>
+    <!-- InstanceEndEditable -->
+    <link href="../css/oneColFixCtr.css" rel="stylesheet" type="text/css" />
+    <link href="../js/prettify/prettify.css" rel="stylesheet" type="text/css" />
+    <!-- InstanceBeginEditable name="head" -->
+    <style type="text/css">
+      /* The following styles are purely cosmetic and have no bearing
+   on the functionality described by this Pen. */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, serif;
+        background-color: white;
+      }
+      header {
+        background-color: #edfcff;
+        text-align: center;
+        height: 80px;
+        box-sizing: border-box;
+        border-bottom: thin solid dimgray;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+      .ghost {
+        height: 80px;
+      }
+      header h1 {
+        margin: 0;
+        color: #003b47;
+        line-height: 80px;
+      }
+      .tagLine {
+        display: none;
+      }
+      .stickyStyles {
+        background-color: whitesmoke;
+        padding: 1em 0;
+        text-align: center;
+        border-bottom: thin solid lightgray;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+      .stickyStyles button {
+        font-size: 2.5em;
+        padding: 0 1ch;
+        background-color: lightpink;
+        border: medium solid indianred;
+        border-radius: 0.3em;
+        cursor: pointer;
+      }
+      aside {
+        margin: 2em auto;
+        padding: 0 2em;
+        max-width: 100ch;
+      }
+      code {
+        padding: 0 1ch;
+        background-color: whitesmoke;
+        font-size: larger;
+      }
+      blockquote {
+        font-family: Helvetica, Verdana, san-serif;
+      }
+      main {
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+      }
+      main > * {
+        flex: 0 0 auto;
+        margin: 1em;
+      }
+      @media (min-width: 913px) {
+        header {
+          height: 160px;
+          background-color: #fdffef;
+        }
+        .ghost {
+          height: 160px;
+        }
+        .tagLine {
+          display: block;
+        }
+        main {
+          width: 77%;
+          max-width: 1400px;
+        }
+      }
+    </style>
+    <!-- InstanceEndEditable -->
+  </head>
+
+  <body>
+    <a href="../index.html" style="float:left"
+      ><img src="../img/home-button.svg" border="0"
+    /></a>
+    <!-- InstanceBeginEditable name="content" -->
+    <header>
+      <h1>Sticky Element Example</h1>
+      <p class="tagLine">Making every pixel count since 1984.</p>
+    </header>
+    <div class="ghost"></div>
+    <aside>
+      <p>
+        Most browsers support <code>position: sticky;</code>, however there are
+        times when it might not work, like when your element is inside an
+        <code>overflow: hidden;</code>, or IE11. This Pen is for those times.
+      </p>
+      <p>
+        This is a Javascript solution that will set your element to
+        <code>position: static</code> when it needs to scroll and then
+        <code>position: fixed</code> when it needs to stick (stop scrolling).
+      </p>
+      <h2>Other Concerns</h2>
+      <p>
+        Debouncing can be problematic on iOS.
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
+          >Intersection Observer</a
+        >
+        may be able to help.
+      </p>
+      <p>
+        Throttling and Debouncing are different. For scroll and resize events I
+        believe debounce is what you want.
+      </p>
+      <h2>Help! It’s not working!</h2>
+      <p>
+        Keep in mind, we are using <code>position: fixed</code> to make it
+        stick, so...
+      </p>
+      <blockquote>
+        <p>
+          The element is removed from the normal document flow, and no space is
+          created for the element in the page layout. It is positioned relative
+          to the initial containing block established by the viewport, except
+          when one of its ancestors has a transform, perspective, or filter
+          property set to something other than none (see the CSS Transforms
+          Spec), in which case that ancestor behaves as the containing block.
+          (Note that there are browser inconsistencies with perspective and
+          filter contributing to containing block formation.) Its final position
+          is determined by the values of top, right, bottom, and left.
+        </p>
+        <p>
+          This value always creates a new stacking context. In printed
+          documents, the element is placed in the same position on every page.
+        </p>
+      </blockquote>
+    </aside>
+    <!-- You need a wrapper element with only one and only one child element for this to work. -->
+    <div data-sticky="[[0, 80], [913, 160]]">
+      <div class="stickyStyles"><button>Call to Action</button></div>
+      <div class="stickyGhost"></div>
+    </div>
+    <main>
+      <img
+        src="https://picsum.photos/200/300?1"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?2"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?3"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?4"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?5"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?6"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?7"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?8"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?9"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?a"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?s"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?d"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?f"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?g"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?h"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?j"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?k"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?l"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?z"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?x"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?c"
+        alt=""
+        width="200"
+        height="300"
+      />
+      <img
+        src="https://picsum.photos/200/300?v"
+        alt=""
+        width="200"
+        height="300"
+      />
+    </main>
+
+    <!-- InstanceEndEditable -->
+    <footer>
+      <hr />
+      <p
+        style="font-size:1rem !important; text-align:left;margin-bottom:1em; float:left;"
+      >
+        <a href="https://craig-creeger.github.io/">Table of Contents</a>
+      </p>
+      <p style="text-align:right; font-size:smaller;">
+        Last updated on
+        <!-- #BeginDate format:Am1 -->May 17, 2019<!-- #EndDate -->
+      </p>
+      <p class="tagLine" style="clear:left;">Making Every Pixel Count</p>
+      <p>
+        <span id="copyrightDate">2015</span> &mdash; All rights reserved.
+        <a href="http://pixelpro.biz/" title="Pixel Pro Web Design"
+          >Pixel Pro, Inc.</a
+        >
+      </p>
+    </footer>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/prettify/prettify.js"></script>
+    <!-- InstanceBeginEditable name="footerScripts" -->
+    <script>
+      // Set-up the scroll and resize handlers. In this example, I have only one stickable element. Add additional listeners
+      // if you have more stickable elements; or, even better, refactor this to pass in an array of elements.
+      var domStickable = document.querySelector("[data-sticky]");
+      window.addEventListener("resize", handleSticky(domStickable, true));
+      document.addEventListener("scroll", handleSticky(domStickable));
+
+      // Controls what happens when an event gets fired.
+      function handleSticky(elem, forceStyle) {
+        return function(evt) {
+          stickToTop(elem, forceStyle);
+        };
+      }
+
+      // Debounce info - https://gomakethings.com/debouncing-your-javascript-events/
+
+      /**
+       * This will stick elements at a fixed position from the top of the viewport when
+       * they have been scrolled up to that area.
+       */
+      function stickToTop(elem, forceStyle) {
+        var topPosition = elem.getClientRects()[0].top;
+        var verticalStopper = getVerticalStopper(elem);
+        if (topPosition <= verticalStopper) {
+          stickElem(elem, verticalStopper, forceStyle);
+        } else {
+          unstickElem(elem, forceStyle);
+        }
+      }
+
+      /**
+       * Parse the data-sticky array and return the 'top' value based on current viewport width.
+       * @param {HTMLElement} DOM node that is stickable.
+       * @returns {string} Vertical distance from the top
+       */
+      function getVerticalStopper(elem) {
+        // The data-sticky attribute contains an array of arrays of mobile-first breakpoints.
+        // Example: [[0, 50], [320, 100], [768, 150]]
+        // From 0-319, stick at 50px; from 320-767 stick at 100px, from 768 and wider stick at 150px
+        var viewportWidth = window.innerWidth;
+        var breakpoints = JSON.parse(elem.getAttribute("data-sticky"));
+        return breakpoints.reduce(function(accum, item) {
+          if (viewportWidth >= item[0]) return item[1];
+          return accum;
+        }, 0);
+      }
+
+      function stickElem(wrapperElem, top, forceStyle) {
+        var elem = wrapperElem.children[0];
+        var currentState = getCurrentStickiness(elem);
+        var computedHeight = elem.getClientRects()[0].height;
+        if (currentState === "stuck" && !forceStyle) return;
+        elem.style.position = "fixed";
+        elem.style.top = String(top) + "px";
+        document.getElementsByClassName('stickyGhost')[0].style.height = String(computedHeight) + 'px';
+    }
+    
+    function unstickElem(wrapperElem, forceStyle) {
+        var elem = wrapperElem.children[0];
+        var currentState = getCurrentStickiness(elem);
+        if (currentState === "unstuck" && !forceStyle) return;
+        elem.style.position = "static";
+        elem.style.top = "auto";
+        document.getElementsByClassName('stickyGhost')[0].style.height = 0;
+      }
+
+      function getCurrentStickiness(elem) {
+        var position = getComputedStyle(elem).getPropertyValue("position");
+        return position === "fixed" ? "stuck" : "unstuck";
+      }
+    </script>
+    <!-- InstanceEndEditable -->
+    <script type="text/javascript">
+      $(function() {
+        //shortcut for $(document).ready();
+        prettyPrint();
+
+        //Update the Copyright Date in the footer to be the current year.
+        var crDate = document.getElementById("copyrightDate");
+        var today = new Date();
+        crDate.innerHTML = today.getFullYear();
+      });
+    </script>
+  </body>
+  <!-- InstanceEnd -->
+</html>
