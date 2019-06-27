@@ -177,10 +177,14 @@ class RandomSpinner extends React.Component {
   }
 
   onSpin = () =&gt; {
-    this.refCompass.current.blur();
+    this.refCompass<strong>.current</strong>.blur(); // Use `current` to get the actual DOM element.
   }
   
-  render () {... }
+  render () {
+    return (
+      &lt;div ref={this.refCompass}&gt;This is the compass elem.&lt;/&gt;
+    )
+  }
 }
 </pre>
 
