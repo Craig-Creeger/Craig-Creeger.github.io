@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Testing getBoundingClientRect</title>
+        <style>
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            .box {
+                height: 200px;
+                box-sizing: border-box;
+                border: thin solid salmon;
+            }
+            aside {
+                box-sizing: border-box;
+                border: thin solid slateblue;
+                background-color: whitesmoke;
+                width: 500px;
+                height: 600px;
+                padding: 0 1em;
+                position: absolute;
+                left: 100px;
+                top: 700px;
+            }
+            section {
+                background-color: lightblue;
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                right: 10px;
+                top: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <aside>
+            <p>
+                There are a couple of ways to get positioning and size
+                information about a DOM element. First is the “offset” family of
+                properties. They will give you the position
+                <strong>relative (offset) to its “offset parent”.</strong> In
+                other words, this will require you to always know what the
+                offset parent is. The values for this box are:
+            </p>
+            <output class="aside-output"></output>
+            <hr />
+            <p>For the blue box, the values are:</p>
+            <section></section>
+            <output class="inner-output"></output>
+            <hr />
+            <p>
+                <code>getBoundingClientRect()</code> will tell you the position
+                of a DOM object relative to the viewport. This is great when you
+                want to know if something is partially or not in view at all.
+            </p>
+        </aside>
+        <div class="box">0</div>
+        <div class="box">200</div>
+        <div class="box">400</div>
+        <div class="box">600</div>
+        <div class="box">800</div>
+        <div class="box">1000</div>
+        <div class="box">1200</div>
+        <div class="box">1400</div>
+        <div class="box">1600</div>
+        <div class="box">1800</div>
+        <div class="box">2000</div>
+        <div class="box">2200</div>
+        <div class="box">2400</div>
+        <div class="box">2600</div>
+        <div class="box">2800</div>
+        <div class="box">3000</div>
+        <div class="box">3200</div>
+        <div class="box">3400</div>
+        <div class="box">3600</div>
+        <div class="box">3800</div>
+        <div class="box">4000</div>
+        <div class="box">4200</div>
+        <div class="box">4400</div>
+        <div class="box">4600</div>
+        <div class="box">4800</div>
+
+        <script>
+            var asideDOM = document.querySelector("aside");
+            var offsetMsg = "";
+            offsetMsg += "offsetTop: " + asideDOM.offsetTop + "<br />";
+            offsetMsg += "offsetLeft: " + asideDOM.offsetLeft + "<br />";
+            offsetMsg += "offsetHeight: " + asideDOM.offsetHeight + "<br />";
+            offsetMsg += "offsetWidth: " + asideDOM.offsetWidth + "<br />";
+            offsetMsg += "offsetParent: " + asideDOM.offsetParent + "<br />";
+            document.querySelector(".aside-output").innerHTML = offsetMsg;
+
+            var innerDOM = document.querySelector("section");
+            var offsetMsg = "";
+            offsetMsg += "offsetTop: " + innerDOM.offsetTop + "<br />";
+            offsetMsg += "offsetLeft: " + innerDOM.offsetLeft + "<br />";
+            offsetMsg += "offsetHeight: " + innerDOM.offsetHeight + "<br />";
+            offsetMsg += "offsetWidth: " + innerDOM.offsetWidth + "<br />";
+            offsetMsg += "offsetParent: " + innerDOM.offsetParent + "<br />";
+            document.querySelector(".inner-output").innerHTML = offsetMsg;
+        </script>
+    </body>
+</html>

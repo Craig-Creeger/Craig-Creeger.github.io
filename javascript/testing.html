@@ -23,6 +23,7 @@
 	<!-- InstanceBeginEditable name="content" -->
 	<div class="title">Testing Javascript Code</div>
 	<h1>Jest</h1>
+	<p><strong>High-quality gold here:</strong> <a href="https://blog.sapegin.me/all/react-testing-2-jest-and-enzyme/">https://blog.sapegin.me/all/react-testing-2-jest-and-enzyme/</a></p>
 
 	<h2>Test Structure</h2>
 	<p>This testing tool is one of the best available right now and the documentation is pretty good
@@ -60,7 +61,7 @@
 	<h2>Mocks</h2>
 	<h3>Whole Module Mock</h3>
 	<p>Let’s say the module you are testing does this:</p>
-	<p><code>import * as hydrate from 'sc-hydrate-sku';</code></p>
+	<p><code>import * as hydrate from 'hydration-lab';</code></p>
 	<p>You can mock out that entire library and create a mock implementation by doing something like this:</p>
 	<pre class="prettyprint linenums">jest.mock('sc-hydrate-sku', () => {
 		return jest.fn((skus) => {
@@ -95,7 +96,7 @@
 	(./index.js).
 </p>
 <pre class="prettyprint linenums">
-import { hydrate } from 'react-dom';
+import { hydrate } from 'hydration-lab';
 jest.mock('react-dom'); // This will auto-mock all of the methods.
 
 import { init } from './index';
