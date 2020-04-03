@@ -18,9 +18,19 @@
 <body>
 <a href="../index.html" style="float:left"><img src="../img/home-button.svg" border="0"></a><!-- InstanceBeginEditable name="content" -->
 <div class="title">Trapping Keystrokes</div>
-<h1>Definition</h1>
-<p>The standard way to listen for keystrokes is by inspecting the window.event object, but you have to go through a bunch of gymnastics to make to work under all browsers and operating systems.</p>
-<p><a href="http://craig.is/killing/mice" rel="external">Mousetrap</a> is a JavaScript library that make this process easier. Of course, jQuery has this handled, too.</p>
+<h1>Events</h1>
+<p><code>keyDown</code> and <code>keyUp</code> are what you should be using. `keyPress` is not recommended according to  <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names_and_Char_values">MDN</a></p>
+
+<h2>KeyboardEvent object</h2>
+<p>To know which key was pressed, use <code>key</code>.</p>
+<p>The possible values for `key` are listed in the first column from <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values">MDN Key Values</a> page.</p>
+<h3>Deprecated properties or not recommended</h3>
+<ul>
+	<li>char</li>
+	<li>charCode</li>
+	<li>keyCode</li>
+	<li>which</li>
+</ul>
 <!-- InstanceEndEditable -->
 <footer>
 		<hr>
